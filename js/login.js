@@ -1,6 +1,9 @@
 
 
-
+function signout(){
+  localStorage.removeItem(localStorage.key('TaiKhoanDangNhap'));
+  location.reload()
+}
 function register() {
  
   if (localStorage.getItem("DangNhap") == null ) {
@@ -72,7 +75,7 @@ function register() {
         if (nguoiDungNhapTuLocal.name === taiKhoanGhiVao.name) {
           if (nguoiDungNhapTuLocal.pass === taiKhoanGhiVao.pass) {
             alert('Đăng nhập thành công');
-           localStorage.setItem('DangNhap',taiKhoanGhiVao.name);
+           localStorage.setItem('TaiKhoanDangNhap',taiKhoanGhiVao.name);
            load();
 
             break;
@@ -93,10 +96,10 @@ function register() {
   }
  
   function load(){
-   if (localStorage.getItem("DangNhap") == null ) {
+   if (localStorage.getItem("TaiKhoanDangNhap") == null ) {
     return;
    }else{
-    var a = localStorage.getItem('DangNhap')
+    var a = localStorage.getItem('TaiKhoanDangNhap')
     document.getElementById('welcomeaido').innerHTML = `Welcome,`+ a;
     
    }
