@@ -3,6 +3,8 @@
 function signout(){
   localStorage.removeItem(localStorage.key('TaiKhoanDangNhap'));
   location.reload()
+ 
+  
 }
 function register() {
  
@@ -24,7 +26,12 @@ function register() {
     }
     if (localStorage.length > 0) {
       for (let i = 0; i < localStorage.length; i++) {
-        let taiKhoanTrenLocal =JSON.parse(localStorage.getItem(localStorage.key(i)));
+        try {
+          let taiKhoanTrenLocal =JSON.parse(localStorage.getItem(localStorage.key(i)))
+        } catch (err) {
+          continue;
+        }
+        let taiKhoanTrenLocal =JSON.parse(localStorage.getItem(localStorage.key(i)))
         if (taiKhoan.name === taiKhoanTrenLocal.name) {
           alert('Tên đăng nhập đã tồn tại,vui lòng đặt 1 tên khác')
           return;
