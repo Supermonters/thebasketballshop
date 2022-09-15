@@ -8,8 +8,10 @@
 		<title>Cửa hàng</title>
 		<!-- Loading third party fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="css/login.css">
 		<link rel="stylesheet" href="style.css">
@@ -17,8 +19,21 @@
 		<link rel="icon" type="image/x-icon" href="./images/favicon.png">
 		<style>
 			button{
-				all:unset
+				all:unset;
 			}
+			.section::-webkit-scrollbar {
+  width: 16px;
+}
+
+.section::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
 		</style>
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -27,7 +42,7 @@
 
 	</head>
 
-	<body onload=" load()">
+	<body onload=" load();cartCounting();">
 		<!-- Messenger Plugin chat Code -->
 		<div id="fb-root"></div>
 
@@ -75,7 +90,7 @@
 							<li class="menu-item"><a href="download.html">Xu hướng</a></li>
 							<li class="menu-item"><a href="news.html">Tin tức</a></li>
 							<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
-							<li class="menu-item"><a href="cart.html">Giỏ Hàng</a></li>
+							<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem" >(0)</span></a></li>
 							<li class="menu-item"><a id="welcomeaido" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
 
 						</ul> <!-- .menu -->
@@ -91,7 +106,7 @@
 						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg" alt="Avatar" class="avatar">
 					  </div>
-				     
+					  
 					  <div class="homchua">
 						<label for="uname"><b>Username</b></label>
 						<input type="text" placeholder="Enter Username" name="uname" id="username" required>
@@ -154,7 +169,7 @@
 							</div>
 							<div class="filterable-items">
 								<div class="filterable-item concert">
-										<button onclick="addsp1()" class="shop-item-button"><a><figure><img src="dummy/Band Name/Spark-71.jpg" onmouseover="this.src='dummy/Band Name/kd14.jpg'"
+										<button  class="shop-item-button"><a href="store_item/kd14.html"><figure><img src="dummy/Band Name/Spark-71.jpg" onmouseover="this.src='dummy/Band Name/kd14.jpg'"
 										onmouseout="this.src='dummy/Band Name/Spark-71.jpg'"  alt="KD14 EP"></figure></a></button>
 								</div>
 								<div class="filterable-item concert">

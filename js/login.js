@@ -64,6 +64,10 @@ function register() {
   }
   
   function login(){
+ if (localStorage.getItem('TaiKhoanDangNhap')!== null) {
+  alert('Bạn hiện đang đăng nhập,vui lòng đăng xuất để đăng nhập vào tài khoản khác')
+ }else{
+
  
     var taiKhoanGhiVao ={
           'name':document.getElementById("username").value,
@@ -100,6 +104,7 @@ function register() {
       }
     }
   }
+}
   }
  
   function load(){
@@ -120,4 +125,15 @@ function register() {
   //  var sortedArray = localStorageArray.sort();
   //  var tenNguoiDung= sortedArray[0].substring(1);
   //  document.getElementById('welcomeaido').innerHTML = `Welcome,`+ tenNguoiDung;
+}
+function cartCounting() {
+    var cartItemNumber = 0;
+    for (let i = 1; i < 13; i++) {
+        if (localStorage.getItem('sp'+i) !== null) {
+            cartItemNumber++;
+        }  
+        
+    }
+    document.getElementById('countItem').innerHTML = "("+cartItemNumber+")";
+    
 }

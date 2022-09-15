@@ -36,7 +36,17 @@ function quantityChanged(event) {
     }
     updateCartTotal()
 }
-
+function cartCounting() {
+    var cartItemNumber = 0;
+    for (let i = 1; i < 13; i++) {
+        if (localStorage.getItem('sp'+i) !== null) {
+            cartItemNumber++;
+        }  
+        
+    }
+    document.getElementById('countItem').innerHTML = "("+cartItemNumber+")";
+    
+}
 
 
 function updateCartTotal() {
@@ -68,6 +78,35 @@ function cartload() {
      }
      ready()
      updateCartTotal()
+}
+function purchase() {
+    if (localStorage.getItem("sp1")==null &&
+        localStorage.getItem("sp2")==null &&
+        localStorage.getItem("sp3")==null &&
+        localStorage.getItem("sp4")==null &&
+        localStorage.getItem("sp5")==null &&
+        localStorage.getItem("sp6")==null &&
+        localStorage.getItem("sp7")==null &&
+        localStorage.getItem("sp8")==null &&
+        localStorage.getItem("sp9")==null &&
+        localStorage.getItem("sp10")==null &&
+        localStorage.getItem("sp11")==null &&
+        localStorage.getItem("sp12")==null       
+        
+        ) {
+            alert('Giỏ hàng hiện đang trống vui lòng chọn hàng để thanh toán')
+            
+        
+    }else{
+        alert('Cảm ơn vì đã mua hàng');
+         
+        for (let i = 1; i <= 12; i++) {
+            localStorage.removeItem("sp"+i);
+        
+        }
+        location.reload()
+    }
+    
 }
 function addsp1() {
     if (localStorage.getItem('sp1') !== null) {
@@ -211,7 +250,7 @@ var sp6 = `<div class = "cart-row" >
      width = "100" height = "100" >
       <span class = "cart-item-title " >Bộ 3 đôi tất cao cổ (Trắng)</span >
 </div>
-<span class = "cart-price cart-column" >350.000</span >
+<span class = "cart-price cart-column" >0.350.000</span >
 <div class = "cart-quantity cart-column " >
       <input class = " cart-quantity-input "type = "number" value = "1" >
       <button class = " btn btn-danger" onclick="removeSp6()"
