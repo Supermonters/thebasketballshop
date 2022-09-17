@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KD 14 EP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">
+
+    <style>
+     
+ html{
+  background-color: #f2f2f2;
+}
+       
+body {
+  margin: 0;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+  
+}
+
+
+
+
+
+
+.sticky {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+#kd14banner{
+height: 100%;
+width: 100%;
+}
+.tab-content{
+  padding: 0 20vw 0 20vw;
+}
+p{
+  font-size: 1rem;
+}
+body::-webkit-scrollbar {
+    background-color: #fff;
+    width: 16px;
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+    border: 4px solid #fff;
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {
+    display:none;
+}
+img{
+ width: 100%;
+ height: 100%;
+} 
+.product-single .product-detail-top {
+    flex-direction: column;
+}
+.product-single .product-detail-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+
+.container-thing {
+    width: 1110px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.pc_toolbar_top .pro-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+}
+
+
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}
+
+
+.pc_toolbar_top .pro-info .product-name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #005ec4;
+  
+    padding-right: 20px;
+}
+
+
+
+.pc_toolbar_top .pro-info .addcart-price {
+    display: flex;
+    align-items: center;
+}
+
+
+.pc_toolbar_top.active {
+    display: block;
+}
+.pc_toolbar_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgb(194 198 201 / 32%);
+    padding-top: 20px;
+    display: none;
+}
+
+
+.pc_toolbar_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgb(194 198 201 / 32%);
+    padding-top: 20px;
+    display: none;
+}
+
+
+.pc_toolbar_top .pro-info .addcart-price .price {
+    font-size: 16px;
+}
+
+
+.pc_toolbar_top .add-cart-buttons {
+    flex-direction: row-reverse;
+}
+.product-single .add-cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+
+.pc_toolbar_top .add-cart-buttons .btn-add-cart.btn-add-cart-2 {
+    margin-left: 8px;
+}
+.pc_toolbar_top .pro-info .addcart-price button {
+    width: 255px;
+    height: 44px;
+    background: #005ec4;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 30px;
+    text-transform: uppercase;
+}
+.pc_toolbar_top .add-cart-buttons .btn-add-cart {
+    width: 175px!important;
+}
+.product-single .add-cart-buttons .btn-add-cart-2 {
+    background: #fff!important;
+    border: 1px solid #005ec4!important;
+    color: #005ec4!important;
+}
+.product-single .add-cart-buttons .btn-add-cart {
+    width: calc(50% - 15px);
+    height: 44px;
+    background: #005ec4;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    line-height: normal;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+
+
+
+.pc_toolbar_top .pro-info .addcart-price button {
+    width: 255px;
+    height: 44px;
+    background: #005ec4;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 30px;
+    text-transform: uppercase;
+}
+.pc_toolbar_top .add-cart-buttons .btn-add-cart {
+    width: 175px!important;
+}
+.product-single .add-cart-buttons .btn-add-cart {
+    width: calc(50% - 15px);
+    height: 44px;
+    background: #005ec4;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    line-height: normal;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}
+
+
+.pc_toolbar_top .actions div.tab.active, .pc_toolbar_top .actions div.tab:hover {
+    border-color: #005ec4;
+}
+.pc_toolbar_top .actions div.tab {
+    min-width: 130px;
+    margin-right: 40px;
+}
+.pc_toolbar_top .actions div {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}.pc_toolbar_top .actions div.tab {
+    min-width: 130px;
+    margin-right: 40px;
+}
+.pc_toolbar_top .actions div {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}.pc_toolbar_top .actions div.tab {
+    min-width: 130px;
+    margin-right: 40px;
+}
+.pc_toolbar_top .actions div {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}.pc_toolbar_top .actions div.go-top {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #005ec4;
+}
+.pc_toolbar_top .actions div {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+
+
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}.pc_toolbar_top .actions div.go-top i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+.fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-feature-settings: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+.far {
+    font-weight: 400;
+}
+.fal, .far {
+    font-family: "Font Awesome 5 Pro";
+}
+.fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+i {
+    font-style: italic;
+}
+
+
+i {
+    font-style: italic;
+}
+.pc_toolbar_top .actions div.go-top {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #005ec4;
+}
+.pc_toolbar_top .actions div {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.pc_toolbar_top .actions {
+    display: flex;
+    font-weight: 600;
+    font-size: 18px;
+    color: #29324e;
+}
+
+
+
+
+
+
+.fa-angle-up:before {
+    content: "\f106";
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+
+
+
+
+    </style>
+</head>
+<body>
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="LuN1wm0s"></script>
+   <div class="header">
+    <img style="padding-bottom: 10vw;" id="kd14banner" src="../dummy/banner_pic/gallery-1.jpg" alt="kd14" height="100%"
+width="100%" style="margin: 0;">  
+  </div>
+ 
+   <div class="tab-content" bis_skin_checked="1"><div class="tab-pane active" id="tabContent" bis_skin_checked="1"><p style="text-align:justify;"><h1 style="text-align: center;padding-bottom: 10vw; ">KD 14 EP</h1><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Phiên bản giày thứ 14 của Kevin Durant tiếp tục được ra mắt và lần này, nguồn cảm hứng trong thiết kế của nó là KD 4 và KD 7. Với biệt danh là thần chết trên sân bóng khi mà liên tục xử đẹp các đối thủ của mình, Nike đã sử dụng 1 miếng đeo ở giữa tựa như lưỡi hái của thần chết và làm nổi bật lên biểu tượng dấu tích đặc trưng mang thương hiệu của mình.</span></span></p><p style="text-align:center;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0468).jpg" style="width:800px;height:450px;"></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Với phiên bản thứ 13 của mình ra mắt trước đó đã nhận được rất nhiều đánh giá tích cực, không rõ liệu KD 14 có phải là một phiên bản cải thiện hay là sự chờ đợi đáng thất vọng?&nbsp;</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0469).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><strong>THÔNG TIN CƠ BẢN CỦA MẪU GIÀY BÓNG RỔ CHÍNH HÃNG NIKE KD 14:</strong></span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">+ Thương hiệu: Nike</span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">+ Họa tiết đế: Vân đa hướng</span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">+ Bộ đệm: Air Zoom &amp; Cushlon</span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">+ Phần upper: Mesh</span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">+ Release Date: 2021</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0479).jpg" style="width:800px;height:600px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><strong>MIDSOLE- BỘ ĐỆM CỦA GIÀY BÓNG RỔ:</strong></span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Đệm của KD 14 là sự kết hợp giữa sự linh hoạt, nhanh nhẹn của đệm Air Zoom và sự mềm mại thoải mái của Cushlon foam. Đây được đánh giá là một sự kết hợp tương đối xuất sắc khi mà trọng tâm thấp, cảm nhận mặt sân rất tốt nhưng đồng thời cũng đem lại sức bật, độ nảy lớn để thúc đẩy năng lượng trong mỗi bước chạy của người chơi.</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0470).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Việc đem lại cả 2 cảm giác này trên 1 đôi giày là khá khó, thế nhưng Nike đã cho thấy vì sao họ luôn chiếm lĩnh được thị trường giày bóng rổ. Bộ đệm này cho người chơi một cảm giác thoải mái, nhẹ nhàng, mềm mại nhưng vẫn đảm bảo được tốt việc giảm chấn trong mỗi bước nhảy, tránh cho người chơi những chấn thương không đáng có. &nbsp;&nbsp;&nbsp;&nbsp;</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0471).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><strong>TRACTION - BỀ MẶT ĐẾ GIÀY BÓNG RỔ:</strong></span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Phần traction của KD 14 có họa tiết các vân rãnh đa hướng chia thành nhiều khu vực. Bộ đế này yêu cầu thời gian break in khi mà nếu chỉ trong vài lần thử ban đầu thì nó khá trơn trượt và không chắc chắn.</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0472).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Thế nhưng khi đã làm quen được thì nó cung cấp những miếng bám khá tốt ở cả chiều dọc và chiều ngang. Các rãnh ở họa tiết khá nông nên cũng ko gặp nhiều vấn đề với việc bám dính bụi bẩn.</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0473).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Tuy nhiên cũng vì nông nên việc cày ải với mặt sân outdoor và không nên bởi vì chất liệu của bộ đế này khá mềm, dễ bị bào mòn sau 1 thời gian dài sử dụng ở mặt sân ngoài trời. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0475).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><strong>UPPER – PHẦN THÂN TRÊN CỦA GIÀY BÓNG RỔ:</strong></span></span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Như đã được Nike giới thiệu thì phần upper của đôi giày này là sự kết hợp của nhiều lớp mesh đặt chồng lên nhau, khá nhẹ cân và đem lại cảm giác mềm mại nhẹ nhàng.</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0474).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">So với KD 13 thì bề ngoài của KD 14 trông có vẻ hầm hố và nặng nề hơn, nhưng mà cảm giác đem lại cũng như hiệu năng khi sử dụng là lớn hơn so với KD 13.</span></span></p><p style="text-align:center;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">
+    <img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0476).jpg" style="width:800px;height:450px;"></span></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:justify;"><span style="font-size:20px;"><span style="font-family:arial, helvetica, sans-serif;">Tuy mà vải mesh nhưng do quá nhiều lớp được xếp chồng nên khả năng thoáng khí của đôi giày này là không quá tốt. Miếng strap ở giữa là 2 miếng nhựa giúp cố định thân bên khiến cho bàn chân được cố định rất tốt trong đôi giày này. &nbsp;</span></span></p><p style="text-align:justify;"><font face="arial, helvetica, sans-serif"><span style="font-size:20px;"><b>MỘT SỐ HÌNH ẢNH CỦA MẪU GIÀY BÓNG RỔ CHÍNH HÃNG NIKE KD 14:</b></span></font></p><p style="text-align:center;"><font face="arial, helvetica, sans-serif"><span style="font-size:20px;"><b><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0468).jpg" style="width:800px;height:450px;"></b></span></font></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0477).jpg" style="width:800px;height:450px;"></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0478).jpg" style="width:800px;height:600px;"></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0471).jpg" style="width:800px;height:450px;"></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;"><img alt="Giày bóng rổ chính hãng Nike KD 14" src="https://img.cdn.vncdn.io/nvn/ncdn/store1/41716/psCT/20211122/35894303/Giay_bong_ro_chinh_hang_Nike_KD_14_EP__Multi_Color___CZ0170_004__Kevin_Durant_(img_e0469).jpg" style="width:800px;height:450px;"></span></p><p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">Giày bóng rổ chính hãng Nike KD 14</span></p></div></div>
+    <div class="fb-comments" data-href="https://basketballshop.netlify.app" data-width="100px" data-numposts="5"></div> -->
+    
+    <div class="pc_toolbar_top active" bis_skin_checked="1">
+        <div class="container" style="padding-top: 1rem;"  id="navbar"  bis_skin_checked="1">
+            <div class="pro-info" bis_skin_checked="1" style="padding-top: 1rem;">
+                <div class="product-name" bis_skin_checked="1" style="margin-left: 15px;font-size: 2rem;" >Nike KD 14</div> 
+                <div class="addcart-price" bis_skin_checked="1" >
+                    <div class="price" bis_skin_checked="1" style="font-size: 23px; margin-right: 1rem;">Tổng chi phí<div bis_skin_checked="1" style="font-size: 18px">3.527.000đ</div>
+                </div> 
+                    <div style="text-align: center;" class="add-cart-buttons" bis_skin_checked="1">
+                        <a style="text-decoration: none;" href="../cart.html"><button type="button" data-loading-text="Đang tải..." class="btn-add-cart btn-add-cart-2">
+                            <i class="fa fa-cart-plus" ></i>
+          Giỏ hàng
+      </button> </a>
+      <button type="button" data-loading-text="Đang tải..." class="btn-add-cart " style="margin-right: 0.5rem;">
+        <svg width="19" height="20" style="vertical-align: sub;"  viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.9187 9.83092L15.9187 8.16922L9.33085 8.16922L9.33085 1.58134H7.66915L7.66915 8.16922L1.08127 8.16922L1.08127 9.83092L7.66915 9.83092L7.66915 16.4188H9.33085L9.33085 9.83092L15.9187 9.83092Z" fill="white"></path></svg>
+            Mua hàng</button>
+        </div>
+    </div>
+</div>
+
+</div></div></div></div>
+
+  
+
+ <script>
+  window.onscroll = function() {myFunction()};
+  
+  var navbar = document.getElementById("navbar");
+  var sticky =  navbar.offsetParent.offsetHeight - navbar.offsetTop - navbar.offsetHeight;
+  
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  
+  </script>
+</body>
+</html>

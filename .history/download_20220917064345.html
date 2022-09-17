@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Downloads</title>
+		<!-- Loading third party fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="css/login.css">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/button.css">
+		<link rel="icon" type="image/x-icon" href="./images/favicon.png">
+
+		<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body onload=" load();cartCounting();">
+		<!-- Messenger Plugin chat Code -->
+		<div id="fb-root"></div>
+
+		<!-- Your Plugin chat code -->
+		<div id="fb-customer-chat" class="fb-customerchat">
+		</div>
+	
+		<script>
+		  var chatbox = document.getElementById('fb-customer-chat');
+		  chatbox.setAttribute("page_id", "107593602092447");
+		  chatbox.setAttribute("attribution", "biz_inbox");
+		</script>
+	
+		<!-- Your SDK code -->
+		<script>
+		  window.fbAsyncInit = function() {
+			FB.init({
+			  xfbml            : true,
+			  version          : 'v14.0'
+			});
+		  };
+	
+		  (function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		  }(document, 'script', 'facebook-jssdk'));
+		</script>
+		<div id="site-content">
+			<header class="site-header">
+				<div class="container">
+					<a href="index.html" id="branding">
+						<img src="dummy/logo.png" alt="Site Title">
+						<small class="site-description">Only Basketball</small>
+					</a> <!-- #branding -->
+					
+					<nav class="main-navigation">
+						<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item"><a href="index.html">Trang chủ</a></li>
+						
+							<li class="menu-item"><a href="store.html">Cửa hàng</a></li>
+							<li class="menu-item current-menu-item"><a href="download.html">Xu hướng</a></li>
+							<li class="menu-item"><a href="news.html">Tin tức</a></li>
+							<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
+							<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem" >(0)</span></a></li>
+                       		<li class="menu-item"><a id="welcomeaido" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a></li>
+
+						</ul> <!-- .menu -->
+					</nav> <!-- .main-navigation -->
+					<div class="mobile-menu"></div>
+				</div>
+			</header> <!-- .site-header -->
+			<div>
+				<div id="id01" class="modal">
+  
+					<div class="modal-content animate" >
+					  <div class="imgcontainer">
+						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg" alt="Avatar" class="avatar">
+					  </div>
+				     
+					  <div class="homchua">
+						<label for="uname"><b>Username</b></label>
+						<input type="text" placeholder="Enter Username" name="uname" id="username" required>
+				  
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
+						<label>
+							
+						<input style="display: none;" type="password" placeholder="Confirm Password(bấm Enter để xác nhận mật khẩu" id="cpassword" name="psw" required>
+						<label>
+							<input type="checkbox" checked="checked" name="remember"> Remember me
+						  </label>
+						  <span class="psw"><a href="#">Forgot password?</a></span>
+						<div class="button-thing">
+							
+							<div class="btn draw-border">
+						<button type="submit" class="bubbly-button button-53" onclick="register()">Register</button>
+							</div>
+						<div class="btn draw-border">
+						<button type="submit" class="bubbly-button button-53" onclick="login()">Login</button>
+							</div>
+						</div>
+						
+					  </div>
+				  
+					  <div class="homchua" style="background-color:#f1f1f1">
+						<button type="button" onclick="document.getElementById('id01').style.display='none'; signout()" class="cancelbtn button-54" >Sign out</button>
+						
+					  </div>
+					</div>
+				  </div>
+				  <script>
+					// Get the modal
+					var modal = document.getElementById('id01');
+					
+					// When the user clicks anywhere outside of the modal, close it
+					window.onclick = function(event) {
+						if (event.target == modal) {
+							modal.style.display = "none";
+						}
+					}
+					</script> 
+			</div>
+			<main class="main-content">
+				<div class="fullwidth-block download">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-5">
+								<h2 class="page-title">Top Nike 2021</h2>
+
+								<div class="item">
+									<h3 class="item-title" style="color:pink ;text-emphasis: bold;"><span class="th">1.</span>KYRIE INFINITY "VALENTINE'S DAY"</h3>
+									<span class="year">Ra mắt:14/2/2021</span>
+									<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">541</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+
+								<div class="item">
+									<h3 class="item-title" style="color:green ;text-emphasis: bold;"><span class="th">2.</span>PG 6 EP</h3>
+									<span class="year">Ra mắt:20/6/2021</span>
+								<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">416</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+
+								<div class="item">
+									<h3 class="item-title"><span class="th">3.</span>Lebron 19 Low</h3>
+									<span class="year">Ra mắt:12/1/2021</span>
+								<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">382</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+
+								<div class="item">
+									<a style="text-decoration: none;" href="store_item/kd14.html"><h3 class="item-title" style="								
+									background: linear-gradient(to left,
+											
+											
+											blue,
+											
+											
+											orange,
+											red);
+									-webkit-background-clip: text;
+									color: transparent;"><span class="th">4.</span> KD 14 EP 'Multi-Color' </h3></a>
+									<span class="year">Ra mắt:24/8/2021</span>
+									<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">198</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5 col-md-push-2">
+								<h2 class="page-title">Top giày bóng rổ</h2>
+
+								<div class="item">
+									<h3 class="item-title" style="color: gold;"><span class="th">1.</span>Curry Flow 9</h3>
+									<span class="year">Ra mắt:12/3/2021</span>
+									<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">128</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+
+								<div class="item">
+									<h3 class="item-title" style="color: #9be2e1;"><span class="th">2.</span>Dame 8 "Respect My Name"</h3>
+									<span class="year">Ra mắt:25/9/2021</span>
+									<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">76</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+
+								<div class="item">
+									<h3 class="item-title" style="color: #b0accb;"><span class="th">3.</span>HARDEN VOL. 6</h3>
+									<span class="year">Ra mắt:31/5/2021</span>
+									<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">52</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+
+								<div class="item">
+									<h3 class="item-title" style="color: silver;"><span class="th">4.</span>KT6 'Water Mountain'</h3>
+									<span class="year">Ra mắt:20/10/2021</span>
+									<a href="#" class="button small primary">Lượt bán:</a>
+									<a href="#" class="button small secondary">20</a>
+									<div class="social-share">
+										<span>Share:</span>
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+										<a href="#"><i class="fa fa-pinterest"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- .testimonial-section -->
+
+				
+			</main> <!-- .main-content -->
+
+        <footer class="site-footer">
+				<div class="container">
+					<img src="dummy/logo-footer.png" alt="Site Name">
+					
+					<address>
+						<p>10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br><a href="tel:9488487853">+91 94884 87853</a> <br> <a href="">sieunhanham007@gmail.com</a></p> 
+					</address> 
+					
+					<form action="#" class="newsletter-form">
+						<input type="email" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA...">
+						<input type="submit" class="button cut-corner" value="Subscribe">
+					</form> <!-- .newsletter-form -->
+					
+					<div class="social-links">
+						<a href="https://www.facebook.com/BasketballShop-107593602092447"><i class="fa fa-facebook-square"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-google-plus"></i></a>
+						<a href="#"><i class="fa fa-pinterest"></i></a>
+					</div> <!-- .social-links -->
+					
+					<p class="copy">BasketballShop @ Copyright 2022. All right reserved. Designed by <a href="">Giri Designs and Chí Dũng</a></p>
+			  </div>
+			</footer> <!-- .site-footer -->
+
+		</div> <!-- #site-content -->
+
+		<script src="js/jquery-1.11.1.min.js"></script>		
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/button.js"></script>
+		<script src="js/login.js"></script>	
+		
+	</body>
+
+</html>
