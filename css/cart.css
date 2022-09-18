@@ -286,7 +286,7 @@
   color: #41403e;
   cursor: pointer;
   display: inline-block;
-  f;
+  
   font-size: 1rem;
   line-height: 23px;
   outline: none;
@@ -314,13 +314,15 @@
     height: 34px;
     width: 3rem;
     border-radius: 5px;
-    border: 1px solid #56CCF2;
+    border: 3px solid #56CCF2;
     background-color: #eee;
     color: #333;
     padding: 0;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-right: 25px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
 }
 
 .cart-row:last-child {

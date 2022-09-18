@@ -260,7 +260,7 @@ var sp5 = `<div class = "cart-row" >
      width = "100" height = "100" >
       <span class = "cart-item-title " >Harden Stepback 2 Core Black</span >
 </div>
-<span class = "cart-price cart-column" >3.599.000</span >
+<span class = "cart-price cart-column" >3.499.000</span >
 <div class = "cart-quantity cart-column " >
       <input class = " cart-quantity-input "type = "number" value = "1" >
       <button class = " btn btn-danger" onclick="removeSp5()"
@@ -284,7 +284,7 @@ var sp6 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
      <img class = "cart-item-image" src = "dummy/cartPic/adidas_sock_white.png"
      width = "100" height = "100" >
-      <span class = "cart-item-title " >Bộ 3 đôi tất cao cổ (Trắng)</span >
+      <span class = "cart-item-title " >Bộ 3 đôi tất cao cổ (Các màu)</span >
 </div>
 <span class = "cart-price cart-column" >0.349.000</span >
 <div class = "cart-quantity cart-column " >
@@ -394,7 +394,7 @@ var sp10 = `<div class = "cart-row" >
      width = "100" height = "100" >
       <span class = "cart-item-title " >PRO 2.0 OFFICIAL GAME BALL</span >
 </div>
-<span class = "cart-price cart-column" >2.249.000</span >
+<span class = "cart-price cart-column" >1.149.000</span >
 <div class = "cart-quantity cart-column " >
       <input class = " cart-quantity-input "type = "number" value = "1" >
       <button class = " btn btn-danger" onclick="removeSp10()"
