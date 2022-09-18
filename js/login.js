@@ -10,9 +10,9 @@ function signout(){
   
 }
 function register() {
-  for (let i = 1; i <= localStorage.length; i++) {
+  for (let i = 0; i <= localStorage.length; i++) {
     if (localStorage.getItem('NguoiDungSo'+i) == null){
-      var a = i;
+      var a = i+1;
       break;
     }
   }
