@@ -10,13 +10,32 @@ function signout(){
   
 }
 function register() {
-  for (let i = 0; i <= localStorage.length; i++) {
-    if (localStorage.getItem('NguoiDungSo'+i) == null){
-      var a = i+1;
-      break;
-    }
-  }
-  
+ 
+  if (localStorage.getItem('NguoiDungSo1') == null) {
+    var a = 1;
+   }else if (localStorage.getItem('NguoiDungSo2') == null) {
+    var a = 2;
+   }else if (localStorage.getItem('NguoiDungSo3') == null) {
+    var a = 3;
+   }else if (localStorage.getItem('NguoiDungSo4') == null) {
+    var a = 4;
+   }else if (localStorage.getItem('NguoiDungSo5') == null) {
+    var a = 5;
+   }else if (localStorage.getItem('NguoiDungSo6') == null) {
+    var a = 6;
+   }else if (localStorage.getItem('NguoiDungSo7') == null) {
+    var a = 7;
+   }else if (localStorage.getItem('NguoiDungSo8') == null) {
+    var a = 8;
+   }else if (localStorage.getItem('NguoiDungSo9') == null) {
+    var a = 9;
+   }else if (localStorage.getItem('NguoiDungSo10') == null) {
+    var a = 10;
+   }else if (localStorage.getItem('NguoiDungSo11') == null) {
+    var a = 11;
+   }else if (localStorage.getItem('NguoiDungSo12') == null) {
+    var a = 12;
+   }
   
    
     
@@ -67,90 +86,45 @@ function register() {
     
   }
   
-  function login(){
- if (localStorage.getItem('TaiKhoanDangNhap')!== null) {
-  alert('Bạn hiện đang đăng nhập,vui lòng đăng xuất để đăng nhập vào tài khoản khác')
- }else{
-
- 
+  function login(){ 
+    if (localStorage.getItem('TaiKhoanDangNhap')!== null) {
+      alert('Bạn hiện đang đăng nhập,vui lòng đăng xuất để đăng nhập vào tài khoản khác')
+     }else{
     var taiKhoanGhiVao ={
-          'name':document.getElementById("username").value,
-          'pass':document.getElementById("password").value
-    }
-    if (taiKhoanGhiVao.name ==="" || taiKhoanGhiVao.pass ==="") {
-      alert("Vui lòng điền vào chỗ còn trống");
-      return;
-    }
-    for (let i = 1; i <= localStorage.length; i++) {
-      if (localStorage.getItem('NguoiDungSo'+i) ==null) {
-        alert('Tên đăng nhập không tồn tại,vui lòng đăng kí');
-      }else{
-        var nguoiDungNhapTuLocal =JSON.parse(localStorage.getItem('NguoiDungSo'+i))
-        if (nguoiDungNhapTuLocal.name === taiKhoanGhiVao.name) {
-          if (nguoiDungNhapTuLocal.pass === taiKhoanGhiVao.pass) {
-            alert('Đăng nhập thành công');
-           localStorage.setItem('TaiKhoanDangNhap',taiKhoanGhiVao.name);
-           load();
+    'name':document.getElementById("username").value,
+    'pass':document.getElementById("password").value
+}
 
-            break;
-          }else{
-            alert('Sai mật khẩu,vui lòng thử lại')
-            break;
-          }
-      }else if (nguoiDungNhapTuLocal.name !== taiKhoanGhiVao.name) {
-          continue;
-        }
-        
-      }
-      
-      }
-     
-      
-    }
-//     for (var i = 0; i < localStorage.length; i++) {
-//       var value = localStorage.getItem(localStorage.key(i));
-//       if (value && value.startsWith('<div')) {
-//          var so = 0+1
-//       continue;
-//       }else{
-//         if (taiKhoanGhiVao.name ==="" || taiKhoanGhiVao.pass ==="") {
-//           alert("Vui lòng điền vào chỗ còn trống");
-//           return;
-//         }else if (localStorage.length ==0) {
-//           alert('Tên đăng nhập không tồn tại,vui lòng đăng kí');
-//         }else if(localStorage.length >= 0){
-//           for (let i = so; i < localStorage.length;i++) {
-            
-//                 var nguoiDungNhapTuLocal =JSON.parse(localStorage.getItem(localStorage.key(i)))
-//               if (nguoiDungNhapTuLocal.name === taiKhoanGhiVao.name) {
-//                 if (nguoiDungNhapTuLocal.pass === taiKhoanGhiVao.pass) {
-//                   alert('Đăng nhập thành công');
-//                  localStorage.setItem('TaiKhoanDangNhap',taiKhoanGhiVao.name);
-//                  load();
-      
-//                   break;
-//                 }else{
-//                   alert('Sai mật khẩu,vui lòng thử lại')
-//                   break;
-//                 }
-//             }else if (nguoiDungNhapTuLocal.name !== taiKhoanGhiVao.name) {
-//               if (i == localStorage.length-1 ) {
-//                 alert('Tên đăng nhập không tồn tại,vui lòng đăng kí');
-//               }else{
-//                 continue;
-//               }
-              
-//             }
-            
-            
-           
-//         }
-//       }
-//       }
-//    }
-    
+if (taiKhoanGhiVao.name ==="" || taiKhoanGhiVao.pass ==="") {
+alert("Vui lòng điền vào chỗ còn trống");
+return;
+}else if (localStorage.length ==0) {
+alert('Tên đăng nhập không tồn tại,vui lòng đăng kí');
+}else if(localStorage.length >= 0){
+for (let i = 0; i < localStorage.length;i++) {
+  var nguoiDungNhapTuLocal =  JSON.parse(localStorage.getItem(localStorage.key(i)));
   
-// }
+  if (nguoiDungNhapTuLocal.name === taiKhoanGhiVao.name) {
+    if (nguoiDungNhapTuLocal.pass === taiKhoanGhiVao.pass) {
+      alert('Đăng nhập thành công');
+     localStorage.setItem('TaiKhoanDangNhap',taiKhoanGhiVao.name);
+     load();
+
+      break;
+    }else{
+      alert('Sai mật khẩu,vui lòng thử lại')
+      break;
+    }
+}else if (nguoiDungNhapTuLocal.name !== taiKhoanGhiVao.name) {
+  if (i == localStorage.length-1 ) {
+    alert('Tên đăng nhập không tồn tại,vui lòng đăng kí');
+  }else{
+    continue;
+  }
+}
+}
+}
+}
   }
  
   function load(){
