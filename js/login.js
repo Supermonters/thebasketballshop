@@ -10,7 +10,8 @@ function signout(){
   
 }
 function register() {
- var counterObj = {};
+   // Đếm số người dùng đã đăng kí
+   var counterObj = {};
    Object.keys(localStorage).forEach(function(key){
      var prefix = key.split('So')[0];
      counterObj[prefix] = ++counterObj[prefix] || 1;
@@ -19,32 +20,32 @@ function register() {
      var a =1;
     }else{
   var a =counterObj.NguoiDung+1;
-//     }
-//   if (localStorage.getItem('NguoiDungSo1') == null) {
-//     var a = 1;
-//    }else if (localStorage.getItem('NguoiDungSo2') == null) {
-//     var a = 2;
-//    }else if (localStorage.getItem('NguoiDungSo3') == null) {
-//     var a = 3;
-//    }else if (localStorage.getItem('NguoiDungSo4') == null) {
-//     var a = 4;
-//    }else if (localStorage.getItem('NguoiDungSo5') == null) {
-//     var a = 5;
-//    }else if (localStorage.getItem('NguoiDungSo6') == null) {
-//     var a = 6;
-//    }else if (localStorage.getItem('NguoiDungSo7') == null) {
-//     var a = 7;
-//    }else if (localStorage.getItem('NguoiDungSo8') == null) {
-//     var a = 8;
-//    }else if (localStorage.getItem('NguoiDungSo9') == null) {
-//     var a = 9;
-//    }else if (localStorage.getItem('NguoiDungSo10') == null) {
-//     var a = 10;
-//    }else if (localStorage.getItem('NguoiDungSo11') == null) {
-//     var a = 11;
-//    }else if (localStorage.getItem('NguoiDungSo12') == null) {
-//     var a = 12;
-//    }
+    }
+  // if (localStorage.getItem('NguoiDungSo1') == null) {
+  //   var a = 1;
+  //  }else if (localStorage.getItem('NguoiDungSo2') == null) {
+  //   var a = 2;
+  //  }else if (localStorage.getItem('NguoiDungSo3') == null) {
+  //   var a = 3;
+  //  }else if (localStorage.getItem('NguoiDungSo4') == null) {
+  //   var a = 4;
+  //  }else if (localStorage.getItem('NguoiDungSo5') == null) {
+  //   var a = 5;
+  //  }else if (localStorage.getItem('NguoiDungSo6') == null) {
+  //   var a = 6;
+  //  }else if (localStorage.getItem('NguoiDungSo7') == null) {
+  //   var a = 7;
+  //  }else if (localStorage.getItem('NguoiDungSo8') == null) {
+  //   var a = 8;
+  //  }else if (localStorage.getItem('NguoiDungSo9') == null) {
+  //   var a = 9;
+  //  }else if (localStorage.getItem('NguoiDungSo10') == null) {
+  //   var a = 10;
+  //  }else if (localStorage.getItem('NguoiDungSo11') == null) {
+  //   var a = 11;
+  //  }else if (localStorage.getItem('NguoiDungSo12') == null) {
+  //   var a = 12;
+  //  }
   
    
     
