@@ -1,27 +1,22 @@
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
+if (document.readyState == "loading") {
+  document.addEventListener("DOMContentLoaded", ready);
 } else {
-    ready()
+  ready();
 }
 
 function ready() {
-    // var removeCartItemButtons = document.getElementsByClassName('btn-danger')
-    // for (var i = 0; i < removeCartItemButtons.length; i++) {
-    //     var button = removeCartItemButtons[i]
-    //     button.addEventListener('click', removeCartItem)
-    // }
+  // var removeCartItemButtons = document.getElementsByClassName('btn-danger')
+  // for (var i = 0; i < removeCartItemButtons.length; i++) {
+  //     var button = removeCartItemButtons[i]
+  //     button.addEventListener('click', removeCartItem)
+  // }
 
-    var quantityInputs = document.getElementsByClassName('cart-quantity-input')
-    for (var i = 0; i < quantityInputs.length; i++) {
-        var input = quantityInputs[i]
-        input.addEventListener('change', quantityChanged)
-    }
-
-   
-
-   
+  var quantityInputs = document.getElementsByClassName("cart-quantity-input");
+  for (var i = 0; i < quantityInputs.length; i++) {
+    var input = quantityInputs[i];
+    input.addEventListener("change", quantityChanged);
+  }
 }
-
 
 // function removeCartItem(event) {
 //     var buttonClicked = event.target
@@ -30,124 +25,151 @@ function ready() {
 // }
 
 function quantityChanged(event) {
-    var input = event.target
-    if (isNaN(input.value) || input.value <= 0) {
-        input.value = 1
-    }
-    updateCartTotal()
+  var input = event.target;
+  if (isNaN(input.value) || input.value <= 0) {
+    input.value = 1;
+  }
+  updateCartTotal();
 }
 function cartCounting() {
-    var cartItemNumber = 0;
-    for (let i = 1; i < 13; i++) {
-        if (localStorage.getItem('sp'+i) !== null) {
-            cartItemNumber++;
-        }  
-        
+  var cartItemNumber = 0;
+  for (let i = 1; i < 13; i++) {
+    if (localStorage.getItem("sp" + i) !== null) {
+      cartItemNumber++;
     }
-    
-    document.getElementById('countItem').innerHTML = "("+cartItemNumber+")";
-    
-}
+  }
 
+  document.getElementById("countItem").innerHTML = "(" + cartItemNumber + ")";
+}
 
 function updateCartTotal() {
-    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
-    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
-    var total = 0
-    for (var i = 0; i < cartRows.length; i++) {
-        var cartRow = cartRows[i]
-        var priceElement = cartRow.getElementsByClassName('cart-price')[0]
-        var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
-        var price = parseFloat(priceElement.innerText.replace('.', ''))
-        var quantity = quantityElement.value
-        total = total + (price * quantity)
-    }
-    total = (total.toFixed(3))/1000
-    if (total == 0) {
-        document.getElementsByClassName('cart-total-price')[0].innerText = "0 VNĐ"
-    }else{
-        document.getElementsByClassName('cart-total-price')[0].innerText =  total +".000 VNĐ"
-
-    }
-    
+  var cartItemContainer = document.getElementsByClassName("cart-items")[0];
+  var cartRows = cartItemContainer.getElementsByClassName("cart-row");
+  var total = 0;
+  for (var i = 0; i < cartRows.length; i++) {
+    var cartRow = cartRows[i];
+    var priceElement = cartRow.getElementsByClassName("cart-price")[0];
+    var quantityElement = cartRow.getElementsByClassName(
+      "cart-quantity-input"
+    )[0];
+    var price = parseFloat(priceElement.innerText.replace(".", ""));
+    var quantity = quantityElement.value;
+    total = total + price * quantity;
+  }
+  total = total.toFixed(3) / 1000;
+  if (total == 0) {
+    document.getElementsByClassName("cart-total-price")[0].innerText = "0 VNĐ";
+  } else {
+    document.getElementsByClassName("cart-total-price")[0].innerText =
+      total + ".000 VNĐ";
+  }
 }
 function cartload() {
-    for (var i = 0; i < localStorage.length; i++) {
-        var value = localStorage.getItem(localStorage.key(i));
-        if (value && value.startsWith('<div class = "cart-row" >')) {
-        document.getElementById('chuaItem').innerHTML += value;
-        }
-     }
-     ready();
-     updateCartTotal();
+  for (var i = 0; i < localStorage.length; i++) {
+    var value = localStorage.getItem(localStorage.key(i));
+    if (value && value.startsWith('<div class = "cart-row" >')) {
+      document.getElementById("chuaItem").innerHTML += value;
+    }
+  }
+  ready();
+  updateCartTotal();
 }
 function purchase() {
-    if (localStorage.getItem("sp1")==null &&
-        localStorage.getItem("sp2")==null &&
-        localStorage.getItem("sp3")==null &&
-        localStorage.getItem("sp4")==null &&
-        localStorage.getItem("sp5")==null &&
-        localStorage.getItem("sp6")==null &&
-        localStorage.getItem("sp7")==null &&
-        localStorage.getItem("sp8")==null &&
-        localStorage.getItem("sp9")==null &&
-        localStorage.getItem("sp10")==null &&
-        localStorage.getItem("sp11")==null &&
-        localStorage.getItem("sp12")==null       
-        
-        ) {
-            alert('Giỏ hàng hiện đang trống vui lòng chọn hàng để thanh toán')
-            
-        
-    }else{
-        alert('Cảm ơn vì đã mua hàng');
-         
-        for (let i = 1; i <= 12; i++) {
-            localStorage.removeItem("sp"+i);
-        
-        }
-        location.reload()
+  
+  if (
+    localStorage.getItem("sp1") == null &&
+    localStorage.getItem("sp2") == null &&
+    localStorage.getItem("sp3") == null &&
+    localStorage.getItem("sp4") == null &&
+    localStorage.getItem("sp5") == null &&
+    localStorage.getItem("sp6") == null &&
+    localStorage.getItem("sp7") == null &&
+    localStorage.getItem("sp8") == null &&
+    localStorage.getItem("sp9") == null &&
+    localStorage.getItem("sp10") == null &&
+    localStorage.getItem("sp11") == null &&
+    localStorage.getItem("sp12") == null
+  ) {
+Swal.fire(
+  'Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán',
+  'You clicked the button!',
+  'error'
+)
+  } else {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+
+    for (let i = 1; i <= 12; i++) {
+      localStorage.removeItem("sp" + i);
     }
-    
+    location.reload();
+  }
 }
-function removeAll(){
-   
-    if (localStorage.getItem("sp1")==null &&
-    localStorage.getItem("sp2")==null &&
-    localStorage.getItem("sp3")==null &&
-    localStorage.getItem("sp4")==null &&
-    localStorage.getItem("sp5")==null &&
-    localStorage.getItem("sp6")==null &&
-    localStorage.getItem("sp7")==null &&
-    localStorage.getItem("sp8")==null &&
-    localStorage.getItem("sp9")==null &&
-    localStorage.getItem("sp10")==null &&
-    localStorage.getItem("sp11")==null &&
-    localStorage.getItem("sp12")==null       
-    
-    ) {
-        alert('Giỏ hàng hiện đang trống')
-        
-    
-}else{
+function removeAll() {
+  if (
+    localStorage.getItem("sp1") == null &&
+    localStorage.getItem("sp2") == null &&
+    localStorage.getItem("sp3") == null &&
+    localStorage.getItem("sp4") == null &&
+    localStorage.getItem("sp5") == null &&
+    localStorage.getItem("sp6") == null &&
+    localStorage.getItem("sp7") == null &&
+    localStorage.getItem("sp8") == null &&
+    localStorage.getItem("sp9") == null &&
+    localStorage.getItem("sp10") == null &&
+    localStorage.getItem("sp11") == null &&
+    localStorage.getItem("sp12") == null
+  ) {
+    alert("Giỏ hàng hiện đang trống");
+  } else {
     var x = confirm("Bạn có chắc bạn muốn xóa mọi thứ khỏi giỏ hàng?");
     if (x) {
-        for (let i = 1; i < 13; i++) {
-            localStorage.removeItem('sp'+i);
-            
-        }
-        location.reload()
+      for (let i = 1; i < 13; i++) {
+        localStorage.removeItem("sp" + i);
+      }
+      location.reload();
     } else {
-        return;
+      return;
     }
-    
-}
+  }
 }
 function addsp1() {
-    if (localStorage.getItem('sp1') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp1 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp1") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp1 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
      <img class = "cart-item-image" src = "dummy/cartPic/kd14square.png"
      width = "100" height = "100" >
@@ -159,22 +181,21 @@ var sp1 = `<div class = "cart-row" >
       <button class = " btn btn-danger" type = "button" onclick="removeSp1()" >REMOVE</button >
 </div>
 </div> 
-</div>`
-    localStorage.setItem('sp1',sp1);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp1", sp1);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
-    
+  }
 }
-function removeSp1(){
-    localStorage.removeItem('sp1');
-    location.reload()
+function removeSp1() {
+  localStorage.removeItem("sp1");
+  location.reload();
 }
 function addsp2() {
-    if (localStorage.getItem('sp2') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp2 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp2") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp2 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
      <img class = "cart-item-image" src = "dummy/cartPic/pg6ep.png"
      width = "100" height = "100" >
@@ -186,21 +207,21 @@ var sp2 = `<div class = "cart-row" >
       <button class = " btn btn-danger"
      type = "button" onclick="removeSp2()" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp2',sp2);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp2", sp2);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp2(){
-    localStorage.removeItem('sp2');
-    location.reload()
+function removeSp2() {
+  localStorage.removeItem("sp2");
+  location.reload();
 }
 function addsp3() {
-    if (localStorage.getItem('sp3') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp3 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp3") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp3 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/bucksjersey.png"
@@ -213,21 +234,21 @@ var sp3 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp3()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp3',sp3);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp3", sp3);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp3(){
-    localStorage.removeItem('sp3');
-    location.reload()
+function removeSp3() {
+  localStorage.removeItem("sp3");
+  location.reload();
 }
 function addsp4() {
-    if (localStorage.getItem('sp4') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp4 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp4") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp4 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/AirJordanXXXVIPF_red.png"
@@ -240,21 +261,21 @@ var sp4 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp4()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp4',sp4);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp4", sp4);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp4(){
-    localStorage.removeItem('sp4');
-    location.reload()
+function removeSp4() {
+  localStorage.removeItem("sp4");
+  location.reload();
 }
 function addsp5() {
-    if (localStorage.getItem('sp5') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp5 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp5") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp5 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
      <img class = "cart-item-image" src = "dummy/cartPic/Harden.png"
      width = "100" height = "100" >
@@ -266,21 +287,21 @@ var sp5 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp5()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp5',sp5);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp5", sp5);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp5(){
-    localStorage.removeItem('sp5');
-    location.reload()
+function removeSp5() {
+  localStorage.removeItem("sp5");
+  location.reload();
 }
 function addsp6() {
-    if (localStorage.getItem('sp6') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp6 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp6") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp6 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
      <img class = "cart-item-image" src = "dummy/cartPic/adidas_sock_white.png"
      width = "100" height = "100" >
@@ -292,21 +313,21 @@ var sp6 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp6()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp6',sp6);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp6", sp6);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp6(){
-    localStorage.removeItem('sp6');
-    location.reload()
+function removeSp6() {
+  localStorage.removeItem("sp6");
+  location.reload();
 }
 function addsp7() {
-    if (localStorage.getItem('sp7') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp7 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp7") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp7 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/LeBron19Low.png"
@@ -319,21 +340,21 @@ var sp7 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp7()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp7',sp7);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp7", sp7);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp7(){
-    localStorage.removeItem('sp7');
-    location.reload()
+function removeSp7() {
+  localStorage.removeItem("sp7");
+  location.reload();
 }
 function addsp8() {
-    if (localStorage.getItem('sp8') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp8 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp8") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp8 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/KT5 Veteran.png"
@@ -346,21 +367,21 @@ var sp8 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp8()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp8',sp8);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp8", sp8);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp8(){
-    localStorage.removeItem('sp8');
-    location.reload()
+function removeSp8() {
+  localStorage.removeItem("sp8");
+  location.reload();
 }
 function addsp9() {
-    if (localStorage.getItem('sp9') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp9 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp9") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp9 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/Li Ning Way Of Wade 9 Infinity Balance.png"
@@ -373,21 +394,21 @@ var sp9 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp9()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp9',sp9);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp9", sp9);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp9(){
-    localStorage.removeItem('sp9');
-    location.reload()
+function removeSp9() {
+  localStorage.removeItem("sp9");
+  location.reload();
 }
 function addsp10() {
-    if (localStorage.getItem('sp10') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp10 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp10") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp10 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/PRO 2.0 OFFICIAL GAME BALL.png"
@@ -400,21 +421,21 @@ var sp10 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp10()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp10',sp10);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp10", sp10);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp10(){
-    localStorage.removeItem('sp10');
-    location.reload()
+function removeSp10() {
+  localStorage.removeItem("sp10");
+  location.reload();
 }
 function addsp11() {
-    if (localStorage.getItem('sp11') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp11 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp11") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp11 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/Under Amour HOVR™ Havoc 4 Clone.png"
@@ -427,21 +448,21 @@ var sp11 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp11()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp11',sp11);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp11", sp11);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp11(){
-    localStorage.removeItem('sp11');
-    location.reload()
+function removeSp11() {
+  localStorage.removeItem("sp11");
+  location.reload();
 }
 function addsp12() {
-    if (localStorage.getItem('sp12') !== null) {
-        alert('Bạn đã chọn sản phẩm này rồi')
-    }else{
-var sp12 = `<div class = "cart-row" >
+  if (localStorage.getItem("sp12") !== null) {
+    alert("Bạn đã chọn sản phẩm này rồi");
+  } else {
+    var sp12 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
 
      <img class = "cart-item-image" src = "dummy/cartPic/Nike Hoops Elite Pro.png"
@@ -454,18 +475,13 @@ var sp12 = `<div class = "cart-row" >
       <button class = " btn btn-danger" onclick="removeSp12()"
      type = "button" >REMOVE</button >
 </div>
-</div>`
-    localStorage.setItem('sp12',sp12);
-    alert('Đã thêm món đồ vào giỏ hàng')
+</div>`;
+    localStorage.setItem("sp12", sp12);
+    alert("Đã thêm món đồ vào giỏ hàng");
     cartCounting();
-    }
+  }
 }
-function removeSp12(){
-    localStorage.removeItem('sp12');
-    location.reload()
+function removeSp12() {
+  localStorage.removeItem("sp12");
+  location.reload();
 }
-
-
-
-
-
