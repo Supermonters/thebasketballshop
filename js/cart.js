@@ -3,32 +3,29 @@ if (document.readyState == "loading") {
 } else {
   ready();
 }
- async function themVaoGioThanhCong(){
- await Swal.fire({
-    icon: 'success',
-    title: 'Đã thêm vào giỏ hàng',
-    showConfirmButton: false,
-    timer: 1500
-})
-};
-async function daCoTrongRo(){
+async function themVaoGioThanhCong() {
   await Swal.fire({
-     icon: 'warning',
-     title: 'Bạn đã chọn sản phẩm này rồi',
-     showConfirmButton: false,
-     timer: 1500
- })
- };
+    icon: "success",
+    title: "Đã thêm vào giỏ hàng",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+}
+async function daCoTrongRo() {
+  await Swal.fire({
+    icon: "warning",
+    title: "Bạn đã chọn sản phẩm này rồi",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+}
 function ready() {
-
-
   var quantityInputs = document.getElementsByClassName("cart-quantity-input");
   for (var i = 0; i < quantityInputs.length; i++) {
     var input = quantityInputs[i];
     input.addEventListener("change", quantityChanged);
   }
 }
-
 
 function quantityChanged(event) {
   var input = event.target;
@@ -90,11 +87,7 @@ function checkfornopurchases() {
 
 async function purchase() {
   if (checkfornopurchases()) {
-    Swal.fire(
-      "Giỏ hàng hiện trống vui lòng chọn đồ để thanh toán",
-      "",
-      "warning"
-    );
+    Swal.fire("Giỏ hàng hiện trống vui lòng chọn đồ để thanh toán", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -130,11 +123,7 @@ async function purchase() {
 }
 async function removeAll() {
   if (checkfornopurchases()) {
-    Swal.fire(
-      "Giỏ hàng hiện trống",
-      "",
-      "warning"
-    );
+    Swal.fire("Giỏ hàng hiện trống", "", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -171,7 +160,7 @@ async function removeAll() {
 
 async function addsp1() {
   if (localStorage.getItem("sp1") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp1 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -187,7 +176,7 @@ async function addsp1() {
 </div> 
 </div>`;
     localStorage.setItem("sp1", sp1);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -197,7 +186,7 @@ function removeSp1() {
 }
 async function addsp2() {
   if (localStorage.getItem("sp2") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp2 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -213,7 +202,7 @@ async function addsp2() {
 </div>
 </div>`;
     localStorage.setItem("sp2", sp2);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -223,7 +212,7 @@ function removeSp2() {
 }
 async function addsp3() {
   if (localStorage.getItem("sp3") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp3 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -240,7 +229,7 @@ async function addsp3() {
 </div>
 </div>`;
     localStorage.setItem("sp3", sp3);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -250,7 +239,7 @@ function removeSp3() {
 }
 async function addsp4() {
   if (localStorage.getItem("sp4") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp4 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -267,7 +256,7 @@ async function addsp4() {
 </div>
 </div>`;
     localStorage.setItem("sp4", sp4);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -277,7 +266,7 @@ function removeSp4() {
 }
 async function addsp5() {
   if (localStorage.getItem("sp5") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp5 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -293,7 +282,7 @@ async function addsp5() {
 </div>
 </div>`;
     localStorage.setItem("sp5", sp5);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -303,7 +292,7 @@ function removeSp5() {
 }
 async function addsp6() {
   if (localStorage.getItem("sp6") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp6 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -319,7 +308,7 @@ async function addsp6() {
 </div>
 </div>`;
     localStorage.setItem("sp6", sp6);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -329,7 +318,7 @@ function removeSp6() {
 }
 async function addsp7() {
   if (localStorage.getItem("sp7") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp7 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -346,7 +335,7 @@ async function addsp7() {
 </div>
 </div>`;
     localStorage.setItem("sp7", sp7);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -356,7 +345,7 @@ function removeSp7() {
 }
 async function addsp8() {
   if (localStorage.getItem("sp8") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp8 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -373,7 +362,7 @@ async function addsp8() {
 </div>
 </div>`;
     localStorage.setItem("sp8", sp8);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -383,7 +372,7 @@ function removeSp8() {
 }
 async function addsp9() {
   if (localStorage.getItem("sp9") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp9 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -400,7 +389,7 @@ async function addsp9() {
 </div>
 </div>`;
     localStorage.setItem("sp9", sp9);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -410,7 +399,7 @@ function removeSp9() {
 }
 async function addsp10() {
   if (localStorage.getItem("sp10") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp10 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -427,7 +416,7 @@ async function addsp10() {
 </div>
 </div>`;
     localStorage.setItem("sp10", sp10);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -437,7 +426,7 @@ function removeSp10() {
 }
 async function addsp11() {
   if (localStorage.getItem("sp11") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp11 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
@@ -454,7 +443,7 @@ async function addsp11() {
 </div>
 </div>`;
     localStorage.setItem("sp11", sp11);
-   await themVaoGioThanhCong();
+    await themVaoGioThanhCong();
     cartCounting();
   }
 }
@@ -464,7 +453,7 @@ function removeSp11() {
 }
 async function addsp12() {
   if (localStorage.getItem("sp12") !== null) {
- await daCoTrongRo();
+    await daCoTrongRo();
   } else {
     var sp12 = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
