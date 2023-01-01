@@ -87,7 +87,7 @@ function checkfornopurchases() {
 
 async function purchase() {
   if (checkfornopurchases()) {
-    Swal.fire("Giỏ hàng hiện trống vui lòng chọn đồ để thanh toán", "warning");
+    Swal.fire("Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán","", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
