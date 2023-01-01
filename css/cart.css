@@ -271,7 +271,7 @@
 }
 
 
-.btn-danger {
+.btn-danger1 {
   align-self: center;
   background-color: red;
   background-image: none;
@@ -302,12 +302,12 @@
   touch-action: manipulation;
 }
 
-.btn-danger:hover {
+.btn-danger1:hover {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);
 }
 
-.btn-danger:focus {
+.btn-danger1:focus {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
 .cart-quantity-input {

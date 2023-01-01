@@ -49,7 +49,12 @@
           username: username,
           email: email,
         });
-        alert("user created!");
+        Swal.fire({
+          icon: 'success',
+          title: 'Thành công',
+          text: `Tạo tài khoản thành công`,
+        })
+        
 
         // ...
       })
@@ -57,7 +62,12 @@
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
-        alert(errorMessage);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${errorMessage}`,
+        })
+        
       });
   });
   SignIn.addEventListener("click", (e) => {
@@ -77,13 +87,22 @@
         });
         console.log(user);
         localStorage.setItem("TaiKhoanDangNhap", username);
-        alert("user logged in!");
+        Swal.fire({
+          icon: 'success',
+          title: 'Thành công',
+          text: `Đăng nhập thành công`,
+        })
         load();
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${errorMessage}`,
+        })
+        
       });
   });
   const user = auth.currentUser;
@@ -104,7 +123,12 @@
       .signOut()
       .then(() => {
         if (localStorage.getItem("TaiKhoanDangNhap") == null) {
-          alert("Bạn hiện đang không đăng nhập");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `Bạn hiện đang không đăng nhập`,
+          })
+          
         } else {
           localStorage.removeItem("TaiKhoanDangNhap");
           location.reload();
@@ -114,7 +138,12 @@
         // An error happened.
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${errorMessage}`,
+        })
+        
       });
   });
 })();

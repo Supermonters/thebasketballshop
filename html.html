@@ -9,11 +9,12 @@
 </head>
 <body>
     <button onclick="
-          Swal.fire(
-  'The Internet?',
-  'That thing is still around?',
-  'question'
-)
+    Swal.fire({
+      icon: 'success',
+      title: 'Đã thêm vào giỏ hàng',
+      showConfirmButton: false,
+      timer: 1500
+    })
     ">alert</button>
 </body>
 <script>

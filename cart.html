@@ -7,7 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
 	<title>Giỏ Hàng</title>
+	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="sweetalert2.min.css">
 	<!-- Loading third party fonts -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +36,7 @@
 	<link rel="stylesheet" href="css/cart.css">
 	<link rel="icon" type="image/x-icon" href="./images/favicon.png">
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
-	<link rel="stylesheet" href="sweetalert2.min.css">
+
 	<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
@@ -112,8 +116,11 @@
 
 					<div class="homchua">
 						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" id="username" required>
-
+						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}"
+							title="Three letter country code" required>
+						<label for="uname"><b>Email</b></label><br>
+						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}"
+							title="Three letter country code" required>
 						<label for="psw"><b>Password</b></label>
 						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
 						<label>
@@ -128,20 +135,18 @@
 							<div class="button-thing">
 
 								<div class="btn draw-border">
-									<button type="submit" class="bubbly-button button-53"
-										onclick="register()">Register</button>
+									<button type="submit" class="bubbly-button button-53" id="SignUp">SignUp</button>
 								</div>
 								<div class="btn draw-border">
-									<button type="submit" class="bubbly-button button-53"
-										onclick="login()">Login</button>
+									<button type="submit" class="bubbly-button button-53" id="SignIn">Login</button>
 								</div>
 							</div>
 
 					</div>
 
 					<div class="homchua" style="background-color:#f1f1f1">
-						<button type="button" onclick="document.getElementById('id01').style.display='none'; signout()"
-							class="cancelbtn button-54">Sign out</button>
+						<button type="button" onclick="document.getElementById('id01').style.display='none';"
+							class="cancelbtn button-54" id="SignOut">Sign out</button>
 
 					</div>
 				</div>
@@ -239,6 +244,7 @@
 	<script src="js/app.js"></script>
 	<script src="js/button.js"></script>
 	<script src="js/login.js"></script>
+	<script src="js/template.js"></script>
 	<script src="js/cart.js" async></script>
 </body>
 
