@@ -92,8 +92,8 @@ async function purchase() {
   if (checkfornopurchases()) {
     Swal.fire(
       "Giỏ hàng hiện trống vui lòng chọn đồ để thanh toán",
-      "You clicked the button!",
-      "error"
+      "",
+      "warning"
     );
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -132,8 +132,8 @@ async function removeAll() {
   if (checkfornopurchases()) {
     Swal.fire(
       "Giỏ hàng hiện trống",
-      "You clicked the button!",
-      "error"
+      "",
+      "warning"
     );
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
