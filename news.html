@@ -97,8 +97,11 @@
 
 					<div class="homchua">
 						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" id="username" required>
-
+						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}"
+							title="Three letter country code" required>
+						<label for="uname"><b>Email</b></label><br>
+						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}"
+							title="Three letter country code" required>
 						<label for="psw"><b>Password</b></label>
 						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
 						<label>
@@ -113,20 +116,18 @@
 							<div class="button-thing">
 
 								<div class="btn draw-border">
-									<button type="submit" class="bubbly-button button-53"
-										onclick="register()">Register</button>
+									<button type="submit" class="bubbly-button button-53" id="SignUp">SignUp</button>
 								</div>
 								<div class="btn draw-border">
-									<button type="submit" class="bubbly-button button-53"
-										onclick="login()">Login</button>
+									<button type="submit" class="bubbly-button button-53" id="SignIn">Login</button>
 								</div>
 							</div>
 
 					</div>
 
 					<div class="homchua" style="background-color:#f1f1f1">
-						<button type="button" onclick="document.getElementById('id01').style.display='none'; signout()"
-							class="cancelbtn button-54">Sign out</button>
+						<button type="button" onclick="document.getElementById('id01').style.display='none';"
+							class="cancelbtn button-54" id="SignOut">Sign out</button>
 
 					</div>
 				</div>
@@ -336,7 +337,8 @@
 
 				<address>
 					<p>10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br><a href="tel:9488487853">+91 94884 87853</a> <br>
-						<a href="">sieunhanham007@gmail.com</a></p>
+						<a href="">sieunhanham007@gmail.com</a>
+					</p>
 				</address>
 
 				<form action="#" class="newsletter-form">
