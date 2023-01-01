@@ -7,10 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
 	<title>Giỏ Hàng</title>
-	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- Loading third party fonts -->
 
@@ -20,22 +16,12 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
 		rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jaldi&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,700;1,700&display=swap"
 		rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
 		href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
 		rel="stylesheet">
@@ -126,11 +112,8 @@
 
 					<div class="homchua">
 						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
-						<label for="uname"><b>Email</b></label><br>
-						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter Username" name="uname" id="username" required>
+
 						<label for="psw"><b>Password</b></label>
 						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
 						<label>
@@ -145,18 +128,20 @@
 							<div class="button-thing">
 
 								<div class="btn draw-border">
-									<button type="submit" class="bubbly-button button-53" id="SignUp">SignUp</button>
+									<button type="submit" class="bubbly-button button-53"
+										onclick="register()">Register</button>
 								</div>
 								<div class="btn draw-border">
-									<button type="submit" class="bubbly-button button-53" id="SignIn">Login</button>
+									<button type="submit" class="bubbly-button button-53"
+										onclick="login()">Login</button>
 								</div>
 							</div>
 
 					</div>
 
 					<div class="homchua" style="background-color:#f1f1f1">
-						<button type="button" onclick="document.getElementById('id01').style.display='none';"
-							class="cancelbtn button-54" id="SignOut">Sign out</button>
+						<button type="button" onclick="document.getElementById('id01').style.display='none'; signout()"
+							class="cancelbtn button-54">Sign out</button>
 
 					</div>
 				</div>
@@ -211,7 +196,8 @@
 
 				<address>
 					<p>10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br><a href="tel:9488487853">+91 94884 87853</a> <br>
-						<a href="">sieunhanham007@gmail.com</a></p>
+						<a href="">sieunhanham007@gmail.com</a>
+					</p>
 				</address>
 
 				<form action="#" class="newsletter-form">
@@ -254,7 +240,6 @@
 	<script src="js/button.js"></script>
 	<script src="js/login.js"></script>
 	<script src="js/cart.js" async></script>
-	<script src="js/template.js"></script>
 </body>
 
 </html>

@@ -74,21 +74,16 @@ function cartload() {
   ready();
   updateCartTotal();
 }
-function purchase() {
-  if (
-    localStorage.getItem("sp1") == null &&
-    localStorage.getItem("sp2") == null &&
-    localStorage.getItem("sp3") == null &&
-    localStorage.getItem("sp4") == null &&
-    localStorage.getItem("sp5") == null &&
-    localStorage.getItem("sp6") == null &&
-    localStorage.getItem("sp7") == null &&
-    localStorage.getItem("sp8") == null &&
-    localStorage.getItem("sp9") == null &&
-    localStorage.getItem("sp10") == null &&
-    localStorage.getItem("sp11") == null &&
-    localStorage.getItem("sp12") == null
-  ) {
+
+function checkfornopurchases() {
+  for (let i = 1; i <= 12; i++) {
+    if (localStorage.getItem(`sp${i}`) != null) return false;
+  }
+  return true;
+}
+
+async function purchase() {
+  if (checkfornopurchases()) {
     Swal.fire(
       "Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán",
       "You clicked the button!",
@@ -103,56 +98,32 @@ function purchase() {
       buttonsStyling: false,
     });
 
-    swalWithBootstrapButtons
-      .fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swalWithBootstrapButtons.fire(
-            "Deleted!",
-            "Your file has been deleted.",
-            "success"
-          );
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire(
-            "Cancelled",
-            "Your imaginary file is safe :)",
-            "error"
-          );
-        }
-      });
-
-    for (let i = 1; i <= 12; i++) {
-      localStorage.removeItem("sp" + i);
+    let result = await swalWithBootstrapButtons.fire({
+      title: "Bạn chắc chắn muốn mua hàng không?",
+      text: "Việc này sẽ không thể hoàn tác",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Xác nhận",
+      cancelButtonText: "Huỷ",
+      reverseButtons: true,
+    });
+    if (result.isConfirmed) {
+      await swalWithBootstrapButtons.fire(
+        "Xác nhận",
+        "Cảm ơn bạn đã mua hàng",
+        "success"
+      );
+      for (let i = 1; i <= 12; i++) {
+        localStorage.removeItem("sp" + i);
+      }
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      await swalWithBootstrapButtons.fire("Đã huỷ", "Huỷ thành công", "error");
     }
     location.reload();
   }
 }
 function removeAll() {
-  if (
-    localStorage.getItem("sp1") == null &&
-    localStorage.getItem("sp2") == null &&
-    localStorage.getItem("sp3") == null &&
-    localStorage.getItem("sp4") == null &&
-    localStorage.getItem("sp5") == null &&
-    localStorage.getItem("sp6") == null &&
-    localStorage.getItem("sp7") == null &&
-    localStorage.getItem("sp8") == null &&
-    localStorage.getItem("sp9") == null &&
-    localStorage.getItem("sp10") == null &&
-    localStorage.getItem("sp11") == null &&
-    localStorage.getItem("sp12") == null
-  ) {
+  if (checkfornopurchases()) {
     alert("Giỏ hàng hiện đang trống");
   } else {
     var x = confirm("Bạn có chắc bạn muốn xóa mọi thứ khỏi giỏ hàng?");
