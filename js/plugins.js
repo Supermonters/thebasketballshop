@@ -3028,13 +3028,11 @@
           a.positionsInArray[a.prevItem],
         g = Math.abs(a.positionsInArray[a.currentItem]) + a.itemWidth / 2;
       a.isTransition = !0;
-      a.$owlWrapper
-        .addClass("owl-origin")
-        .css({
-          "-webkit-transform-origin": g + "px",
-          "-moz-perspective-origin": g + "px",
-          "perspective-origin": g + "px",
-        });
+      a.$owlWrapper.addClass("owl-origin").css({
+        "-webkit-transform-origin": g + "px",
+        "-moz-perspective-origin": g + "px",
+        "perspective-origin": g + "px",
+      });
       d.css({ position: "relative", left: f + "px" })
         .addClass(b)
         .on(
@@ -5558,8 +5556,8 @@
 })(window, jQuery);
 
 /*
-	By Osvaldas Valutis, www.osvaldas.info
-	Available for use under the MIT License
+  By Osvaldas Valutis, www.osvaldas.info
+  Available for use under the MIT License
 */
 
 (function (e, t, n, r) {
