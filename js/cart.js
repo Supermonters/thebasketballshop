@@ -34,16 +34,6 @@ function quantityChanged(event) {
   }
   updateCartTotal();
 }
-function cartCounting() {
-  var cartItemNumber = 0;
-  for (let i = 1; i < 13; i++) {
-    if (localStorage.getItem("sp" + i) !== null) {
-      cartItemNumber++;
-    }
-  }
-
-  document.getElementById("countItem").innerHTML = "(" + cartItemNumber + ")";
-}
 
 function updateCartTotal() {
   var cartItemContainer = document.getElementsByClassName("cart-items")[0];
@@ -87,7 +77,7 @@ function checkfornopurchases() {
 
 async function purchase() {
   if (checkfornopurchases()) {
-    Swal.fire("Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán","", "warning");
+    Swal.fire("Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán", "", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

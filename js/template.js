@@ -1,23 +1,4 @@
 (function () {
-  // Import the functions you need from the SDKs you need
-  // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-  // import {
-  //   getDatabase,
-  //   ref,
-  //   set,
-  //   update,
-  // } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
-  // import {
-  //   getAuth,
-  //   createUserWithEmailAndPassword,
-  //   signInWithEmailAndPassword,
-  //   onAuthStateChanged,
-  //   signOut,
-  // } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyAVr8GCpsz2luRAwKKkit6b2ITxshCeVIg",
     authDomain: "login-ffd4f.firebaseapp.com",
@@ -54,7 +35,7 @@
           title: 'Thành công',
           text: `Tạo tài khoản thành công`,
         })
-        
+
 
         // ...
       })
@@ -67,7 +48,7 @@
           title: 'Oops...',
           text: `${errorMessage}`,
         })
-        
+
       });
   });
   //hello
@@ -78,17 +59,17 @@
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then( async(userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential;
 
         const dt = new Date();
-        database.ref("user/" + user.uid).update( {
+        database.ref("user/" + user.uid).update({
           last_login: dt,
         });
         console.log(user);
         localStorage.setItem("TaiKhoanDangNhap", username);
-       await Swal.fire({
+        await Swal.fire({
           icon: 'success',
           title: 'Thành công',
           text: `Đăng nhập thành công`,
@@ -103,7 +84,7 @@
           title: 'Oops...',
           text: `${errorMessage}`,
         })
-        
+
       });
   });
   const user = auth.currentUser;
@@ -129,7 +110,7 @@
             title: 'Oops...',
             text: `Bạn hiện đang không đăng nhập`,
           })
-          
+
         } else {
           localStorage.removeItem("TaiKhoanDangNhap");
           location.reload();
@@ -144,7 +125,7 @@
           title: 'Oops...',
           text: `${errorMessage}`,
         })
-        
+
       });
   });
 })();

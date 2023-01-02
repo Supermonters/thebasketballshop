@@ -33,8 +33,8 @@
       (e = d.cache[a]
         ? d.cache[a].cloneNode()
         : p.test(a)
-        ? (d.cache[a] = d.createElem(a)).cloneNode()
-        : d.createElem(a)),
+          ? (d.cache[a] = d.createElem(a)).cloneNode()
+          : d.createElem(a)),
       !e.canHaveChildren || o.test(a) || e.tagUrn ? e : d.frag.appendChild(e)
     );
   }
@@ -48,21 +48,21 @@
   function i(a, b) {
     b.cache ||
       ((b.cache = {}),
-      (b.createElem = a.createElement),
-      (b.createFrag = a.createDocumentFragment),
-      (b.frag = b.createFrag())),
+        (b.createElem = a.createElement),
+        (b.createFrag = a.createDocumentFragment),
+        (b.frag = b.createFrag())),
       (a.createElement = function (c) {
         return t.shivMethods ? g(c, a, b) : b.createElem(c);
       }),
       (a.createDocumentFragment = Function(
         "h,f",
         "return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(" +
-          d()
-            .join()
-            .replace(/[\w\-:]+/g, function (a) {
-              return b.createElem(a), b.frag.createElement(a), 'c("' + a + '")';
-            }) +
-          ");return n}"
+        d()
+          .join()
+          .replace(/[\w\-:]+/g, function (a) {
+            return b.createElem(a), b.frag.createElement(a), 'c("' + a + '")';
+          }) +
+        ");return n}"
       )(t, b.frag));
   }
   function j(a) {
@@ -70,12 +70,12 @@
     var d = f(a);
     return (
       !t.shivCSS ||
-        k ||
-        d.hasCSS ||
-        (d.hasCSS = !!c(
-          a,
-          "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}"
-        )),
+      k ||
+      d.hasCSS ||
+      (d.hasCSS = !!c(
+        a,
+        "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}"
+      )),
       l || i(a, d),
       a
     );

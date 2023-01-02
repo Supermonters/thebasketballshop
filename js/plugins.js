@@ -77,65 +77,65 @@
               })()),
             (d.ensureAnimationEnd = ""),
             "" !== d.vars.controlsContainer &&
-              (d.controlsContainer =
-                a(d.vars.controlsContainer).length > 0 &&
-                a(d.vars.controlsContainer)),
+            (d.controlsContainer =
+              a(d.vars.controlsContainer).length > 0 &&
+              a(d.vars.controlsContainer)),
             "" !== d.vars.manualControls &&
-              (d.manualControls =
-                a(d.vars.manualControls).length > 0 &&
-                a(d.vars.manualControls)),
+            (d.manualControls =
+              a(d.vars.manualControls).length > 0 &&
+              a(d.vars.manualControls)),
             d.vars.randomize &&
-              (d.slides.sort(function () {
-                return Math.round(Math.random()) - 0.5;
-              }),
+            (d.slides.sort(function () {
+              return Math.round(Math.random()) - 0.5;
+            }),
               d.container.empty().append(d.slides)),
             d.doMath(),
             d.setup("init"),
             d.vars.controlNav && p.controlNav.setup(),
             d.vars.directionNav && p.directionNav.setup(),
             d.vars.keyboard &&
-              (1 === a(d.containerSelector).length ||
-                d.vars.multipleKeyboard) &&
-              a(document).bind("keyup", function (a) {
-                var b = a.keyCode;
-                if (!d.animating && (39 === b || 37 === b)) {
-                  var c =
-                    39 === b
-                      ? d.getTarget("next")
-                      : 37 === b
+            (1 === a(d.containerSelector).length ||
+              d.vars.multipleKeyboard) &&
+            a(document).bind("keyup", function (a) {
+              var b = a.keyCode;
+              if (!d.animating && (39 === b || 37 === b)) {
+                var c =
+                  39 === b
+                    ? d.getTarget("next")
+                    : 37 === b
                       ? d.getTarget("prev")
                       : !1;
-                  d.flexAnimate(c, d.vars.pauseOnAction);
-                }
-              }),
+                d.flexAnimate(c, d.vars.pauseOnAction);
+              }
+            }),
             d.vars.mousewheel &&
-              d.bind("mousewheel", function (a, b) {
-                a.preventDefault();
-                var f = 0 > b ? d.getTarget("next") : d.getTarget("prev");
-                d.flexAnimate(f, d.vars.pauseOnAction);
-              }),
+            d.bind("mousewheel", function (a, b) {
+              a.preventDefault();
+              var f = 0 > b ? d.getTarget("next") : d.getTarget("prev");
+              d.flexAnimate(f, d.vars.pauseOnAction);
+            }),
             d.vars.pausePlay && p.pausePlay.setup(),
             d.vars.slideshow &&
-              d.vars.pauseInvisible &&
-              p.pauseInvisible.init(),
+            d.vars.pauseInvisible &&
+            p.pauseInvisible.init(),
             d.vars.slideshow &&
-              (d.vars.pauseOnHover &&
-                d.hover(
-                  function () {
-                    d.manualPlay || d.manualPause || d.pause();
-                  },
-                  function () {
-                    d.manualPause || d.manualPlay || d.stopped || d.play();
-                  }
-                ),
+            (d.vars.pauseOnHover &&
+              d.hover(
+                function () {
+                  d.manualPlay || d.manualPause || d.pause();
+                },
+                function () {
+                  d.manualPause || d.manualPlay || d.stopped || d.play();
+                }
+              ),
               (d.vars.pauseInvisible && p.pauseInvisible.isHidden()) ||
-                (d.vars.initDelay > 0
-                  ? (d.startTimeout = setTimeout(d.play, d.vars.initDelay))
-                  : d.play())),
+              (d.vars.initDelay > 0
+                ? (d.startTimeout = setTimeout(d.play, d.vars.initDelay))
+                : d.play())),
             o && p.asNav.setup(),
             g && d.vars.touch && p.touch(),
             (!n || (n && d.vars.smoothHeight)) &&
-              a(window).bind("resize orientationchange focus", p.resize),
+            a(window).bind("resize orientationchange focus", p.resize),
             d.find("img").attr("draggable", "false"),
             setTimeout(function () {
               d.vars.start(d);
@@ -161,7 +161,7 @@
                         function (a) {
                           a.preventDefault(),
                             a.currentTarget._gesture &&
-                              a.currentTarget._gesture.addPointer(a.pointerId);
+                            a.currentTarget._gesture.addPointer(a.pointerId);
                         },
                         !1
                       ),
@@ -172,21 +172,21 @@
                         a(d.vars.asNavFor).data("flexslider").animating ||
                           c.hasClass("active") ||
                           ((d.direction = d.currentItem < e ? "next" : "prev"),
-                          d.flexAnimate(e, d.vars.pauseOnAction, !1, !0, !0));
+                            d.flexAnimate(e, d.vars.pauseOnAction, !1, !0, !0));
                       });
                   }))
                 : d.slides.on(h, function (b) {
-                    b.preventDefault();
-                    var c = a(this),
-                      f = c.index(),
-                      g = c.offset().left - a(d).scrollLeft();
-                    0 >= g && c.hasClass(e + "active-slide")
-                      ? d.flexAnimate(d.getTarget("prev"), !0)
-                      : a(d.vars.asNavFor).data("flexslider").animating ||
-                        c.hasClass(e + "active-slide") ||
-                        ((d.direction = d.currentItem < f ? "next" : "prev"),
-                        d.flexAnimate(f, d.vars.pauseOnAction, !1, !0, !0));
-                  });
+                  b.preventDefault();
+                  var c = a(this),
+                    f = c.index(),
+                    g = c.offset().left - a(d).scrollLeft();
+                  0 >= g && c.hasClass(e + "active-slide")
+                    ? d.flexAnimate(d.getTarget("prev"), !0)
+                    : a(d.vars.asNavFor).data("flexslider").animating ||
+                    c.hasClass(e + "active-slide") ||
+                    ((d.direction = d.currentItem < f ? "next" : "prev"),
+                      d.flexAnimate(f, d.vars.pauseOnAction, !1, !0, !0));
+                });
           },
         },
         controlNav: {
@@ -207,16 +207,16 @@
               ((d.controlNavScaffold = a(
                 '<ol class="' + e + "control-nav " + e + b + '"></ol>'
               )),
-              d.pagingCount > 1)
+                d.pagingCount > 1)
             )
               for (var j = 0; j < d.pagingCount; j++) {
                 if (
                   ((g = d.slides.eq(j)),
-                  (f =
-                    "thumbnails" === d.vars.controlNav
-                      ? '<img src="' + g.attr("data-thumb") + '"/>'
-                      : "<a>" + c + "</a>"),
-                  "thumbnails" === d.vars.controlNav &&
+                    (f =
+                      "thumbnails" === d.vars.controlNav
+                        ? '<img src="' + g.attr("data-thumb") + '"/>'
+                        : "<a>" + c + "</a>"),
+                    "thumbnails" === d.vars.controlNav &&
                     !0 === d.vars.thumbCaptions)
                 ) {
                   var k = g.attr("data-thumbcaption");
@@ -237,7 +237,7 @@
                     f = d.controlNav.index(c);
                   c.hasClass(e + "active") ||
                     ((d.direction = f > d.currentSlide ? "next" : "prev"),
-                    d.flexAnimate(f, d.vars.pauseOnAction));
+                      d.flexAnimate(f, d.vars.pauseOnAction));
                 }
                 "" === i && (i = b.type), p.setToClearWatchedEvent();
               });
@@ -251,7 +251,7 @@
                     f = d.controlNav.index(c);
                   c.hasClass(e + "active") ||
                     ((d.direction = f > d.currentSlide ? "next" : "prev"),
-                    d.flexAnimate(f, d.vars.pauseOnAction));
+                      d.flexAnimate(f, d.vars.pauseOnAction));
                 }
                 "" === i && (i = b.type), p.setToClearWatchedEvent();
               });
@@ -272,11 +272,11 @@
           update: function (b, c) {
             d.pagingCount > 1 && "add" === b
               ? d.controlNavScaffold.append(
-                  a("<li><a>" + d.count + "</a></li>")
-                )
+                a("<li><a>" + d.count + "</a></li>")
+              )
               : 1 === d.pagingCount
-              ? d.controlNavScaffold.find("li").remove()
-              : d.controlNav.eq(c).closest("li").remove(),
+                ? d.controlNavScaffold.find("li").remove()
+                : d.controlNav.eq(c).closest("li").remove(),
               p.controlNav.set(),
               d.pagingCount > 1 && d.pagingCount !== d.controlNav.length
                 ? d.update(c, b)
@@ -287,16 +287,16 @@
           setup: function () {
             var b = a(
               '<ul class="' +
-                e +
-                'direction-nav"><li><a class="' +
-                e +
-                'prev" href="#">' +
-                d.vars.prevText +
-                '</a></li><li><a class="' +
-                e +
-                'next" href="#">' +
-                d.vars.nextText +
-                "</a></li></ul>"
+              e +
+              'direction-nav"><li><a class="' +
+              e +
+              'prev" href="#">' +
+              d.vars.prevText +
+              '</a></li><li><a class="' +
+              e +
+              'next" href="#">' +
+              d.vars.nextText +
+              "</a></li></ul>"
             );
             d.controlsContainer
               ? (a(d.controlsContainer).append(b),
@@ -314,7 +314,7 @@
                   ((c = a(this).hasClass(e + "next")
                     ? d.getTarget("next")
                     : d.getTarget("prev")),
-                  d.flexAnimate(c, d.vars.pauseOnAction)),
+                    d.flexAnimate(c, d.vars.pauseOnAction)),
                   "" === i && (i = b.type),
                   p.setToClearWatchedEvent();
               });
@@ -324,20 +324,20 @@
             1 === d.pagingCount
               ? d.directionNav.addClass(a).attr("tabindex", "-1")
               : d.vars.animationLoop
-              ? d.directionNav.removeClass(a).removeAttr("tabindex")
-              : 0 === d.animatingTo
-              ? d.directionNav
-                  .removeClass(a)
-                  .filter("." + e + "prev")
-                  .addClass(a)
-                  .attr("tabindex", "-1")
-              : d.animatingTo === d.last
-              ? d.directionNav
-                  .removeClass(a)
-                  .filter("." + e + "next")
-                  .addClass(a)
-                  .attr("tabindex", "-1")
-              : d.directionNav.removeClass(a).removeAttr("tabindex");
+                ? d.directionNav.removeClass(a).removeAttr("tabindex")
+                : 0 === d.animatingTo
+                  ? d.directionNav
+                    .removeClass(a)
+                    .filter("." + e + "prev")
+                    .addClass(a)
+                    .attr("tabindex", "-1")
+                  : d.animatingTo === d.last
+                    ? d.directionNav
+                      .removeClass(a)
+                      .filter("." + e + "next")
+                      .addClass(a)
+                      .attr("tabindex", "-1")
+                    : d.directionNav.removeClass(a).removeAttr("tabindex");
           },
         },
         pausePlay: {
@@ -351,9 +351,9 @@
               d.pausePlay.bind(h, function (b) {
                 b.preventDefault(),
                   ("" === i || i === b.type) &&
-                    (a(this).hasClass(e + "pause")
-                      ? ((d.manualPause = !0), (d.manualPlay = !1), d.pause())
-                      : ((d.manualPause = !1), (d.manualPlay = !0), d.play())),
+                  (a(this).hasClass(e + "pause")
+                    ? ((d.manualPause = !0), (d.manualPlay = !1), d.pause())
+                    : ((d.manualPause = !1), (d.manualPlay = !0), d.play())),
                   "" === i && (i = b.type),
                   p.setToClearWatchedEvent();
               });
@@ -361,13 +361,13 @@
           update: function (a) {
             "play" === a
               ? d.pausePlay
-                  .removeClass(e + "pause")
-                  .addClass(e + "play")
-                  .html(d.vars.playText)
+                .removeClass(e + "pause")
+                .addClass(e + "play")
+                .html(d.vars.playText)
               : d.pausePlay
-                  .removeClass(e + "play")
-                  .addClass(e + "pause")
-                  .html(d.vars.pauseText);
+                .removeClass(e + "play")
+                .addClass(e + "pause")
+                .html(d.vars.pauseText);
           },
         },
         touch: function () {
@@ -375,7 +375,7 @@
             d.animating
               ? f.preventDefault()
               : (window.navigator.msPointerEnabled || 1 === f.touches.length) &&
-                (d.pause(),
+              (d.pause(),
                 (g = k ? d.h : d.w),
                 (i = Number(new Date())),
                 (o = f.touches[0].pageX),
@@ -384,15 +384,15 @@
                   m && l && d.animatingTo === d.last
                     ? 0
                     : m && l
-                    ? d.limit -
+                      ? d.limit -
                       (d.itemW + d.vars.itemMargin) * d.move * d.animatingTo
-                    : m && d.currentSlide === d.last
-                    ? d.limit
-                    : m
-                    ? (d.itemW + d.vars.itemMargin) * d.move * d.currentSlide
-                    : l
-                    ? (d.last - d.currentSlide + d.cloneOffset) * g
-                    : (d.currentSlide + d.cloneOffset) * g),
+                      : m && d.currentSlide === d.last
+                        ? d.limit
+                        : m
+                          ? (d.itemW + d.vars.itemMargin) * d.move * d.currentSlide
+                          : l
+                            ? (d.last - d.currentSlide + d.cloneOffset) * g
+                            : (d.currentSlide + d.cloneOffset) * g),
                 (a = k ? p : o),
                 (c = k ? o : p),
                 b.addEventListener("touchmove", s, !1),
@@ -408,26 +408,26 @@
             var f = 500;
             (!j || Number(new Date()) - i > f) &&
               (b.preventDefault(),
-              !n &&
+                !n &&
                 d.transitions &&
                 (d.vars.animationLoop ||
                   (h /=
                     (0 === d.currentSlide && 0 > h) ||
-                    (d.currentSlide === d.last && h > 0)
+                      (d.currentSlide === d.last && h > 0)
                       ? Math.abs(h) / g + 2
                       : 1),
-                d.setProps(e + h, "setTouch")));
+                  d.setProps(e + h, "setTouch")));
           }
           function t() {
             if (
               (b.removeEventListener("touchmove", s, !1),
-              d.animatingTo === d.currentSlide && !j && null !== h)
+                d.animatingTo === d.currentSlide && !j && null !== h)
             ) {
               var k = l ? -h : h,
                 m = k > 0 ? d.getTarget("next") : d.getTarget("prev");
               d.canAdvance(m) &&
-              ((Number(new Date()) - i < 550 && Math.abs(k) > 50) ||
-                Math.abs(k) > g / 2)
+                ((Number(new Date()) - i < 550 && Math.abs(k) > 50) ||
+                  Math.abs(k) > g / 2)
                 ? d.flexAnimate(m, d.vars.pauseOnAction)
                 : n || d.flexAnimate(d.currentSlide, d.vars.pauseOnAction, !0);
             }
@@ -450,15 +450,15 @@
                     m && l && d.animatingTo === d.last
                       ? 0
                       : m && l
-                      ? d.limit -
+                        ? d.limit -
                         (d.itemW + d.vars.itemMargin) * d.move * d.animatingTo
-                      : m && d.currentSlide === d.last
-                      ? d.limit
-                      : m
-                      ? (d.itemW + d.vars.itemMargin) * d.move * d.currentSlide
-                      : l
-                      ? (d.last - d.currentSlide + d.cloneOffset) * g
-                      : (d.currentSlide + d.cloneOffset) * g));
+                        : m && d.currentSlide === d.last
+                          ? d.limit
+                          : m
+                            ? (d.itemW + d.vars.itemMargin) * d.move * d.currentSlide
+                            : l
+                              ? (d.last - d.currentSlide + d.cloneOffset) * g
+                              : (d.currentSlide + d.cloneOffset) * g));
           }
           function v(a) {
             a.stopPropagation();
@@ -474,20 +474,20 @@
                   : Math.abs(q) < Math.abs(-f)),
                 a.detail === a.MSGESTURE_FLAG_INERTIA
                   ? (setImmediate(function () {
-                      b._gesture.stop();
-                    }),
+                    b._gesture.stop();
+                  }),
                     void 0)
                   : ((!j || Number(new Date()) - i > 500) &&
-                      (a.preventDefault(),
+                    (a.preventDefault(),
                       !n &&
-                        c.transitions &&
-                        (c.vars.animationLoop ||
-                          (h =
-                            q /
-                            ((0 === c.currentSlide && 0 > q) ||
+                      c.transitions &&
+                      (c.vars.animationLoop ||
+                        (h =
+                          q /
+                          ((0 === c.currentSlide && 0 > q) ||
                             (c.currentSlide === c.last && q > 0)
-                              ? Math.abs(q) / g + 2
-                              : 1)),
+                            ? Math.abs(q) / g + 2
+                            : 1)),
                         c.setProps(e + h, "setTouch"))),
                     void 0)
               );
@@ -501,11 +501,11 @@
                 var f = l ? -h : h,
                   k = f > 0 ? d.getTarget("next") : d.getTarget("prev");
                 d.canAdvance(k) &&
-                ((Number(new Date()) - i < 550 && Math.abs(f) > 50) ||
-                  Math.abs(f) > g / 2)
+                  ((Number(new Date()) - i < 550 && Math.abs(f) > 50) ||
+                    Math.abs(f) > g / 2)
                   ? d.flexAnimate(k, d.vars.pauseOnAction)
                   : n ||
-                    d.flexAnimate(d.currentSlide, d.vars.pauseOnAction, !0);
+                  d.flexAnimate(d.currentSlide, d.vars.pauseOnAction, !0);
               }
               (a = null), (c = null), (h = null), (e = null), (q = 0);
             }
@@ -534,17 +534,17 @@
           !d.animating &&
             d.is(":visible") &&
             (m || d.doMath(),
-            n
-              ? p.smoothHeight()
-              : m
-              ? (d.slides.width(d.computedW),
-                d.update(d.pagingCount),
-                d.setProps())
-              : k
-              ? (d.viewport.height(d.h), d.setProps(d.h, "setTotal"))
-              : (d.vars.smoothHeight && p.smoothHeight(),
-                d.newSlides.width(d.computedW),
-                d.setProps(d.computedW, "setTotal")));
+              n
+                ? p.smoothHeight()
+                : m
+                  ? (d.slides.width(d.computedW),
+                    d.update(d.pagingCount),
+                    d.setProps())
+                  : k
+                    ? (d.viewport.height(d.h), d.setProps(d.h, "setTotal"))
+                    : (d.vars.smoothHeight && p.smoothHeight(),
+                      d.newSlides.width(d.computedW),
+                      d.setProps(d.computedW, "setTotal")));
         },
         smoothHeight: function (a) {
           if (!k || n) {
@@ -595,10 +595,10 @@
                     ? clearTimeout(d.startTimeout)
                     : d.pause()
                   : d.started
-                  ? d.play()
-                  : d.vars.initDelay > 0
-                  ? setTimeout(d.play, d.vars.initDelay)
-                  : d.play();
+                    ? d.play()
+                    : d.vars.initDelay > 0
+                      ? setTimeout(d.play, d.vars.initDelay)
+                      : d.play();
               });
             }
           },
@@ -618,19 +618,19 @@
           (d.vars.animationLoop ||
             b === d.currentSlide ||
             (d.direction = b > d.currentSlide ? "next" : "prev"),
-          o &&
+            o &&
             1 === d.pagingCount &&
             (d.direction = d.currentItem < b ? "next" : "prev"),
-          !d.animating && (d.canAdvance(b, i) || f) && d.is(":visible"))
+            !d.animating && (d.canAdvance(b, i) || f) && d.is(":visible"))
         ) {
           if (o && h) {
             var j = a(d.vars.asNavFor).data("flexslider");
             if (
               ((d.atEnd = 0 === b || b === d.count - 1),
-              j.flexAnimate(b, !0, !1, !0, i),
-              (d.direction = d.currentItem < b ? "next" : "prev"),
-              (j.direction = d.direction),
-              Math.ceil((b + 1) / d.visible) - 1 === d.currentSlide || 0 === b)
+                j.flexAnimate(b, !0, !1, !0, i),
+                (d.direction = d.currentItem < b ? "next" : "prev"),
+                (j.direction = d.direction),
+                Math.ceil((b + 1) / d.visible) - 1 === d.currentSlide || 0 === b)
             )
               return (
                 (d.currentItem = b),
@@ -649,33 +649,33 @@
           }
           if (
             ((d.animating = !0),
-            (d.animatingTo = b),
-            c && d.pause(),
-            d.vars.before(d),
-            d.syncExists && !i && p.sync("animate"),
-            d.vars.controlNav && p.controlNav.active(),
-            m ||
+              (d.animatingTo = b),
+              c && d.pause(),
+              d.vars.before(d),
+              d.syncExists && !i && p.sync("animate"),
+              d.vars.controlNav && p.controlNav.active(),
+              m ||
               d.slides
                 .removeClass(e + "active-slide")
                 .eq(b)
                 .addClass(e + "active-slide"),
-            (d.atEnd = 0 === b || b === d.last),
-            d.vars.directionNav && p.directionNav.update(),
-            b === d.last && (d.vars.end(d), d.vars.animationLoop || d.pause()),
-            n)
+              (d.atEnd = 0 === b || b === d.last),
+              d.vars.directionNav && p.directionNav.update(),
+              b === d.last && (d.vars.end(d), d.vars.animationLoop || d.pause()),
+              n)
           )
             g
               ? (d.slides.eq(d.currentSlide).css({ opacity: 0, zIndex: 1 }),
                 d.slides.eq(b).css({ opacity: 1, zIndex: 2 }),
                 d.wrapup(q))
               : (d.slides
-                  .eq(d.currentSlide)
-                  .css({ zIndex: 1 })
-                  .animate(
-                    { opacity: 0 },
-                    d.vars.animationSpeed,
-                    d.vars.easing
-                  ),
+                .eq(d.currentSlide)
+                .css({ zIndex: 1 })
+                .animate(
+                  { opacity: 0 },
+                  d.vars.animationSpeed,
+                  d.vars.easing
+                ),
                 d.slides
                   .eq(b)
                   .css({ zIndex: 2 })
@@ -695,27 +695,27 @@
                 (t = (d.itemW + r) * d.move * d.animatingTo),
                 (s = t > d.limit && 1 !== d.visible ? d.limit : t))
               : (s =
-                  0 === d.currentSlide &&
+                0 === d.currentSlide &&
                   b === d.count - 1 &&
                   d.vars.animationLoop &&
                   "next" !== d.direction
-                    ? l
-                      ? (d.count + d.cloneOffset) * q
-                      : 0
-                    : d.currentSlide === d.last &&
-                      0 === b &&
-                      d.vars.animationLoop &&
-                      "prev" !== d.direction
+                  ? l
+                    ? (d.count + d.cloneOffset) * q
+                    : 0
+                  : d.currentSlide === d.last &&
+                    0 === b &&
+                    d.vars.animationLoop &&
+                    "prev" !== d.direction
                     ? l
                       ? 0
                       : (d.count + 1) * q
                     : l
-                    ? (d.count - 1 - b + d.cloneOffset) * q
-                    : (b + d.cloneOffset) * q),
+                      ? (d.count - 1 - b + d.cloneOffset) * q
+                      : (b + d.cloneOffset) * q),
               d.setProps(s, "", d.vars.animationSpeed),
               d.transitions
                 ? ((d.vars.animationLoop && d.atEnd) ||
-                    ((d.animating = !1), (d.currentSlide = d.animatingTo)),
+                  ((d.animating = !1), (d.currentSlide = d.animatingTo)),
                   d.container.unbind("webkitTransitionEnd transitionend"),
                   d.container.bind(
                     "webkitTransitionEnd transitionend",
@@ -728,13 +728,13 @@
                     d.wrapup(q);
                   }, d.vars.animationSpeed + 100)))
                 : d.container.animate(
-                    d.args,
-                    d.vars.animationSpeed,
-                    d.vars.easing,
-                    function () {
-                      d.wrapup(q);
-                    }
-                  );
+                  d.args,
+                  d.vars.animationSpeed,
+                  d.vars.easing,
+                  function () {
+                    d.wrapup(q);
+                  }
+                );
           }
           d.vars.smoothHeight && p.smoothHeight(d.vars.animationSpeed);
         }
@@ -743,13 +743,13 @@
         n ||
           m ||
           (0 === d.currentSlide &&
-          d.animatingTo === d.last &&
-          d.vars.animationLoop
+            d.animatingTo === d.last &&
+            d.vars.animationLoop
             ? d.setProps(a, "jumpEnd")
             : d.currentSlide === d.last &&
-              0 === d.animatingTo &&
-              d.vars.animationLoop &&
-              d.setProps(a, "jumpStart")),
+            0 === d.animatingTo &&
+            d.vars.animationLoop &&
+            d.setProps(a, "jumpStart")),
           (d.animating = !1),
           (d.currentSlide = d.animatingTo),
           d.vars.after(d);
@@ -784,27 +784,27 @@
             d.currentItem === d.count - 1 &&
             0 === a &&
             "prev" === d.direction
-          ? !0
-          : o &&
-            0 === d.currentItem &&
-            a === d.pagingCount - 1 &&
-            "next" !== d.direction
-          ? !1
-          : a !== d.currentSlide || o
-          ? d.vars.animationLoop
             ? !0
-            : d.atEnd &&
-              0 === d.currentSlide &&
-              a === c &&
+            : o &&
+              0 === d.currentItem &&
+              a === d.pagingCount - 1 &&
               "next" !== d.direction
-            ? !1
-            : d.atEnd &&
-              d.currentSlide === c &&
-              0 === a &&
-              "next" === d.direction
-            ? !1
-            : !0
-          : !1;
+              ? !1
+              : a !== d.currentSlide || o
+                ? d.vars.animationLoop
+                  ? !0
+                  : d.atEnd &&
+                    0 === d.currentSlide &&
+                    a === c &&
+                    "next" !== d.direction
+                    ? !1
+                    : d.atEnd &&
+                      d.currentSlide === c &&
+                      0 === a &&
+                      "next" === d.direction
+                      ? !1
+                      : !0
+                : !1;
       }),
       (d.getTarget = function (a) {
         return (
@@ -814,27 +814,27 @@
               ? 0
               : d.currentSlide + 1
             : 0 === d.currentSlide
-            ? d.last
-            : d.currentSlide - 1
+              ? d.last
+              : d.currentSlide - 1
         );
       }),
       (d.setProps = function (a, b, c) {
         var e = (function () {
           var c = a
-              ? a
-              : (d.itemW + d.vars.itemMargin) * d.move * d.animatingTo,
+            ? a
+            : (d.itemW + d.vars.itemMargin) * d.move * d.animatingTo,
             e = (function () {
               if (m)
                 return "setTouch" === b
                   ? a
                   : l && d.animatingTo === d.last
-                  ? 0
-                  : l
-                  ? d.limit -
-                    (d.itemW + d.vars.itemMargin) * d.move * d.animatingTo
-                  : d.animatingTo === d.last
-                  ? d.limit
-                  : c;
+                    ? 0
+                    : l
+                      ? d.limit -
+                      (d.itemW + d.vars.itemMargin) * d.move * d.animatingTo
+                      : d.animatingTo === d.last
+                        ? d.limit
+                        : c;
               switch (b) {
                 case "setTotal":
                   return l
@@ -856,9 +856,9 @@
           ((e = k
             ? "translate3d(0," + e + ",0)"
             : "translate3d(" + e + ",0,0)"),
-          (c = void 0 !== c ? c / 1e3 + "s" : "0s"),
-          d.container.css("-" + d.pfx + "-transition-duration", c),
-          d.container.css("transition-duration", c)),
+            (c = void 0 !== c ? c / 1e3 + "s" : "0s"),
+            d.container.css("-" + d.pfx + "-transition-duration", c),
+            d.container.css("transition-duration", c)),
           (d.args[d.prop] = e),
           (d.transitions || void 0 === c) && d.container.css(d.args),
           d.container.css("transform", e);
@@ -872,26 +872,26 @@
             position: "relative",
           }),
             "init" === b &&
-              (g
-                ? d.slides
-                    .css({
-                      opacity: 0,
-                      display: "block",
-                      webkitTransition:
-                        "opacity " + d.vars.animationSpeed / 1e3 + "s ease",
-                      zIndex: 1,
-                    })
-                    .eq(d.currentSlide)
-                    .css({ opacity: 1, zIndex: 2 })
-                : d.slides
-                    .css({ opacity: 0, display: "block", zIndex: 1 })
-                    .eq(d.currentSlide)
-                    .css({ zIndex: 2 })
-                    .animate(
-                      { opacity: 1 },
-                      d.vars.animationSpeed,
-                      d.vars.easing
-                    )),
+            (g
+              ? d.slides
+                .css({
+                  opacity: 0,
+                  display: "block",
+                  webkitTransition:
+                    "opacity " + d.vars.animationSpeed / 1e3 + "s ease",
+                  zIndex: 1,
+                })
+                .eq(d.currentSlide)
+                .css({ opacity: 1, zIndex: 2 })
+              : d.slides
+                .css({ opacity: 0, display: "block", zIndex: 1 })
+                .eq(d.currentSlide)
+                .css({ zIndex: 2 })
+                .animate(
+                  { opacity: 1 },
+                  d.vars.animationSpeed,
+                  d.vars.easing
+                )),
             d.vars.smoothHeight && p.smoothHeight();
         else {
           var c, f;
@@ -900,15 +900,15 @@
               .css({ overflow: "hidden", position: "relative" })
               .appendTo(d)
               .append(d.container)),
-            (d.cloneCount = 0),
-            (d.cloneOffset = 0),
-            l &&
+              (d.cloneCount = 0),
+              (d.cloneOffset = 0),
+              l &&
               ((f = a.makeArray(d.slides).reverse()),
-              (d.slides = a(f)),
-              d.container.empty().append(d.slides))),
+                (d.slides = a(f)),
+                d.container.empty().append(d.slides))),
             d.vars.animationLoop &&
-              !m &&
-              ((d.cloneCount = 2),
+            !m &&
+            ((d.cloneCount = 2),
               (d.cloneOffset = 1),
               "init" !== b && d.container.find(".clone").remove(),
               p
@@ -935,9 +935,9 @@
               : d.currentSlide + d.cloneOffset),
             k && !m
               ? (d.container
-                  .height(200 * (d.count + d.cloneCount) + "%")
-                  .css("position", "absolute")
-                  .width("100%"),
+                .height(200 * (d.count + d.cloneCount) + "%")
+                .css("position", "absolute")
+                .width("100%"),
                 setTimeout(
                   function () {
                     d.newSlides.css({ display: "block" }),
@@ -985,10 +985,10 @@
                 d.minW > d.w
                   ? (d.w - b * (c - 1)) / c
                   : d.maxW < d.w
-                  ? (d.w - b * (e - 1)) / e
-                  : d.vars.itemWidth > d.w
-                  ? d.w
-                  : d.vars.itemWidth),
+                    ? (d.w - b * (e - 1)) / e
+                    : d.vars.itemWidth > d.w
+                      ? d.w
+                      : d.vars.itemWidth),
               (d.visible = Math.floor(d.w / d.itemW)),
               (d.move =
                 d.vars.move > 0 && d.vars.move < d.visible
@@ -1000,8 +1000,8 @@
                 1 === d.pagingCount
                   ? 0
                   : d.vars.itemWidth > d.w
-                  ? d.itemW * (d.count - 1) + b * (d.count - 1)
-                  : (d.itemW + b) * d.count - d.w - b))
+                    ? d.itemW * (d.count - 1) + b * (d.count - 1)
+                    : (d.itemW + b) * d.count - d.w - b))
             : ((d.itemW = d.w),
               (d.pagingCount = d.count),
               (d.last = d.count - 1)),
@@ -1010,20 +1010,20 @@
       (d.update = function (a, b) {
         d.doMath(),
           m ||
-            (a < d.currentSlide
-              ? (d.currentSlide += 1)
-              : a <= d.currentSlide && 0 !== a && (d.currentSlide -= 1),
+          (a < d.currentSlide
+            ? (d.currentSlide += 1)
+            : a <= d.currentSlide && 0 !== a && (d.currentSlide -= 1),
             (d.animatingTo = d.currentSlide)),
           d.vars.controlNav &&
-            !d.manualControls &&
-            (("add" === b && !m) || d.pagingCount > d.controlNav.length
-              ? p.controlNav.update("add")
-              : (("remove" === b && !m) ||
-                  d.pagingCount < d.controlNav.length) &&
-                (m &&
-                  d.currentSlide > d.last &&
-                  ((d.currentSlide -= 1), (d.animatingTo -= 1)),
-                p.controlNav.update("remove", d.last))),
+          !d.manualControls &&
+          (("add" === b && !m) || d.pagingCount > d.controlNav.length
+            ? p.controlNav.update("add")
+            : (("remove" === b && !m) ||
+              d.pagingCount < d.controlNav.length) &&
+            (m &&
+              d.currentSlide > d.last &&
+              ((d.currentSlide -= 1), (d.animatingTo -= 1)),
+              p.controlNav.update("remove", d.last))),
           d.vars.directionNav && p.directionNav.update();
       }),
       (d.addSlide = function (b, c) {
@@ -1035,8 +1035,8 @@
               ? d.slides.eq(d.count - c).after(e)
               : d.container.prepend(e)
             : void 0 !== c
-            ? d.slides.eq(c).before(e)
-            : d.container.append(e),
+              ? d.slides.eq(c).before(e)
+              : d.container.append(e),
           d.update(c, "add"),
           (d.slides = a(d.vars.selector + ":not(.clone)", d)),
           d.setup(),
@@ -1049,8 +1049,8 @@
           isNaN(b)
             ? a(b, d.slides).remove()
             : k && l
-            ? d.slides.eq(d.last).remove()
-            : d.slides.eq(b).remove(),
+              ? d.slides.eq(d.last).remove()
+              : d.slides.eq(b).remove(),
           d.doMath(),
           d.update(c, "remove"),
           (d.slides = a(d.vars.selector + ":not(.clone)", d)),
@@ -1108,13 +1108,13 @@
       maxItems: 0,
       move: 0,
       allowOneSlide: !0,
-      start: function () {},
-      before: function () {},
-      after: function () {},
-      end: function () {},
-      added: function () {},
-      removed: function () {},
-      init: function () {},
+      start: function () { },
+      before: function () { },
+      after: function () { },
+      end: function () { },
+      added: function () { },
+      removed: function () { },
+      init: function () { },
     }),
     (a.fn.flexslider = function (b) {
       if ((void 0 === b && (b = {}), "object" == typeof b))
@@ -1160,7 +1160,7 @@
  * high-resolution images to devices with retina displays.
  */
 !(function () {
-  function a() {}
+  function a() { }
   function b(a) {
     return f.retinaImageSuffix + a;
   }
@@ -1204,7 +1204,7 @@
     }),
     (a.init = function (a) {
       null === a && (a = e);
-      var b = a.onload || function () {};
+      var b = a.onload || function () { };
       a.onload = function () {
         var a,
           c,
@@ -1221,8 +1221,8 @@
       return e.devicePixelRatio > 1
         ? !0
         : e.matchMedia && e.matchMedia(a).matches
-        ? !0
-        : !1;
+          ? !0
+          : !1;
     });
   var g = /\.\w+$/;
   (e.RetinaImagePath = c),
@@ -1241,31 +1241,31 @@
         : this.perform_check ||
           "undefined" == typeof this.at_2x_path ||
           null === this.at_2x_path
-        ? this.at_2x_path in c.confirmed_paths
-          ? a(!0)
-          : ((b = new XMLHttpRequest()),
-            b.open("HEAD", this.at_2x_path),
-            (b.onreadystatechange = function () {
-              if (4 !== b.readyState) return a(!1);
-              if (b.status >= 200 && b.status <= 399) {
-                if (f.check_mime_type) {
-                  var e = b.getResponseHeader("Content-Type");
-                  if (null === e || !e.match(/^image/i)) return a(!1);
+          ? this.at_2x_path in c.confirmed_paths
+            ? a(!0)
+            : ((b = new XMLHttpRequest()),
+              b.open("HEAD", this.at_2x_path),
+              (b.onreadystatechange = function () {
+                if (4 !== b.readyState) return a(!1);
+                if (b.status >= 200 && b.status <= 399) {
+                  if (f.check_mime_type) {
+                    var e = b.getResponseHeader("Content-Type");
+                    if (null === e || !e.match(/^image/i)) return a(!1);
+                  }
+                  return c.confirmed_paths.push(d.at_2x_path), a(!0);
                 }
-                return c.confirmed_paths.push(d.at_2x_path), a(!0);
-              }
-              return a(!1);
-            }),
-            b.send(),
-            void 0)
-        : a(!0);
+                return a(!1);
+              }),
+              b.send(),
+              void 0)
+          : a(!0);
     }),
     (e.RetinaImage = d),
     (d.prototype.swap = function (a) {
       function b() {
         c.el.complete
           ? (f.force_original_dimensions &&
-              (c.el.setAttribute("width", c.el.offsetWidth),
+            (c.el.setAttribute("width", c.el.offsetWidth),
               c.el.setAttribute("height", c.el.offsetHeight)),
             c.el.setAttribute("src", a))
           : setTimeout(b, 5);
@@ -1339,28 +1339,28 @@
     y;
   !B(x, "undefined") && !B(x.call, "undefined")
     ? (y = function (a, b) {
-        return x.call(a, b);
-      })
+      return x.call(a, b);
+    })
     : (y = function (a, b) {
-        return b in a && B(a.constructor.prototype[b], "undefined");
-      }),
+      return b in a && B(a.constructor.prototype[b], "undefined");
+    }),
     Function.prototype.bind ||
-      (Function.prototype.bind = function (b) {
-        var c = this;
-        if (typeof c != "function") throw new TypeError();
-        var d = v.call(arguments, 1),
-          e = function () {
-            if (this instanceof e) {
-              var a = function () {};
-              a.prototype = c.prototype;
-              var f = new a(),
-                g = c.apply(f, d.concat(v.call(arguments)));
-              return Object(g) === g ? g : f;
-            }
-            return c.apply(b, d.concat(v.call(arguments)));
-          };
-        return e;
-      }),
+    (Function.prototype.bind = function (b) {
+      var c = this;
+      if (typeof c != "function") throw new TypeError();
+      var d = v.call(arguments, 1),
+        e = function () {
+          if (this instanceof e) {
+            var a = function () { };
+            a.prototype = c.prototype;
+            var f = new a(),
+              g = c.apply(f, d.concat(v.call(arguments)));
+            return Object(g) === g ? g : f;
+          }
+          return c.apply(b, d.concat(v.call(arguments)));
+        };
+      return e;
+    }),
     (r.cssgradients = function () {
       var a = "background-image:",
         b = "gradient(linear,left top,right bottom,from(#9f9),to(white));",
@@ -1410,8 +1410,8 @@
         if (e[a] !== c) return e;
         (b = typeof b == "function" ? b() : b),
           typeof f != "undefined" &&
-            f &&
-            (g.className += " " + (b ? "" : "no-") + a),
+          f &&
+          (g.className += " " + (b ? "" : "no-") + a),
           (e[a] = b);
       }
       return e;
@@ -1444,8 +1444,8 @@
           d.cache[a]
             ? (g = d.cache[a].cloneNode())
             : f.test(a)
-            ? (g = (d.cache[a] = d.createElem(a)).cloneNode())
-            : (g = d.createElem(a)),
+              ? (g = (d.cache[a] = d.createElem(a)).cloneNode())
+              : (g = d.createElem(a)),
           g.canHaveChildren && !e.test(a) && !g.tagUrn
             ? d.frag.appendChild(g)
             : g
@@ -1465,23 +1465,23 @@
       function q(a, b) {
         b.cache ||
           ((b.cache = {}),
-          (b.createElem = a.createElement),
-          (b.createFrag = a.createDocumentFragment),
-          (b.frag = b.createFrag())),
+            (b.createElem = a.createElement),
+            (b.createFrag = a.createDocumentFragment),
+            (b.frag = b.createFrag())),
           (a.createElement = function (c) {
             return s.shivMethods ? o(c, a, b) : b.createElem(c);
           }),
           (a.createDocumentFragment = Function(
             "h,f",
             "return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(" +
-              m()
-                .join()
-                .replace(/[\w\-]+/g, function (a) {
-                  return (
-                    b.createElem(a), b.frag.createElement(a), 'c("' + a + '")'
-                  );
-                }) +
-              ");return n}"
+            m()
+              .join()
+              .replace(/[\w\-]+/g, function (a) {
+                return (
+                  b.createElem(a), b.frag.createElement(a), 'c("' + a + '")'
+                );
+              }) +
+            ");return n}"
           )(s, b.frag));
       }
       function r(a) {
@@ -1489,12 +1489,12 @@
         var c = n(a);
         return (
           s.shivCSS &&
-            !g &&
-            !c.hasCSS &&
-            (c.hasCSS = !!l(
-              a,
-              "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}"
-            )),
+          !g &&
+          !c.hasCSS &&
+          (c.hasCSS = !!l(
+            a,
+            "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}"
+          )),
           k || q(a, c),
           a
         );
@@ -1566,7 +1566,7 @@
     function e(a) {
       return "string" == typeof a;
     }
-    function f() {}
+    function f() { }
     function g(a) {
       return !a || "loaded" == a || "complete" == a || "uninitialized" == a;
     }
@@ -1576,10 +1576,10 @@
         a
           ? a.t
             ? m(function () {
-                ("c" == a.t
-                  ? B.injectCss
-                  : B.injectJs)(a.s, 0, a.a, a.x, a.e, 1);
-              }, 0)
+              ("c" == a.t
+                ? B.injectCss
+                : B.injectJs)(a.s, 0, a.a, a.x, a.e, 1);
+            }, 0)
             : (a(), h())
           : (q = 0);
     }
@@ -1589,9 +1589,9 @@
           !o &&
           g(l.readyState) &&
           ((u.r = o = 1),
-          !q && h(),
-          (l.onload = l.onreadystatechange = null),
-          b)
+            !q && h(),
+            (l.onload = l.onreadystatechange = null),
+            b)
         ) {
           "img" != a &&
             m(function () {
@@ -1611,14 +1611,14 @@
         (l.onerror =
           l.onload =
           l.onreadystatechange =
-            function () {
-              k.call(this, r);
-            }),
+          function () {
+            k.call(this, r);
+          }),
         p.splice(e, 0, u),
         "img" != a &&
-          (r || 2 === y[c]
-            ? (t.insertBefore(l, s ? null : n), m(k, j))
-            : y[c].push(l));
+        (r || 2 === y[c]
+          ? (t.insertBefore(l, s ? null : n), m(k, j))
+          : y[c].push(l));
     }
     function j(a, b, c, d, f) {
       return (
@@ -1681,10 +1681,10 @@
           j = i.autoCallback;
         i.url.split(".").pop().split("?").shift(),
           i.bypass ||
-            (e &&
-              (e = d(e)
-                ? e
-                : e[a] || e[g] || e[a.split("/").pop().split("?")[0]]),
+          (e &&
+            (e = d(e)
+              ? e
+              : e[a] || e[g] || e[a.split("/").pop().split("?")[0]]),
             i.instead
               ? i.instead(a, e, f, g, h)
               : (y[i.url] ? (i.noexec = !0) : (y[i.url] = 1),
@@ -1700,12 +1700,12 @@
                   i.timeout
                 ),
                 (d(e) || d(j)) &&
-                  f.load(function () {
-                    k(),
-                      e && e(i.origUrl, h, g),
-                      j && j(i.origUrl, h, g),
-                      (y[i.url] = 2);
-                  })));
+                f.load(function () {
+                  k(),
+                    e && e(i.origUrl, h, g),
+                    j && j(i.origUrl, h, g),
+                    (y[i.url] = 2);
+                })));
       }
       function h(a, b) {
         function c(a, c) {
@@ -1724,22 +1724,22 @@
                 for (c in a) a.hasOwnProperty(c) && b++;
                 return b;
               })()),
-              a))
+                a))
                 a.hasOwnProperty(n) &&
                   (!c &&
                     !--m &&
                     (d(j)
                       ? (j = function () {
-                          var a = [].slice.call(arguments);
-                          k.apply(this, a), l();
-                        })
+                        var a = [].slice.call(arguments);
+                        k.apply(this, a), l();
+                      })
                       : (j[n] = (function (a) {
-                          return function () {
-                            var b = [].slice.call(arguments);
-                            a && a.apply(this, b), l();
-                          };
-                        })(k[n]))),
-                  g(a[n], j, b, n, h));
+                        return function () {
+                          var b = [].slice.call(arguments);
+                          a && a.apply(this, b), l();
+                        };
+                      })(k[n]))),
+                    g(a[n], j, b, n, h));
           } else !c && l();
         }
         var h = !!a.test,
@@ -1769,8 +1769,8 @@
       }),
       (B.errorTimeout = 1e4),
       null == b.readyState &&
-        b.addEventListener &&
-        ((b.readyState = "loading"),
+      b.addEventListener &&
+      ((b.readyState = "loading"),
         b.addEventListener(
           "DOMContentLoaded",
           (A = function () {
@@ -1832,7 +1832,7 @@
         return -1;
       };
   (b = (function () {
-    function a() {}
+    function a() { }
     return (
       (a.prototype.extend = function (a, b) {
         var c, d;
@@ -1880,7 +1880,7 @@
               "WOW.js cannot detect dom mutations, please call .sync() after loading new content."
             );
         }
-        return (a.notSupported = !0), (a.prototype.observe = function () {}), a;
+        return (a.notSupported = !0), (a.prototype.observe = function () { }), a;
       })())),
     (this.WOW = (function () {
       function f(a) {
@@ -1914,26 +1914,26 @@
           var b, c, d, e;
           if (
             ((this.stopped = !1),
-            (this.boxes = function () {
-              var a, c, d, e;
-              for (
-                d = this.element.getElementsByClassName(this.config.boxClass),
+              (this.boxes = function () {
+                var a, c, d, e;
+                for (
+                  d = this.element.getElementsByClassName(this.config.boxClass),
                   e = [],
                   a = 0,
                   c = d.length;
-                c > a;
-                a++
-              )
-                (b = d[a]), e.push(b);
-              return e;
-            }.call(this)),
-            (this.all = function () {
-              var a, c, d, e;
-              for (d = this.boxes, e = [], a = 0, c = d.length; c > a; a++)
-                (b = d[a]), e.push(b);
-              return e;
-            }.call(this)),
-            this.boxes.length)
+                  c > a;
+                  a++
+                )
+                  (b = d[a]), e.push(b);
+                return e;
+              }.call(this)),
+              (this.all = function () {
+                var a, c, d, e;
+                for (d = this.boxes, e = [], a = 0, c = d.length; c > a; a++)
+                  (b = d[a]), e.push(b);
+                return e;
+              }.call(this)),
+              this.boxes.length)
           )
             if (this.disabled()) this.resetStyle();
             else {
@@ -1945,30 +1945,30 @@
             }
           return this.config.live
             ? new a(
-                (function (a) {
-                  return function (b) {
-                    var c, d, e, f, g;
-                    for (g = [], e = 0, f = b.length; f > e; e++)
-                      (d = b[e]),
-                        g.push(
-                          function () {
-                            var a, b, e, f;
-                            for (
-                              e = d.addedNodes || [],
-                                f = [],
-                                a = 0,
-                                b = e.length;
-                              b > a;
-                              a++
-                            )
-                              (c = e[a]), f.push(this.doSync(c));
-                            return f;
-                          }.call(a)
-                        );
-                    return g;
-                  };
-                })(this)
-              ).observe(document.body, { childList: !0, subtree: !0 })
+              (function (a) {
+                return function (b) {
+                  var c, d, e, f, g;
+                  for (g = [], e = 0, f = b.length; f > e; e++)
+                    (d = b[e]),
+                      g.push(
+                        function () {
+                          var a, b, e, f;
+                          for (
+                            e = d.addedNodes || [],
+                            f = [],
+                            a = 0,
+                            b = e.length;
+                            b > a;
+                            a++
+                          )
+                            (c = e[a]), f.push(this.doSync(c));
+                          return f;
+                        }.call(a)
+                      );
+                  return g;
+                };
+              })(this)
+            ).observe(document.body, { childList: !0, subtree: !0 })
             : void 0;
         }),
         (f.prototype.stop = function () {
@@ -1988,10 +1988,10 @@
             if ((null == a && (a = this.element), 1 !== a.nodeType)) return;
             for (
               a = a.parentNode || a,
-                f = a.getElementsByClassName(this.config.boxClass),
-                g = [],
-                c = 0,
-                d = f.length;
+              f = a.getElementsByClassName(this.config.boxClass),
+              g = [],
+              c = 0,
+              d = f.length;
               d > c;
               c++
             )
@@ -2029,11 +2029,11 @@
         (f.prototype.animate = (function () {
           return "requestAnimationFrame" in window
             ? function (a) {
-                return window.requestAnimationFrame(a);
-              }
+              return window.requestAnimationFrame(a);
+            }
             : function (a) {
-                return a();
-              };
+              return a();
+            };
         })()),
         (f.prototype.resetStyle = function () {
           var a, b, c, d, e;
@@ -2083,10 +2083,10 @@
           var c, d, e, f, g, h;
           for (
             d = window.getComputedStyle(a),
-              c = d.getPropertyCSSValue(b),
-              h = this.vendors,
-              f = 0,
-              g = h.length;
+            c = d.getPropertyCSSValue(b),
+            h = this.vendors,
+            f = 0,
+            g = h.length;
             g > f;
             f++
           )
@@ -2115,19 +2115,19 @@
           var a;
           return !this.scrolled ||
             ((this.scrolled = !1),
-            (this.boxes = function () {
-              var b, c, d, e;
-              for (d = this.boxes, e = [], b = 0, c = d.length; c > b; b++)
-                (a = d[b]), a && (this.isVisible(a) ? this.show(a) : e.push(a));
-              return e;
-            }.call(this)),
-            this.boxes.length || this.config.live)
+              (this.boxes = function () {
+                var b, c, d, e;
+                for (d = this.boxes, e = [], b = 0, c = d.length; c > b; b++)
+                  (a = d[b]), a && (this.isVisible(a) ? this.show(a) : e.push(a));
+                return e;
+              }.call(this)),
+              this.boxes.length || this.config.live)
             ? void 0
             : this.stop();
         }),
         (f.prototype.offsetTop = function (a) {
-          for (var b; void 0 === a.offsetTop; ) a = a.parentNode;
-          for (b = a.offsetTop; (a = a.offsetParent); ) b += a.offsetTop;
+          for (var b; void 0 === a.offsetTop;) a = a.parentNode;
+          for (b = a.offsetTop; (a = a.offsetParent);) b += a.offsetTop;
           return b;
         }),
         (f.prototype.isVisible = function (a) {
@@ -2156,7 +2156,7 @@
 
 "function" !== typeof Object.create &&
   (Object.create = function (f) {
-    function g() {}
+    function g() { }
     g.prototype = f;
     return new g();
   });
@@ -2276,8 +2276,8 @@
       a.checkVisible = g.setInterval(function () {
         a.$elem.is(":visible") &&
           (a.reload(),
-          a.$elem.animate({ opacity: 1 }, 200),
-          g.clearInterval(a.checkVisible));
+            a.$elem.animate({ opacity: 1 }, 200),
+            g.clearInterval(a.checkVisible));
       }, 500);
     },
     wrapItems: function () {
@@ -2315,7 +2315,7 @@
           this.options.itemsCustom.sort(function (a, b) {
             return a[0] - b[0];
           }),
-            b = 0;
+          b = 0;
           b < this.options.itemsCustom.length;
           b += 1
         )
@@ -2326,17 +2326,17 @@
           !1 !== this.options.itemsDesktop &&
           (this.options.items = this.options.itemsDesktop[1]),
           a <= this.options.itemsDesktopSmall[0] &&
-            !1 !== this.options.itemsDesktopSmall &&
-            (this.options.items = this.options.itemsDesktopSmall[1]),
+          !1 !== this.options.itemsDesktopSmall &&
+          (this.options.items = this.options.itemsDesktopSmall[1]),
           a <= this.options.itemsTablet[0] &&
-            !1 !== this.options.itemsTablet &&
-            (this.options.items = this.options.itemsTablet[1]),
+          !1 !== this.options.itemsTablet &&
+          (this.options.items = this.options.itemsTablet[1]),
           a <= this.options.itemsTabletSmall[0] &&
-            !1 !== this.options.itemsTabletSmall &&
-            (this.options.items = this.options.itemsTabletSmall[1]),
+          !1 !== this.options.itemsTabletSmall &&
+          (this.options.items = this.options.itemsTabletSmall[1]),
           a <= this.options.itemsMobile[0] &&
-            !1 !== this.options.itemsMobile &&
-            (this.options.items = this.options.itemsMobile[1]);
+          !1 !== this.options.itemsMobile &&
+          (this.options.items = this.options.itemsMobile[1]);
       this.options.items > this.itemsAmount &&
         !0 === this.options.itemsScaleUp &&
         (this.options.items = this.itemsAmount);
@@ -2350,11 +2350,11 @@
       a.resizer = function () {
         f(g).width() !== e &&
           (!1 !== a.options.autoPlay && g.clearInterval(a.autoPlayInterval),
-          g.clearTimeout(b),
-          (b = g.setTimeout(function () {
-            e = f(g).width();
-            a.updateVars();
-          }, a.options.responsiveRefreshRate)));
+            g.clearTimeout(b),
+            (b = g.setTimeout(function () {
+              e = f(g).width();
+              a.updateVars();
+            }, a.options.responsiveRefreshRate)));
       };
       f(g).resize(a.resizer);
     },
@@ -2414,10 +2414,10 @@
         (b += this.itemWidth),
           this.positionsInArray.push(-b),
           !0 === this.options.scrollPerPage &&
-            ((c = f(this.$owlItems[e])),
+          ((c = f(this.$owlItems[e])),
             (c = c.data("owl-roundPages")),
             c !== a &&
-              ((this.pagesInArray[a] = this.positionsInArray[e]), (a = c)));
+            ((this.pagesInArray[a] = this.positionsInArray[e]), (a = c)));
     },
     buildControls: function () {
       if (!0 === this.options.navigation || !0 === this.options.pagination)
@@ -2479,16 +2479,16 @@
       for (c = 0; c < this.itemsAmount; c += 1)
         0 === c % this.options.items &&
           ((a += 1),
-          b === c && (e = this.itemsAmount - this.options.items),
-          (d = f("<div/>", { class: "owl-page" })),
-          (g = f("<span></span>", {
-            text: !0 === this.options.paginationNumbers ? a : "",
-            class: !0 === this.options.paginationNumbers ? "owl-numbers" : "",
-          })),
-          d.append(g),
-          d.data("owl-page", b === c ? e : c),
-          d.data("owl-roundPages", a),
-          this.paginationWrapper.append(d));
+            b === c && (e = this.itemsAmount - this.options.items),
+            (d = f("<div/>", { class: "owl-page" })),
+            (g = f("<span></span>", {
+              text: !0 === this.options.paginationNumbers ? a : "",
+              class: !0 === this.options.paginationNumbers ? "owl-numbers" : "",
+            })),
+            d.append(g),
+            d.data("owl-page", b === c ? e : c),
+            d.data("owl-roundPages", a),
+            this.paginationWrapper.append(d));
       this.checkPagination();
     },
     checkPagination: function () {
@@ -2498,7 +2498,7 @@
         f(this).data("owl-roundPages") ===
           f(a.$owlItems[a.currentItem]).data("owl-roundPages") &&
           (a.paginationWrapper.find(".owl-page").removeClass("active"),
-          f(this).addClass("active"));
+            f(this).addClass("active"));
       });
     },
     checkNavigation: function () {
@@ -2508,15 +2508,15 @@
           ? (this.buttonPrev.addClass("disabled"),
             this.buttonNext.addClass("disabled"))
           : 0 === this.currentItem && 0 !== this.maximumItem
-          ? (this.buttonPrev.addClass("disabled"),
-            this.buttonNext.removeClass("disabled"))
-          : this.currentItem === this.maximumItem
-          ? (this.buttonPrev.removeClass("disabled"),
-            this.buttonNext.addClass("disabled"))
-          : 0 !== this.currentItem &&
-            this.currentItem !== this.maximumItem &&
-            (this.buttonPrev.removeClass("disabled"),
-            this.buttonNext.removeClass("disabled")));
+            ? (this.buttonPrev.addClass("disabled"),
+              this.buttonNext.removeClass("disabled"))
+            : this.currentItem === this.maximumItem
+              ? (this.buttonPrev.removeClass("disabled"),
+                this.buttonNext.addClass("disabled"))
+              : 0 !== this.currentItem &&
+              this.currentItem !== this.maximumItem &&
+              (this.buttonPrev.removeClass("disabled"),
+                this.buttonNext.removeClass("disabled")));
     },
     updateControls: function () {
       this.updatePagination();
@@ -2536,7 +2536,7 @@
       if (
         this.currentItem >
         this.maximumItem +
-          (!0 === this.options.scrollPerPage ? this.options.items - 1 : 0)
+        (!0 === this.options.scrollPerPage ? this.options.items - 1 : 0)
       )
         if (!0 === this.options.rewindNav)
           (this.currentItem = 0), (a = "rewind");
@@ -2547,11 +2547,11 @@
       if (this.isTransition) return !1;
       this.currentItem =
         !0 === this.options.scrollPerPage &&
-        0 < this.currentItem &&
-        this.currentItem < this.options.items
+          0 < this.currentItem &&
+          this.currentItem < this.options.items
           ? 0
           : this.currentItem -
-            (!0 === this.options.scrollPerPage ? this.options.items : 1);
+          (!0 === this.options.scrollPerPage ? this.options.items : 1);
       if (0 > this.currentItem)
         if (!0 === this.options.rewindNav)
           (this.currentItem = this.maximumItem), (a = "rewind");
@@ -2589,20 +2589,20 @@
                 c.isCss3Finish = !0;
               }, c.options.paginationSpeed))
             : "rewind" === b
-            ? (c.swapSpeed(c.options.rewindSpeed),
-              g.setTimeout(function () {
-                c.isCss3Finish = !0;
-              }, c.options.rewindSpeed))
-            : (c.swapSpeed("slideSpeed"),
-              g.setTimeout(function () {
-                c.isCss3Finish = !0;
-              }, c.options.slideSpeed)),
+              ? (c.swapSpeed(c.options.rewindSpeed),
+                g.setTimeout(function () {
+                  c.isCss3Finish = !0;
+                }, c.options.rewindSpeed))
+              : (c.swapSpeed("slideSpeed"),
+                g.setTimeout(function () {
+                  c.isCss3Finish = !0;
+                }, c.options.slideSpeed)),
           c.transition3d(a))
         : !0 === b
-        ? c.css2slide(a, c.options.paginationSpeed)
-        : "rewind" === b
-        ? c.css2slide(a, c.options.rewindSpeed)
-        : c.css2slide(a, c.options.slideSpeed);
+          ? c.css2slide(a, c.options.paginationSpeed)
+          : "rewind" === b
+            ? c.css2slide(a, c.options.rewindSpeed)
+            : c.css2slide(a, c.options.slideSpeed);
       c.afterGo();
     },
     jumpTo: function (a) {
@@ -2624,9 +2624,9 @@
       this.prevArr.shift(0);
       this.prevItem !== this.currentItem &&
         (this.checkPagination(),
-        this.checkNavigation(),
-        this.eachMoveUpdate(),
-        !1 !== this.options.autoPlay && this.checkAp());
+          this.checkNavigation(),
+          this.eachMoveUpdate(),
+          !1 !== this.options.autoPlay && this.checkAp());
       "function" === typeof this.options.afterMove &&
         this.prevItem !== this.currentItem &&
         this.options.afterMove.apply(this, [this.$elem]);
@@ -2651,8 +2651,8 @@
       "slideSpeed" === a
         ? this.$owlWrapper.css(this.addCssSpeed(this.options.slideSpeed))
         : "paginationSpeed" === a
-        ? this.$owlWrapper.css(this.addCssSpeed(this.options.paginationSpeed))
-        : "string" !== typeof a && this.$owlWrapper.css(this.addCssSpeed(a));
+          ? this.$owlWrapper.css(this.addCssSpeed(this.options.paginationSpeed))
+          : "string" !== typeof a && this.$owlWrapper.css(this.addCssSpeed(a));
     },
     addCssSpeed: function (a) {
       return {
@@ -2717,17 +2717,17 @@
       this.ev_types = {};
       !0 === this.options.mouseDrag && !0 === this.options.touchDrag
         ? (a = [
-            "touchstart.owl mousedown.owl",
-            "touchmove.owl mousemove.owl",
-            "touchend.owl touchcancel.owl mouseup.owl",
-          ])
+          "touchstart.owl mousedown.owl",
+          "touchmove.owl mousemove.owl",
+          "touchend.owl touchcancel.owl mouseup.owl",
+        ])
         : !1 === this.options.mouseDrag && !0 === this.options.touchDrag
-        ? (a = [
+          ? (a = [
             "touchstart.owl",
             "touchmove.owl",
             "touchend.owl touchcancel.owl",
           ])
-        : !0 === this.options.mouseDrag &&
+          : !0 === this.options.mouseDrag &&
           !1 === this.options.touchDrag &&
           (a = ["mousedown.owl", "mousemove.owl", "mouseup.owl"]);
       this.ev_types.start = a[0];
@@ -2755,7 +2755,7 @@
         "on" === a
           ? (f(k).on(d.ev_types.move, e), f(k).on(d.ev_types.end, c))
           : "off" === a &&
-            (f(k).off(d.ev_types.move), f(k).off(d.ev_types.end));
+          (f(k).off(d.ev_types.move), f(k).off(d.ev_types.end));
       }
       function e(b) {
         b = b.originalEvent || b || g.event;
@@ -2771,7 +2771,7 @@
           (void 0 !== b.preventDefault
             ? b.preventDefault()
             : (b.returnValue = !1),
-          (h.sliding = !0));
+            (h.sliding = !0));
         (10 < d.newPosY || -10 > d.newPosY) &&
           !1 === h.sliding &&
           f(k).off("touchmove.owl");
@@ -2795,8 +2795,8 @@
             : (d.owl.dragDirection = "right");
         0 !== d.newRelativeX &&
           ((c = d.getNewPosition()),
-          d.goTo(c, !1, "drag"),
-          h.targetElement === a.target &&
+            d.goTo(c, !1, "drag"),
+            h.targetElement === a.target &&
             !0 !== d.browser.isTouch &&
             (f(a.target).on("click.disable", function (a) {
               a.stopImmediatePropagation();
@@ -2804,9 +2804,9 @@
               a.preventDefault();
               f(a.target).off("click.disable");
             }),
-            (a = f._data(a.target, "events").click),
-            (c = a.pop()),
-            a.splice(0, 0, c)));
+              (a = f._data(a.target, "events").click),
+              (c = a.pop()),
+              a.splice(0, 0, c)));
         b("off");
       }
       var d = this,
@@ -2865,20 +2865,20 @@
         c = null;
       f.each(b, function (d, g) {
         e - a.itemWidth / 20 > b[d + 1] &&
-        e - a.itemWidth / 20 < g &&
-        "left" === a.moveDirection()
+          e - a.itemWidth / 20 < g &&
+          "left" === a.moveDirection()
           ? ((c = g),
             (a.currentItem =
               !0 === a.options.scrollPerPage
                 ? f.inArray(c, a.positionsInArray)
                 : d))
           : e + a.itemWidth / 20 < g &&
-            e + a.itemWidth / 20 > (b[d + 1] || b[d] - a.itemWidth) &&
-            "right" === a.moveDirection() &&
-            (!0 === a.options.scrollPerPage
-              ? ((c = b[d + 1] || b[b.length - 1]),
-                (a.currentItem = f.inArray(c, a.positionsInArray)))
-              : ((c = b[d + 1]), (a.currentItem = d + 1)));
+          e + a.itemWidth / 20 > (b[d + 1] || b[d] - a.itemWidth) &&
+          "right" === a.moveDirection() &&
+          (!0 === a.options.scrollPerPage
+            ? ((c = b[d + 1] || b[b.length - 1]),
+              (a.currentItem = f.inArray(c, a.positionsInArray)))
+            : ((c = b[d + 1]), (a.currentItem = d + 1)));
       });
       return a.currentItem;
     },
@@ -2921,9 +2921,9 @@
         (a.$elem.on("mouseover", function () {
           a.stop();
         }),
-        a.$elem.on("mouseout", function () {
-          "stop" !== a.hoverStatus && a.play();
-        }));
+          a.$elem.on("mouseout", function () {
+            "stop" !== a.hoverStatus && a.play();
+          }));
     },
     lazyLoad: function () {
       var a, b, e, c, d;
@@ -2931,20 +2931,20 @@
       for (a = 0; a < this.itemsAmount; a += 1)
         (b = f(this.$owlItems[a])),
           "loaded" !== b.data("owl-loaded") &&
-            ((e = b.data("owl-item")),
+          ((e = b.data("owl-item")),
             (c = b.find(".lazyOwl")),
             "string" !== typeof c.data("src")
               ? b.data("owl-loaded", "loaded")
               : (void 0 === b.data("owl-loaded") &&
-                  (c.hide(),
+                (c.hide(),
                   b.addClass("loading").data("owl-loaded", "checked")),
                 (d =
                   !0 === this.options.lazyFollow
                     ? e >= this.currentItem
                     : !0) &&
-                  e < this.currentItem + this.options.items &&
-                  c.length &&
-                  this.lazyPreload(b, c)));
+                e < this.currentItem + this.options.items &&
+                c.length &&
+                this.lazyPreload(b, c)));
     },
     lazyPreload: function (a, b) {
       function e() {
@@ -2959,8 +2959,8 @@
         d.completeImg(b.get(0)) || !0 === k
           ? e()
           : 100 >= f
-          ? g.setTimeout(c, 100)
-          : e();
+            ? g.setTimeout(c, 100)
+            : e();
       }
       var d = this,
         f = 0,
@@ -2984,8 +2984,8 @@
         e.completeImg(c.get(0))
           ? a()
           : 100 >= d
-          ? g.setTimeout(b, 100)
-          : e.wrapperOuter.css("height", "");
+            ? g.setTimeout(b, 100)
+            : e.wrapperOuter.css("height", "");
       }
       var e = this,
         c = f(e.$owlItems[e.currentItem]).find("img"),
@@ -3010,7 +3010,7 @@
       )
         this.visibleItems.push(a),
           !0 === this.options.addClassActive &&
-            f(this.$owlItems[a]).addClass("active");
+          f(this.$owlItems[a]).addClass("active");
       this.owl.visibleItems = this.visibleItems;
     },
     transitionTypes: function (a) {
@@ -3059,7 +3059,7 @@
       this.endPrev &&
         this.endCurrent &&
         (this.$owlWrapper.removeClass("owl-origin"),
-        (this.isTransition = this.endCurrent = this.endPrev = !1));
+          (this.isTransition = this.endCurrent = this.endPrev = !1));
     },
     owlStatus: function () {
       this.owl = {
@@ -3083,8 +3083,8 @@
     unWrap: function () {
       0 !== this.$elem.children().length &&
         (this.$owlWrapper.unwrap(),
-        this.$userItems.unwrap().unwrap(),
-        this.owlControls && this.owlControls.remove());
+          this.$userItems.unwrap().unwrap(),
+          this.owlControls && this.owlControls.remove());
       this.clearEvents();
       this.$elem
         .attr("style", this.$elem.data("owl-originalStyles") || "")
@@ -3206,31 +3206,31 @@
   function r() {
     (q = google.maps),
       A ||
-        (A = {
-          verbose: !1,
-          queryLimit: { attempt: 5, delay: 250, random: 250 },
-          classes: (function () {
-            var n = {};
-            return (
-              t.each(
-                "Map Marker InfoWindow Circle Rectangle OverlayView StreetViewPanorama KmlLayer TrafficLayer BicyclingLayer GroundOverlay StyledMapType ImageMapType".split(
-                  " "
-                ),
-                function (t, e) {
-                  n[e] = q[e];
-                }
+      (A = {
+        verbose: !1,
+        queryLimit: { attempt: 5, delay: 250, random: 250 },
+        classes: (function () {
+          var n = {};
+          return (
+            t.each(
+              "Map Marker InfoWindow Circle Rectangle OverlayView StreetViewPanorama KmlLayer TrafficLayer BicyclingLayer GroundOverlay StyledMapType ImageMapType".split(
+                " "
               ),
-              n
-            );
-          })(),
-          map: {
-            mapTypeId: q.MapTypeId.ROADMAP,
-            center: [46.578498, 2.457275],
-            zoom: 2,
-          },
-          overlay: { pane: "floatPane", content: "", offset: { x: 0, y: 0 } },
-          geoloc: { getCurrentPosition: { maximumAge: 6e4, timeout: 5e3 } },
-        });
+              function (t, e) {
+                n[e] = q[e];
+              }
+            ),
+            n
+          );
+        })(),
+        map: {
+          mapTypeId: q.MapTypeId.ROADMAP,
+          center: [46.578498, 2.457275],
+          zoom: 2,
+        },
+        overlay: { pane: "floatPane", content: "", offset: { x: 0, y: 0 } },
+        geoloc: { getCurrentPosition: { maximumAge: 6e4, timeout: 5e3 } },
+      });
   }
   function s(t, n) {
     return a(t) ? "gmap3_" + (n ? Z + 1 : ++Z) : t;
@@ -3336,30 +3336,30 @@
     return !t || o(t)
       ? i
       : t.latLng
-      ? m(t.latLng)
-      : t instanceof q.LatLng
-      ? t
-      : g(t.lat)
-      ? new q.LatLng(t.lat, t.lng)
-      : !e && R(t) && g(t[0]) && g(t[1])
-      ? new q.LatLng(t[0], t[1])
-      : i;
+        ? m(t.latLng)
+        : t instanceof q.LatLng
+          ? t
+          : g(t.lat)
+            ? new q.LatLng(t.lat, t.lng)
+            : !e && R(t) && g(t[0]) && g(t[1])
+              ? new q.LatLng(t[0], t[1])
+              : i;
   }
   function y(t) {
     var n, e;
     return !t || t instanceof q.LatLngBounds
       ? t || null
       : (R(t)
-          ? 2 === t.length
-            ? ((n = m(t[0])), (e = m(t[1])))
-            : 4 === t.length && ((n = m([t[0], t[1]])), (e = m([t[2], t[3]])))
-          : "ne" in t && "sw" in t
+        ? 2 === t.length
+          ? ((n = m(t[0])), (e = m(t[1])))
+          : 4 === t.length && ((n = m([t[0], t[1]])), (e = m([t[2], t[3]])))
+        : "ne" in t && "sw" in t
           ? ((n = m(t.ne)), (e = m(t.sw)))
           : "n" in t &&
-            "e" in t &&
-            "s" in t &&
-            "w" in t &&
-            ((n = m([t.n, t.e])), (e = m([t.s, t.w]))),
+          "e" in t &&
+          "s" in t &&
+          "w" in t &&
+          ((n = m([t.n, t.e])), (e = m([t.s, t.w]))),
         n && e ? new q.LatLngBounds(e, n) : null);
   }
   function w(t, n, e, i, a) {
@@ -3367,10 +3367,10 @@
       s = r
         ? { latLng: r }
         : i.td.address
-        ? o(i.td.address)
-          ? { address: i.td.address }
-          : i.td.address
-        : !1,
+          ? o(i.td.address)
+            ? { address: i.td.address }
+            : i.td.address
+          : !1,
       u = s ? G.get(s) : !1,
       l = this;
     s
@@ -3391,14 +3391,14 @@
                   n.apply(t, [i]))
                 : r === q.GeocoderStatus.OVER_QUERY_LIMIT &&
                   a < A.queryLimit.attempt
-                ? setTimeout(function () {
+                  ? setTimeout(function () {
                     w.apply(l, [t, n, e, i, a + 1]);
                   }, A.queryLimit.delay +
-                    Math.floor(Math.random() * A.queryLimit.random))
-                : (f("geocode failed", r, s),
-                  (i.latLng = i.results = !1),
-                  (i.status = r),
-                  n.apply(t, [i]));
+                  Math.floor(Math.random() * A.queryLimit.random))
+                  : (f("geocode failed", r, s),
+                    (i.latLng = i.results = !1),
+                    (i.status = r),
+                    n.apply(t, [i]));
             })))
       : ((i.latLng = m(i.td, !1, !0)), n.apply(t, [i]));
   }
@@ -3409,13 +3409,13 @@
       return s >= n.length
         ? void o.apply(e, [i])
         : void w(
-            r,
-            function (e) {
-              delete e.td, t.extend(n[s], e), a.apply(r, []);
-            },
-            !0,
-            { td: n[s] }
-          );
+          r,
+          function (e) {
+            delete e.td, t.extend(n[s], e), a.apply(r, []);
+          },
+          !0,
+          { td: n[s] }
+        );
     }
     var r = this,
       s = -1;
@@ -3425,17 +3425,17 @@
     var o = !1;
     navigator && navigator.geolocation
       ? navigator.geolocation.getCurrentPosition(
-          function (i) {
-            o ||
-              ((o = !0),
+        function (i) {
+          o ||
+            ((o = !0),
               (e.latLng = new q.LatLng(i.coords.latitude, i.coords.longitude)),
               n.apply(t, [e]));
-          },
-          function () {
-            o || ((o = !0), (e.latLng = !1), n.apply(t, [e]));
-          },
-          e.opts.getCurrentPosition
-        )
+        },
+        function () {
+          o || ((o = !0), (e.latLng = !1), n.apply(t, [e]));
+        },
+        e.opts.getCurrentPosition
+      )
       : ((e.latLng = !1), n.apply(t, [e]));
   }
   function x(t) {
@@ -3469,10 +3469,10 @@
             (a = u[i]),
               (s = a in r.request),
               s &&
-                (s =
-                  e(n[a]) && "equals" in n[a] && z(n[a])
-                    ? n[a].equals(r.request[a])
-                    : n[a] === r.request[a]);
+              (s =
+                e(n[a]) && "equals" in n[a] && z(n[a])
+                  ? n[a].equals(r.request[a])
+                  : n[a] === r.request[a]);
           if (s) return r.results;
         }
       }
@@ -3536,7 +3536,7 @@
           u,
           l = v(a);
         if (!o[t] || !o[t].length) return null;
-        for (s = o[t].length; s; )
+        for (s = o[t].length; s;)
           if ((s--, (u = o[t][e ? s : o[t].length - s - 1]), u && i[u])) {
             if (l && !l(i[u].tag)) continue;
             return r ? n(i[u]) : i[u].obj;
@@ -3615,7 +3615,7 @@
         for (s = 0; s < t.length; s++)
           if (((u = t[s]), n)) r.rm(u, l, !0);
           else if (e) r.rm(u, l, !1);
-          else for (; r.rm(u, l, !1); );
+          else for (; r.rm(u, l, !1););
       }),
       (r.objClear = function (n, e, a, r) {
         var s;
@@ -3652,7 +3652,7 @@
       };
     o(i) && (i = a(i)),
       (l.run = function () {
-        for (var o, a; (o = r()); ) {
+        for (var o, a; (o = r());) {
           if (z(n[o]))
             return (
               (s = o),
@@ -3662,8 +3662,8 @@
                   ? L(i[o].values, n, n[o], { td: i[o], opts: a, session: u })
                   : w(n, n[o], d.latLng[o], { td: i[o], opts: a, session: u })
                 : o in d.geoloc
-                ? b(n, n[o], { td: i[o], opts: a, session: u })
-                : n[o].apply(n, [{ td: i[o], opts: a, session: u }]))
+                  ? b(n, n[o], { td: i[o], opts: a, session: u })
+                  : n[o].apply(n, [{ td: i[o], opts: a, session: u }]))
             );
           u[o] = null;
         }
@@ -3689,9 +3689,9 @@
     function n() {
       var t = this;
       return (
-        (t.onAdd = function () {}),
-        (t.onRemove = function () {}),
-        (t.draw = function () {}),
+        (t.onAdd = function () { }),
+        (t.onRemove = function () { }),
+        (t.draw = function () { }),
         A.classes.OverlayView.apply(t, [])
       );
     }
@@ -3703,8 +3703,8 @@
     function a(t) {
       T[t] ||
         (delete _[t].options.map,
-        (T[t] = new A.classes.Marker(_[t].options)),
-        l(n, { td: _[t] }, T[t], _[t].id));
+          (T[t] = new A.classes.Marker(_[t].options)),
+          l(n, { td: _[t] }, T[t], _[t].id));
     }
     function r() {
       return (y = U.getProjection())
@@ -3713,8 +3713,8 @@
           j.push(q.event.addListener(o, "bounds_changed", f)),
           void h())
         : void setTimeout(function () {
-            r.apply(B, []);
-          }, 25);
+          r.apply(B, []);
+        }, 25);
     }
     function u(t) {
       e(O[t])
@@ -3756,14 +3756,14 @@
         (r = (Math.PI * n) / 180),
         (s = (Math.PI * o) / 180),
         6371e3 *
-          Math.acos(
-            Math.min(
-              u(i) * u(r) * u(a) * u(s) +
-                u(i) * l(a) * u(r) * l(s) +
-                l(i) * l(r),
-              1
-            )
+        Math.acos(
+          Math.min(
+            u(i) * u(r) * u(a) * u(s) +
+            u(i) * l(a) * u(r) * l(s) +
+            l(i) * l(r),
+            1
           )
+        )
       );
     }
     function c() {
@@ -3807,10 +3807,10 @@
           E = p();
         for (
           M = !1,
-            j > 3 &&
-              ((s = c()),
-              (y = s.getSouthWest().lng() < s.getNorthEast().lng())),
-            n = 0;
+          j > 3 &&
+          ((s = c()),
+            (y = s.getSouthWest().lng() < s.getNorthEast().lng())),
+          n = 0;
           n < _.length;
           n++
         )
@@ -3818,19 +3818,19 @@
             (y && !s.contains(_[n].options.position)) ||
             (w && !w(D[n])) ||
             b.push(n);
-        for (;;) {
-          for (n = 0; B[n] && n < b.length; ) n++;
+        for (; ;) {
+          for (n = 0; B[n] && n < b.length;) n++;
           if (n === b.length) break;
           if (((r = []), k && !C)) {
             m = 10;
             do
               for (
                 f = r,
-                  r = [],
-                  m--,
-                  d = f.length ? s.getCenter() : _[b[n]].options.position,
-                  s = g(d),
-                  e = n;
+                r = [],
+                m--,
+                d = f.length ? s.getCenter() : _[b[n]].options.position,
+                s = g(d),
+                e = n;
                 e < b.length;
                 e++
               )
@@ -3917,7 +3917,7 @@
           t
             ? ((o = _.length - 1), (i = -1), (a = -1))
             : ((o = 0), (i = _.length), (a = 1)),
-            r = o;
+          r = o;
           r !== i && (!_[r] || (l && !l(_[r].tag)) || (u.push(E[r]), !n && !t));
           r += a
         );
@@ -4117,7 +4117,7 @@
         e = t.td.callback;
       e &&
         ((n = Array.prototype.slice.call(arguments, 1)),
-        z(e) ? e.apply(i, n) : R(e) && z(e[1]) && e[1].apply(e[0], n));
+          z(e) ? e.apply(i, n) : R(e) && z(e[1]) && e[1].apply(e[0], n));
     }
     function g(t, n, e) {
       e && l(i, t, n, e), c(t, n), b.ack(n);
@@ -4152,17 +4152,17 @@
         }),
         (o = s.calculator
           ? function (n) {
-              var e = [];
-              return (
-                t.each(n, function (t, n) {
-                  e.push(r.value(n));
-                }),
-                s.calculator.apply(i, [e])
-              );
-            }
+            var e = [];
+            return (
+              t.each(n, function (t, n) {
+                e.push(r.value(n));
+              }),
+              s.calculator.apply(i, [e])
+            );
+          }
           : function (t) {
-              return t.length;
-            }),
+            return t.length;
+          }),
         r.error(function () {
           f.apply(x, arguments);
         }),
@@ -4207,8 +4207,8 @@
               l(i, { td: s }, v, n, { main: g, shadow: v }),
               r.store(a, g, v))
             : t.each(a.indexes, function (t, n) {
-                r.marker(n).setMap(S);
-              });
+              r.marker(n).setMap(S);
+            });
         }),
         r
       );
@@ -4267,7 +4267,7 @@
           a || (n.td.values = [{ latLng: n.latLng, options: n.opts }]),
           n.td.values.length
             ? (D.__initialised ||
-                ((D.prototype = new A.classes.OverlayView()),
+              ((D.prototype = new A.classes.OverlayView()),
                 (D.__initialised = !0)),
               t.each(n.td.values, function (a, r) {
                 var s,
@@ -4296,54 +4296,54 @@
           u = !S;
         return (
           r ||
-            ((n.opts.position = n.latLng || m(n.opts.position)),
+          ((n.opts.position = n.latLng || m(n.opts.position)),
             (n.td.values = [{ options: n.opts }])),
           n.td.values.length
             ? (u && v(),
               n.td.cluster && !S.getBounds()
                 ? void q.event.addListenerOnce(
-                    S,
-                    "bounds_changed",
-                    function () {
-                      x.marker.apply(x, [n]);
-                    }
-                  )
+                  S,
+                  "bounds_changed",
+                  function () {
+                    x.marker.apply(x, [n]);
+                  }
+                )
                 : void (n.td.cluster
-                    ? (n.td.cluster instanceof _
-                        ? ((o = n.td.cluster), (a = I.getById(o.id(), !0)))
-                        : ((a = w(n.td.cluster)),
-                          (o = new _(s(n.td.id, !0), a)),
-                          I.add(n, "clusterer", o, a)),
-                      a.beginUpdate(),
-                      t.each(n.td.values, function (t, e) {
-                        var o = p(n, e);
-                        (o.options.position = m(
-                          o.options.position ? o.options.position : e
-                        )),
-                          o.options.position &&
-                            ((o.options.map = S),
-                            u && (S.setCenter(o.options.position), (u = !1)),
-                            a.add(o, e));
-                      }),
-                      a.endUpdate(),
-                      g(n, o))
-                    : ((e = []),
-                      t.each(n.td.values, function (t, o) {
-                        var a,
-                          r,
-                          s = p(n, o);
-                        (s.options.position = m(
-                          s.options.position ? s.options.position : o
-                        )),
-                          s.options.position &&
-                            ((s.options.map = S),
-                            u && (S.setCenter(s.options.position), (u = !1)),
-                            (r = new A.classes.Marker(s.options)),
-                            e.push(r),
-                            (a = I.add({ td: s }, "marker", r)),
-                            l(i, { td: s }, r, a));
-                      }),
-                      g(n, r ? e : e[0]))))
+                  ? (n.td.cluster instanceof _
+                    ? ((o = n.td.cluster), (a = I.getById(o.id(), !0)))
+                    : ((a = w(n.td.cluster)),
+                      (o = new _(s(n.td.id, !0), a)),
+                      I.add(n, "clusterer", o, a)),
+                    a.beginUpdate(),
+                    t.each(n.td.values, function (t, e) {
+                      var o = p(n, e);
+                      (o.options.position = m(
+                        o.options.position ? o.options.position : e
+                      )),
+                        o.options.position &&
+                        ((o.options.map = S),
+                          u && (S.setCenter(o.options.position), (u = !1)),
+                          a.add(o, e));
+                    }),
+                    a.endUpdate(),
+                    g(n, o))
+                  : ((e = []),
+                    t.each(n.td.values, function (t, o) {
+                      var a,
+                        r,
+                        s = p(n, o);
+                      (s.options.position = m(
+                        s.options.position ? s.options.position : o
+                      )),
+                        s.options.position &&
+                        ((s.options.map = S),
+                          u && (S.setCenter(s.options.position), (u = !1)),
+                          (r = new A.classes.Marker(s.options)),
+                          e.push(r),
+                          (a = I.add({ td: s }, "marker", r)),
+                          l(i, { td: s }, r, a));
+                    }),
+                    g(n, r ? e : e[0]))))
             : void g(n, !1)
         );
       }),
@@ -4377,7 +4377,7 @@
           r = "values" in e.td;
         r ||
           (e.latLng && (e.opts.position = e.latLng),
-          (e.td.values = [{ options: e.opts }])),
+            (e.td.values = [{ options: e.opts }])),
           t.each(e.td.values, function (t, s) {
             var u,
               d,
@@ -4388,14 +4388,14 @@
               S || v(c.options.position),
               (d = new A.classes.InfoWindow(c.options)),
               d &&
-                (a(c.open) || c.open) &&
-                (r
-                  ? d.open(S, c.anchor || n)
-                  : d.open(
-                      S,
-                      c.anchor ||
-                        (e.latLng ? n : e.session.marker ? e.session.marker : n)
-                    )),
+              (a(c.open) || c.open) &&
+              (r
+                ? d.open(S, c.anchor || n)
+                : d.open(
+                  S,
+                  c.anchor ||
+                  (e.latLng ? n : e.session.marker ? e.session.marker : n)
+                )),
               o.push(d),
               (u = I.add({ td: c }, "infowindow", d)),
               l(i, { td: c }, d, u);
@@ -4407,21 +4407,21 @@
           o = "values" in n.td;
         return (
           o ||
-            ((n.opts.center = n.latLng || m(n.opts.center)),
+          ((n.opts.center = n.latLng || m(n.opts.center)),
             (n.td.values = [{ options: n.opts }])),
           n.td.values.length
             ? (t.each(n.td.values, function (t, o) {
-                var a,
-                  r,
-                  s = p(n, o);
-                (s.options.center = m(s.options.center ? s.options.center : o)),
-                  S || v(s.options.center),
-                  (s.options.map = S),
-                  (r = new A.classes.Circle(s.options)),
-                  e.push(r),
-                  (a = I.add({ td: s }, "circle", r)),
-                  l(i, { td: s }, r, a);
-              }),
+              var a,
+                r,
+                s = p(n, o);
+              (s.options.center = m(s.options.center ? s.options.center : o)),
+                S || v(s.options.center),
+                (s.options.map = S),
+                (r = new A.classes.Circle(s.options)),
+                e.push(r),
+                (a = I.add({ td: s }, "circle", r)),
+                l(i, { td: s }, r, a);
+            }),
               void g(n, o ? e : e[0]))
             : void g(n, !1)
         );
@@ -4469,17 +4469,17 @@
           o || (n.td.values = [{ options: n.opts }]),
           n.td.values.length
             ? (t.each(n.td.values, function (t, o) {
-                var a,
-                  r,
-                  s = p(n, o);
-                (s.options.bounds = y(s.options.bounds ? s.options.bounds : o)),
-                  S || v(s.options.bounds.getCenter()),
-                  (s.options.map = S),
-                  (r = new A.classes.Rectangle(s.options)),
-                  e.push(r),
-                  (a = I.add({ td: s }, "rectangle", r)),
-                  l(i, { td: s }, r, a);
-              }),
+              var a,
+                r,
+                s = p(n, o);
+              (s.options.bounds = y(s.options.bounds ? s.options.bounds : o)),
+                S || v(s.options.bounds.getCenter()),
+                (s.options.map = S),
+                (r = new A.classes.Rectangle(s.options)),
+                e.push(r),
+                (a = I.add({ td: s }, "rectangle", r)),
+                l(i, { td: s }, r, a);
+            }),
               void g(n, o ? e : e[0]))
             : void g(n, !1)
         );
@@ -4495,8 +4495,8 @@
         var n = I.get("trafficlayer");
         n ||
           ((n = new A.classes.TrafficLayer()),
-          n.setMap(S),
-          I.add(t, "trafficlayer", n)),
+            n.setMap(S),
+            I.add(t, "trafficlayer", n)),
           g(t, n);
       }),
       (x.bicyclinglayer = function (t) {
@@ -4504,8 +4504,8 @@
         var n = I.get("bicyclinglayer");
         n ||
           ((n = new A.classes.BicyclingLayer()),
-          n.setMap(S),
-          I.add(t, "bicyclinglayer", n)),
+            n.setMap(S),
+            I.add(t, "bicyclinglayer", n)),
           g(t, n);
       }),
       (x.groundoverlay = function (t) {
@@ -4524,11 +4524,11 @@
           n.latLng
             ? (n.opts.opts.position = n.latLng)
             : n.opts.opts.position &&
-              (n.opts.opts.position = m(n.opts.opts.position)),
+            (n.opts.opts.position = m(n.opts.opts.position)),
           n.td.divId
             ? (n.opts.container = document.getElementById(n.td.divId))
             : n.opts.container &&
-              (n.opts.container = t(n.opts.container).get(0));
+            (n.opts.container = t(n.opts.container).get(0));
         var e,
           o = new A.classes.StreetViewPanorama(n.opts.container, n.opts.opts);
         o && S.setStreetView(o),
@@ -4542,23 +4542,23 @@
           o || (n.td.values = [{ options: n.opts }]),
           n.td.values.length
             ? (t.each(n.td.values, function (t, o) {
-                var a,
-                  r,
-                  s,
-                  d = p(n, o);
-                S || v(),
-                  (s = d.options),
-                  d.options.opts &&
-                    ((s = d.options.opts),
-                    d.options.url && (s.url = d.options.url)),
-                  (s.map = S),
-                  (r = u("3.10")
-                    ? new A.classes.KmlLayer(s)
-                    : new A.classes.KmlLayer(s.url, s)),
-                  e.push(r),
-                  (a = I.add({ td: d }, "kmllayer", r)),
-                  l(i, { td: d }, r, a);
-              }),
+              var a,
+                r,
+                s,
+                d = p(n, o);
+              S || v(),
+                (s = d.options),
+                d.options.opts &&
+                ((s = d.options.opts),
+                  d.options.url && (s.url = d.options.url)),
+                (s.map = S),
+                (r = u("3.10")
+                  ? new A.classes.KmlLayer(s)
+                  : new A.classes.KmlLayer(s.url, s)),
+                e.push(r),
+                (a = I.add({ td: d }, "kmllayer", r)),
+                l(i, { td: d }, r, a);
+            }),
               void g(n, o ? e : e[0]))
             : void g(n, !1)
         );
@@ -4572,7 +4572,7 @@
           u = t(document.createElement("div"));
         u.css({ position: "absolute", zIndex: 1e3, visibility: "hidden" }),
           n.opts.content &&
-            ((o = t(n.opts.content)),
+          ((o = t(n.opts.content)),
             u.append(o),
             i.first().prepend(u),
             a(n.opts.left)
@@ -4619,30 +4619,30 @@
           n.getPosition
             ? e.extend(n.getPosition())
             : n.getBounds
-            ? (e.extend(n.getBounds().getNorthEast()),
-              e.extend(n.getBounds().getSouthWest()))
-            : n.getPaths
-            ? n.getPaths().forEach(function (t) {
-                t.forEach(function (t) {
-                  e.extend(t);
-                });
-              })
-            : n.getPath
-            ? n.getPath().forEach(function (t) {
-                e.extend(t);
-              })
-            : n.getCenter
-            ? e.extend(n.getCenter())
-            : "function" == typeof _ &&
-              n instanceof _ &&
-              ((n = I.getById(n.id(), !0)), n && n.autofit(e));
+              ? (e.extend(n.getBounds().getNorthEast()),
+                e.extend(n.getBounds().getSouthWest()))
+              : n.getPaths
+                ? n.getPaths().forEach(function (t) {
+                  t.forEach(function (t) {
+                    e.extend(t);
+                  });
+                })
+                : n.getPath
+                  ? n.getPath().forEach(function (t) {
+                    e.extend(t);
+                  })
+                  : n.getCenter
+                    ? e.extend(n.getCenter())
+                    : "function" == typeof _ &&
+                    n instanceof _ &&
+                    ((n = I.getById(n.id(), !0)), n && n.autofit(e));
         }),
           e.isEmpty() ||
-            (S.getBounds() && S.getBounds().equals(e)) ||
-            ("maxZoom" in n.td &&
-              q.event.addListenerOnce(S, "bounds_changed", function () {
-                this.getZoom() > n.td.maxZoom && this.setZoom(n.td.maxZoom);
-              }),
+          (S.getBounds() && S.getBounds().equals(e)) ||
+          ("maxZoom" in n.td &&
+            q.event.addListenerOnce(S, "bounds_changed", function () {
+              this.getZoom() > n.td.maxZoom && this.setZoom(n.td.maxZoom);
+            }),
             S.fitBounds(e)),
           g(n, !0);
       }),
@@ -4653,8 +4653,8 @@
         }
         n.td.id
           ? t.each(h(n.td.id), function (t, n) {
-              I.clearById(n) || I.objClearById(n);
-            })
+            I.clearById(n) || I.objClearById(n);
+          })
           : (I.clear(h(n.td.name), n.td.last, n.td.first, n.td.tag),
             I.objClear(h(n.td.name), n.td.last, n.td.first, n.td.tag)),
           g(n, !0);
@@ -4671,22 +4671,22 @@
             : (r = u.name),
           "map" === r && (s = S),
           s ||
-            ((s = []),
+          ((s = []),
             u.id
               ? (t.each(h(u.id), function (t, n) {
-                  s.push(I.getById(n, !1, a) || I.objGetById(n));
-                }),
+                s.push(I.getById(n, !1, a) || I.objGetById(n));
+              }),
                 R(u.id) || (s = s[0]))
               : (t.each(r ? h(r) : [n], function (n, e) {
-                  var o;
-                  u.first
-                    ? ((o = I.get(e, !1, u.tag, a)), o && s.push(o))
-                    : u.all
+                var o;
+                u.first
+                  ? ((o = I.get(e, !1, u.tag, a)), o && s.push(o))
+                  : u.all
                     ? t.each(I.all(e, u.tag, a), function (t, n) {
-                        s.push(n);
-                      })
+                      s.push(n);
+                    })
                     : ((o = I.get(e, !0, u.tag, a)), o && s.push(o));
-                }),
+              }),
                 u.all || R(r) || (s = s[0]))),
           (s = R(s) || !u.all ? s : [s]),
           i ? s : void g(e, s)
@@ -4740,10 +4740,10 @@
           1 !== e.length || ("get" !== e[0] && !x(e[0]))
             ? a._plan(e)
             : i.push(
-                "get" === e[0]
-                  ? a.get("map", !0)
-                  : a.get(e[0].get, !0, e[0].get.full)
-              );
+              "get" === e[0]
+                ? a.get("map", !0)
+                : a.get(e[0].get, !0, e[0].get.full)
+            );
       }),
       i.length ? (1 === i.length ? i[0] : i) : this
     );
@@ -4814,22 +4814,22 @@
   }
   if (e.csstransforms) {
     var o = e.csstransforms3d
-        ? {
-            translate: function (a) {
-              return "translate3d(" + a[0] + "px, " + a[1] + "px, 0) ";
-            },
-            scale: function (a) {
-              return "scale3d(" + a + ", " + a + ", 1) ";
-            },
-          }
-        : {
-            translate: function (a) {
-              return "translate(" + a[0] + "px, " + a[1] + "px) ";
-            },
-            scale: function (a) {
-              return "scale(" + a + ") ";
-            },
-          },
+      ? {
+        translate: function (a) {
+          return "translate3d(" + a[0] + "px, " + a[1] + "px, 0) ";
+        },
+        scale: function (a) {
+          return "scale3d(" + a + ", " + a + ", 1) ";
+        },
+      }
+      : {
+        translate: function (a) {
+          return "translate(" + a[0] + "px, " + a[1] + "px) ";
+        },
+        scale: function (a) {
+          return "scale(" + a + ") ";
+        },
+      },
       p = function (a, c, d) {
         var e = b.data(a, "isoTransform") || {},
           f = {},
@@ -4875,7 +4875,7 @@
       OTransitionProperty: "oTransitionEnd otransitionend",
       transitionProperty: "transitionend",
     }[j]),
-    (r = h("transitionDuration")));
+      (r = h("transitionDuration")));
   var s = b.event,
     t = b.event.handle ? "handle" : "dispatch",
     u;
@@ -4959,9 +4959,9 @@
           i.element.addClass(i.options.containerClass);
         }, 0),
           this.options.resizable &&
-            w.bind("smartresize.isotope", function () {
-              i.resize();
-            }),
+          w.bind("smartresize.isotope", function () {
+            i.resize();
+          }),
           this.element.delegate(
             "." + this.options.hiddenClass,
             "click",
@@ -4998,8 +4998,8 @@
       },
       _updateAnimationEngine: function () {
         var a = this.options.animationEngine
-            .toLowerCase()
-            .replace(/[ _\-]/g, ""),
+          .toLowerCase()
+          .replace(/[ _\-]/g, ""),
           b;
         switch (a) {
           case "css":
@@ -5025,7 +5025,7 @@
           !this.isUsingJQueryAnimation);
         a ||
           (delete this.options.hiddenStyle.scale,
-          delete this.options.visibleStyle.scale),
+            delete this.options.visibleStyle.scale),
           (this.getPositionStyles = a ? this._translate : this._positionAbs);
       },
       _filter: function (a) {
@@ -5069,8 +5069,8 @@
               g = b(e, a);
             return (
               f === g &&
-                a !== "original-order" &&
-                ((f = b(d, "original-order")), (g = b(e, "original-order"))),
+              a !== "original-order" &&
+              ((f = b(d, "original-order")), (g = b(e, "original-order"))),
               (f > g ? 1 : f < g ? -1 : 0) * c
             );
           };
@@ -5091,7 +5091,7 @@
         var d = this.getPositionStyles(b, c);
         this.styleQueue.push({ $el: a, style: d }),
           this.options.itemPositionDataEnabled &&
-            a.data("isotope-item-position", { x: b, y: c });
+          a.data("isotope-item-position", { x: b, y: c });
       },
       layout: function (a, b) {
         var c = this.options.layoutMode;
@@ -5104,10 +5104,10 @@
       },
       _processStyleQueue: function (a, c) {
         var d = this.isLaidOut
-            ? this.isUsingJQueryAnimation
-              ? "animate"
-              : "css"
-            : "css",
+          ? this.isUsingJQueryAnimation
+            ? "animate"
+            : "css"
+          : "css",
           f = this.options.animationOptions,
           g = this.options.onLayout,
           h,
@@ -5151,7 +5151,7 @@
               ((i = function (a, b) {
                 b.$el[d](b.style, f).one(q, k);
               }),
-              (j = !1));
+                (j = !1));
           }
         }
         b.each(this.styleQueue, i), j && k(), (this.styleQueue = []);
@@ -5357,7 +5357,7 @@
         return {
           height:
             Math.ceil(this.$filteredAtoms.length / this.cellsByRow.cols) *
-              this.cellsByRow.rowHeight +
+            this.cellsByRow.rowHeight +
             this.offset.top,
         };
       },
@@ -5505,7 +5505,7 @@
         c.src !== f &&
           b.inArray(c, g) === -1 &&
           (g.push(c),
-          --e <= 0 && (setTimeout(h), d.unbind(".imagesLoaded", i)));
+            --e <= 0 && (setTimeout(h), d.unbind(".imagesLoaded", i)));
       }
       var c = this,
         d = c.find("img").add(c.filter("img")),
@@ -5533,8 +5533,8 @@
         if (!c) {
           x(
             "cannot call methods on isotope prior to initialization; attempted to call method '" +
-              a +
-              "'"
+            a +
+            "'"
           );
           return;
         }
@@ -5563,14 +5563,14 @@
 (function (e, t, n, r) {
   "use strict";
   var i = function () {
-      var e = n.body || n.documentElement,
-        e = e.style;
-      if (e.WebkitTransition == "") return "-webkit-";
-      if (e.MozTransition == "") return "-moz-";
-      if (e.OTransition == "") return "-o-";
-      if (e.transition == "") return "";
-      return false;
-    },
+    var e = n.body || n.documentElement,
+      e = e.style;
+    if (e.WebkitTransition == "") return "-webkit-";
+    if (e.MozTransition == "") return "-moz-";
+    if (e.OTransition == "") return "-o-";
+    if (e.transition == "") return "";
+    return false;
+  },
     s = i() === false ? false : true,
     o = function (e, t, n) {
       var r = {},
@@ -5596,22 +5596,22 @@
     };
   e.fn.imageLightbox = function (r) {
     var r = e.extend(
-        {
-          selector: 'id="imagelightbox"',
-          allowedTypes: "png|jpg|jpeg|gif",
-          animationSpeed: 250,
-          preloadNext: true,
-          enableKeyboard: true,
-          quitOnEnd: false,
-          quitOnImgClick: false,
-          quitOnDocClick: true,
-          onStart: false,
-          onEnd: false,
-          onLoadStart: false,
-          onLoadEnd: false,
-        },
-        r
-      ),
+      {
+        selector: 'id="imagelightbox"',
+        allowedTypes: "png|jpg|jpeg|gif",
+        animationSpeed: 250,
+        preloadNext: true,
+        enableKeyboard: true,
+        quitOnEnd: false,
+        quitOnImgClick: false,
+        quitOnDocClick: true,
+        onStart: false,
+        onEnd: false,
+        onLoadStart: false,
+        onLoadEnd: false,
+      },
+      r
+    ),
       i = e([]),
       l = e(),
       c = e(),
@@ -5811,8 +5811,8 @@ function initLightbox(options) {
   // ACTIVITY INDICATOR
 
   var activityIndicatorOn = function () {
-      $('<div id="imagelightbox-loading"><div></div></div>').appendTo("body");
-    },
+    $('<div id="imagelightbox-loading"><div></div></div>').appendTo("body");
+  },
     activityIndicatorOff = function () {
       $("#imagelightbox-loading").remove();
     },
