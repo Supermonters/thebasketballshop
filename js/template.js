@@ -77,7 +77,7 @@
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
+      .then( async(userCredential) => {
         // Signed in
         const user = userCredential;
 
@@ -87,12 +87,12 @@
         });
         console.log(user);
         localStorage.setItem("TaiKhoanDangNhap", username);
-        Swal.fire({
+       await Swal.fire({
           icon: 'success',
           title: 'Thành công',
           text: `Đăng nhập thành công`,
         })
-        load();
+        window.location.reload();
       })
       .catch((error) => {
         const errorCode = error.code;
