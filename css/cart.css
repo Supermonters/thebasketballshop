@@ -91,11 +91,12 @@
 @font-face {
     font-family: "Booter - Zero Zero";
     src: url("Fonts/Booter - Zero Zero.woff") format("woff"),
-         url("Fonts/Booter - Zero Zero.woff2") format("woff2");
+        url("Fonts/Booter - Zero Zero.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
-.cart-items{
+
+.cart-items {
     background-color: #f1f1f1;
     padding: 2rem;
     width: 100%;
@@ -227,10 +228,12 @@
 
 
 }
-.section-header{
+
+.section-header {
     font-family: 'Jaldi', sans-serif;
     font-size: 3rem;
 }
+
 .cart-column {
     display: flex;
     align-items: center;
@@ -265,51 +268,52 @@
 }
 
 .cart-item-image {
-    height: auto; 
+    height: auto;
     width: 10vw;
     border-radius: 10px;
 }
 
 
 .btn-danger1 {
-  align-self: center;
-  background-color: red;
-  background-image: none;
-  background-position: 0 90%;
-  background-repeat: repeat no-repeat;
-  background-size: 4px 3px;
-  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
-  border-style: solid;
-  border-width: 2px;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
-  box-sizing: border-box;
-  color: #41403e;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 23px;
-  outline: none;
-  padding: 0.75rem;
-  text-decoration: none;
-  transition: all 235ms ease-in-out;
-  border-bottom-left-radius: 15px 255px;
-  border-bottom-right-radius: 225px 15px;
-  border-top-left-radius: 255px 15px;
-  border-top-right-radius: 15px 225px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    align-self: center;
+    background-color: red;
+    background-image: none;
+    background-position: 0 90%;
+    background-repeat: repeat no-repeat;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 23px;
+    outline: none;
+    padding: 0.75rem;
+    text-decoration: none;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
 .btn-danger1:hover {
-  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
-  transform: translate3d(0, 2px, 0);
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
 }
 
 .btn-danger1:focus {
-  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
+
 .cart-quantity-input {
     height: 34px;
     width: 3rem;

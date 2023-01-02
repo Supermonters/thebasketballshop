@@ -1,7 +1,7 @@
 function initLightbox(t) {
   var e = function () {
-      $('<div id="imagelightbox-loading"><div></div></div>').appendTo("body");
-    },
+    $('<div id="imagelightbox-loading"><div></div></div>').appendTo("body");
+  },
     n = function () {
       $("#imagelightbox-loading").remove();
     },
@@ -51,7 +51,7 @@ function initLightbox(t) {
           var e = $(this);
           return (
             n.eq(e.index()).attr("href") !== $("#imagelightbox").attr("src") &&
-              t.switchImageLightbox(e.index()),
+            t.switchImageLightbox(e.index()),
             s.removeClass("active"),
             s.eq(e.index()).addClass("active"),
             !1
@@ -188,65 +188,65 @@ function initLightbox(t) {
               })()),
             (i.ensureAnimationEnd = ""),
             "" !== i.vars.controlsContainer &&
-              (i.controlsContainer =
-                t(i.vars.controlsContainer).length > 0 &&
-                t(i.vars.controlsContainer)),
+            (i.controlsContainer =
+              t(i.vars.controlsContainer).length > 0 &&
+              t(i.vars.controlsContainer)),
             "" !== i.vars.manualControls &&
-              (i.manualControls =
-                t(i.vars.manualControls).length > 0 &&
-                t(i.vars.manualControls)),
+            (i.manualControls =
+              t(i.vars.manualControls).length > 0 &&
+              t(i.vars.manualControls)),
             i.vars.randomize &&
-              (i.slides.sort(function () {
-                return Math.round(Math.random()) - 0.5;
-              }),
+            (i.slides.sort(function () {
+              return Math.round(Math.random()) - 0.5;
+            }),
               i.container.empty().append(i.slides)),
             i.doMath(),
             i.setup("init"),
             i.vars.controlNav && m.controlNav.setup(),
             i.vars.directionNav && m.directionNav.setup(),
             i.vars.keyboard &&
-              (1 === t(i.containerSelector).length ||
-                i.vars.multipleKeyboard) &&
-              t(document).bind("keyup", function (t) {
-                var e = t.keyCode;
-                if (!i.animating && (39 === e || 37 === e)) {
-                  var n =
-                    39 === e
-                      ? i.getTarget("next")
-                      : 37 === e
+            (1 === t(i.containerSelector).length ||
+              i.vars.multipleKeyboard) &&
+            t(document).bind("keyup", function (t) {
+              var e = t.keyCode;
+              if (!i.animating && (39 === e || 37 === e)) {
+                var n =
+                  39 === e
+                    ? i.getTarget("next")
+                    : 37 === e
                       ? i.getTarget("prev")
                       : !1;
-                  i.flexAnimate(n, i.vars.pauseOnAction);
-                }
-              }),
-            i.vars.mousewheel &&
-              i.bind("mousewheel", function (t, e) {
-                t.preventDefault();
-                var n = i.getTarget(0 > e ? "next" : "prev");
                 i.flexAnimate(n, i.vars.pauseOnAction);
-              }),
+              }
+            }),
+            i.vars.mousewheel &&
+            i.bind("mousewheel", function (t, e) {
+              t.preventDefault();
+              var n = i.getTarget(0 > e ? "next" : "prev");
+              i.flexAnimate(n, i.vars.pauseOnAction);
+            }),
             i.vars.pausePlay && m.pausePlay.setup(),
             i.vars.slideshow &&
-              i.vars.pauseInvisible &&
-              m.pauseInvisible.init(),
+            i.vars.pauseInvisible &&
+            m.pauseInvisible.init(),
             i.vars.slideshow &&
-              (i.vars.pauseOnHover &&
-                i.hover(
-                  function () {
-                    i.manualPlay || i.manualPause || i.pause();
-                  },
-                  function () {
-                    i.manualPause || i.manualPlay || i.stopped || i.play();
-                  }
-                ),
+            (i.vars.pauseOnHover &&
+              i.hover(
+                function () {
+                  i.manualPlay || i.manualPause || i.pause();
+                },
+                function () {
+                  i.manualPause || i.manualPlay || i.stopped || i.play();
+                }
+              ),
               (i.vars.pauseInvisible && m.pauseInvisible.isHidden()) ||
-                (i.vars.initDelay > 0
-                  ? (i.startTimeout = setTimeout(i.play, i.vars.initDelay))
-                  : i.play())),
+              (i.vars.initDelay > 0
+                ? (i.startTimeout = setTimeout(i.play, i.vars.initDelay))
+                : i.play())),
             f && m.asNav.setup(),
             r && i.vars.touch && m.touch(),
             (!h || (h && i.vars.smoothHeight)) &&
-              t(window).bind("resize orientationchange focus", m.resize),
+            t(window).bind("resize orientationchange focus", m.resize),
             i.find("img").attr("draggable", "false"),
             setTimeout(function () {
               i.vars.start(i);
@@ -272,7 +272,7 @@ function initLightbox(t) {
                         function (t) {
                           t.preventDefault(),
                             t.currentTarget._gesture &&
-                              t.currentTarget._gesture.addPointer(t.pointerId);
+                            t.currentTarget._gesture.addPointer(t.pointerId);
                         },
                         !1
                       ),
@@ -283,21 +283,21 @@ function initLightbox(t) {
                         t(i.vars.asNavFor).data("flexslider").animating ||
                           n.hasClass("active") ||
                           ((i.direction = i.currentItem < o ? "next" : "prev"),
-                          i.flexAnimate(o, i.vars.pauseOnAction, !1, !0, !0));
+                            i.flexAnimate(o, i.vars.pauseOnAction, !1, !0, !0));
                       });
                   }))
                 : i.slides.on(l, function (e) {
-                    e.preventDefault();
-                    var n = t(this),
-                      o = n.index(),
-                      a = n.offset().left - t(i).scrollLeft();
-                    0 >= a && n.hasClass(s + "active-slide")
-                      ? i.flexAnimate(i.getTarget("prev"), !0)
-                      : t(i.vars.asNavFor).data("flexslider").animating ||
-                        n.hasClass(s + "active-slide") ||
-                        ((i.direction = i.currentItem < o ? "next" : "prev"),
-                        i.flexAnimate(o, i.vars.pauseOnAction, !1, !0, !0));
-                  });
+                  e.preventDefault();
+                  var n = t(this),
+                    o = n.index(),
+                    a = n.offset().left - t(i).scrollLeft();
+                  0 >= a && n.hasClass(s + "active-slide")
+                    ? i.flexAnimate(i.getTarget("prev"), !0)
+                    : t(i.vars.asNavFor).data("flexslider").animating ||
+                    n.hasClass(s + "active-slide") ||
+                    ((i.direction = i.currentItem < o ? "next" : "prev"),
+                      i.flexAnimate(o, i.vars.pauseOnAction, !1, !0, !0));
+                });
           },
         },
         controlNav: {
@@ -318,16 +318,16 @@ function initLightbox(t) {
               ((i.controlNavScaffold = t(
                 '<ol class="' + s + "control-nav " + s + o + '"></ol>'
               )),
-              i.pagingCount > 1)
+                i.pagingCount > 1)
             )
               for (var r = 0; r < i.pagingCount; r++) {
                 if (
                   ((n = i.slides.eq(r)),
-                  (e =
-                    "thumbnails" === i.vars.controlNav
-                      ? '<img src="' + n.attr("data-thumb") + '"/>'
-                      : "<a>" + a + "</a>"),
-                  "thumbnails" === i.vars.controlNav &&
+                    (e =
+                      "thumbnails" === i.vars.controlNav
+                        ? '<img src="' + n.attr("data-thumb") + '"/>'
+                        : "<a>" + a + "</a>"),
+                    "thumbnails" === i.vars.controlNav &&
                     !0 === i.vars.thumbCaptions)
                 ) {
                   var c = n.attr("data-thumbcaption");
@@ -348,7 +348,7 @@ function initLightbox(t) {
                     o = i.controlNav.index(n);
                   n.hasClass(s + "active") ||
                     ((i.direction = o > i.currentSlide ? "next" : "prev"),
-                    i.flexAnimate(o, i.vars.pauseOnAction));
+                      i.flexAnimate(o, i.vars.pauseOnAction));
                 }
                 "" === u && (u = e.type), m.setToClearWatchedEvent();
               });
@@ -362,7 +362,7 @@ function initLightbox(t) {
                     o = i.controlNav.index(n);
                   n.hasClass(s + "active") ||
                     ((i.direction = o > i.currentSlide ? "next" : "prev"),
-                    i.flexAnimate(o, i.vars.pauseOnAction));
+                      i.flexAnimate(o, i.vars.pauseOnAction));
                 }
                 "" === u && (u = e.type), m.setToClearWatchedEvent();
               });
@@ -383,11 +383,11 @@ function initLightbox(t) {
           update: function (e, n) {
             i.pagingCount > 1 && "add" === e
               ? i.controlNavScaffold.append(
-                  t("<li><a>" + i.count + "</a></li>")
-                )
+                t("<li><a>" + i.count + "</a></li>")
+              )
               : 1 === i.pagingCount
-              ? i.controlNavScaffold.find("li").remove()
-              : i.controlNav.eq(n).closest("li").remove(),
+                ? i.controlNavScaffold.find("li").remove()
+                : i.controlNav.eq(n).closest("li").remove(),
               m.controlNav.set(),
               i.pagingCount > 1 && i.pagingCount !== i.controlNav.length
                 ? i.update(n, e)
@@ -398,16 +398,16 @@ function initLightbox(t) {
           setup: function () {
             var e = t(
               '<ul class="' +
-                s +
-                'direction-nav"><li><a class="' +
-                s +
-                'prev" href="#">' +
-                i.vars.prevText +
-                '</a></li><li><a class="' +
-                s +
-                'next" href="#">' +
-                i.vars.nextText +
-                "</a></li></ul>"
+              s +
+              'direction-nav"><li><a class="' +
+              s +
+              'prev" href="#">' +
+              i.vars.prevText +
+              '</a></li><li><a class="' +
+              s +
+              'next" href="#">' +
+              i.vars.nextText +
+              "</a></li></ul>"
             );
             i.controlsContainer
               ? (t(i.controlsContainer).append(e),
@@ -425,7 +425,7 @@ function initLightbox(t) {
                   ((n = i.getTarget(
                     t(this).hasClass(s + "next") ? "next" : "prev"
                   )),
-                  i.flexAnimate(n, i.vars.pauseOnAction)),
+                    i.flexAnimate(n, i.vars.pauseOnAction)),
                   "" === u && (u = e.type),
                   m.setToClearWatchedEvent();
               });
@@ -435,20 +435,20 @@ function initLightbox(t) {
             1 === i.pagingCount
               ? i.directionNav.addClass(t).attr("tabindex", "-1")
               : i.vars.animationLoop
-              ? i.directionNav.removeClass(t).removeAttr("tabindex")
-              : 0 === i.animatingTo
-              ? i.directionNav
-                  .removeClass(t)
-                  .filter("." + s + "prev")
-                  .addClass(t)
-                  .attr("tabindex", "-1")
-              : i.animatingTo === i.last
-              ? i.directionNav
-                  .removeClass(t)
-                  .filter("." + s + "next")
-                  .addClass(t)
-                  .attr("tabindex", "-1")
-              : i.directionNav.removeClass(t).removeAttr("tabindex");
+                ? i.directionNav.removeClass(t).removeAttr("tabindex")
+                : 0 === i.animatingTo
+                  ? i.directionNav
+                    .removeClass(t)
+                    .filter("." + s + "prev")
+                    .addClass(t)
+                    .attr("tabindex", "-1")
+                  : i.animatingTo === i.last
+                    ? i.directionNav
+                      .removeClass(t)
+                      .filter("." + s + "next")
+                      .addClass(t)
+                      .attr("tabindex", "-1")
+                    : i.directionNav.removeClass(t).removeAttr("tabindex");
           },
         },
         pausePlay: {
@@ -462,9 +462,9 @@ function initLightbox(t) {
               i.pausePlay.bind(l, function (e) {
                 e.preventDefault(),
                   ("" === u || u === e.type) &&
-                    (t(this).hasClass(s + "pause")
-                      ? ((i.manualPause = !0), (i.manualPlay = !1), i.pause())
-                      : ((i.manualPause = !1), (i.manualPlay = !0), i.play())),
+                  (t(this).hasClass(s + "pause")
+                    ? ((i.manualPause = !0), (i.manualPlay = !1), i.pause())
+                    : ((i.manualPause = !1), (i.manualPlay = !0), i.play())),
                   "" === u && (u = e.type),
                   m.setToClearWatchedEvent();
               });
@@ -472,13 +472,13 @@ function initLightbox(t) {
           update: function (t) {
             "play" === t
               ? i.pausePlay
-                  .removeClass(s + "pause")
-                  .addClass(s + "play")
-                  .html(i.vars.playText)
+                .removeClass(s + "pause")
+                .addClass(s + "play")
+                .html(i.vars.playText)
               : i.pausePlay
-                  .removeClass(s + "play")
-                  .addClass(s + "pause")
-                  .html(i.vars.pauseText);
+                .removeClass(s + "play")
+                .addClass(s + "pause")
+                .html(i.vars.pauseText);
           },
         },
         touch: function () {
@@ -486,7 +486,7 @@ function initLightbox(t) {
             i.animating
               ? t.preventDefault()
               : (window.navigator.msPointerEnabled || 1 === t.touches.length) &&
-                (i.pause(),
+              (i.pause(),
                 (v = c ? i.h : i.w),
                 (y = Number(new Date())),
                 (b = t.touches[0].pageX),
@@ -495,15 +495,15 @@ function initLightbox(t) {
                   p && d && i.animatingTo === i.last
                     ? 0
                     : p && d
-                    ? i.limit -
+                      ? i.limit -
                       (i.itemW + i.vars.itemMargin) * i.move * i.animatingTo
-                    : p && i.currentSlide === i.last
-                    ? i.limit
-                    : p
-                    ? (i.itemW + i.vars.itemMargin) * i.move * i.currentSlide
-                    : d
-                    ? (i.last - i.currentSlide + i.cloneOffset) * v
-                    : (i.currentSlide + i.cloneOffset) * v),
+                      : p && i.currentSlide === i.last
+                        ? i.limit
+                        : p
+                          ? (i.itemW + i.vars.itemMargin) * i.move * i.currentSlide
+                          : d
+                            ? (i.last - i.currentSlide + i.cloneOffset) * v
+                            : (i.currentSlide + i.cloneOffset) * v),
                 (u = c ? x : b),
                 (f = c ? b : x),
                 e.addEventListener("touchmove", n, !1),
@@ -519,26 +519,26 @@ function initLightbox(t) {
             var e = 500;
             (!w || Number(new Date()) - y > e) &&
               (t.preventDefault(),
-              !h &&
+                !h &&
                 i.transitions &&
                 (i.vars.animationLoop ||
                   (g /=
                     (0 === i.currentSlide && 0 > g) ||
-                    (i.currentSlide === i.last && g > 0)
+                      (i.currentSlide === i.last && g > 0)
                       ? Math.abs(g) / v + 2
                       : 1),
-                i.setProps(m + g, "setTouch")));
+                  i.setProps(m + g, "setTouch")));
           }
           function o() {
             if (
               (e.removeEventListener("touchmove", n, !1),
-              i.animatingTo === i.currentSlide && !w && null !== g)
+                i.animatingTo === i.currentSlide && !w && null !== g)
             ) {
               var t = d ? -g : g,
                 s = i.getTarget(t > 0 ? "next" : "prev");
               i.canAdvance(s) &&
-              ((Number(new Date()) - y < 550 && Math.abs(t) > 50) ||
-                Math.abs(t) > v / 2)
+                ((Number(new Date()) - y < 550 && Math.abs(t) > 50) ||
+                  Math.abs(t) > v / 2)
                 ? i.flexAnimate(s, i.vars.pauseOnAction)
                 : h || i.flexAnimate(i.currentSlide, i.vars.pauseOnAction, !0);
             }
@@ -561,15 +561,15 @@ function initLightbox(t) {
                     p && d && i.animatingTo === i.last
                       ? 0
                       : p && d
-                      ? i.limit -
+                        ? i.limit -
                         (i.itemW + i.vars.itemMargin) * i.move * i.animatingTo
-                      : p && i.currentSlide === i.last
-                      ? i.limit
-                      : p
-                      ? (i.itemW + i.vars.itemMargin) * i.move * i.currentSlide
-                      : d
-                      ? (i.last - i.currentSlide + i.cloneOffset) * v
-                      : (i.currentSlide + i.cloneOffset) * v));
+                        : p && i.currentSlide === i.last
+                          ? i.limit
+                          : p
+                            ? (i.itemW + i.vars.itemMargin) * i.move * i.currentSlide
+                            : d
+                              ? (i.last - i.currentSlide + i.cloneOffset) * v
+                              : (i.currentSlide + i.cloneOffset) * v));
           }
           function r(t) {
             t.stopPropagation();
@@ -585,22 +585,22 @@ function initLightbox(t) {
                   : Math.abs(S) < Math.abs(-o)),
                 t.detail === t.MSGESTURE_FLAG_INERTIA
                   ? void setImmediate(function () {
-                      e._gesture.stop();
-                    })
+                    e._gesture.stop();
+                  })
                   : void (
-                      (!w || Number(new Date()) - y > 500) &&
-                      (t.preventDefault(),
+                    (!w || Number(new Date()) - y > 500) &&
+                    (t.preventDefault(),
                       !h &&
-                        n.transitions &&
-                        (n.vars.animationLoop ||
-                          (g =
-                            S /
-                            ((0 === n.currentSlide && 0 > S) ||
+                      n.transitions &&
+                      (n.vars.animationLoop ||
+                        (g =
+                          S /
+                          ((0 === n.currentSlide && 0 > S) ||
                             (n.currentSlide === n.last && S > 0)
-                              ? Math.abs(S) / v + 2
-                              : 1)),
+                            ? Math.abs(S) / v + 2
+                            : 1)),
                         n.setProps(m + g, "setTouch")))
-                    )
+                  )
               );
             }
           }
@@ -612,11 +612,11 @@ function initLightbox(t) {
                 var n = d ? -g : g,
                   i = e.getTarget(n > 0 ? "next" : "prev");
                 e.canAdvance(i) &&
-                ((Number(new Date()) - y < 550 && Math.abs(n) > 50) ||
-                  Math.abs(n) > v / 2)
+                  ((Number(new Date()) - y < 550 && Math.abs(n) > 50) ||
+                    Math.abs(n) > v / 2)
                   ? e.flexAnimate(i, e.vars.pauseOnAction)
                   : h ||
-                    e.flexAnimate(e.currentSlide, e.vars.pauseOnAction, !0);
+                  e.flexAnimate(e.currentSlide, e.vars.pauseOnAction, !0);
               }
               (u = null), (f = null), (g = null), (m = null), (S = 0);
             }
@@ -645,17 +645,17 @@ function initLightbox(t) {
           !i.animating &&
             i.is(":visible") &&
             (p || i.doMath(),
-            h
-              ? m.smoothHeight()
-              : p
-              ? (i.slides.width(i.computedW),
-                i.update(i.pagingCount),
-                i.setProps())
-              : c
-              ? (i.viewport.height(i.h), i.setProps(i.h, "setTotal"))
-              : (i.vars.smoothHeight && m.smoothHeight(),
-                i.newSlides.width(i.computedW),
-                i.setProps(i.computedW, "setTotal")));
+              h
+                ? m.smoothHeight()
+                : p
+                  ? (i.slides.width(i.computedW),
+                    i.update(i.pagingCount),
+                    i.setProps())
+                  : c
+                    ? (i.viewport.height(i.h), i.setProps(i.h, "setTotal"))
+                    : (i.vars.smoothHeight && m.smoothHeight(),
+                      i.newSlides.width(i.computedW),
+                      i.setProps(i.computedW, "setTotal")));
         },
         smoothHeight: function (t) {
           if (!c || h) {
@@ -706,10 +706,10 @@ function initLightbox(t) {
                     ? clearTimeout(i.startTimeout)
                     : i.pause()
                   : i.started
-                  ? i.play()
-                  : i.vars.initDelay > 0
-                  ? setTimeout(i.play, i.vars.initDelay)
-                  : i.play();
+                    ? i.play()
+                    : i.vars.initDelay > 0
+                      ? setTimeout(i.play, i.vars.initDelay)
+                      : i.play();
               });
             }
           },
@@ -729,19 +729,19 @@ function initLightbox(t) {
           (i.vars.animationLoop ||
             e === i.currentSlide ||
             (i.direction = e > i.currentSlide ? "next" : "prev"),
-          f &&
+            f &&
             1 === i.pagingCount &&
             (i.direction = i.currentItem < e ? "next" : "prev"),
-          !i.animating && (i.canAdvance(e, l) || o) && i.is(":visible"))
+            !i.animating && (i.canAdvance(e, l) || o) && i.is(":visible"))
         ) {
           if (f && a) {
             var u = t(i.vars.asNavFor).data("flexslider");
             if (
               ((i.atEnd = 0 === e || e === i.count - 1),
-              u.flexAnimate(e, !0, !1, !0, l),
-              (i.direction = i.currentItem < e ? "next" : "prev"),
-              (u.direction = i.direction),
-              Math.ceil((e + 1) / i.visible) - 1 === i.currentSlide || 0 === e)
+                u.flexAnimate(e, !0, !1, !0, l),
+                (i.direction = i.currentItem < e ? "next" : "prev"),
+                (u.direction = i.direction),
+                Math.ceil((e + 1) / i.visible) - 1 === i.currentSlide || 0 === e)
             )
               return (
                 (i.currentItem = e),
@@ -760,33 +760,33 @@ function initLightbox(t) {
           }
           if (
             ((i.animating = !0),
-            (i.animatingTo = e),
-            n && i.pause(),
-            i.vars.before(i),
-            i.syncExists && !l && m.sync("animate"),
-            i.vars.controlNav && m.controlNav.active(),
-            p ||
+              (i.animatingTo = e),
+              n && i.pause(),
+              i.vars.before(i),
+              i.syncExists && !l && m.sync("animate"),
+              i.vars.controlNav && m.controlNav.active(),
+              p ||
               i.slides
                 .removeClass(s + "active-slide")
                 .eq(e)
                 .addClass(s + "active-slide"),
-            (i.atEnd = 0 === e || e === i.last),
-            i.vars.directionNav && m.directionNav.update(),
-            e === i.last && (i.vars.end(i), i.vars.animationLoop || i.pause()),
-            h)
+              (i.atEnd = 0 === e || e === i.last),
+              i.vars.directionNav && m.directionNav.update(),
+              e === i.last && (i.vars.end(i), i.vars.animationLoop || i.pause()),
+              h)
           )
             r
               ? (i.slides.eq(i.currentSlide).css({ opacity: 0, zIndex: 1 }),
                 i.slides.eq(e).css({ opacity: 1, zIndex: 2 }),
                 i.wrapup(w))
               : (i.slides
-                  .eq(i.currentSlide)
-                  .css({ zIndex: 1 })
-                  .animate(
-                    { opacity: 0 },
-                    i.vars.animationSpeed,
-                    i.vars.easing
-                  ),
+                .eq(i.currentSlide)
+                .css({ zIndex: 1 })
+                .animate(
+                  { opacity: 0 },
+                  i.vars.animationSpeed,
+                  i.vars.easing
+                ),
                 i.slides
                   .eq(e)
                   .css({ zIndex: 2 })
@@ -806,27 +806,27 @@ function initLightbox(t) {
                 (y = (i.itemW + v) * i.move * i.animatingTo),
                 (g = y > i.limit && 1 !== i.visible ? i.limit : y))
               : (g =
-                  0 === i.currentSlide &&
+                0 === i.currentSlide &&
                   e === i.count - 1 &&
                   i.vars.animationLoop &&
                   "next" !== i.direction
-                    ? d
-                      ? (i.count + i.cloneOffset) * w
-                      : 0
-                    : i.currentSlide === i.last &&
-                      0 === e &&
-                      i.vars.animationLoop &&
-                      "prev" !== i.direction
+                  ? d
+                    ? (i.count + i.cloneOffset) * w
+                    : 0
+                  : i.currentSlide === i.last &&
+                    0 === e &&
+                    i.vars.animationLoop &&
+                    "prev" !== i.direction
                     ? d
                       ? 0
                       : (i.count + 1) * w
                     : d
-                    ? (i.count - 1 - e + i.cloneOffset) * w
-                    : (e + i.cloneOffset) * w),
+                      ? (i.count - 1 - e + i.cloneOffset) * w
+                      : (e + i.cloneOffset) * w),
               i.setProps(g, "", i.vars.animationSpeed),
               i.transitions
                 ? ((i.vars.animationLoop && i.atEnd) ||
-                    ((i.animating = !1), (i.currentSlide = i.animatingTo)),
+                  ((i.animating = !1), (i.currentSlide = i.animatingTo)),
                   i.container.unbind("webkitTransitionEnd transitionend"),
                   i.container.bind(
                     "webkitTransitionEnd transitionend",
@@ -839,13 +839,13 @@ function initLightbox(t) {
                     i.wrapup(w);
                   }, i.vars.animationSpeed + 100)))
                 : i.container.animate(
-                    i.args,
-                    i.vars.animationSpeed,
-                    i.vars.easing,
-                    function () {
-                      i.wrapup(w);
-                    }
-                  );
+                  i.args,
+                  i.vars.animationSpeed,
+                  i.vars.easing,
+                  function () {
+                    i.wrapup(w);
+                  }
+                );
           }
           i.vars.smoothHeight && m.smoothHeight(i.vars.animationSpeed);
         }
@@ -854,13 +854,13 @@ function initLightbox(t) {
         h ||
           p ||
           (0 === i.currentSlide &&
-          i.animatingTo === i.last &&
-          i.vars.animationLoop
+            i.animatingTo === i.last &&
+            i.vars.animationLoop
             ? i.setProps(t, "jumpEnd")
             : i.currentSlide === i.last &&
-              0 === i.animatingTo &&
-              i.vars.animationLoop &&
-              i.setProps(t, "jumpStart")),
+            0 === i.animatingTo &&
+            i.vars.animationLoop &&
+            i.setProps(t, "jumpStart")),
           (i.animating = !1),
           (i.currentSlide = i.animatingTo),
           i.vars.after(i);
@@ -895,27 +895,27 @@ function initLightbox(t) {
             i.currentItem === i.count - 1 &&
             0 === t &&
             "prev" === i.direction
-          ? !0
-          : f &&
-            0 === i.currentItem &&
-            t === i.pagingCount - 1 &&
-            "next" !== i.direction
-          ? !1
-          : t !== i.currentSlide || f
-          ? i.vars.animationLoop
             ? !0
-            : i.atEnd &&
-              0 === i.currentSlide &&
-              t === n &&
+            : f &&
+              0 === i.currentItem &&
+              t === i.pagingCount - 1 &&
               "next" !== i.direction
-            ? !1
-            : i.atEnd &&
-              i.currentSlide === n &&
-              0 === t &&
-              "next" === i.direction
-            ? !1
-            : !0
-          : !1;
+              ? !1
+              : t !== i.currentSlide || f
+                ? i.vars.animationLoop
+                  ? !0
+                  : i.atEnd &&
+                    0 === i.currentSlide &&
+                    t === n &&
+                    "next" !== i.direction
+                    ? !1
+                    : i.atEnd &&
+                      i.currentSlide === n &&
+                      0 === t &&
+                      "next" === i.direction
+                      ? !1
+                      : !0
+                : !1;
       }),
       (i.getTarget = function (t) {
         return (
@@ -925,27 +925,27 @@ function initLightbox(t) {
               ? 0
               : i.currentSlide + 1
             : 0 === i.currentSlide
-            ? i.last
-            : i.currentSlide - 1
+              ? i.last
+              : i.currentSlide - 1
         );
       }),
       (i.setProps = function (t, e, n) {
         var o = (function () {
           var n = t
-              ? t
-              : (i.itemW + i.vars.itemMargin) * i.move * i.animatingTo,
+            ? t
+            : (i.itemW + i.vars.itemMargin) * i.move * i.animatingTo,
             o = (function () {
               if (p)
                 return "setTouch" === e
                   ? t
                   : d && i.animatingTo === i.last
-                  ? 0
-                  : d
-                  ? i.limit -
-                    (i.itemW + i.vars.itemMargin) * i.move * i.animatingTo
-                  : i.animatingTo === i.last
-                  ? i.limit
-                  : n;
+                    ? 0
+                    : d
+                      ? i.limit -
+                      (i.itemW + i.vars.itemMargin) * i.move * i.animatingTo
+                      : i.animatingTo === i.last
+                        ? i.limit
+                        : n;
               switch (e) {
                 case "setTotal":
                   return d
@@ -967,9 +967,9 @@ function initLightbox(t) {
           ((o = c
             ? "translate3d(0," + o + ",0)"
             : "translate3d(" + o + ",0,0)"),
-          (n = void 0 !== n ? n / 1e3 + "s" : "0s"),
-          i.container.css("-" + i.pfx + "-transition-duration", n),
-          i.container.css("transition-duration", n)),
+            (n = void 0 !== n ? n / 1e3 + "s" : "0s"),
+            i.container.css("-" + i.pfx + "-transition-duration", n),
+            i.container.css("transition-duration", n)),
           (i.args[i.prop] = o),
           (i.transitions || void 0 === n) && i.container.css(i.args),
           i.container.css("transform", o);
@@ -983,26 +983,26 @@ function initLightbox(t) {
             position: "relative",
           }),
             "init" === e &&
-              (r
-                ? i.slides
-                    .css({
-                      opacity: 0,
-                      display: "block",
-                      webkitTransition:
-                        "opacity " + i.vars.animationSpeed / 1e3 + "s ease",
-                      zIndex: 1,
-                    })
-                    .eq(i.currentSlide)
-                    .css({ opacity: 1, zIndex: 2 })
-                : i.slides
-                    .css({ opacity: 0, display: "block", zIndex: 1 })
-                    .eq(i.currentSlide)
-                    .css({ zIndex: 2 })
-                    .animate(
-                      { opacity: 1 },
-                      i.vars.animationSpeed,
-                      i.vars.easing
-                    )),
+            (r
+              ? i.slides
+                .css({
+                  opacity: 0,
+                  display: "block",
+                  webkitTransition:
+                    "opacity " + i.vars.animationSpeed / 1e3 + "s ease",
+                  zIndex: 1,
+                })
+                .eq(i.currentSlide)
+                .css({ opacity: 1, zIndex: 2 })
+              : i.slides
+                .css({ opacity: 0, display: "block", zIndex: 1 })
+                .eq(i.currentSlide)
+                .css({ zIndex: 2 })
+                .animate(
+                  { opacity: 1 },
+                  i.vars.animationSpeed,
+                  i.vars.easing
+                )),
             i.vars.smoothHeight && m.smoothHeight();
         else {
           var n, o;
@@ -1011,15 +1011,15 @@ function initLightbox(t) {
               .css({ overflow: "hidden", position: "relative" })
               .appendTo(i)
               .append(i.container)),
-            (i.cloneCount = 0),
-            (i.cloneOffset = 0),
-            d &&
+              (i.cloneCount = 0),
+              (i.cloneOffset = 0),
+              d &&
               ((o = t.makeArray(i.slides).reverse()),
-              (i.slides = t(o)),
-              i.container.empty().append(i.slides))),
+                (i.slides = t(o)),
+                i.container.empty().append(i.slides))),
             i.vars.animationLoop &&
-              !p &&
-              ((i.cloneCount = 2),
+            !p &&
+            ((i.cloneCount = 2),
               (i.cloneOffset = 1),
               "init" !== e && i.container.find(".clone").remove(),
               m
@@ -1046,9 +1046,9 @@ function initLightbox(t) {
               : i.currentSlide + i.cloneOffset),
             c && !p
               ? (i.container
-                  .height(200 * (i.count + i.cloneCount) + "%")
-                  .css("position", "absolute")
-                  .width("100%"),
+                .height(200 * (i.count + i.cloneCount) + "%")
+                .css("position", "absolute")
+                .width("100%"),
                 setTimeout(
                   function () {
                     i.newSlides.css({ display: "block" }),
@@ -1096,10 +1096,10 @@ function initLightbox(t) {
                 i.minW > i.w
                   ? (i.w - e * (n - 1)) / n
                   : i.maxW < i.w
-                  ? (i.w - e * (o - 1)) / o
-                  : i.vars.itemWidth > i.w
-                  ? i.w
-                  : i.vars.itemWidth),
+                    ? (i.w - e * (o - 1)) / o
+                    : i.vars.itemWidth > i.w
+                      ? i.w
+                      : i.vars.itemWidth),
               (i.visible = Math.floor(i.w / i.itemW)),
               (i.move =
                 i.vars.move > 0 && i.vars.move < i.visible
@@ -1111,8 +1111,8 @@ function initLightbox(t) {
                 1 === i.pagingCount
                   ? 0
                   : i.vars.itemWidth > i.w
-                  ? i.itemW * (i.count - 1) + e * (i.count - 1)
-                  : (i.itemW + e) * i.count - i.w - e))
+                    ? i.itemW * (i.count - 1) + e * (i.count - 1)
+                    : (i.itemW + e) * i.count - i.w - e))
             : ((i.itemW = i.w),
               (i.pagingCount = i.count),
               (i.last = i.count - 1)),
@@ -1121,20 +1121,20 @@ function initLightbox(t) {
       (i.update = function (t, e) {
         i.doMath(),
           p ||
-            (t < i.currentSlide
-              ? (i.currentSlide += 1)
-              : t <= i.currentSlide && 0 !== t && (i.currentSlide -= 1),
+          (t < i.currentSlide
+            ? (i.currentSlide += 1)
+            : t <= i.currentSlide && 0 !== t && (i.currentSlide -= 1),
             (i.animatingTo = i.currentSlide)),
           i.vars.controlNav &&
-            !i.manualControls &&
-            (("add" === e && !p) || i.pagingCount > i.controlNav.length
-              ? m.controlNav.update("add")
-              : (("remove" === e && !p) ||
-                  i.pagingCount < i.controlNav.length) &&
-                (p &&
-                  i.currentSlide > i.last &&
-                  ((i.currentSlide -= 1), (i.animatingTo -= 1)),
-                m.controlNav.update("remove", i.last))),
+          !i.manualControls &&
+          (("add" === e && !p) || i.pagingCount > i.controlNav.length
+            ? m.controlNav.update("add")
+            : (("remove" === e && !p) ||
+              i.pagingCount < i.controlNav.length) &&
+            (p &&
+              i.currentSlide > i.last &&
+              ((i.currentSlide -= 1), (i.animatingTo -= 1)),
+              m.controlNav.update("remove", i.last))),
           i.vars.directionNav && m.directionNav.update();
       }),
       (i.addSlide = function (e, n) {
@@ -1146,8 +1146,8 @@ function initLightbox(t) {
               ? i.slides.eq(i.count - n).after(o)
               : i.container.prepend(o)
             : void 0 !== n
-            ? i.slides.eq(n).before(o)
-            : i.container.append(o),
+              ? i.slides.eq(n).before(o)
+              : i.container.append(o),
           i.update(n, "add"),
           (i.slides = t(i.vars.selector + ":not(.clone)", i)),
           i.setup(),
@@ -1160,8 +1160,8 @@ function initLightbox(t) {
           isNaN(e)
             ? t(e, i.slides).remove()
             : c && d
-            ? i.slides.eq(i.last).remove()
-            : i.slides.eq(e).remove(),
+              ? i.slides.eq(i.last).remove()
+              : i.slides.eq(e).remove(),
           i.doMath(),
           i.update(n, "remove"),
           (i.slides = t(i.vars.selector + ":not(.clone)", i)),
@@ -1219,13 +1219,13 @@ function initLightbox(t) {
       maxItems: 0,
       move: 0,
       allowOneSlide: !0,
-      start: function () {},
-      before: function () {},
-      after: function () {},
-      end: function () {},
-      added: function () {},
-      removed: function () {},
-      init: function () {},
+      start: function () { },
+      before: function () { },
+      after: function () { },
+      end: function () { },
+      added: function () { },
+      removed: function () { },
+      init: function () { },
     }),
     (t.fn.flexslider = function (e) {
       if ((void 0 === e && (e = {}), "object" == typeof e))
@@ -1261,7 +1261,7 @@ function initLightbox(t) {
     });
 })(jQuery),
   !(function () {
-    function t() {}
+    function t() { }
     function e(t) {
       return s.retinaImageSuffix + t;
     }
@@ -1305,7 +1305,7 @@ function initLightbox(t) {
       }),
       (t.init = function (t) {
         null === t && (t = o);
-        var e = t.onload || function () {};
+        var e = t.onload || function () { };
         t.onload = function () {
           var t,
             n,
@@ -1323,8 +1323,8 @@ function initLightbox(t) {
         return o.devicePixelRatio > 1
           ? !0
           : o.matchMedia && o.matchMedia(t).matches
-          ? !0
-          : !1;
+            ? !0
+            : !1;
       });
     var a = /\.\w+$/;
     (o.RetinaImagePath = n),
@@ -1343,30 +1343,30 @@ function initLightbox(t) {
           : this.perform_check ||
             "undefined" == typeof this.at_2x_path ||
             null === this.at_2x_path
-          ? this.at_2x_path in n.confirmed_paths
-            ? t(!0)
-            : ((e = new XMLHttpRequest()),
-              e.open("HEAD", this.at_2x_path),
-              (e.onreadystatechange = function () {
-                if (4 !== e.readyState) return t(!1);
-                if (e.status >= 200 && e.status <= 399) {
-                  if (s.check_mime_type) {
-                    var o = e.getResponseHeader("Content-Type");
-                    if (null === o || !o.match(/^image/i)) return t(!1);
+            ? this.at_2x_path in n.confirmed_paths
+              ? t(!0)
+              : ((e = new XMLHttpRequest()),
+                e.open("HEAD", this.at_2x_path),
+                (e.onreadystatechange = function () {
+                  if (4 !== e.readyState) return t(!1);
+                  if (e.status >= 200 && e.status <= 399) {
+                    if (s.check_mime_type) {
+                      var o = e.getResponseHeader("Content-Type");
+                      if (null === o || !o.match(/^image/i)) return t(!1);
+                    }
+                    return n.confirmed_paths.push(i.at_2x_path), t(!0);
                   }
-                  return n.confirmed_paths.push(i.at_2x_path), t(!0);
-                }
-                return t(!1);
-              }),
-              void e.send())
-          : t(!0);
+                  return t(!1);
+                }),
+                void e.send())
+            : t(!0);
       }),
       (o.RetinaImage = i),
       (i.prototype.swap = function (t) {
         function e() {
           n.el.complete
             ? (s.force_original_dimensions &&
-                (n.el.setAttribute("width", n.el.offsetWidth),
+              (n.el.setAttribute("width", n.el.offsetWidth),
                 n.el.setAttribute("height", n.el.offsetHeight)),
               n.el.setAttribute("src", t))
             : setTimeout(e, 5);
@@ -1437,28 +1437,28 @@ function initLightbox(t) {
     (L =
       s(k, "undefined") || s(k.call, "undefined")
         ? function (t, e) {
-            return e in t && s(t.constructor.prototype[e], "undefined");
-          }
+          return e in t && s(t.constructor.prototype[e], "undefined");
+        }
         : function (t, e) {
-            return k.call(t, e);
-          }),
-      Function.prototype.bind ||
-        (Function.prototype.bind = function (t) {
-          var e = this;
-          if ("function" != typeof e) throw new TypeError();
-          var n = M.call(arguments, 1),
-            i = function () {
-              if (this instanceof i) {
-                var o = function () {};
-                o.prototype = e.prototype;
-                var s = new o(),
-                  a = e.apply(s, n.concat(M.call(arguments)));
-                return Object(a) === a ? a : s;
-              }
-              return e.apply(t, n.concat(M.call(arguments)));
-            };
-          return i;
+          return k.call(t, e);
         }),
+      Function.prototype.bind ||
+      (Function.prototype.bind = function (t) {
+        var e = this;
+        if ("function" != typeof e) throw new TypeError();
+        var n = M.call(arguments, 1),
+          i = function () {
+            if (this instanceof i) {
+              var o = function () { };
+              o.prototype = e.prototype;
+              var s = new o(),
+                a = e.apply(s, n.concat(M.call(arguments)));
+              return Object(a) === a ? a : s;
+            }
+            return e.apply(t, n.concat(M.call(arguments)));
+          };
+        return i;
+      }),
       (I.cssgradients = function () {
         var t = "background-image:",
           e = "gradient(linear,left top,right bottom,from(#9f9),to(white));",
@@ -1500,8 +1500,8 @@ function initLightbox(t) {
     for (var E in I)
       L(I, E) &&
         ((_ = E.toLowerCase()),
-        (d[_] = I[E]()),
-        A.push((d[_] ? "" : "no-") + _));
+          (d[_] = I[E]()),
+          A.push((d[_] ? "" : "no-") + _));
     return (
       (d.addTest = function (t, e) {
         if ("object" == typeof t)
@@ -1510,8 +1510,8 @@ function initLightbox(t) {
           if (((t = t.toLowerCase()), d[t] !== n)) return d;
           (e = "function" == typeof e ? e() : e),
             "undefined" != typeof p &&
-              p &&
-              (h.className += " " + (e ? "" : "no-") + t),
+            p &&
+            (h.className += " " + (e ? "" : "no-") + t),
             (d[t] = e);
         }
         return d;
@@ -1543,8 +1543,8 @@ function initLightbox(t) {
             (s = i.cache[t]
               ? i.cache[t].cloneNode()
               : p.test(t)
-              ? (i.cache[t] = i.createElem(t)).cloneNode()
-              : i.createElem(t)),
+                ? (i.cache[t] = i.createElem(t)).cloneNode()
+                : i.createElem(t)),
             !s.canHaveChildren || d.test(t) || s.tagUrn
               ? s
               : i.frag.appendChild(s)
@@ -1564,23 +1564,23 @@ function initLightbox(t) {
         function r(t, e) {
           e.cache ||
             ((e.cache = {}),
-            (e.createElem = t.createElement),
-            (e.createFrag = t.createDocumentFragment),
-            (e.frag = e.createFrag())),
+              (e.createElem = t.createElement),
+              (e.createFrag = t.createDocumentFragment),
+              (e.frag = e.createFrag())),
             (t.createElement = function (n) {
               return y.shivMethods ? s(n, t, e) : e.createElem(n);
             }),
             (t.createDocumentFragment = Function(
               "h,f",
               "return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(" +
-                i()
-                  .join()
-                  .replace(/[\w\-]+/g, function (t) {
-                    return (
-                      e.createElem(t), e.frag.createElement(t), 'c("' + t + '")'
-                    );
-                  }) +
-                ");return n}"
+              i()
+                .join()
+                .replace(/[\w\-]+/g, function (t) {
+                  return (
+                    e.createElem(t), e.frag.createElement(t), 'c("' + t + '")'
+                  );
+                }) +
+              ");return n}"
             )(y, e.frag));
         }
         function l(t) {
@@ -1588,12 +1588,12 @@ function initLightbox(t) {
           var i = o(t);
           return (
             y.shivCSS &&
-              !h &&
-              !i.hasCSS &&
-              (i.hasCSS = !!n(
-                t,
-                "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}"
-              )),
+            !h &&
+            !i.hasCSS &&
+            (i.hasCSS = !!n(
+              t,
+              "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}"
+            )),
             g || r(t, i),
             t
           );
@@ -1665,7 +1665,7 @@ function initLightbox(t) {
     function o(t) {
       return "string" == typeof t;
     }
-    function s() {}
+    function s() { }
     function a(t) {
       return !t || "loaded" == t || "complete" == t || "uninitialized" == t;
     }
@@ -1675,10 +1675,10 @@ function initLightbox(t) {
         t
           ? t.t
             ? p(function () {
-                ("c" == t.t
-                  ? A.injectCss
-                  : A.injectJs)(t.s, 0, t.a, t.x, t.e, 1);
-              }, 0)
+              ("c" == t.t
+                ? A.injectCss
+                : A.injectJs)(t.s, 0, t.a, t.x, t.e, 1);
+            }, 0)
             : (t(), r())
           : (v = 0);
     }
@@ -1688,9 +1688,9 @@ function initLightbox(t) {
           !f &&
           a(d.readyState) &&
           ((b.r = f = 1),
-          !v && r(),
-          (d.onload = d.onreadystatechange = null),
-          e)
+            !v && r(),
+            (d.onload = d.onreadystatechange = null),
+            e)
         ) {
           "img" != t &&
             p(function () {
@@ -1710,14 +1710,14 @@ function initLightbox(t) {
         (d.onerror =
           d.onload =
           d.onreadystatechange =
-            function () {
-              c.call(this, g);
-            }),
+          function () {
+            c.call(this, g);
+          }),
         m.splice(o, 0, b),
         "img" != t &&
-          (g || 2 === I[n]
-            ? (w.insertBefore(d, y ? null : h), p(c, u))
-            : I[n].push(d));
+        (g || 2 === I[n]
+          ? (w.insertBefore(d, y ? null : h), p(c, u))
+          : I[n].push(d));
     }
     function u(t, e, n, i, s) {
       return (
@@ -1780,10 +1780,10 @@ function initLightbox(t) {
           u = l.autoCallback;
         l.url.split(".").pop().split("?").shift(),
           l.bypass ||
-            (o &&
-              (o = i(o)
-                ? o
-                : o[t] || o[a] || o[t.split("/").pop().split("?")[0]]),
+          (o &&
+            (o = i(o)
+              ? o
+              : o[t] || o[a] || o[t.split("/").pop().split("?")[0]]),
             l.instead
               ? l.instead(t, o, s, a, r)
               : (I[l.url] ? (l.noexec = !0) : (I[l.url] = 1),
@@ -1799,12 +1799,12 @@ function initLightbox(t) {
                   l.timeout
                 ),
                 (i(o) || i(u)) &&
-                  s.load(function () {
-                    c(),
-                      o && o(l.origUrl, r, a),
-                      u && u(l.origUrl, r, a),
-                      (I[l.url] = 2);
-                  })));
+                s.load(function () {
+                  c(),
+                    o && o(l.origUrl, r, a),
+                    u && u(l.origUrl, r, a),
+                    (I[l.url] = 2);
+                })));
       }
       function r(t, e) {
         function n(t, n) {
@@ -1823,22 +1823,22 @@ function initLightbox(t) {
                 for (n in t) t.hasOwnProperty(n) && e++;
                 return e;
               })()),
-              t))
+                t))
                 t.hasOwnProperty(h) &&
                   (!n &&
                     !--p &&
                     (i(u)
                       ? (u = function () {
-                          var t = [].slice.call(arguments);
-                          c.apply(this, t), d();
-                        })
+                        var t = [].slice.call(arguments);
+                        c.apply(this, t), d();
+                      })
                       : (u[h] = (function (t) {
-                          return function () {
-                            var e = [].slice.call(arguments);
-                            t && t.apply(this, e), d();
-                          };
-                        })(c[h]))),
-                  a(t[h], u, e, h, r));
+                        return function () {
+                          var e = [].slice.call(arguments);
+                          t && t.apply(this, e), d();
+                        };
+                      })(c[h]))),
+                    a(t[h], u, e, h, r));
           } else !n && d();
         }
         var r = !!t.test,
@@ -1868,8 +1868,8 @@ function initLightbox(t) {
       }),
       (A.errorTimeout = 1e4),
       null == e.readyState &&
-        e.addEventListener &&
-        ((e.readyState = "loading"),
+      e.addEventListener &&
+      ((e.readyState = "loading"),
         e.addEventListener(
           "DOMContentLoaded",
           (T = function () {
@@ -1928,7 +1928,7 @@ function initLightbox(t) {
           return -1;
         };
     (e = (function () {
-      function t() {}
+      function t() { }
       return (
         (t.prototype.extend = function (t, e) {
           var n, i;
@@ -1977,7 +1977,7 @@ function initLightbox(t) {
               );
           }
           return (
-            (t.notSupported = !0), (t.prototype.observe = function () {}), t
+            (t.notSupported = !0), (t.prototype.observe = function () { }), t
           );
         })())),
       (this.WOW = (function () {
@@ -2012,26 +2012,26 @@ function initLightbox(t) {
             var e, n, i, o;
             if (
               ((this.stopped = !1),
-              (this.boxes = function () {
-                var t, n, i, o;
-                for (
-                  i = this.element.getElementsByClassName(this.config.boxClass),
+                (this.boxes = function () {
+                  var t, n, i, o;
+                  for (
+                    i = this.element.getElementsByClassName(this.config.boxClass),
                     o = [],
                     t = 0,
                     n = i.length;
-                  n > t;
-                  t++
-                )
-                  (e = i[t]), o.push(e);
-                return o;
-              }.call(this)),
-              (this.all = function () {
-                var t, n, i, o;
-                for (i = this.boxes, o = [], t = 0, n = i.length; n > t; t++)
-                  (e = i[t]), o.push(e);
-                return o;
-              }.call(this)),
-              this.boxes.length)
+                    n > t;
+                    t++
+                  )
+                    (e = i[t]), o.push(e);
+                  return o;
+                }.call(this)),
+                (this.all = function () {
+                  var t, n, i, o;
+                  for (i = this.boxes, o = [], t = 0, n = i.length; n > t; t++)
+                    (e = i[t]), o.push(e);
+                  return o;
+                }.call(this)),
+                this.boxes.length)
             )
               if (this.disabled()) this.resetStyle();
               else {
@@ -2043,30 +2043,30 @@ function initLightbox(t) {
               }
             return this.config.live
               ? new t(
-                  (function (t) {
-                    return function (e) {
-                      var n, i, o, s, a;
-                      for (a = [], o = 0, s = e.length; s > o; o++)
-                        (i = e[o]),
-                          a.push(
-                            function () {
-                              var t, e, o, s;
-                              for (
-                                o = i.addedNodes || [],
-                                  s = [],
-                                  t = 0,
-                                  e = o.length;
-                                e > t;
-                                t++
-                              )
-                                (n = o[t]), s.push(this.doSync(n));
-                              return s;
-                            }.call(t)
-                          );
-                      return a;
-                    };
-                  })(this)
-                ).observe(document.body, { childList: !0, subtree: !0 })
+                (function (t) {
+                  return function (e) {
+                    var n, i, o, s, a;
+                    for (a = [], o = 0, s = e.length; s > o; o++)
+                      (i = e[o]),
+                        a.push(
+                          function () {
+                            var t, e, o, s;
+                            for (
+                              o = i.addedNodes || [],
+                              s = [],
+                              t = 0,
+                              e = o.length;
+                              e > t;
+                              t++
+                            )
+                              (n = o[t]), s.push(this.doSync(n));
+                            return s;
+                          }.call(t)
+                        );
+                    return a;
+                  };
+                })(this)
+              ).observe(document.body, { childList: !0, subtree: !0 })
               : void 0;
           }),
           (s.prototype.stop = function () {
@@ -2086,10 +2086,10 @@ function initLightbox(t) {
               if ((null == t && (t = this.element), 1 !== t.nodeType)) return;
               for (
                 t = t.parentNode || t,
-                  s = t.getElementsByClassName(this.config.boxClass),
-                  a = [],
-                  n = 0,
-                  i = s.length;
+                s = t.getElementsByClassName(this.config.boxClass),
+                a = [],
+                n = 0,
+                i = s.length;
                 i > n;
                 n++
               )
@@ -2127,11 +2127,11 @@ function initLightbox(t) {
           (s.prototype.animate = (function () {
             return "requestAnimationFrame" in window
               ? function (t) {
-                  return window.requestAnimationFrame(t);
-                }
+                return window.requestAnimationFrame(t);
+              }
               : function (t) {
-                  return t();
-                };
+                return t();
+              };
           })()),
           (s.prototype.resetStyle = function () {
             var t, e, n, i, o;
@@ -2182,10 +2182,10 @@ function initLightbox(t) {
             var n, i, o, s, a, r;
             for (
               i = window.getComputedStyle(t),
-                n = i.getPropertyCSSValue(e),
-                r = this.vendors,
-                s = 0,
-                a = r.length;
+              n = i.getPropertyCSSValue(e),
+              r = this.vendors,
+              s = 0,
+              a = r.length;
               a > s;
               s++
             )
@@ -2214,20 +2214,20 @@ function initLightbox(t) {
             var t;
             return !this.scrolled ||
               ((this.scrolled = !1),
-              (this.boxes = function () {
-                var e, n, i, o;
-                for (i = this.boxes, o = [], e = 0, n = i.length; n > e; e++)
-                  (t = i[e]),
-                    t && (this.isVisible(t) ? this.show(t) : o.push(t));
-                return o;
-              }.call(this)),
-              this.boxes.length || this.config.live)
+                (this.boxes = function () {
+                  var e, n, i, o;
+                  for (i = this.boxes, o = [], e = 0, n = i.length; n > e; e++)
+                    (t = i[e]),
+                      t && (this.isVisible(t) ? this.show(t) : o.push(t));
+                  return o;
+                }.call(this)),
+                this.boxes.length || this.config.live)
               ? void 0
               : this.stop();
           }),
           (s.prototype.offsetTop = function (t) {
-            for (var e; void 0 === t.offsetTop; ) t = t.parentNode;
-            for (e = t.offsetTop; (t = t.offsetParent); ) e += t.offsetTop;
+            for (var e; void 0 === t.offsetTop;) t = t.parentNode;
+            for (e = t.offsetTop; (t = t.offsetParent);) e += t.offsetTop;
             return e;
           }),
           (s.prototype.isVisible = function (t) {
@@ -2254,10 +2254,10 @@ function initLightbox(t) {
       })());
   }.call(this),
   "function" != typeof Object.create &&
-    (Object.create = function (t) {
-      function e() {}
-      return (e.prototype = t), new e();
-    }),
+  (Object.create = function (t) {
+    function e() { }
+    return (e.prototype = t), new e();
+  }),
   (function (t, e, n) {
     var i = {
       init: function (e, n) {
@@ -2328,7 +2328,7 @@ function initLightbox(t) {
           this.stopOnHover(),
           this.owlStatus(),
           !1 !== this.options.transitionStyle &&
-            this.transitionTypes(this.options.transitionStyle),
+          this.transitionTypes(this.options.transitionStyle),
           !0 === this.options.autoPlay && (this.options.autoPlay = 5e3),
           this.play(),
           this.$elem.find(".owl-wrapper").css("display", "block"),
@@ -2338,14 +2338,14 @@ function initLightbox(t) {
           (this.onstartup = !1),
           this.eachMoveUpdate(),
           "function" == typeof this.options.afterInit &&
-            this.options.afterInit.apply(this, [this.$elem]);
+          this.options.afterInit.apply(this, [this.$elem]);
       },
       eachMoveUpdate: function () {
         !0 === this.options.lazyLoad && this.lazyLoad(),
           !0 === this.options.autoHeight && this.autoHeight(),
           this.onVisibleItems(),
           "function" == typeof this.options.afterAction &&
-            this.options.afterAction.apply(this, [this.$elem]);
+          this.options.afterAction.apply(this, [this.$elem]);
       },
       updateVars: function () {
         "function" == typeof this.options.beforeUpdate &&
@@ -2357,7 +2357,7 @@ function initLightbox(t) {
           this.updateControls(),
           this.eachMoveUpdate(),
           "function" == typeof this.options.afterUpdate &&
-            this.options.afterUpdate.apply(this, [this.$elem]);
+          this.options.afterUpdate.apply(this, [this.$elem]);
       },
       reload: function () {
         var t = this;
@@ -2375,8 +2375,8 @@ function initLightbox(t) {
             void (t.checkVisible = e.setInterval(function () {
               t.$elem.is(":visible") &&
                 (t.reload(),
-                t.$elem.animate({ opacity: 1 }, 200),
-                e.clearInterval(t.checkVisible));
+                  t.$elem.animate({ opacity: 1 }, 200),
+                  e.clearInterval(t.checkVisible));
             }, 500)));
       },
       wrapItems: function () {
@@ -2410,15 +2410,15 @@ function initLightbox(t) {
           );
         if (
           ((e = t(this.options.responsiveBaseWidth).width()),
-          e > (this.options.itemsDesktop[0] || this.orignalItems) &&
+            e > (this.options.itemsDesktop[0] || this.orignalItems) &&
             (this.options.items = this.orignalItems),
-          !1 !== this.options.itemsCustom)
+            !1 !== this.options.itemsCustom)
         )
           for (
             this.options.itemsCustom.sort(function (t, e) {
               return t[0] - e[0];
             }),
-              n = 0;
+            n = 0;
             n < this.options.itemsCustom.length;
             n += 1
           )
@@ -2429,17 +2429,17 @@ function initLightbox(t) {
             !1 !== this.options.itemsDesktop &&
             (this.options.items = this.options.itemsDesktop[1]),
             e <= this.options.itemsDesktopSmall[0] &&
-              !1 !== this.options.itemsDesktopSmall &&
-              (this.options.items = this.options.itemsDesktopSmall[1]),
+            !1 !== this.options.itemsDesktopSmall &&
+            (this.options.items = this.options.itemsDesktopSmall[1]),
             e <= this.options.itemsTablet[0] &&
-              !1 !== this.options.itemsTablet &&
-              (this.options.items = this.options.itemsTablet[1]),
+            !1 !== this.options.itemsTablet &&
+            (this.options.items = this.options.itemsTablet[1]),
             e <= this.options.itemsTabletSmall[0] &&
-              !1 !== this.options.itemsTabletSmall &&
-              (this.options.items = this.options.itemsTabletSmall[1]),
+            !1 !== this.options.itemsTabletSmall &&
+            (this.options.items = this.options.itemsTabletSmall[1]),
             e <= this.options.itemsMobile[0] &&
-              !1 !== this.options.itemsMobile &&
-              (this.options.items = this.options.itemsMobile[1]);
+            !1 !== this.options.itemsMobile &&
+            (this.options.items = this.options.itemsMobile[1]);
         this.options.items > this.itemsAmount &&
           !0 === this.options.itemsScaleUp &&
           (this.options.items = this.itemsAmount);
@@ -2455,10 +2455,10 @@ function initLightbox(t) {
               t(e).width() !== o &&
                 (!1 !== n.options.autoPlay &&
                   e.clearInterval(n.autoPlayInterval),
-                e.clearTimeout(i),
-                (i = e.setTimeout(function () {
-                  (o = t(e).width()), n.updateVars();
-                }, n.options.responsiveRefreshRate)));
+                  e.clearTimeout(i),
+                  (i = e.setTimeout(function () {
+                    (o = t(e).width()), n.updateVars();
+                  }, n.options.responsiveRefreshRate)));
             }),
             void t(e).resize(n.resizer));
       },
@@ -2522,10 +2522,10 @@ function initLightbox(t) {
           (n += this.itemWidth),
             this.positionsInArray.push(-n),
             !0 === this.options.scrollPerPage &&
-              ((o = t(this.$owlItems[i])),
+            ((o = t(this.$owlItems[i])),
               (o = o.data("owl-roundPages")),
               o !== e &&
-                ((this.pagesInArray[e] = this.positionsInArray[i]), (e = o)));
+              ((this.pagesInArray[e] = this.positionsInArray[i]), (e = o)));
       },
       buildControls: function () {
         (!0 === this.options.navigation || !0 === this.options.pagination) &&
@@ -2574,7 +2574,7 @@ function initLightbox(t) {
             function (n) {
               n.preventDefault(),
                 Number(t(this).data("owl-page")) !== e.currentItem &&
-                  e.goTo(Number(t(this).data("owl-page")), !0);
+                e.goTo(Number(t(this).data("owl-page")), !0);
             }
           );
       },
@@ -2583,24 +2583,24 @@ function initLightbox(t) {
         if (!1 === this.options.pagination) return !1;
         for (
           this.paginationWrapper.html(""),
-            e = 0,
-            n = this.itemsAmount - (this.itemsAmount % this.options.items),
-            o = 0;
+          e = 0,
+          n = this.itemsAmount - (this.itemsAmount % this.options.items),
+          o = 0;
           o < this.itemsAmount;
           o += 1
         )
           0 === o % this.options.items &&
             ((e += 1),
-            n === o && (i = this.itemsAmount - this.options.items),
-            (s = t("<div/>", { class: "owl-page" })),
-            (a = t("<span></span>", {
-              text: !0 === this.options.paginationNumbers ? e : "",
-              class: !0 === this.options.paginationNumbers ? "owl-numbers" : "",
-            })),
-            s.append(a),
-            s.data("owl-page", n === o ? i : o),
-            s.data("owl-roundPages", e),
-            this.paginationWrapper.append(s));
+              n === o && (i = this.itemsAmount - this.options.items),
+              (s = t("<div/>", { class: "owl-page" })),
+              (a = t("<span></span>", {
+                text: !0 === this.options.paginationNumbers ? e : "",
+                class: !0 === this.options.paginationNumbers ? "owl-numbers" : "",
+              })),
+              s.append(a),
+              s.data("owl-page", n === o ? i : o),
+              s.data("owl-roundPages", e),
+              this.paginationWrapper.append(s));
         this.checkPagination();
       },
       checkPagination: function () {
@@ -2608,39 +2608,39 @@ function initLightbox(t) {
         return !1 === e.options.pagination
           ? !1
           : void e.paginationWrapper.find(".owl-page").each(function () {
-              t(this).data("owl-roundPages") ===
-                t(e.$owlItems[e.currentItem]).data("owl-roundPages") &&
-                (e.paginationWrapper.find(".owl-page").removeClass("active"),
+            t(this).data("owl-roundPages") ===
+              t(e.$owlItems[e.currentItem]).data("owl-roundPages") &&
+              (e.paginationWrapper.find(".owl-page").removeClass("active"),
                 t(this).addClass("active"));
-            });
+          });
       },
       checkNavigation: function () {
         return !1 === this.options.navigation
           ? !1
           : void (
-              !1 === this.options.rewindNav &&
-              (0 === this.currentItem && 0 === this.maximumItem
-                ? (this.buttonPrev.addClass("disabled"),
-                  this.buttonNext.addClass("disabled"))
-                : 0 === this.currentItem && 0 !== this.maximumItem
+            !1 === this.options.rewindNav &&
+            (0 === this.currentItem && 0 === this.maximumItem
+              ? (this.buttonPrev.addClass("disabled"),
+                this.buttonNext.addClass("disabled"))
+              : 0 === this.currentItem && 0 !== this.maximumItem
                 ? (this.buttonPrev.addClass("disabled"),
                   this.buttonNext.removeClass("disabled"))
                 : this.currentItem === this.maximumItem
-                ? (this.buttonPrev.removeClass("disabled"),
-                  this.buttonNext.addClass("disabled"))
-                : 0 !== this.currentItem &&
+                  ? (this.buttonPrev.removeClass("disabled"),
+                    this.buttonNext.addClass("disabled"))
+                  : 0 !== this.currentItem &&
                   this.currentItem !== this.maximumItem &&
                   (this.buttonPrev.removeClass("disabled"),
-                  this.buttonNext.removeClass("disabled")))
-            );
+                    this.buttonNext.removeClass("disabled")))
+          );
       },
       updateControls: function () {
         this.updatePagination(),
           this.checkNavigation(),
           this.owlControls &&
-            (this.options.items >= this.itemsAmount
-              ? this.owlControls.hide()
-              : this.owlControls.show());
+          (this.options.items >= this.itemsAmount
+            ? this.owlControls.hide()
+            : this.owlControls.show());
       },
       destroyControls: function () {
         this.owlControls && this.owlControls.remove();
@@ -2650,9 +2650,9 @@ function initLightbox(t) {
         if (
           ((this.currentItem +=
             !0 === this.options.scrollPerPage ? this.options.items : 1),
-          this.currentItem >
+            this.currentItem >
             this.maximumItem +
-              (!0 === this.options.scrollPerPage ? this.options.items - 1 : 0))
+            (!0 === this.options.scrollPerPage ? this.options.items - 1 : 0))
         ) {
           if (!0 !== this.options.rewindNav)
             return (this.currentItem = this.maximumItem), !1;
@@ -2665,12 +2665,12 @@ function initLightbox(t) {
         if (
           ((this.currentItem =
             !0 === this.options.scrollPerPage &&
-            0 < this.currentItem &&
-            this.currentItem < this.options.items
+              0 < this.currentItem &&
+              this.currentItem < this.options.items
               ? 0
               : this.currentItem -
-                (!0 === this.options.scrollPerPage ? this.options.items : 1)),
-          0 > this.currentItem)
+              (!0 === this.options.scrollPerPage ? this.options.items : 1)),
+            0 > this.currentItem)
         ) {
           if (!0 !== this.options.rewindNav) return (this.currentItem = 0), !1;
           (this.currentItem = this.maximumItem), (t = "rewind");
@@ -2682,13 +2682,13 @@ function initLightbox(t) {
         return o.isTransition
           ? !1
           : ("function" == typeof o.options.beforeMove &&
-              o.options.beforeMove.apply(this, [o.$elem]),
+            o.options.beforeMove.apply(this, [o.$elem]),
             t >= o.maximumItem ? (t = o.maximumItem) : 0 >= t && (t = 0),
             (o.currentItem = o.owl.currentItem = t),
             !1 !== o.options.transitionStyle &&
-            "drag" !== i &&
-            1 === o.options.items &&
-            !0 === o.browser.support3d
+              "drag" !== i &&
+              1 === o.options.items &&
+              !0 === o.browser.support3d
               ? (o.swapSpeed(0),
                 !0 === o.browser.support3d
                   ? o.transition3d(o.positionsInArray[t])
@@ -2705,20 +2705,20 @@ function initLightbox(t) {
                           o.isCss3Finish = !0;
                         }, o.options.paginationSpeed))
                       : "rewind" === n
-                      ? (o.swapSpeed(o.options.rewindSpeed),
-                        e.setTimeout(function () {
-                          o.isCss3Finish = !0;
-                        }, o.options.rewindSpeed))
-                      : (o.swapSpeed("slideSpeed"),
-                        e.setTimeout(function () {
-                          o.isCss3Finish = !0;
-                        }, o.options.slideSpeed)),
+                        ? (o.swapSpeed(o.options.rewindSpeed),
+                          e.setTimeout(function () {
+                            o.isCss3Finish = !0;
+                          }, o.options.rewindSpeed))
+                        : (o.swapSpeed("slideSpeed"),
+                          e.setTimeout(function () {
+                            o.isCss3Finish = !0;
+                          }, o.options.slideSpeed)),
                     o.transition3d(t))
                   : !0 === n
-                  ? o.css2slide(t, o.options.paginationSpeed)
-                  : "rewind" === n
-                  ? o.css2slide(t, o.options.rewindSpeed)
-                  : o.css2slide(t, o.options.slideSpeed),
+                    ? o.css2slide(t, o.options.paginationSpeed)
+                    : "rewind" === n
+                      ? o.css2slide(t, o.options.rewindSpeed)
+                      : o.css2slide(t, o.options.slideSpeed),
                 void o.afterGo()));
       },
       jumpTo: function (t) {
@@ -2740,13 +2740,13 @@ function initLightbox(t) {
             this.prevArr[this.prevArr.length - 2]),
           this.prevArr.shift(0),
           this.prevItem !== this.currentItem &&
-            (this.checkPagination(),
+          (this.checkPagination(),
             this.checkNavigation(),
             this.eachMoveUpdate(),
             !1 !== this.options.autoPlay && this.checkAp()),
           "function" == typeof this.options.afterMove &&
-            this.prevItem !== this.currentItem &&
-            this.options.afterMove.apply(this, [this.$elem]);
+          this.prevItem !== this.currentItem &&
+          this.options.afterMove.apply(this, [this.$elem]);
       },
       stop: function () {
         (this.apStatus = "stop"), e.clearInterval(this.autoPlayInterval);
@@ -2770,8 +2770,8 @@ function initLightbox(t) {
         "slideSpeed" === t
           ? this.$owlWrapper.css(this.addCssSpeed(this.options.slideSpeed))
           : "paginationSpeed" === t
-          ? this.$owlWrapper.css(this.addCssSpeed(this.options.paginationSpeed))
-          : "string" != typeof t && this.$owlWrapper.css(this.addCssSpeed(t));
+            ? this.$owlWrapper.css(this.addCssSpeed(this.options.paginationSpeed))
+            : "string" != typeof t && this.$owlWrapper.css(this.addCssSpeed(t));
       },
       addCssSpeed: function (t) {
         return {
@@ -2836,17 +2836,17 @@ function initLightbox(t) {
         (this.ev_types = {}),
           !0 === this.options.mouseDrag && !0 === this.options.touchDrag
             ? (t = [
-                "touchstart.owl mousedown.owl",
-                "touchmove.owl mousemove.owl",
-                "touchend.owl touchcancel.owl mouseup.owl",
-              ])
+              "touchstart.owl mousedown.owl",
+              "touchmove.owl mousemove.owl",
+              "touchend.owl touchcancel.owl mouseup.owl",
+            ])
             : !1 === this.options.mouseDrag && !0 === this.options.touchDrag
-            ? (t = [
+              ? (t = [
                 "touchstart.owl",
                 "touchmove.owl",
                 "touchend.owl touchcancel.owl",
               ])
-            : !0 === this.options.mouseDrag &&
+              : !0 === this.options.mouseDrag &&
               !1 === this.options.touchDrag &&
               (t = ["mousedown.owl", "mousemove.owl", "mouseup.owl"]),
           (this.ev_types.start = t[0]),
@@ -2874,7 +2874,7 @@ function initLightbox(t) {
           "on" === e
             ? (t(n).on(r.ev_types.move, s), t(n).on(r.ev_types.end, a))
             : "off" === e &&
-              (t(n).off(r.ev_types.move), t(n).off(r.ev_types.end));
+            (t(n).off(r.ev_types.move), t(n).off(r.ev_types.end));
         }
         function s(o) {
           (o = o.originalEvent || o || e.event),
@@ -2882,18 +2882,18 @@ function initLightbox(t) {
             (r.newPosY = i(o).y - l.offsetY),
             (r.newRelativeX = r.newPosX - l.relativePos),
             "function" == typeof r.options.startDragging &&
-              !0 !== l.dragging &&
-              0 !== r.newRelativeX &&
-              ((l.dragging = !0), r.options.startDragging.apply(r, [r.$elem])),
+            !0 !== l.dragging &&
+            0 !== r.newRelativeX &&
+            ((l.dragging = !0), r.options.startDragging.apply(r, [r.$elem])),
             (8 < r.newRelativeX || -8 > r.newRelativeX) &&
-              !0 === r.browser.isTouch &&
-              (void 0 !== o.preventDefault
-                ? o.preventDefault()
-                : (o.returnValue = !1),
+            !0 === r.browser.isTouch &&
+            (void 0 !== o.preventDefault
+              ? o.preventDefault()
+              : (o.returnValue = !1),
               (l.sliding = !0)),
             (10 < r.newPosY || -10 > r.newPosY) &&
-              !1 === l.sliding &&
-              t(n).off("touchmove.owl"),
+            !1 === l.sliding &&
+            t(n).off("touchmove.owl"),
             (r.newPosX = Math.max(
               Math.min(r.newPosX, r.newRelativeX / 5),
               r.maximumPixels + r.newRelativeX / 5
@@ -2911,16 +2911,16 @@ function initLightbox(t) {
             (r.dragDirection = r.owl.dragDirection =
               0 > r.newRelativeX ? "left" : "right"),
             0 !== r.newRelativeX &&
-              ((i = r.getNewPosition()),
+            ((i = r.getNewPosition()),
               r.goTo(i, !1, "drag"),
               l.targetElement === n.target &&
-                !0 !== r.browser.isTouch &&
-                (t(n.target).on("click.disable", function (e) {
-                  e.stopImmediatePropagation(),
-                    e.stopPropagation(),
-                    e.preventDefault(),
-                    t(e.target).off("click.disable");
-                }),
+              !0 !== r.browser.isTouch &&
+              (t(n.target).on("click.disable", function (e) {
+                e.stopImmediatePropagation(),
+                  e.stopPropagation(),
+                  e.preventDefault(),
+                  t(e.target).off("click.disable");
+              }),
                 (n = t._data(n.target, "events").click),
                 (i = n.pop()),
                 n.splice(0, 0, i))),
@@ -2952,8 +2952,8 @@ function initLightbox(t) {
                 return !1;
               !1 !== r.options.autoPlay && e.clearInterval(r.autoPlayInterval),
                 !0 === r.browser.isTouch ||
-                  r.$owlWrapper.hasClass("grabbing") ||
-                  r.$owlWrapper.addClass("grabbing"),
+                r.$owlWrapper.hasClass("grabbing") ||
+                r.$owlWrapper.addClass("grabbing"),
                 (r.newPosX = 0),
                 (r.newRelativeX = 0),
                 t(this).css(r.removeTransition()),
@@ -2987,20 +2987,20 @@ function initLightbox(t) {
         return (
           t.each(n, function (s, a) {
             i - e.itemWidth / 20 > n[s + 1] &&
-            i - e.itemWidth / 20 < a &&
-            "left" === e.moveDirection()
+              i - e.itemWidth / 20 < a &&
+              "left" === e.moveDirection()
               ? ((o = a),
                 (e.currentItem =
                   !0 === e.options.scrollPerPage
                     ? t.inArray(o, e.positionsInArray)
                     : s))
               : i + e.itemWidth / 20 < a &&
-                i + e.itemWidth / 20 > (n[s + 1] || n[s] - e.itemWidth) &&
-                "right" === e.moveDirection() &&
-                (!0 === e.options.scrollPerPage
-                  ? ((o = n[s + 1] || n[n.length - 1]),
-                    (e.currentItem = t.inArray(o, e.positionsInArray)))
-                  : ((o = n[s + 1]), (e.currentItem = s + 1)));
+              i + e.itemWidth / 20 > (n[s + 1] || n[s] - e.itemWidth) &&
+              "right" === e.moveDirection() &&
+              (!0 === e.options.scrollPerPage
+                ? ((o = n[s + 1] || n[n.length - 1]),
+                  (e.currentItem = t.inArray(o, e.positionsInArray)))
+                : ((o = n[s + 1]), (e.currentItem = s + 1)));
           }),
           e.currentItem
         );
@@ -3043,9 +3043,9 @@ function initLightbox(t) {
           (t.$elem.on("mouseover", function () {
             t.stop();
           }),
-          t.$elem.on("mouseout", function () {
-            "stop" !== t.hoverStatus && t.play();
-          }));
+            t.$elem.on("mouseout", function () {
+              "stop" !== t.hoverStatus && t.play();
+            }));
       },
       lazyLoad: function () {
         var e, n, i, o, s;
@@ -3053,20 +3053,20 @@ function initLightbox(t) {
         for (e = 0; e < this.itemsAmount; e += 1)
           (n = t(this.$owlItems[e])),
             "loaded" !== n.data("owl-loaded") &&
-              ((i = n.data("owl-item")),
+            ((i = n.data("owl-item")),
               (o = n.find(".lazyOwl")),
               "string" != typeof o.data("src")
                 ? n.data("owl-loaded", "loaded")
                 : (void 0 === n.data("owl-loaded") &&
-                    (o.hide(),
+                  (o.hide(),
                     n.addClass("loading").data("owl-loaded", "checked")),
                   (s =
                     !0 === this.options.lazyFollow
                       ? i >= this.currentItem
                       : !0) &&
-                    i < this.currentItem + this.options.items &&
-                    o.length &&
-                    this.lazyPreload(n, o)));
+                  i < this.currentItem + this.options.items &&
+                  o.length &&
+                  this.lazyPreload(n, o)));
       },
       lazyPreload: function (t, n) {
         function i() {
@@ -3074,15 +3074,15 @@ function initLightbox(t) {
             n.removeAttr("data-src"),
             "fade" === s.options.lazyEffect ? n.fadeIn(400) : n.show(),
             "function" == typeof s.options.afterLazyLoad &&
-              s.options.afterLazyLoad.apply(this, [s.$elem]);
+            s.options.afterLazyLoad.apply(this, [s.$elem]);
         }
         function o() {
           (a += 1),
             s.completeImg(n.get(0)) || !0 === r
               ? i()
               : 100 >= a
-              ? e.setTimeout(o, 100)
-              : i();
+                ? e.setTimeout(o, 100)
+                : i();
         }
         var s = this,
           a = 0,
@@ -3097,17 +3097,17 @@ function initLightbox(t) {
           var n = t(o.$owlItems[o.currentItem]).height();
           o.wrapperOuter.css("height", n + "px"),
             o.wrapperOuter.hasClass("autoHeight") ||
-              e.setTimeout(function () {
-                o.wrapperOuter.addClass("autoHeight");
-              }, 0);
+            e.setTimeout(function () {
+              o.wrapperOuter.addClass("autoHeight");
+            }, 0);
         }
         function i() {
           (a += 1),
             o.completeImg(s.get(0))
               ? n()
               : 100 >= a
-              ? e.setTimeout(i, 100)
-              : o.wrapperOuter.css("height", "");
+                ? e.setTimeout(i, 100)
+                : o.wrapperOuter.css("height", "");
         }
         var o = this,
           s = t(o.$owlItems[o.currentItem]).find("img"),
@@ -3124,15 +3124,15 @@ function initLightbox(t) {
         var e;
         for (
           !0 === this.options.addClassActive &&
-            this.$owlItems.removeClass("active"),
-            this.visibleItems = [],
-            e = this.currentItem;
+          this.$owlItems.removeClass("active"),
+          this.visibleItems = [],
+          e = this.currentItem;
           e < this.currentItem + this.options.items;
           e += 1
         )
           this.visibleItems.push(e),
             !0 === this.options.addClassActive &&
-              t(this.$owlItems[e]).addClass("active");
+            t(this.$owlItems[e]).addClass("active");
         this.owl.visibleItems = this.visibleItems;
       },
       transitionTypes: function (t) {
@@ -3186,8 +3186,8 @@ function initLightbox(t) {
       clearTransStyle: function (t, e) {
         t.css({ position: "", left: "" }).removeClass(e),
           this.endPrev &&
-            this.endCurrent &&
-            (this.$owlWrapper.removeClass("owl-origin"),
+          this.endCurrent &&
+          (this.$owlWrapper.removeClass("owl-origin"),
             (this.isTransition = this.endCurrent = this.endPrev = !1));
       },
       owlStatus: function () {
@@ -3212,8 +3212,8 @@ function initLightbox(t) {
       unWrap: function () {
         0 !== this.$elem.children().length &&
           (this.$owlWrapper.unwrap(),
-          this.$userItems.unwrap().unwrap(),
-          this.owlControls && this.owlControls.remove()),
+            this.$userItems.unwrap().unwrap(),
+            this.owlControls && this.owlControls.remove()),
           this.clearEvents(),
           this.$elem
             .attr("style", this.$elem.data("owl-originalStyles") || "")
@@ -3324,31 +3324,31 @@ function initLightbox(t) {
     function a() {
       (B = google.maps),
         W ||
-          (W = {
-            verbose: !1,
-            queryLimit: { attempt: 5, delay: 250, random: 250 },
-            classes: (function () {
-              var e = {};
-              return (
-                t.each(
-                  "Map Marker InfoWindow Circle Rectangle OverlayView StreetViewPanorama KmlLayer TrafficLayer BicyclingLayer GroundOverlay StyledMapType ImageMapType".split(
-                    " "
-                  ),
-                  function (t, n) {
-                    e[n] = B[n];
-                  }
+        (W = {
+          verbose: !1,
+          queryLimit: { attempt: 5, delay: 250, random: 250 },
+          classes: (function () {
+            var e = {};
+            return (
+              t.each(
+                "Map Marker InfoWindow Circle Rectangle OverlayView StreetViewPanorama KmlLayer TrafficLayer BicyclingLayer GroundOverlay StyledMapType ImageMapType".split(
+                  " "
                 ),
-                e
-              );
-            })(),
-            map: {
-              mapTypeId: B.MapTypeId.ROADMAP,
-              center: [46.578498, 2.457275],
-              zoom: 2,
-            },
-            overlay: { pane: "floatPane", content: "", offset: { x: 0, y: 0 } },
-            geoloc: { getCurrentPosition: { maximumAge: 6e4, timeout: 5e3 } },
-          });
+                function (t, n) {
+                  e[n] = B[n];
+                }
+              ),
+              e
+            );
+          })(),
+          map: {
+            mapTypeId: B.MapTypeId.ROADMAP,
+            center: [46.578498, 2.457275],
+            zoom: 2,
+          },
+          overlay: { pane: "floatPane", content: "", offset: { x: 0, y: 0 } },
+          geoloc: { getCurrentPosition: { maximumAge: 6e4, timeout: 5e3 } },
+        });
     }
     function r(t, e) {
       return s(t) ? "gmap3_" + (e ? j + 1 : ++j) : t;
@@ -3455,30 +3455,30 @@ function initLightbox(t) {
       return !t || i(t)
         ? o
         : t.latLng
-        ? g(t.latLng)
-        : t instanceof B.LatLng
-        ? t
-        : f(t.lat)
-        ? new B.LatLng(t.lat, t.lng)
-        : !n && R(t) && f(t[0]) && f(t[1])
-        ? new B.LatLng(t[0], t[1])
-        : o;
+          ? g(t.latLng)
+          : t instanceof B.LatLng
+            ? t
+            : f(t.lat)
+              ? new B.LatLng(t.lat, t.lng)
+              : !n && R(t) && f(t[0]) && f(t[1])
+                ? new B.LatLng(t[0], t[1])
+                : o;
     }
     function y(t) {
       var e, n;
       return !t || t instanceof B.LatLngBounds
         ? t || null
         : (R(t)
-            ? 2 === t.length
-              ? ((e = g(t[0])), (n = g(t[1])))
-              : 4 === t.length && ((e = g([t[0], t[1]])), (n = g([t[2], t[3]])))
-            : "ne" in t && "sw" in t
+          ? 2 === t.length
+            ? ((e = g(t[0])), (n = g(t[1])))
+            : 4 === t.length && ((e = g([t[0], t[1]])), (n = g([t[2], t[3]])))
+          : "ne" in t && "sw" in t
             ? ((e = g(t.ne)), (n = g(t.sw)))
             : "n" in t &&
-              "e" in t &&
-              "s" in t &&
-              "w" in t &&
-              ((e = g([t.n, t.e])), (n = g([t.s, t.w]))),
+            "e" in t &&
+            "s" in t &&
+            "w" in t &&
+            ((e = g([t.n, t.e])), (n = g([t.s, t.w]))),
           e && n ? new B.LatLngBounds(n, e) : null);
     }
     function w(t, e, n, o, s) {
@@ -3486,10 +3486,10 @@ function initLightbox(t) {
         r = a
           ? { latLng: a }
           : o.td.address
-          ? i(o.td.address)
-            ? { address: o.td.address }
-            : o.td.address
-          : !1,
+            ? i(o.td.address)
+              ? { address: o.td.address }
+              : o.td.address
+            : !1,
         l = r ? U.get(r) : !1,
         u = this;
       r
@@ -3510,14 +3510,14 @@ function initLightbox(t) {
                     e.apply(t, [o]))
                   : a === B.GeocoderStatus.OVER_QUERY_LIMIT &&
                     s < W.queryLimit.attempt
-                  ? setTimeout(function () {
+                    ? setTimeout(function () {
                       w.apply(u, [t, e, n, o, s + 1]);
                     }, W.queryLimit.delay +
-                      Math.floor(Math.random() * W.queryLimit.random))
-                  : (h("geocode failed", a, r),
-                    (o.latLng = o.results = !1),
-                    (o.status = a),
-                    e.apply(t, [o]));
+                    Math.floor(Math.random() * W.queryLimit.random))
+                    : (h("geocode failed", a, r),
+                      (o.latLng = o.results = !1),
+                      (o.status = a),
+                      e.apply(t, [o]));
               })))
         : ((o.latLng = g(o.td, !1, !0)), e.apply(t, [o]));
     }
@@ -3528,13 +3528,13 @@ function initLightbox(t) {
         return r >= e.length
           ? void i.apply(n, [o])
           : void w(
-              a,
-              function (n) {
-                delete n.td, t.extend(e[r], n), s.apply(a, []);
-              },
-              !0,
-              { td: e[r] }
-            );
+            a,
+            function (n) {
+              delete n.td, t.extend(e[r], n), s.apply(a, []);
+            },
+            !0,
+            { td: e[r] }
+          );
       }
       var a = this,
         r = -1;
@@ -3544,20 +3544,20 @@ function initLightbox(t) {
       var i = !1;
       navigator && navigator.geolocation
         ? navigator.geolocation.getCurrentPosition(
-            function (o) {
-              i ||
-                ((i = !0),
+          function (o) {
+            i ||
+              ((i = !0),
                 (n.latLng = new B.LatLng(
                   o.coords.latitude,
                   o.coords.longitude
                 )),
                 e.apply(t, [n]));
-            },
-            function () {
-              i || ((i = !0), (n.latLng = !1), e.apply(t, [n]));
-            },
-            n.opts.getCurrentPosition
-          )
+          },
+          function () {
+            i || ((i = !0), (n.latLng = !1), e.apply(t, [n]));
+          },
+          n.opts.getCurrentPosition
+        )
         : ((n.latLng = !1), e.apply(t, [n]));
     }
     function S(t) {
@@ -3591,10 +3591,10 @@ function initLightbox(t) {
               (s = l[o]),
                 (r = s in a.request),
                 r &&
-                  (r =
-                    n(e[s]) && "equals" in e[s] && H(e[s])
-                      ? e[s].equals(a.request[s])
-                      : e[s] === a.request[s]);
+                (r =
+                  n(e[s]) && "equals" in e[s] && H(e[s])
+                    ? e[s].equals(a.request[s])
+                    : e[s] === a.request[s]);
             if (r) return a.results;
           }
         }
@@ -3658,7 +3658,7 @@ function initLightbox(t) {
             l,
             u = v(s);
           if (!i[t] || !i[t].length) return null;
-          for (r = i[t].length; r; )
+          for (r = i[t].length; r;)
             if ((r--, (l = i[t][n ? r : i[t].length - r - 1]), l && o[l])) {
               if (u && !u(o[l].tag)) continue;
               return a ? e(o[l]) : o[l].obj;
@@ -3741,7 +3741,7 @@ function initLightbox(t) {
           for (r = 0; r < t.length; r++)
             if (((l = t[r]), e)) a.rm(l, u, !0);
             else if (n) a.rm(l, u, !1);
-            else for (; a.rm(l, u, !1); );
+            else for (; a.rm(l, u, !1););
         }),
         (a.objClear = function (e, n, s, a) {
           var r;
@@ -3778,7 +3778,7 @@ function initLightbox(t) {
         };
       i(o) && (o = s(o)),
         (u.run = function () {
-          for (var i, s; (i = a()); ) {
+          for (var i, s; (i = a());) {
             if (H(e[i]))
               return (
                 (r = i),
@@ -3788,8 +3788,8 @@ function initLightbox(t) {
                     ? b(o[i].values, e, e[i], { td: o[i], opts: s, session: l })
                     : w(e, e[i], c.latLng[i], { td: o[i], opts: s, session: l })
                   : i in c.geoloc
-                  ? x(e, e[i], { td: o[i], opts: s, session: l })
-                  : e[i].apply(e, [{ td: o[i], opts: s, session: l }]))
+                    ? x(e, e[i], { td: o[i], opts: s, session: l })
+                    : e[i].apply(e, [{ td: o[i], opts: s, session: l }]))
               );
             l[i] = null;
           }
@@ -3815,9 +3815,9 @@ function initLightbox(t) {
       function e() {
         var t = this;
         return (
-          (t.onAdd = function () {}),
-          (t.onRemove = function () {}),
-          (t.draw = function () {}),
+          (t.onAdd = function () { }),
+          (t.onRemove = function () { }),
+          (t.draw = function () { }),
           W.classes.OverlayView.apply(t, [])
         );
       }
@@ -3829,8 +3829,8 @@ function initLightbox(t) {
       function s(t) {
         N[t] ||
           (delete z[t].options.map,
-          (N[t] = new W.classes.Marker(z[t].options)),
-          u(e, { td: z[t] }, N[t], z[t].id));
+            (N[t] = new W.classes.Marker(z[t].options)),
+            u(e, { td: z[t] }, N[t], z[t].id));
       }
       function a() {
         return (y = D.getProjection())
@@ -3839,8 +3839,8 @@ function initLightbox(t) {
             M.push(B.event.addListener(i, "bounds_changed", h)),
             void m())
           : void setTimeout(function () {
-              a.apply(A, []);
-            }, 25);
+            a.apply(A, []);
+          }, 25);
       }
       function l(t) {
         n(_[t])
@@ -3882,14 +3882,14 @@ function initLightbox(t) {
           (a = (Math.PI * e) / 180),
           (r = (Math.PI * i) / 180),
           6371e3 *
-            Math.acos(
-              Math.min(
-                l(o) * l(a) * l(s) * l(r) +
-                  l(o) * u(s) * l(a) * u(r) +
-                  u(o) * u(a),
-                1
-              )
+          Math.acos(
+            Math.min(
+              l(o) * l(a) * l(s) * l(r) +
+              l(o) * u(s) * l(a) * u(r) +
+              u(o) * u(a),
+              1
             )
+          )
         );
       }
       function d() {
@@ -3937,10 +3937,10 @@ function initLightbox(t) {
             L = p();
           for (
             C = !1,
-              M > 3 &&
-                ((r = d()),
-                (y = r.getSouthWest().lng() < r.getNorthEast().lng())),
-              e = 0;
+            M > 3 &&
+            ((r = d()),
+              (y = r.getSouthWest().lng() < r.getNorthEast().lng())),
+            e = 0;
             e < z.length;
             e++
           )
@@ -3948,19 +3948,19 @@ function initLightbox(t) {
               (y && !r.contains(z[e].options.position)) ||
               (w && !w(O[e])) ||
               x.push(e);
-          for (;;) {
-            for (e = 0; A[e] && e < x.length; ) e++;
+          for (; ;) {
+            for (e = 0; A[e] && e < x.length;) e++;
             if (e === x.length) break;
             if (((a = []), T && !k)) {
               g = 10;
               do
                 for (
                   h = a,
-                    a = [],
-                    g--,
-                    c = h.length ? r.getCenter() : z[x[e]].options.position,
-                    r = f(c),
-                    n = e;
+                  a = [],
+                  g--,
+                  c = h.length ? r.getCenter() : z[x[e]].options.position,
+                  r = f(c),
+                  n = e;
                   n < x.length;
                   n++
                 )
@@ -4047,7 +4047,7 @@ function initLightbox(t) {
             t
               ? ((i = z.length - 1), (o = -1), (s = -1))
               : ((i = 0), (o = z.length), (s = 1)),
-              a = i;
+            a = i;
             a !== o &&
             (!z[a] || (u && !u(z[a].tag)) || (l.push(L[a]), !e && !t));
             a += s
@@ -4249,7 +4249,7 @@ function initLightbox(t) {
           n = t.td.callback;
         n &&
           ((e = Array.prototype.slice.call(arguments, 1)),
-          H(n) ? n.apply(o, e) : R(n) && H(n[1]) && n[1].apply(n[0], e));
+            H(n) ? n.apply(o, e) : R(n) && H(n[1]) && n[1].apply(n[0], e));
       }
       function f(t, e, n) {
         n && u(o, t, e, n), d(t, e), x.ack(e);
@@ -4284,17 +4284,17 @@ function initLightbox(t) {
           }),
           (i = r.calculator
             ? function (e) {
-                var n = [];
-                return (
-                  t.each(e, function (t, e) {
-                    n.push(a.value(e));
-                  }),
-                  r.calculator.apply(o, [n])
-                );
-              }
+              var n = [];
+              return (
+                t.each(e, function (t, e) {
+                  n.push(a.value(e));
+                }),
+                r.calculator.apply(o, [n])
+              );
+            }
             : function (t) {
-                return t.length;
-              }),
+              return t.length;
+            }),
           a.error(function () {
             h.apply(S, arguments);
           }),
@@ -4339,8 +4339,8 @@ function initLightbox(t) {
                 u(o, { td: r }, v, e, { main: f, shadow: v }),
                 a.store(s, f, v))
               : t.each(s.indexes, function (t, e) {
-                  a.marker(e).setMap(E);
-                });
+                a.marker(e).setMap(E);
+              });
           }),
           a
         );
@@ -4399,7 +4399,7 @@ function initLightbox(t) {
             s || (e.td.values = [{ latLng: e.latLng, options: e.opts }]),
             e.td.values.length
               ? (O.__initialised ||
-                  ((O.prototype = new W.classes.OverlayView()),
+                ((O.prototype = new W.classes.OverlayView()),
                   (O.__initialised = !0)),
                 t.each(e.td.values, function (s, a) {
                   var r,
@@ -4428,54 +4428,54 @@ function initLightbox(t) {
             l = !E;
           return (
             a ||
-              ((e.opts.position = e.latLng || g(e.opts.position)),
+            ((e.opts.position = e.latLng || g(e.opts.position)),
               (e.td.values = [{ options: e.opts }])),
             e.td.values.length
               ? (l && v(),
                 e.td.cluster && !E.getBounds()
                   ? void B.event.addListenerOnce(
-                      E,
-                      "bounds_changed",
-                      function () {
-                        S.marker.apply(S, [e]);
-                      }
-                    )
+                    E,
+                    "bounds_changed",
+                    function () {
+                      S.marker.apply(S, [e]);
+                    }
+                  )
                   : void (e.td.cluster
-                      ? (e.td.cluster instanceof z
-                          ? ((i = e.td.cluster), (s = I.getById(i.id(), !0)))
-                          : ((s = w(e.td.cluster)),
-                            (i = new z(r(e.td.id, !0), s)),
-                            I.add(e, "clusterer", i, s)),
-                        s.beginUpdate(),
-                        t.each(e.td.values, function (t, n) {
-                          var i = p(e, n);
-                          (i.options.position = g(
-                            i.options.position ? i.options.position : n
-                          )),
-                            i.options.position &&
-                              ((i.options.map = E),
-                              l && (E.setCenter(i.options.position), (l = !1)),
-                              s.add(i, n));
-                        }),
-                        s.endUpdate(),
-                        f(e, i))
-                      : ((n = []),
-                        t.each(e.td.values, function (t, i) {
-                          var s,
-                            a,
-                            r = p(e, i);
-                          (r.options.position = g(
-                            r.options.position ? r.options.position : i
-                          )),
-                            r.options.position &&
-                              ((r.options.map = E),
-                              l && (E.setCenter(r.options.position), (l = !1)),
-                              (a = new W.classes.Marker(r.options)),
-                              n.push(a),
-                              (s = I.add({ td: r }, "marker", a)),
-                              u(o, { td: r }, a, s));
-                        }),
-                        f(e, a ? n : n[0]))))
+                    ? (e.td.cluster instanceof z
+                      ? ((i = e.td.cluster), (s = I.getById(i.id(), !0)))
+                      : ((s = w(e.td.cluster)),
+                        (i = new z(r(e.td.id, !0), s)),
+                        I.add(e, "clusterer", i, s)),
+                      s.beginUpdate(),
+                      t.each(e.td.values, function (t, n) {
+                        var i = p(e, n);
+                        (i.options.position = g(
+                          i.options.position ? i.options.position : n
+                        )),
+                          i.options.position &&
+                          ((i.options.map = E),
+                            l && (E.setCenter(i.options.position), (l = !1)),
+                            s.add(i, n));
+                      }),
+                      s.endUpdate(),
+                      f(e, i))
+                    : ((n = []),
+                      t.each(e.td.values, function (t, i) {
+                        var s,
+                          a,
+                          r = p(e, i);
+                        (r.options.position = g(
+                          r.options.position ? r.options.position : i
+                        )),
+                          r.options.position &&
+                          ((r.options.map = E),
+                            l && (E.setCenter(r.options.position), (l = !1)),
+                            (a = new W.classes.Marker(r.options)),
+                            n.push(a),
+                            (s = I.add({ td: r }, "marker", a)),
+                            u(o, { td: r }, a, s));
+                      }),
+                      f(e, a ? n : n[0]))))
               : void f(e, !1)
           );
         }),
@@ -4509,7 +4509,7 @@ function initLightbox(t) {
             a = "values" in n.td;
           a ||
             (n.latLng && (n.opts.position = n.latLng),
-            (n.td.values = [{ options: n.opts }])),
+              (n.td.values = [{ options: n.opts }])),
             t.each(n.td.values, function (t, r) {
               var l,
                 c,
@@ -4520,18 +4520,18 @@ function initLightbox(t) {
                 E || v(d.options.position),
                 (c = new W.classes.InfoWindow(d.options)),
                 c &&
-                  (s(d.open) || d.open) &&
-                  (a
-                    ? c.open(E, d.anchor || e)
-                    : c.open(
-                        E,
-                        d.anchor ||
-                          (n.latLng
-                            ? e
-                            : n.session.marker
-                            ? n.session.marker
-                            : e)
-                      )),
+                (s(d.open) || d.open) &&
+                (a
+                  ? c.open(E, d.anchor || e)
+                  : c.open(
+                    E,
+                    d.anchor ||
+                    (n.latLng
+                      ? e
+                      : n.session.marker
+                        ? n.session.marker
+                        : e)
+                  )),
                 i.push(c),
                 (l = I.add({ td: d }, "infowindow", c)),
                 u(o, { td: d }, c, l);
@@ -4543,23 +4543,23 @@ function initLightbox(t) {
             i = "values" in e.td;
           return (
             i ||
-              ((e.opts.center = e.latLng || g(e.opts.center)),
+            ((e.opts.center = e.latLng || g(e.opts.center)),
               (e.td.values = [{ options: e.opts }])),
             e.td.values.length
               ? (t.each(e.td.values, function (t, i) {
-                  var s,
-                    a,
-                    r = p(e, i);
-                  (r.options.center = g(
-                    r.options.center ? r.options.center : i
-                  )),
-                    E || v(r.options.center),
-                    (r.options.map = E),
-                    (a = new W.classes.Circle(r.options)),
-                    n.push(a),
-                    (s = I.add({ td: r }, "circle", a)),
-                    u(o, { td: r }, a, s);
-                }),
+                var s,
+                  a,
+                  r = p(e, i);
+                (r.options.center = g(
+                  r.options.center ? r.options.center : i
+                )),
+                  E || v(r.options.center),
+                  (r.options.map = E),
+                  (a = new W.classes.Circle(r.options)),
+                  n.push(a),
+                  (s = I.add({ td: r }, "circle", a)),
+                  u(o, { td: r }, a, s);
+              }),
                 void f(e, i ? n : n[0]))
               : void f(e, !1)
           );
@@ -4608,19 +4608,19 @@ function initLightbox(t) {
             i || (e.td.values = [{ options: e.opts }]),
             e.td.values.length
               ? (t.each(e.td.values, function (t, i) {
-                  var s,
-                    a,
-                    r = p(e, i);
-                  (r.options.bounds = y(
-                    r.options.bounds ? r.options.bounds : i
-                  )),
-                    E || v(r.options.bounds.getCenter()),
-                    (r.options.map = E),
-                    (a = new W.classes.Rectangle(r.options)),
-                    n.push(a),
-                    (s = I.add({ td: r }, "rectangle", a)),
-                    u(o, { td: r }, a, s);
-                }),
+                var s,
+                  a,
+                  r = p(e, i);
+                (r.options.bounds = y(
+                  r.options.bounds ? r.options.bounds : i
+                )),
+                  E || v(r.options.bounds.getCenter()),
+                  (r.options.map = E),
+                  (a = new W.classes.Rectangle(r.options)),
+                  n.push(a),
+                  (s = I.add({ td: r }, "rectangle", a)),
+                  u(o, { td: r }, a, s);
+              }),
                 void f(e, i ? n : n[0]))
               : void f(e, !1)
           );
@@ -4636,8 +4636,8 @@ function initLightbox(t) {
           var e = I.get("trafficlayer");
           e ||
             ((e = new W.classes.TrafficLayer()),
-            e.setMap(E),
-            I.add(t, "trafficlayer", e)),
+              e.setMap(E),
+              I.add(t, "trafficlayer", e)),
             f(t, e);
         }),
         (S.bicyclinglayer = function (t) {
@@ -4645,8 +4645,8 @@ function initLightbox(t) {
           var e = I.get("bicyclinglayer");
           e ||
             ((e = new W.classes.BicyclingLayer()),
-            e.setMap(E),
-            I.add(t, "bicyclinglayer", e)),
+              e.setMap(E),
+              I.add(t, "bicyclinglayer", e)),
             f(t, e);
         }),
         (S.groundoverlay = function (t) {
@@ -4665,11 +4665,11 @@ function initLightbox(t) {
             e.latLng
               ? (e.opts.opts.position = e.latLng)
               : e.opts.opts.position &&
-                (e.opts.opts.position = g(e.opts.opts.position)),
+              (e.opts.opts.position = g(e.opts.opts.position)),
             e.td.divId
               ? (e.opts.container = document.getElementById(e.td.divId))
               : e.opts.container &&
-                (e.opts.container = t(e.opts.container).get(0));
+              (e.opts.container = t(e.opts.container).get(0));
           var n,
             i = new W.classes.StreetViewPanorama(e.opts.container, e.opts.opts);
           i && E.setStreetView(i),
@@ -4683,23 +4683,23 @@ function initLightbox(t) {
             i || (e.td.values = [{ options: e.opts }]),
             e.td.values.length
               ? (t.each(e.td.values, function (t, i) {
-                  var s,
-                    a,
-                    r,
-                    c = p(e, i);
-                  E || v(),
-                    (r = c.options),
-                    c.options.opts &&
-                      ((r = c.options.opts),
-                      c.options.url && (r.url = c.options.url)),
-                    (r.map = E),
-                    (a = l("3.10")
-                      ? new W.classes.KmlLayer(r)
-                      : new W.classes.KmlLayer(r.url, r)),
-                    n.push(a),
-                    (s = I.add({ td: c }, "kmllayer", a)),
-                    u(o, { td: c }, a, s);
-                }),
+                var s,
+                  a,
+                  r,
+                  c = p(e, i);
+                E || v(),
+                  (r = c.options),
+                  c.options.opts &&
+                  ((r = c.options.opts),
+                    c.options.url && (r.url = c.options.url)),
+                  (r.map = E),
+                  (a = l("3.10")
+                    ? new W.classes.KmlLayer(r)
+                    : new W.classes.KmlLayer(r.url, r)),
+                  n.push(a),
+                  (s = I.add({ td: c }, "kmllayer", a)),
+                  u(o, { td: c }, a, s);
+              }),
                 void f(e, i ? n : n[0]))
               : void f(e, !1)
           );
@@ -4713,7 +4713,7 @@ function initLightbox(t) {
             l = t(document.createElement("div"));
           l.css({ position: "absolute", zIndex: 1e3, visibility: "hidden" }),
             e.opts.content &&
-              ((i = t(e.opts.content)),
+            ((i = t(e.opts.content)),
               l.append(i),
               o.first().prepend(l),
               s(e.opts.left)
@@ -4760,30 +4760,30 @@ function initLightbox(t) {
             e.getPosition
               ? n.extend(e.getPosition())
               : e.getBounds
-              ? (n.extend(e.getBounds().getNorthEast()),
-                n.extend(e.getBounds().getSouthWest()))
-              : e.getPaths
-              ? e.getPaths().forEach(function (t) {
-                  t.forEach(function (t) {
-                    n.extend(t);
-                  });
-                })
-              : e.getPath
-              ? e.getPath().forEach(function (t) {
-                  n.extend(t);
-                })
-              : e.getCenter
-              ? n.extend(e.getCenter())
-              : "function" == typeof z &&
-                e instanceof z &&
-                ((e = I.getById(e.id(), !0)), e && e.autofit(n));
+                ? (n.extend(e.getBounds().getNorthEast()),
+                  n.extend(e.getBounds().getSouthWest()))
+                : e.getPaths
+                  ? e.getPaths().forEach(function (t) {
+                    t.forEach(function (t) {
+                      n.extend(t);
+                    });
+                  })
+                  : e.getPath
+                    ? e.getPath().forEach(function (t) {
+                      n.extend(t);
+                    })
+                    : e.getCenter
+                      ? n.extend(e.getCenter())
+                      : "function" == typeof z &&
+                      e instanceof z &&
+                      ((e = I.getById(e.id(), !0)), e && e.autofit(n));
           }),
             n.isEmpty() ||
-              (E.getBounds() && E.getBounds().equals(n)) ||
-              ("maxZoom" in e.td &&
-                B.event.addListenerOnce(E, "bounds_changed", function () {
-                  this.getZoom() > e.td.maxZoom && this.setZoom(e.td.maxZoom);
-                }),
+            (E.getBounds() && E.getBounds().equals(n)) ||
+            ("maxZoom" in e.td &&
+              B.event.addListenerOnce(E, "bounds_changed", function () {
+                this.getZoom() > e.td.maxZoom && this.setZoom(e.td.maxZoom);
+              }),
               E.fitBounds(n)),
             f(e, !0);
         }),
@@ -4794,8 +4794,8 @@ function initLightbox(t) {
           }
           e.td.id
             ? t.each(m(e.td.id), function (t, e) {
-                I.clearById(e) || I.objClearById(e);
-              })
+              I.clearById(e) || I.objClearById(e);
+            })
             : (I.clear(m(e.td.name), e.td.last, e.td.first, e.td.tag),
               I.objClear(m(e.td.name), e.td.last, e.td.first, e.td.tag)),
             f(e, !0);
@@ -4812,22 +4812,22 @@ function initLightbox(t) {
               : (a = l.name),
             "map" === a && (r = E),
             r ||
-              ((r = []),
+            ((r = []),
               l.id
                 ? (t.each(m(l.id), function (t, e) {
-                    r.push(I.getById(e, !1, s) || I.objGetById(e));
-                  }),
+                  r.push(I.getById(e, !1, s) || I.objGetById(e));
+                }),
                   R(l.id) || (r = r[0]))
                 : (t.each(a ? m(a) : [e], function (e, n) {
-                    var i;
-                    l.first
-                      ? ((i = I.get(n, !1, l.tag, s)), i && r.push(i))
-                      : l.all
+                  var i;
+                  l.first
+                    ? ((i = I.get(n, !1, l.tag, s)), i && r.push(i))
+                    : l.all
                       ? t.each(I.all(n, l.tag, s), function (t, e) {
-                          r.push(e);
-                        })
+                        r.push(e);
+                      })
                       : ((i = I.get(n, !0, l.tag, s)), i && r.push(i));
-                  }),
+                }),
                   l.all || R(a) || (r = r[0]))),
             (r = R(r) || !l.all ? r : [r]),
             o ? r : void f(n, r)
@@ -4881,10 +4881,10 @@ function initLightbox(t) {
             1 !== n.length || ("get" !== n[0] && !S(n[0]))
               ? s._plan(n)
               : o.push(
-                  "get" === n[0]
-                    ? s.get("map", !0)
-                    : s.get(n[0].get, !0, n[0].get.full)
-                );
+                "get" === n[0]
+                  ? s.get("map", !0)
+                  : s.get(n[0].get, !0, n[0].get.full)
+              );
         }),
         o.length ? (1 === o.length ? o[0] : o) : this
       );
@@ -4940,22 +4940,22 @@ function initLightbox(t) {
     }
     if (o.csstransforms) {
       var f = o.csstransforms3d
-          ? {
-              translate: function (t) {
-                return "translate3d(" + t[0] + "px, " + t[1] + "px, 0) ";
-              },
-              scale: function (t) {
-                return "scale3d(" + t + ", " + t + ", 1) ";
-              },
-            }
-          : {
-              translate: function (t) {
-                return "translate(" + t[0] + "px, " + t[1] + "px) ";
-              },
-              scale: function (t) {
-                return "scale(" + t + ") ";
-              },
-            },
+        ? {
+          translate: function (t) {
+            return "translate3d(" + t[0] + "px, " + t[1] + "px, 0) ";
+          },
+          scale: function (t) {
+            return "scale3d(" + t + ", " + t + ", 1) ";
+          },
+        }
+        : {
+          translate: function (t) {
+            return "translate(" + t[0] + "px, " + t[1] + "px) ";
+          },
+          scale: function (t) {
+            return "scale(" + t + ") ";
+          },
+        },
         m = function (t, n, i) {
           var o = e.data(t, "isoTransform") || {},
             s = {},
@@ -5001,7 +5001,7 @@ function initLightbox(t) {
         OTransitionProperty: "oTransitionEnd otransitionend",
         transitionProperty: "transitionend",
       }[u]),
-      (g = r("transitionDuration")));
+        (g = r("transitionDuration")));
     var y = e.event,
       w = e.event.handle ? "handle" : "dispatch",
       b;
@@ -5085,9 +5085,9 @@ function initLightbox(t) {
             l.element.addClass(l.options.containerClass);
           }, 0),
             this.options.resizable &&
-              S.bind("smartresize.isotope", function () {
-                l.resize();
-              }),
+            S.bind("smartresize.isotope", function () {
+              l.resize();
+            }),
             this.element.delegate(
               "." + this.options.hiddenClass,
               "click",
@@ -5124,8 +5124,8 @@ function initLightbox(t) {
         },
         _updateAnimationEngine: function () {
           var t = this.options.animationEngine
-              .toLowerCase()
-              .replace(/[ _\-]/g, ""),
+            .toLowerCase()
+            .replace(/[ _\-]/g, ""),
             e;
           switch (t) {
             case "css":
@@ -5151,7 +5151,7 @@ function initLightbox(t) {
             !this.isUsingJQueryAnimation);
           t ||
             (delete this.options.hiddenStyle.scale,
-            delete this.options.visibleStyle.scale),
+              delete this.options.visibleStyle.scale),
             (this.getPositionStyles = t ? this._translate : this._positionAbs);
         },
         _filter: function (t) {
@@ -5196,8 +5196,8 @@ function initLightbox(t) {
                 a = e(o, t);
               return (
                 s === a &&
-                  "original-order" !== t &&
-                  ((s = e(i, "original-order")), (a = e(o, "original-order"))),
+                "original-order" !== t &&
+                ((s = e(i, "original-order")), (a = e(o, "original-order"))),
                 (s > a ? 1 : a > s ? -1 : 0) * n
               );
             };
@@ -5218,7 +5218,7 @@ function initLightbox(t) {
           var i = this.getPositionStyles(e, n);
           this.styleQueue.push({ $el: t, style: i }),
             this.options.itemPositionDataEnabled &&
-              t.data("isotope-item-position", { x: e, y: n });
+            t.data("isotope-item-position", { x: e, y: n });
         },
         layout: function (t, e) {
           var n = this.options.layoutMode;
@@ -5230,7 +5230,7 @@ function initLightbox(t) {
         },
         _processStyleQueue: function (t, n) {
           var i =
-              this.isLaidOut && this.isUsingJQueryAnimation ? "animate" : "css",
+            this.isLaidOut && this.isUsingJQueryAnimation ? "animate" : "css",
             s = this.options.animationOptions,
             a = this.options.onLayout,
             r,
@@ -5241,7 +5241,7 @@ function initLightbox(t) {
             ((l = function (t, e) {
               e.$el[i](e.style, s);
             }),
-            this._isInserting && this.isUsingJQueryAnimation)
+              this._isInserting && this.isUsingJQueryAnimation)
           )
             l = function (t, e) {
               (r = e.$el.hasClass("no-transition") ? "css" : i),
@@ -5253,15 +5253,15 @@ function initLightbox(t) {
               h = this;
             if (
               ((u = !0),
-              (c = function () {
-                if (!d) {
-                  for (var e, n = 0, i = p.length; i > n; n++)
-                    (e = p[n]),
-                      "function" == typeof e && e.call(h.element, t, h);
-                  d = !0;
-                }
-              }),
-              this.isUsingJQueryAnimation && "animate" === i)
+                (c = function () {
+                  if (!d) {
+                    for (var e, n = 0, i = p.length; i > n; n++)
+                      (e = p[n]),
+                        "function" == typeof e && e.call(h.element, t, h);
+                    d = !0;
+                  }
+                }),
+                this.isUsingJQueryAnimation && "animate" === i)
             )
               (s.complete = c), (u = !1);
             else if (o.csstransitions) {
@@ -5278,7 +5278,7 @@ function initLightbox(t) {
                 ((l = function (t, e) {
                   e.$el[i](e.style, s).one(v, c);
                 }),
-                (u = !1));
+                  (u = !1));
             }
           }
           e.each(this.styleQueue, l), u && c(), (this.styleQueue = []);
@@ -5339,9 +5339,9 @@ function initLightbox(t) {
             };
           t.filter(":not(." + this.options.hiddenClass + ")").length
             ? (this.styleQueue.push({
-                $el: t,
-                style: this.options.hiddenStyle,
-              }),
+              $el: t,
+              style: this.options.hiddenStyle,
+            }),
               this._sort(),
               this.reLayout(i))
             : i();
@@ -5399,7 +5399,7 @@ function initLightbox(t) {
         _masonryReset: function () {
           (this.masonry = {}), this._getSegments();
           var t = this.masonry.cols;
-          for (this.masonry.colYs = []; t--; ) this.masonry.colYs.push(0);
+          for (this.masonry.colYs = []; t--;) this.masonry.colYs.push(0);
         },
         _masonryLayout: function (t) {
           var n = this,
@@ -5488,7 +5488,7 @@ function initLightbox(t) {
           return {
             height:
               Math.ceil(this.$filteredAtoms.length / this.cellsByRow.cols) *
-                this.cellsByRow.rowHeight +
+              this.cellsByRow.rowHeight +
               this.offset.top,
           };
         },
@@ -5515,7 +5515,7 @@ function initLightbox(t) {
         _masonryHorizontalReset: function () {
           (this.masonryHorizontal = {}), this._getSegments(!0);
           var t = this.masonryHorizontal.rows;
-          for (this.masonryHorizontal.rowXs = []; t--; )
+          for (this.masonryHorizontal.rowXs = []; t--;)
             this.masonryHorizontal.rowXs.push(0);
         },
         _masonryHorizontalLayout: function (t) {
@@ -5638,7 +5638,7 @@ function initLightbox(t) {
           o.src !== r &&
             -1 === e.inArray(o, l) &&
             (l.push(o),
-            --a <= 0 && (setTimeout(n), s.unbind(".imagesLoaded", i)));
+              --a <= 0 && (setTimeout(n), s.unbind(".imagesLoaded", i)));
         }
         var o = this,
           s = o.find("img").add(o.filter("img")),
@@ -5668,10 +5668,10 @@ function initLightbox(t) {
               ? void n[t].apply(n, i)
               : void C("no such method '" + t + "' for isotope instance")
             : void C(
-                "cannot call methods on isotope prior to initialization; attempted to call method '" +
-                  t +
-                  "'"
-              );
+              "cannot call methods on isotope prior to initialization; attempted to call method '" +
+              t +
+              "'"
+            );
         });
       } else
         this.each(function () {
@@ -5686,18 +5686,18 @@ function initLightbox(t) {
   (function (t, e, n, i) {
     "use strict";
     var o = function () {
-        var t = n.body || n.documentElement,
-          t = t.style;
-        return "" == t.WebkitTransition
-          ? "-webkit-"
-          : "" == t.MozTransition
+      var t = n.body || n.documentElement,
+        t = t.style;
+      return "" == t.WebkitTransition
+        ? "-webkit-"
+        : "" == t.MozTransition
           ? "-moz-"
           : "" == t.OTransition
-          ? "-o-"
-          : "" == t.transition
-          ? ""
-          : !1;
-      },
+            ? "-o-"
+            : "" == t.transition
+              ? ""
+              : !1;
+    },
       s = o() === !1 ? !1 : !0,
       a = function (t, e, n) {
         var i = {},
@@ -5723,22 +5723,22 @@ function initLightbox(t) {
       };
     t.fn.imageLightbox = function (i) {
       var i = t.extend(
-          {
-            selector: 'id="imagelightbox"',
-            allowedTypes: "png|jpg|jpeg|gif",
-            animationSpeed: 250,
-            preloadNext: !0,
-            enableKeyboard: !0,
-            quitOnEnd: !1,
-            quitOnImgClick: !1,
-            quitOnDocClick: !0,
-            onStart: !1,
-            onEnd: !1,
-            onLoadStart: !1,
-            onLoadEnd: !1,
-          },
-          i
-        ),
+        {
+          selector: 'id="imagelightbox"',
+          allowedTypes: "png|jpg|jpeg|gif",
+          animationSpeed: 250,
+          preloadNext: !0,
+          enableKeyboard: !0,
+          quitOnEnd: !1,
+          quitOnImgClick: !1,
+          quitOnDocClick: !0,
+          onStart: !1,
+          onEnd: !1,
+          onLoadStart: !1,
+          onLoadEnd: !1,
+        },
+        i
+      ),
         o = t([]),
         c = t(),
         d = t(),
@@ -5777,7 +5777,7 @@ function initLightbox(t) {
           if (m) return !1;
           if (
             ((e = "undefined" == typeof e ? !1 : "left" == e ? 1 : -1),
-            d.length)
+              d.length)
           ) {
             if (
               e !== !1 &&
@@ -5817,7 +5817,7 @@ function initLightbox(t) {
                     (d.animate(n, i.animationSpeed, function () {
                       (m = !1), i.onLoadEnd !== !1 && i.onLoadEnd();
                     }),
-                    i.preloadNext)
+                      i.preloadNext)
                   ) {
                     var l = o.eq(o.index(c) + 1);
                     l.length || (l = o.eq(0)),
@@ -5865,15 +5865,15 @@ function initLightbox(t) {
                     return !u(t.originalEvent) || i.quitOnImgClick
                       ? !0
                       : void (Math.abs(f) > 50
-                          ? ((c = o.eq(o.index(c) - (0 > f ? 1 : -1))),
-                            c.length || (c = o.eq(0 > f ? o.length : 0)),
-                            y(f > 0 ? "right" : "left"))
-                          : s
+                        ? ((c = o.eq(o.index(c) - (0 > f ? 1 : -1))),
+                          c.length || (c = o.eq(0 > f ? o.length : 0)),
+                          y(f > 0 ? "right" : "left"))
+                        : s
                           ? a(d, "0px", i.animationSpeed / 1e3)
                           : d.animate(
-                              { left: h + "px" },
-                              i.animationSpeed / 2
-                            ));
+                            { left: h + "px" },
+                            i.animationSpeed / 2
+                          ));
                   }
                 );
             }, i.animationSpeed + 100);
@@ -5884,29 +5884,29 @@ function initLightbox(t) {
         b = function () {
           return d.length
             ? void d.animate({ opacity: 0 }, i.animationSpeed, function () {
-                w(), (m = !1), i.onEnd !== !1 && i.onEnd();
-              })
+              w(), (m = !1), i.onEnd !== !1 && i.onEnd();
+            })
             : !1;
         };
       return (
         t(e).on("resize", g),
         i.quitOnDocClick &&
-          t(n).on(r ? "touchend" : "click", function (e) {
-            d.length && !t(e.target).is(d) && b();
-          }),
+        t(n).on(r ? "touchend" : "click", function (e) {
+          d.length && !t(e.target).is(d) && b();
+        }),
         i.enableKeyboard &&
-          t(n).on("keyup", function (t) {
-            return d.length
-              ? (t.preventDefault(),
-                27 == t.keyCode && b(),
-                void (
-                  (37 == t.keyCode || 39 == t.keyCode) &&
-                  ((c = o.eq(o.index(c) - (37 == t.keyCode ? 1 : -1))),
+        t(n).on("keyup", function (t) {
+          return d.length
+            ? (t.preventDefault(),
+              27 == t.keyCode && b(),
+              void (
+                (37 == t.keyCode || 39 == t.keyCode) &&
+                ((c = o.eq(o.index(c) - (37 == t.keyCode ? 1 : -1))),
                   c.length || (c = o.eq(37 == t.keyCode ? o.length : 0)),
                   y(37 == t.keyCode ? "left" : "right"))
-                ))
-              : !0;
-          }),
+              ))
+            : !0;
+        }),
         t(n).on("click", this.selector, function (e) {
           return v(this)
             ? (e.preventDefault(),

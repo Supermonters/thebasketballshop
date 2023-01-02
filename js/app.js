@@ -118,5 +118,5 @@
     }
   });
 
-  $(window).ready(function () {});
+  $(window).ready(function () { });
 })(jQuery, document, window);

@@ -37,7 +37,7 @@
       u(!0);
     }
     var c = {};
-    (a.respond = c), (c.update = function () {});
+    (a.respond = c), (c.update = function () { });
     var d = [],
       e = (function () {
         var b = !1;
@@ -54,31 +54,31 @@
         var c = e();
         c &&
           (c.open("GET", a, !0),
-          (c.onreadystatechange = function () {
-            4 !== c.readyState ||
-              (200 !== c.status && 304 !== c.status) ||
-              b(c.responseText);
-          }),
-          4 !== c.readyState && c.send(null));
+            (c.onreadystatechange = function () {
+              4 !== c.readyState ||
+                (200 !== c.status && 304 !== c.status) ||
+                b(c.responseText);
+            }),
+            4 !== c.readyState && c.send(null));
       };
     if (
       ((c.ajax = f),
-      (c.queue = d),
-      (c.regex = {
-        media: /@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi,
-        keyframes:
-          /@(?:\-(?:o|moz|webkit)\-)?keyframes[^\{]+\{(?:[^\{\}]*\{[^\}\{]*\})+[^\}]*\}/gi,
-        urls: /(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g,
-        findStyles: /@media *([^\{]+)\{([\S\s]+?)$/,
-        only: /(only\s+)?([a-zA-Z]+)\s?/,
-        minw: /\([\s]*min\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,
-        maxw: /\([\s]*max\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,
-      }),
-      (c.mediaQueriesSupported =
-        a.matchMedia &&
-        null !== a.matchMedia("only all") &&
-        a.matchMedia("only all").matches),
-      !c.mediaQueriesSupported)
+        (c.queue = d),
+        (c.regex = {
+          media: /@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi,
+          keyframes:
+            /@(?:\-(?:o|moz|webkit)\-)?keyframes[^\{]+\{(?:[^\{\}]*\{[^\}\{]*\})+[^\}]*\}/gi,
+          urls: /(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g,
+          findStyles: /@media *([^\{]+)\{([\S\s]+?)$/,
+          only: /(only\s+)?([a-zA-Z]+)\s?/,
+          minw: /\([\s]*min\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,
+          maxw: /\([\s]*max\-width\s*:[\s]*([\s]*[0-9\.]+)(px|em)[\s]*\)/,
+        }),
+        (c.mediaQueriesSupported =
+          a.matchMedia &&
+          null !== a.matchMedia("only all") &&
+          a.matchMedia("only all").matches),
+        !c.mediaQueriesSupported)
     ) {
       var g,
         h,
@@ -103,7 +103,7 @@
           return (
             (b.style.cssText = "position:absolute;font-size:1em;width:1em"),
             c ||
-              ((c = f = j.createElement("body")),
+            ((c = f = j.createElement("body")),
               (c.style.background = "none")),
             (k.style.fontSize = "100%"),
             (c.style.fontSize = "100%"),
@@ -138,7 +138,7 @@
                 y && (y = parseFloat(y) * (y.indexOf(B) > -1 ? i || t() : 1)),
                 (w.hasquery &&
                   ((z && A) || !(z || e >= x) || !(A || y >= e))) ||
-                  (f[w.media] || (f[w.media] = []),
+                (f[w.media] || (f[w.media] = []),
                   f[w.media].push(m[w.rules]));
             }
           for (var C in n)
@@ -165,8 +165,8 @@
             f = (e && e.length) || 0;
           b = b.substring(0, b.lastIndexOf("/"));
           var g = function (a) {
-              return a.replace(c.regex.urls, "$1" + b + "$2$3");
-            },
+            return a.replace(c.regex.urls, "$1" + b + "$2$3");
+          },
             h = !f && d;
           b.length && (b += "/"), h && (f = 1);
           for (var i = 0; f > i; i++) {
@@ -218,9 +218,9 @@
               (c.styleSheet && c.styleSheet.rawCssText
                 ? (v(c.styleSheet.rawCssText, e, f), (o[e] = !0))
                 : ((!/^([a-zA-Z:]*\/\/)/.test(e) && !r) ||
-                    e.replace(RegExp.$1, "").split("/")[0] ===
-                      a.location.host) &&
-                  ("//" === e.substring(0, 2) && (e = a.location.protocol + e),
+                  e.replace(RegExp.$1, "").split("/")[0] ===
+                  a.location.host) &&
+                ("//" === e.substring(0, 2) && (e = a.location.protocol + e),
                   d.push({ href: e, media: f })));
           }
           w();
