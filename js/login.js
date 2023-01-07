@@ -3,7 +3,9 @@ function load() {
     return;
   } else {
     var a = localStorage.getItem("TaiKhoanDangNhap");
-    document.getElementById("welcomeaido").innerHTML = `Welcome,` + a;
+    let b = document.getElementsByClassName("welcomeaido");
+    for (let i = 0; i < b.length; i++)
+      b[i].textContent = `Welcome, ${a}`;
   }
 }
 function cartCounting() {

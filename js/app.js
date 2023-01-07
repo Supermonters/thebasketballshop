@@ -94,7 +94,6 @@
       closeButton: true,
       arrow: true,
     });
-
     $(".mobile-menu").append($(".main-navigation .menu").clone());
     $(".toggle-menu").click(function () {
       $(".mobile-menu").slideToggle();
