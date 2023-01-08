@@ -61,7 +61,7 @@
 		}(document, 'script', 'facebook-jssdk'));
 
 	</script>
-	   
+
 	<div id="site-content">
 		<header class="site-header">
 			<div class="container">
@@ -81,8 +81,15 @@
 						<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
 						<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem">(0)</span></a></li>
 						<li class="menu-item"><a class="welcomeUser"
-								onclick="document.getElementById('id01').style.display='block'"
-								style="width:auto;">Login</a></li>
+								onclick="document.getElementById('id01').style.display='block'" style="overflow: hidden;
+								white-space: nowrap;
+								-o-text-overflow: ellipsis;
+								-ms-text-overflow: ellipsis;
+								text-overflow: ellipsis;
+								width: 8rem;
+								text-align: center;
+								font-style: italic;
+								">Login</a></li>
 
 					</ul>
 				</nav> <!-- .main-navigation -->
@@ -362,21 +369,19 @@
 						and Chí Dũng</a></p>
 			</div>
 			<div id="google_translate_element"></div>
- 
+
 			<script type="text/javascript">
 				function googleTranslateElementInit() {
 					new google.translate.TranslateElement(
-						{pageLanguage: 'vn'},
+						{ pageLanguage: 'vn' },
 						'google_translate_element'
 					);
 				}
 			</script>
-		 
-			<script type="text/javascript"
-					src=
-		"https://translate.google.com/translate_a/element.js?
+
+			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
 		cb=googleTranslateElementInit">
-			</script>
+		</script>
 		</footer> <!-- .site-footer -->
 
 	</div> <!-- #site-content -->
