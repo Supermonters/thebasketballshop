@@ -3,7 +3,7 @@ function load() {
     return;
   } else {
     var a = localStorage.getItem("TaiKhoanDangNhap");
-    let b = document.getElementsByClassName("welcomeaido");
+    let b = document.getElementsByClassName("welcomeUser");
     for (let i = 0; i < b.length; i++)
       b[i].textContent = `Welcome, ${a}`;
   }
