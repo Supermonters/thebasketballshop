@@ -1,13 +1,15 @@
 function load() {
+  let b = document.getElementsByClassName("welcomeUser");
+  b[1].style.textAlign = "left";
+  b[1].style.fontStyle = "normal";
   if (localStorage.getItem("TaiKhoanDangNhap") == null) {
     return;
   } else {
     var a = localStorage.getItem("TaiKhoanDangNhap");
-    let b = document.getElementsByClassName("welcomeUser");
-    for (let i = 0; i < b.length; i++) {
-      b[i].textContent = `Welcome, ${a}`;
-      b[i+1].style.width = "auto";
-    }
+
+    b[0].textContent = `Welcome, ${a}`;
+    b[1].textContent = `Welcome, ${a}`;
+    b[1].style.width = "auto";
   }
 }
 function cartCounting() {
