@@ -3,12 +3,12 @@ function load() {
     return;
   } else {
     var a = localStorage.getItem("TaiKhoanDangNhap");
-    for (let i = 0; i < 3; i++) {
-      let b = document.getElementsByClassName("welcomeUser")[i].innerHTML= `Welcome, ${a}` ;      
+    let b = document.getElementsByClassName("welcomeUser");
+    for (let i = 0; i < b.length; i++) {
+      b[i].textContent = `Welcome, ${a}`;
+      b[i+1].style.width = "auto";
     }
-  //   for (let i = 0; i < b.length; i++)
-  //     b[i].textContent = `Welcome, ${a}`;
-}
+  }
 }
 function cartCounting() {
   var cartItemNumber = 0;
