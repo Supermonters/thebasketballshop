@@ -49,11 +49,7 @@ function updateCartTotal() {
     var quantity = quantityElement.value;
     total = total + price * quantity;
   }
-<<<<<<< HEAD
-  total = total.toFixed(3);
-=======
-  total = (total / 1000).toFixed(3);
->>>>>>> f111bae55179465fe3f4f195b1152e302c3e7a02
+  total = (total /1000).toFixed(3)
   if (total == 0) {
     document.getElementsByClassName("cart-total-price")[0].innerText = "0 VNĐ";
   } else {
