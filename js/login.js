@@ -3,6 +3,8 @@ function load() {
   b[1].style.textAlign = "left";
   b[1].style.fontStyle = "normal";
   if (localStorage.getItem("TaiKhoanDangNhap") == null) {
+    b[0].style.width = '7rem'
+    b[1].style.width = "auto";
     return;
   } else {
     var a = localStorage.getItem("TaiKhoanDangNhap");

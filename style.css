@@ -3656,7 +3656,7 @@ js/template.js
   -o-text-overflow: ellipsis;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  width: 8rem;
+  width: 10rem;
   text-align: center;
   font-style: italic;
   overflow: hidden;
