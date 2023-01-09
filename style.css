@@ -3650,3 +3650,14 @@ js/template.js
 .item .social-share a:hover {
   color: #fd5927;
 }
+/*username fix*/
+.welcomeUser{
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  width: 8rem;
+  text-align: center;
+  font-style: italic;
+  overflow: hidden;
+}
