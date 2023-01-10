@@ -95,11 +95,11 @@ span.psw {
 
 @-webkit-keyframes animatezoom {
   from {
-    -webkit-transform: scale(0)
+    transform: scale(0)
   }
 
   to {
-    -webkit-transform: scale(1)
+    transform: scale(1)
   }
 }
 
