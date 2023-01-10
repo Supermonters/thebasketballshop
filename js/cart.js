@@ -49,13 +49,19 @@ function updateCartTotal() {
     var quantity = quantityElement.value;
     total = total + price * quantity;
   }
-  total = (total /1000).toFixed(3)
-  if (total == 0) {
-    document.getElementsByClassName("cart-total-price")[0].innerText = "0 VNĐ";
-  } else {
-    document.getElementsByClassName("cart-total-price")[0].innerText =
-      total + ".000 VNĐ";
+  let trips = "";
+  while (total != 0) {
+      trips = ("00" + total % 1000).slice(-3) + "." + trips;
+      total -= total % 1000;
+      total /= 1000;
   }
+  if (trips != "") {
+    trips += "000";
+    while (trips.charAt(0) === '0') trips = trips.substring(1);
+  }
+  else trips = "0";
+  document.getElementsByClassName("cart-total-price")[0].innerText =
+    trips + " VNĐ";
 }
 function cartload() {
   for (var i = 0; i < localStorage.length; i++) {
@@ -148,323 +154,30 @@ async function removeAll() {
   }
 }
 
-async function addsp1() {
-  if (localStorage.getItem("sp1") !== null) {
+async function addsp(pic, name, price, id) {
+  if (localStorage.getItem("sp" + id) !== null) {
     await daCoTrongRo();
   } else {
-    var sp1 = `<div class = "cart-row" >
+    var sp = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
-     <img class = "cart-item-image" src = "dummy/cartPic/kd14square.png"
+     <img class = "cart-item-image" src = "${pic}"
      width = "100" height = "100" >
-      <span class = "cart-item-title " >KD14 EP</span >
+      <span class = "cart-item-title " >${name}</span >
 </div>
-<span class = "cart-price cart-column" >3.527.000</span >
+<span class = "cart-price cart-column" >${price}</span >
 <div class = "cart-quantity cart-column " >
       <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" type = "button" onclick="removeSp1()" >REMOVE</button >
+      <button class = " btn btn-danger1" type = "button" onclick="removeSp(${id})" >REMOVE</button >
 </div>
 </div> 
 </div>`;
-    localStorage.setItem("sp1", sp1);
+    localStorage.setItem("sp" + id, sp);
     await themVaoGioThanhCong();
     cartCounting();
   }
 }
-function removeSp1() {
-  localStorage.removeItem("sp1");
-  location.reload();
-}
-async function addsp2() {
-  if (localStorage.getItem("sp2") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp2 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-     <img class = "cart-item-image" src = "dummy/cartPic/pg6ep.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >PG6 EP</span >
-</div>
-<span class = "cart-price cart-column" >3.329.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1"
-     type = "button" onclick="removeSp2()" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp2", sp2);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp2() {
-  localStorage.removeItem("sp2");
-  location.reload();
-}
-async function addsp3() {
-  if (localStorage.getItem("sp3") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp3 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
 
-     <img class = "cart-item-image" src = "dummy/cartPic/bucksjersey.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Milwaukee Bucks Jersey</span >
-</div>
-<span class = "cart-price cart-column" >2.959.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp3()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp3", sp3);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp3() {
-  localStorage.removeItem("sp3");
-  location.reload();
-}
-async function addsp4() {
-  if (localStorage.getItem("sp4") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp4 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/AirJordanXXXVIPF_red.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Air Jordan XXXVI PF</span >
-</div>
-<span class = "cart-price cart-column" >5.439.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp4()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp4", sp4);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp4() {
-  localStorage.removeItem("sp4");
-  location.reload();
-}
-async function addsp5() {
-  if (localStorage.getItem("sp5") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp5 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-     <img class = "cart-item-image" src = "dummy/cartPic/Harden.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Harden Stepback 2 Core Black</span >
-</div>
-<span class = "cart-price cart-column" >3.499.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp5()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp5", sp5);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp5() {
-  localStorage.removeItem("sp5");
-  location.reload();
-}
-async function addsp6() {
-  if (localStorage.getItem("sp6") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp6 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-     <img class = "cart-item-image" src = "dummy/cartPic/adidas_sock_white.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Bộ 3 đôi tất cao cổ (Các màu)</span >
-</div>
-<span class = "cart-price cart-column" >0.349.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp6()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp6", sp6);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp6() {
-  localStorage.removeItem("sp6");
-  location.reload();
-}
-async function addsp7() {
-  if (localStorage.getItem("sp7") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp7 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/LeBron19Low.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >LeBron 19 Low</span >
-</div>
-<span class = "cart-price cart-column" >4.699.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp7()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp7", sp7);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp7() {
-  localStorage.removeItem("sp7");
-  location.reload();
-}
-async function addsp8() {
-  if (localStorage.getItem("sp8") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp8 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/KT5 Veteran.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >KT5 "Veteran"</span >
-</div>
-<span class = "cart-price cart-column" >2.459.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp8()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp8", sp8);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp8() {
-  localStorage.removeItem("sp8");
-  location.reload();
-}
-async function addsp9() {
-  if (localStorage.getItem("sp9") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp9 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/Li Ning Way Of Wade 9 Infinity Balance.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Li Ning Way Of Wade 9 Infinity</span >
-</div>
-<span class = "cart-price cart-column" >10.499.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp9()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp9", sp9);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp9() {
-  localStorage.removeItem("sp9");
-  location.reload();
-}
-async function addsp10() {
-  if (localStorage.getItem("sp10") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp10 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/PRO 2.0 OFFICIAL GAME BALL.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >PRO 2.0 OFFICIAL GAME BALL</span >
-</div>
-<span class = "cart-price cart-column" >1.149.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp10()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp10", sp10);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp10() {
-  localStorage.removeItem("sp10");
-  location.reload();
-}
-async function addsp11() {
-  if (localStorage.getItem("sp11") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp11 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/Under Amour HOVR™ Havoc 4 Clone.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Under Amour Havoc 4 Clone</span >
-</div>
-<span class = "cart-price cart-column" >1.699.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp11()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp11", sp11);
-    await themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp11() {
-  localStorage.removeItem("sp11");
-  location.reload();
-}
-async function addsp12() {
-  if (localStorage.getItem("sp12") !== null) {
-    await daCoTrongRo();
-  } else {
-    var sp12 = `<div class = "cart-row" >
-<div class = "cart-item cart-column" >
-
-     <img class = "cart-item-image" src = "dummy/cartPic/Nike Hoops Elite Pro.png"
-     width = "100" height = "100" >
-      <span class = "cart-item-title " >Nike Hoops Elite Pro</span >
-</div>
-<span class = "cart-price cart-column" >2.089.000</span >
-<div class = "cart-quantity cart-column " >
-      <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" onclick="removeSp12()"
-     type = "button" >REMOVE</button >
-</div>
-</div>`;
-    localStorage.setItem("sp12", sp12);
-    themVaoGioThanhCong();
-    cartCounting();
-  }
-}
-function removeSp12() {
-  localStorage.removeItem("sp12");
+async function removeSp(id) {
+  localStorage.removeItem("sp" + id);
   location.reload();
 }
