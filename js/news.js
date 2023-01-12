@@ -29,10 +29,10 @@
         <img src="${arr[i].image_url}"
             alt="${arr[i].title}">
     </div>
-    <h2 class="entry-title">
+    <h2 class="entry-title" style="margin-bottom:0">
         <a href="${arr[i].link}">${arr[i].title}</a>
     </h2>
-    <h3>${("0" + d.getHours()).slice(-2)}:${("0" + d.getMinutes()).slice(-2)}</h3>
+    <h3 style="margin-top:0">${("0" + d.getHours()).slice(-2)}:${("0" + d.getMinutes()).slice(-2)}</h3>
     <p>${arr[i].description}</p>
     <a href="${arr[i].link}">Đọc thêm</a>
     </div>`;
