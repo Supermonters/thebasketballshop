@@ -3577,7 +3577,7 @@ js/template.js
   font-style: italic;
   overflow: hidden;
 }
-/* BETTER SCROLL B*/
+/* BETTER Scroll Bar*/
 body::-webkit-scrollbar {
   background-color: black;
   width: 16px;
