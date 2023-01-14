@@ -711,7 +711,13 @@ app.get("/store_item", async (req, res) => {
                 <div class="container" style="padding-top: 1rem;" id="navbar" bis_skin_checked="1">
                     <div class="pro-info" bis_skin_checked="1" style="padding-top: 15px;">
                         <div class="product-name" bis_skin_checked="1"
-                            style="margin-left: 15px;font-size: 1em;font-family: Chakra Petch;">${item.name}</div>
+                            style="margin-left: 15px;font-size: 1em;font-family: Chakra Petch;">${item.name}
+                            <select id="size" style="margin-left:5px;">`
+    for (let i = 0; i < item.options.length; i++) {
+        html += `<option value=${item.options[i]}>${item.options[i]}</option>`;
+    }
+    html +=
+                           `</select></div>
                         <div class="addcart-price" bis_skin_checked="1">
                             <div class="price" bis_skin_checked="1" style=" margin-right: 1rem;">Tổng chi phí<div
                                     bis_skin_checked="1"
@@ -723,7 +729,7 @@ app.get("/store_item", async (req, res) => {
                                     style="font-weight: 700;font-size: 20px;line-height: 30px;color: #f9495f;white-space: nowrap;font-family: Chakra Petch;display: none;">
                                     ${item.price}</div>
                             <div style="text-align: center;" class="add-cart-buttons" bis_skin_checked="1">
-                                <button onclick='addsp("${item.cartpic}", "${item.name}", "${item.price}", ${item.id})' type="button"
+                                <button onclick='addsp("${item.cartpic}", "${item.name}", document.getElementById("size").value, "${item.price}", ${item.id})' type="button"
                                     data-loading-text="Đang tải..." class="btn-add-cart btn-add-cart-2">
                                     <svg style="vertical-align: text-bottom;padding-right: 5px;" width="17" height="18"
                                         viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">

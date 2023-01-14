@@ -22,11 +22,15 @@
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/242aa82f-7f1b-45af-a790-7561c73a7eee/hoops-elite-pro-basketball-backpack-fk9KbP.png"
       ],
       "price": "2.089.000",
-      "filter": "concert",
+      "filter": "stuff",
       "mouseover": "/dummy/Band Name/New folder/635999184041758451-974082916_Live-music-bgback.jpg",
       "mouseout": "/dummy/Band Name/New folder/635999184041758451-974082916_Live-music-bg.jpg",
       "id": 1,
-      "cartpic": "/dummy/cartPic/Nike Hoops Elite Pro.png"
+      "cartpic": "/dummy/cartPic/Nike Hoops Elite Pro.png",
+      "options": [
+        "Black",
+        "Brown"
+      ]
     },
     {
       "name": "PRO 2.0 OFFICIAL GAME BALL",
@@ -54,7 +58,11 @@
       "mouseover": "/dummy/Band Name/99192072-624x420-1352738795back.jpg",
       "mouseout": "/dummy/Band Name/99192072-624x420-1352738795.jpg",
       "id": 2,
-      "cartpic": "/dummy/cartPic/PRO 2.0 OFFICIAL GAME BALL.png"
+      "cartpic": "/dummy/cartPic/PRO 2.0 OFFICIAL GAME BALL.png",
+      "options": [
+        "5",
+        "6"
+      ]
     },
     {
       "name": "Bộ 3 đôi tất cao cổ Adidas",
@@ -82,7 +90,12 @@
       "mouseover": "/dummy/Band Name/New folder/Giro_del_mondo_microfonoblack.jpg",
       "mouseout": "dummy/Band Name/New folder/Giro_del_mondo_microfono.jpg",
       "id": 3,
-      "cartpic": "/dummy/cartPic/adidas_sock_white.png"
+      "cartpic": "/dummy/cartPic/adidas_sock_white.png",
+      "options": [
+        "Black",
+        "Red",
+        "Violet"
+      ]
     },
     {
       "name": "Air Jordan XXXVI PF",
@@ -107,7 +120,18 @@
       "mouseover": "/dummy/Band Name/AirJordanXXXVIPF_red.jpg",
       "mouseout": "/dummy/Band Name/image_red.jpg",
       "id": 4,
-      "cartpic": "/dummy/cartPic/AirJordanXXXVIPF_red.png"
+      "cartpic": "/dummy/cartPic/AirJordanXXXVIPF_red.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "NBA BUCKS JERSEY",
@@ -135,7 +159,14 @@
       "mouseover": "/dummy/Band Name/imagesback.jpg",
       "mouseout": "/dummy/Band Name/images.jpg",
       "id": 5,
-      "cartpic": "/dummy/cartPic/bucksjersey.png"
+      "cartpic": "/dummy/cartPic/bucksjersey.png",
+      "options": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ]
     },
     {
       "name": "Harden Stepback 2",
@@ -159,7 +190,18 @@
       "mouseover": "/dummy/Band Name/hardenback.png",
       "mouseout": "/dummy/Band Name/5261_Electronics_Music_Production_pic_1.jpg",
       "id": 6,
-      "cartpic": "/dummy/cartPic/Harden.png"
+      "cartpic": "/dummy/cartPic/Harden.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "KD 14 EP",
@@ -187,7 +229,18 @@
       "mouseover": "/dummy/Band Name/kd14.jpg",
       "mouseout": "/dummy/Band Name/Spark-71.jpg",
       "id": 7,
-      "cartpic": "/dummy/cartPic/kd14square.png"
+      "cartpic": "/dummy/cartPic/kd14square.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "KT5 \"Veteran\"",
@@ -212,7 +265,18 @@
       "mouseover": "/dummy/Band Name/New folder/index_bgbup.jpg",
       "mouseout": "/dummy/Band Name/New folder/index_bg.jpg",
       "id": 8,
-      "cartpic": "/dummy/cartPic/KT5 Veteran.png"
+      "cartpic": "/dummy/cartPic/KT5 Veteran.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "LeBron 19 Low",
@@ -240,7 +304,18 @@
       "mouseover": "/dummy/Band Name/New folder/lebron19low.jpg",
       "mouseout": "/dummy/Band Name/New folder/unnamed (1).png",
       "id": 9,
-      "cartpic": "/dummy/cartPic/LeBron19Low.png"
+      "cartpic": "/dummy/cartPic/LeBron19Low.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "PG6 EP",
@@ -267,11 +342,22 @@
       "mouseover": "/dummy/Band Name/pg6.jpg",
       "mouseout": "/dummy/Band Name/71.jpg",
       "id": 10,
-      "cartpic": "/dummy/cartPic/pg6ep.png"
+      "cartpic": "/dummy/cartPic/pg6ep.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "Under Armour HOVR Havoc 4 Clone",
-      "alt": "Giày bóng rổ chính hãng Nike Under Armour HOVR Havoc 4 Clone",
+      "alt": "Giày bóng rổ chính hãng Under Armour HOVR Havoc 4 Clone",
       "banner": "/dummy/banner_pic/gallery-11.jpg",
       "images": [
         "https://i1.t4s.cz/products/3025994-002/under-armour-ua-hovr-havoc-4-clone-ij-385412-3025994-003.jpeg",
@@ -291,11 +377,22 @@
         "https://cdn.weartesters.com/wp-content/uploads/2022/01/ua-hovr-havoc-4-clone-performance-review-overall-1024x384.jpg"
       ],
       "price": "1.699.000",
-      "filter": "concert",
+      "filter": "band",
       "mouseover": "/dummy/Band Name/New folder/underamour.jpg",
       "mouseout": "/dummy/Band Name/New folder/unnamed.png",
       "id": 11,
-      "cartpic": "/dummy/cartPic/Under Amour HOVR™ Havoc 4 Clone.png"
+      "cartpic": "/dummy/cartPic/Under Amour HOVR™ Havoc 4 Clone.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     },
     {
       "name": "Way Of Wade 9 Infinity",
@@ -323,7 +420,18 @@
       "mouseover": "/dummy/Band Name/New folder/music-pictures-10up.jpg",
       "mouseout": "/dummy/Band Name/New folder/music-pictures-10.jpg",
       "id": 12,
-      "cartpic": "/dummy/cartPic/Li Ning Way Of Wade 9 Infinity Balance.png"
+      "cartpic": "/dummy/cartPic/Li Ning Way Of Wade 9 Infinity Balance.png",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46"
+      ]
     }
   ]
 }

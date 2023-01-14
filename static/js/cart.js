@@ -161,7 +161,7 @@ async function removeAll() {
   }
 }
 
-async function addsp(pic, name, price, id) {
+async function addsp(pic, name, option, price, id) {
   if (localStorage.getItem("sp" + id) !== null) {
     await daCoTrongRo();
   } else {
@@ -169,7 +169,7 @@ async function addsp(pic, name, price, id) {
 <div class = "cart-item cart-column" >
       <img class = "cart-item-image" src = "${pic}"
       width = "100" height = "100" >
-      <span class = "cart-item-title " >${name}</span >
+      <span class = "cart-item-title " >${name}<br>${option}</span >
 </div>
 <span class = "cart-price cart-column" >${price}</span >
 <div class = "cart-quantity cart-column " >
