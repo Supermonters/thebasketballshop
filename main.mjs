@@ -78,7 +78,7 @@ app.get("/pdcnt", async (req, res) => {
 app.get("/mail", async (req, res) => {
     const address = req.query.mail;
     await transporter.sendMail({
-        from: '"BasketballShop" <sieunhanham007@gmail.com>', // sender address
+        from: `"BasketballShop" <${configs.MAILUSER}>`, // sender address
         to: address, // list of receivers
         subject: "Newsletter", // Subject line
         text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
