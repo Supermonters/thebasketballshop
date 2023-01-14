@@ -53,39 +53,48 @@
   });
   //hello
   SignIn.addEventListener("click", (e) => {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var username = document.getElementById("username").value;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(async (userCredential) => {
-        // Signed in
-        const user = userCredential;
-
-        const dt = new Date();
-        database.ref("user/" + user.uid).update({
-          last_login: dt,
+    if (localStorage.getItem('TaiKhoanDangNhap')=== null) {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var username = document.getElementById("username").value;
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(async (userCredential) => {
+          // Signed in
+          const user = userCredential;
+  
+          const dt = new Date();
+          database.ref("user/" + user.uid).update({
+            last_login: dt,
+          });
+          console.log(user);
+          localStorage.setItem("TaiKhoanDangNhap", username);
+          await Swal.fire({
+            icon: 'success',
+            title: 'Thành công',
+            text: `Đăng nhập thành công`,
+          })
+          window.location.reload();
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${errorMessage}`,
+          })
+  
         });
-        console.log(user);
-        localStorage.setItem("TaiKhoanDangNhap", username);
-        await Swal.fire({
-          icon: 'success',
-          title: 'Thành công',
-          text: `Đăng nhập thành công`,
-        })
-        window.location.reload();
+    }else{
+       Swal.fire({
+        icon: 'error',
+        title: 'Thất bại',
+        text: `Bạn hiện đang đăng nhập`,
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: `${errorMessage}`,
-        })
+    }
 
-      });
   });
   const user = auth.currentUser;
   firebase.auth().onAuthStateChanged((user) => {
