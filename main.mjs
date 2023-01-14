@@ -10,66 +10,65 @@ const app = express();
 await db.read();
 
 function findbyproductname(products, name) {
-    for (let i = 0; i < products.length; i++) {
-        if (products[i].name === name) return products[i];
-    }
-    return {};
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].name === name) return products[i];
+  }
+  return {};
 }
 
 db.data ||= {
-    products: []
-}
+  products: [],
+};
 
 app.use("/", express.static("static"));
 
 app.get("/news", async (req, res) => {
-    let arr;
-    let d = new Date();
-    d.setTime(Date.now());
-    if (
-        db.data.news === undefined ||
-        db.data.news.date !==
-        `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d.getUTCMonth().toString()}${d
-            .getUTCFullYear()
-            .toString()}`
-    ) {
-        let a = await fetch(
-            "https://newsdata.io/api/1/news?apikey=pub_1550576968a334f90cbb606bd4690ca338b1e&q=nba&language=en&category=sports"
-        );
-        let data = await a.json();
-        arr = data.results.filter(
-            (el) => el.image_url !== null && el.description !== null
-        );
-        db.data.news = {
-            date: `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d.getUTCMonth().toString()}${d
-                .getUTCFullYear()
-                .toString()}`,
-            arr: arr,
-        }
-        await db.write();
-    } else {
-        arr = db.data.news.arr;
-    }
-    res.status(200).json({
-        news: arr
-    });
-})
+  let arr;
+  let d = new Date();
+  d.setTime(Date.now());
+  if (
+    db.data.news === undefined ||
+    db.data.news.date !==
+      `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d
+        .getUTCMonth()
+        .toString()}${d.getUTCFullYear().toString()}`
+  ) {
+    let a = await fetch(
+      "https://newsdata.io/api/1/news?apikey=pub_1550576968a334f90cbb606bd4690ca338b1e&q=nba&language=en&category=sports"
+    );
+    let data = await a.json();
+    arr = data.results.filter(
+      (el) => el.image_url !== null && el.description !== null
+    );
+    db.data.news = {
+      date: `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d
+        .getUTCMonth()
+        .toString()}${d.getUTCFullYear().toString()}`,
+      arr: arr,
+    };
+    await db.write();
+  } else {
+    arr = db.data.news.arr;
+  }
+  res.status(200).json({
+    news: arr,
+  });
+});
 
 app.get("/productlist", async (req, res) => {
-    res.status(200).json(db.data);
-})
+  res.status(200).json(db.data);
+});
 
 app.get("/pdcnt", async (req, res) => {
-    res.status(200).json({
-        count: db.data.products.length
-    });
-})
+  res.status(200).json({
+    count: db.data.products.length,
+  });
+});
 
 app.get("/store_item", async (req, res) => {
-    const itemName = req.query.item;
-    const item = findbyproductname(db.data.products, itemName);
-    let html =
-        `<!DOCTYPE html>
+  const itemName = req.query.item;
+  const item = findbyproductname(db.data.products, itemName);
+  let html = `<!DOCTYPE html>
         <html lang="en">
         
         <head>
@@ -88,8 +87,27 @@ app.get("/store_item", async (req, res) => {
             <link rel="icon" type="image/x-icon" href="/images/favicon.png">
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <style>
+            html {
+                background-color: #f2f2f2;
+                }
+                
+                body {
+                margin: 0;
+                font-size: 28px;
+                font-family: Arial, Helvetica, sans-serif;
+                }
+                
+                .header {
+                background-color: #f1f1f1;
+                padding: 30px;
+                text-align: center;
+                
+                }
+                
+                p {
+                font-family: 'Martel', serif;
+                }
                 @media (max-width: 1024px) {
-        
         .pro-info {
             padding-top: 0 !important;
         }
@@ -143,7 +161,6 @@ app.get("/store_item", async (req, res) => {
         .price {
             display: none;
         }
-        
         .price-number1 {
             display: block !important;
             font-weight: 700 !important;
@@ -184,27 +201,13 @@ app.get("/store_item", async (req, res) => {
             flex-direction: column;
             padding: 12px 16px;
         }
+        #optionThing{
+            border: 3px solid black;
+            border-radius: 2px;
+            font-family: Chakra Petch;
+            font-size:1.23rem;
         }
         
-        html {
-        background-color: #f2f2f2;
-        }
-        
-        body {
-        margin: 0;
-        font-size: 28px;
-        font-family: Arial, Helvetica, sans-serif;
-        }
-        
-        .header {
-        background-color: #f1f1f1;
-        padding: 30px;
-        text-align: center;
-        
-        }
-        
-        p {
-        font-family: 'Martel', serif;
         }
         
         @media (min-width: 1024px) {
@@ -673,7 +676,11 @@ app.get("/store_item", async (req, res) => {
             background-color: #fff !important;
             border: 1px solid #fa9f2c !important;
         }
-        
+        #optionThing{
+            border: 3px solid black;
+            border-radius: 2px;
+            font-family: Chakra Petch;
+        }
         
         }
             </style>
@@ -694,15 +701,13 @@ app.get("/store_item", async (req, res) => {
                     <p style="text-align:justify;">
                     <h1 style="text-align: center;padding-bottom: 10vw;font-family: 'Chonburi', cursive;font-size: 3em; ">${item.name}
                     </h1><span style="font-size:20px;"></span></p>`;
-    for (let i = 0; i < item.images.length; i++) {
-        html +=
-            `<p style="text-align:center;"><img style="height: 80%;width: 80%;" alt="${item.alt}"
+  for (let i = 0; i < item.images.length; i++) {
+    html += `<p style="text-align:center;"><img style="height: 80%;width: 80%;" alt="${item.alt}"
                 src="${item.images[i]}">
         </p>
-        <p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">${item.alt}</span></p>`
-    }
-    html +=
-        `</div>
+        <p style="text-align:center;"><span style="font-family:arial, helvetica, sans-serif;font-size:20px;">${item.alt}</span></p>`;
+  }
+  html += `</div>
             </div>
         
             <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="https://basketballshop.netlify.app/store_item/pg6ep" data-width=""
@@ -712,12 +717,11 @@ app.get("/store_item", async (req, res) => {
                     <div class="pro-info" bis_skin_checked="1" style="padding-top: 15px;">
                         <div class="product-name" bis_skin_checked="1"
                             style="margin-left: 15px;font-size: 1em;font-family: Chakra Petch;">${item.name}
-                            <select id="size" style="margin-left:5px;">`
-    for (let i = 0; i < item.options.length; i++) {
-        html += `<option value=${item.options[i]}>${item.options[i]}</option>`;
-    }
-    html +=
-                           `</select></div>
+                            <select id="optionThing" style="margin-left:5px;">`;
+  for (let i = 0; i < item.options.length; i++) {
+    html += `<option value=${item.options[i]}>${item.options[i]}</option>`;
+  }
+  html += `</select></div>
                         <div class="addcart-price" bis_skin_checked="1">
                             <div class="price" bis_skin_checked="1" style=" margin-right: 1rem;">Tổng chi phí<div
                                     bis_skin_checked="1"
@@ -729,7 +733,7 @@ app.get("/store_item", async (req, res) => {
                                     style="font-weight: 700;font-size: 20px;line-height: 30px;color: #f9495f;white-space: nowrap;font-family: Chakra Petch;display: none;">
                                     ${item.price}</div>
                             <div style="text-align: center;" class="add-cart-buttons" bis_skin_checked="1">
-                                <button onclick='addsp("${item.cartpic}", "${item.name}", document.getElementById("size").value, "${item.price}", ${item.id})' type="button"
+                                <button onclick='addsp("${item.cartpic}", "${item.name}", document.getElementById("optionThing").value, "${item.price}", ${item.id})' type="button"
                                     data-loading-text="Đang tải..." class="btn-add-cart btn-add-cart-2">
                                     <svg style="vertical-align: text-bottom;padding-right: 5px;" width="17" height="18"
                                         viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -790,9 +794,9 @@ app.get("/store_item", async (req, res) => {
         </body>
         
         </html>`;
-    res.status(200).send(html);
-})
+  res.status(200).send(html);
+});
 
 app.listen(configs.PORT, () => {
-    console.log(`server started on port ${configs.PORT}`);
-})
+  console.log(`server started on port ${configs.PORT}`);
+});

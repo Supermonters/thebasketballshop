@@ -174,7 +174,7 @@ async function addsp(pic, name, option, price, id) {
 <span class = "cart-price cart-column" >${price}</span >
 <div class = "cart-quantity cart-column " >
       <input class = " cart-quantity-input "type = "number" value = "1" >
-      <button class = " btn btn-danger1" type = "button" onclick="removeSp(${id})" >REMOVE</button >
+      <button style="font-weight:700;background-color:red;border-radius:3px;box-shadow:rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, red 0 -3px 0 inset" class = " btn btn-danger1" type = "button" onclick="removeSp(${id})" >REMOVE</button >
 </div>
 </div> 
 </div>`;
