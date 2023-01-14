@@ -82,7 +82,7 @@ app.get("/mail", async (req, res) => {
     to: address, // list of receivers
     subject: "Newsletter", // Subject line
     text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
-    html: `Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.<img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="idk">
+    html: `Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.<br><img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="idk" width=200 height=200>
         `, // html body
   });
 });
