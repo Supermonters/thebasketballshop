@@ -2,11 +2,21 @@ import express from "express";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import fetch from "node-fetch";
+import nodemailer from "nodemailer";
 import configs from "./config.json" assert { type: "json" };
 
 const db = new Low(new JSONFile("db/db.json"));
 const app = express();
 
+let transporter = nodemailer.createTransport({
+    host: "smtp.elasticemail.com",
+    port: 2525,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: "sieunhanham007@gmail.com", // generated ethereal user
+        pass: "C6B1D28B3C35ECBB08B02385FBA9863C3471", // generated ethereal password
+    },
+});
 await db.read();
 
 function findbyproductname(products, name) {
@@ -64,6 +74,17 @@ app.get("/pdcnt", async (req, res) => {
     count: db.data.products.length,
   });
 });
+
+app.get("/mail", async (req, res) => {
+    const address = req.query.mail;
+    await transporter.sendMail({
+        from: '"BasketballShop" <sieunhanham007@gmail.com>', // sender address
+        to: address, // list of receivers
+        subject: "Newsletter", // Subject line
+        text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
+        html: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.", // html body
+    });
+})
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;

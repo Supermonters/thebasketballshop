@@ -344,8 +344,8 @@
 					</p>
 				</address>
 
-				<form action="#" class="newsletter-form">
-					<input type="email" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA...">
+				<form onsubmit="sendemail(document.getElementById('mail').value)" class="newsletter-form">
+					<input type="email" id="mail" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA..." required>
 					<input type="submit" class="button cut-corner" value="Subscribe">
 				</form> <!-- .newsletter-form -->
 
@@ -384,6 +384,7 @@
 	<script src="js/button.js"></script>
 	<script src="js/login.js"></script>
 	<script src="js/template.js"></script>
+	<script src="js/mail.js"></script>
 </body>
 
 </html>
