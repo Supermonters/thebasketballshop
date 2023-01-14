@@ -175,7 +175,7 @@ pre {
 
 /* line 260, sass/libs/_normalize.scss */
 q {
-  quotes: "\201C""\201D""\2018""\2019";
+  quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 /* line 275, sass/libs/_normalize.scss */
@@ -726,6 +726,7 @@ body {
 }
 
 @media only screen and (max-width: 41.25em) {
+
   /* line 317, sass/libs/_component.scss */
   #container {
     width: 100%;
@@ -769,6 +770,7 @@ body {
 }
 
 @media only screen and (max-width: 20em) {
+
   /* line 349, sass/libs/_component.scss */
   .imagelightbox-arrow-left {
     left: 0;
@@ -804,6 +806,7 @@ body {
 }
 
 @media (min-width: 768px) {
+
   /* line 10, sass/libs/bootstrap-grid/_grid.scss */
   .container {
     width: 750px;
@@ -811,6 +814,7 @@ body {
 }
 
 @media (min-width: 992px) {
+
   /* line 10, sass/libs/bootstrap-grid/_grid.scss */
   .container {
     width: 970px;
@@ -818,6 +822,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 10, sass/libs/bootstrap-grid/_grid.scss */
   .container {
     width: 1170px;
@@ -1185,6 +1190,7 @@ body {
 }
 
 @media (min-width: 768px) {
+
   /* line 27, sass/libs/bootstrap-grid/_mixins.scss */
   .col-sm-1,
   .col-sm-2,
@@ -1458,6 +1464,7 @@ body {
 }
 
 @media (min-width: 992px) {
+
   /* line 27, sass/libs/bootstrap-grid/_mixins.scss */
   .col-md-1,
   .col-md-2,
@@ -1731,6 +1738,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 27, sass/libs/bootstrap-grid/_mixins.scss */
   .col-lg-1,
   .col-lg-2,
@@ -2032,6 +2040,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   /* line 114, sass/libs/bootstrap-grid/_grid.scss */
   .visible-xs {
     display: block !important;
@@ -2055,6 +2064,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   /* line 150, sass/libs/bootstrap-grid/_grid.scss */
   .visible-xs-block {
     display: block !important;
@@ -2062,6 +2072,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   /* line 155, sass/libs/bootstrap-grid/_grid.scss */
   .visible-xs-inline {
     display: inline !important;
@@ -2069,6 +2080,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   /* line 160, sass/libs/bootstrap-grid/_grid.scss */
   .visible-xs-inline-block {
     display: inline-block !important;
@@ -2076,6 +2088,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
   /* line 114, sass/libs/bootstrap-grid/_grid.scss */
   .visible-sm {
     display: block !important;
@@ -2099,6 +2112,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
   /* line 169, sass/libs/bootstrap-grid/_grid.scss */
   .visible-sm-block {
     display: block !important;
@@ -2106,6 +2120,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
   /* line 174, sass/libs/bootstrap-grid/_grid.scss */
   .visible-sm-inline {
     display: inline !important;
@@ -2113,6 +2128,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
   /* line 179, sass/libs/bootstrap-grid/_grid.scss */
   .visible-sm-inline-block {
     display: inline-block !important;
@@ -2120,6 +2136,7 @@ body {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
   /* line 114, sass/libs/bootstrap-grid/_grid.scss */
   .visible-md {
     display: block !important;
@@ -2143,6 +2160,7 @@ body {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
   /* line 188, sass/libs/bootstrap-grid/_grid.scss */
   .visible-md-block {
     display: block !important;
@@ -2150,6 +2168,7 @@ body {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
   /* line 193, sass/libs/bootstrap-grid/_grid.scss */
   .visible-md-inline {
     display: inline !important;
@@ -2157,6 +2176,7 @@ body {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
   /* line 198, sass/libs/bootstrap-grid/_grid.scss */
   .visible-md-inline-block {
     display: inline-block !important;
@@ -2164,6 +2184,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 114, sass/libs/bootstrap-grid/_grid.scss */
   .visible-lg {
     display: block !important;
@@ -2187,6 +2208,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 207, sass/libs/bootstrap-grid/_grid.scss */
   .visible-lg-block {
     display: block !important;
@@ -2194,6 +2216,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 212, sass/libs/bootstrap-grid/_grid.scss */
   .visible-lg-inline {
     display: inline !important;
@@ -2201,6 +2224,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 217, sass/libs/bootstrap-grid/_grid.scss */
   .visible-lg-inline-block {
     display: inline-block !important;
@@ -2208,6 +2232,7 @@ body {
 }
 
 @media (max-width: 767px) {
+
   /* line 125, sass/libs/bootstrap-grid/_grid.scss */
   .hidden-xs {
     display: none !important;
@@ -2215,6 +2240,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+
   /* line 125, sass/libs/bootstrap-grid/_grid.scss */
   .hidden-sm {
     display: none !important;
@@ -2222,6 +2248,7 @@ body {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
   /* line 125, sass/libs/bootstrap-grid/_grid.scss */
   .hidden-md {
     display: none !important;
@@ -2229,6 +2256,7 @@ body {
 }
 
 @media (min-width: 1200px) {
+
   /* line 125, sass/libs/bootstrap-grid/_grid.scss */
   .hidden-lg {
     display: none !important;
@@ -2241,6 +2269,7 @@ body {
 }
 
 @media print {
+
   /* line 114, sass/libs/bootstrap-grid/_grid.scss */
   .visible-print {
     display: block !important;
@@ -2269,6 +2298,7 @@ body {
 }
 
 @media print {
+
   /* line 251, sass/libs/bootstrap-grid/_grid.scss */
   .visible-print-block {
     display: block !important;
@@ -2281,6 +2311,7 @@ body {
 }
 
 @media print {
+
   /* line 258, sass/libs/bootstrap-grid/_grid.scss */
   .visible-print-inline {
     display: inline !important;
@@ -2293,6 +2324,7 @@ body {
 }
 
 @media print {
+
   /* line 265, sass/libs/bootstrap-grid/_grid.scss */
   .visible-print-inline-block {
     display: inline-block !important;
@@ -2300,6 +2332,7 @@ body {
 }
 
 @media print {
+
   /* line 125, sass/libs/bootstrap-grid/_grid.scss */
   .hidden-print {
     display: none !important;
@@ -2389,6 +2422,7 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+
   /* line 30, sass/layout/_header.scss */
   .main-navigation .toggle-menu {
     display: block;
@@ -2403,6 +2437,7 @@ body {
 }
 
 @media screen and (min-width: 992px) {
+
   /* line 48, sass/layout/_header.scss */
   .main-navigation .menu {
     display: block !important;
@@ -2410,6 +2445,7 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+
   /* line 48, sass/layout/_header.scss */
   .main-navigation .menu {
     display: none;
@@ -2488,6 +2524,7 @@ body {
 }
 
 @media screen and (min-width: 992px) {
+
   /* line 105, sass/layout/_header.scss */
   .mobile-menu {
     display: none !important;
@@ -2883,6 +2920,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
   /* line 22, sass/layout/_footer.scss */
   .site-footer .newsletter-form input[type="email"] {
     width: 70%;
@@ -2902,6 +2940,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
   /* line 37, sass/layout/_footer.scss */
   .site-footer .newsletter-form input[type="submit"] {
     width: 30%;
@@ -3388,6 +3427,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
   /* line 5, sass/pages/_gallery.scss */
   .mobile-filter {
     display: block;
@@ -3426,6 +3466,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
   /* line 27, sass/pages/_gallery.scss */
   .filter-links a {
     display: none;
@@ -3454,6 +3495,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+
   /* line 57, sass/pages/_gallery.scss */
   .filterable-item {
     width: 50%;
@@ -3461,6 +3503,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
   /* line 57, sass/pages/_gallery.scss */
   .filterable-item {
     width: 100%;
@@ -3568,6 +3611,7 @@ js/template.js
 .item .social-share a:hover {
   color: #fd5927;
 }
+
 /*username fix*/
 .welcomeUser {
   white-space: nowrap;
@@ -3577,6 +3621,7 @@ js/template.js
   font-style: italic;
   overflow: hidden;
 }
+
 /* BETTER Scroll Bar*/
 body::-webkit-scrollbar {
   background-color: black;
@@ -3594,6 +3639,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 16px;
   border: 4px solid black;
 }
+
 div#id01::-webkit-scrollbar {
   background-color: black;
   width: 16px;

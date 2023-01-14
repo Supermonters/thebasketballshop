@@ -6,42 +6,34 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-	<title>Cửa hàng</title>
+	<title>Giỏ Hàng</title>
 	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- Loading third party fonts -->
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link
 		href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
 		rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet"
-		type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Jaldi&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,700;1,700&display=swap"
+		rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+		rel="stylesheet">
 	<!-- Loading main css file -->
 	<link rel="stylesheet" href="css/login.css">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="css/cart.css">
 	<link rel="icon" type="image/x-icon" href="./images/favicon.png">
-	<style>
-		button {
-			all: unset;
-		}
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
 
-		.section::-webkit-scrollbar {
-			width: 16px;
-		}
-
-		.section::-webkit-scrollbar-track {
-			background-color: #e4e4e4;
-			border-radius: 100px;
-		}
-
-		.section::-webkit-scrollbar-thumb {
-			background-color: #d4aa70;
-			border-radius: 100px;
-		}
-	</style>
 	<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
@@ -49,7 +41,7 @@
 
 </head>
 
-<body onload=" load();cartCounting();">
+<body onload=" load(); cartload();cartCounting();nothing(); ">
 	<!-- Messenger Plugin chat Code -->
 	<div id="fb-root"></div>
 
@@ -93,11 +85,12 @@
 					<ul class="menu">
 						<li class="menu-item"><a href="index.html">Trang chủ</a></li>
 
-						<li class="menu-item current-menu-item"><a href="store.html">Cửa hàng</a></li>
-						<li class="menu-item"><a href="download.html">Xu hướng</a></li>
+						<li class="menu-item"><a href="store.html">Cửa hàng</a></li>
+						<li class="menu-item"><a href="xuhuong.html">Xu hướng</a></li>
 						<li class="menu-item"><a href="news.html">Tin tức</a></li>
 						<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
-						<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem">(0)</span></a></li>
+						<li class="menu-item current-menu-item"><a href="cart.html">Giỏ Hàng<span
+									id="countItem">(0)</span></a></li>
 						<li class="menu-item"><a class="welcomeUser"
 								onclick="document.getElementById('id01').style.display='block'">Login</a></li>
 
@@ -168,125 +161,35 @@
 			</script>
 		</div>
 		<main class="main-content">
-			<div class="fullwidth-block gallery">
-				<div class="container">
-					<div class="content fullwidth">
-						<h2 class="entry-title">Cửa hàng</h2>
-						<div class="filter-links filterable-nav">
-							<select class="mobile-filter">
-								<option value="*">Lọc</option>
-								<option value=".concert">Nike</option>
-								<option value=".band">Hãng Khác</option>
-								<option value=".stuff">Phụ kiện</option>S
-							</select>
-							<a href="#" class="current" data-filter="*">Tất cả</a>
-							<a href="#" data-filter=".concert">Nike</a>
-							<a href="#" data-filter=".band">Hãng Khác</a>
-							<a href="#" data-filter=".stuff">Phụ kiện</a>
-						</div>
-						<div class="filterable-items">
-							<div class="filterable-item concert">
-								<button><a href="store_item/kd14.html">
-										<figure><img src="dummy/Band Name/Spark-71.jpg"
-												onmouseover="this.src='dummy/Band Name/kd14.jpg'"
-												onmouseout="this.src='dummy/Band Name/Spark-71.jpg'" alt="KD14 EP">
-										</figure>
-									</a></button>
-							</div>
-							<div class="filterable-item concert">
-								<button><a href="store_item/pg6ep.html">
-										<figure><img src="dummy/Band Name/71.jpg"
-												onmouseover="this.src='dummy/Band Name/pg6.jpg'"
-												onmouseout="this.src='dummy/Band Name/71.jpg'" alt="PG6 EP"></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item stuff">
-								<button><a href="store_item/bucksjersey.html">
-										<figure><img src="dummy/Band Name/images.jpg"
-												onmouseover="this.src='dummy/Band Name/imagesback.jpg'"
-												onmouseout="this.src='dummy/Band Name/images.jpg'"
-												alt="Milwaukee Bucks Diamond Icon Edition"></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item concert">
-								<button><a href="store_item/air_jordan.html">
-										<figure><img src="dummy/Band Name/image_red.jpg"
-												onmouseover="this.src='dummy/Band Name/AirJordanXXXVIPF_red.jpg'"
-												onmouseout="this.src='dummy/Band Name/image_red.jpg'"
-												alt="Air Jordan XXXVI PF"></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item band">
-								<button><a href="store_item/harden_stepback2.html">
-										<figure><img src="dummy/Band Name/5261_Electronics_Music_Production_pic_1.jpg"
-												onmouseover="this.src='dummy/Band Name/hardenback.png'"
-												onmouseout="this.src='dummy/Band Name/5261_Electronics_Music_Production_pic_1.jpg'"
-												alt="Harden Stepback 2 Core Black"></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item stuff">
-								<button><a href="store_item/adidas_sock.html">
-										<figure><img src="dummy/Band Name/New folder/Giro_del_mondo_microfono.jpg"
-												onmouseover="this.src='dummy/Band Name/New folder/Giro_del_mondo_microfonoblack.jpg'"
-												onmouseout="this.src='dummy/Band Name/New folder/Giro_del_mondo_microfono.jpg'"
-												alt="BỘ 3 ĐÔI TẤT CAO CỔ LÓT ĐỆM 3 SỌC (trắng/đen)"></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item concert">
-								<button><a href="store_item/lebron19_low.html">
-										<figure><img src="dummy/Band Name/New folder/unnamed (1).png"
-												onmouseover="this.src='dummy/Band Name/New folder/lebron19low.jpg'"
-												onmouseout="this.src='dummy/Band Name/New folder/unnamed (1).png'"
-												alt="LeBron 19 Low"></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item band">
-								<button><a href="store_item/kt5.html">
-										<figure><img src="dummy/Band Name/New folder/index_bg.jpg"
-												onmouseover="this.src='dummy/Band Name/New folder/index_bgbup.jpg'"
-												onmouseout="this.src='dummy/Band Name/New folder/index_bg.jpg'"
-												alt=' Klay Thompson KT5 "Veteran"'></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item band">
-								<button><a href="store_item/wayofwade9.html">
-										<figure><img src="dummy/Band Name/New folder/music-pictures-10.jpg"
-												onmouseover="this.src='dummy/Band Name/New folder/music-pictures-10up.jpg'"
-												onmouseout="this.src='dummy/Band Name/New folder/music-pictures-10.jpg'"
-												alt='Li Ning Way Of Wade 9 Infinity Balance'></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item stuff">
-								<button><a href="store_item/adidas_ball.html">
-										<figure><img src="dummy/Band Name/99192072-624x420-1352738795.jpg"
-												onmouseover="this.src='dummy/Band Name/99192072-624x420-1352738795back.jpg'"
-												onmouseout="this.src='dummy/Band Name/99192072-624x420-1352738795.jpg'"
-												alt='PRO 2.0 OFFICIAL GAME BALL'></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item band">
-								<button><a href="store_item/ua_havoc.html">
-										<figure><img src="dummy/Band Name/New folder/unnamed.png"
-												onmouseover="this.src='dummy/Band Name/New folder/underamour.jpg'"
-												onmouseout="this.src='dummy/Band Name/New folder/unnamed.png'"
-												alt='Under Amour HOVR™ Havoc 4 Clone'></figure>
-									</a></button>
-							</div>
-							<div class="filterable-item stuff">
-								<button><a href="store_item/adidas_bag.html">
-										<figure><img
-												src="dummy/Band Name/New folder/635999184041758451-974082916_Live-music-bg.jpg"
-												onmouseover="this.src='dummy/Band Name/New folder/635999184041758451-974082916_Live-music-bgback.jpg'"
-												onmouseout="this.src='dummy/Band Name/New folder/635999184041758451-974082916_Live-music-bg.jpg'"
-												alt='Nike Hoops Elite Pro'></figure>
-									</a></button>
-							</div>
-						</div>
-					</div>
+
+			<section class="container content-section">
+
+				<h2 style="border-bottom: none; font-size: 3rem;color:white;text-align: center;margin-top: 0;"
+					class="section-header">CART</h2>
+				<div class="cart-row">
+					<span class="cart-item cart-header cart-column"
+						style="color: white;font-family: 'Quattrocento Sans', sans-serif;">ITEM</span>
+					<span class="cart-price cart-header cart-column"
+						style="color: white;font-family: 'Quattrocento Sans', sans-serif;">PRICE</span>
+					<span class="cart-quantity cart-header cart-column"
+						style="color: white;font-family: 'Quattrocento Sans', sans-serif;">QUANTITY</span>
 				</div>
-			</div> <!-- .testimonial-section -->
 
+				<div class="cart-items">
+					<div id="chuaItem">
+						<h2 style="text-align: center;margin: 2em 0 1.5em 0;font-size: 2rem;" id="nothingInTheCart">
+							Không có sản phẩm nào trong giỏ hàng</h2>
 
+					</div>
+					<div class="cart-total">
+						<strong class="cart-total-title">Tổng cộng</strong>
+						<span class="cart-total-price">0 VNĐ</span>
+					</div>
+					<button
+						style="background-color: red;box-shadow: rgb(186 41 41 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #e91858 0 -3px 0 inset;"
+						class=" btn-purchase button-30" onclick="removeAll()">Remove All</button>
+					<button class=" btn-purchase button-30" onclick="purchase()" type="button">Mua hàng</button>
+				</div>
 		</main> <!-- .main-content -->
 
 		<footer class="site-footer">
@@ -316,25 +219,37 @@
 						and Chí Dũng</a></p>
 			</div>
 			<div id="google_translate_element"></div>
- 
+
 			<script type="text/javascript">
 				function googleTranslateElementInit() {
 					new google.translate.TranslateElement(
-						{pageLanguage: 'vn'},
+						{ pageLanguage: 'vn' },
 						'google_translate_element'
 					);
 				}
 			</script>
-		 
-			<script type="text/javascript"
-					src=
-		"https://translate.google.com/translate_a/element.js?
+
+			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
 		cb=googleTranslateElementInit">
-			</script>
+		</script>
 		</footer> <!-- .site-footer -->
 
 	</div> <!-- #site-content -->
+	<script>
+		function nothing() {
+			var cartItemNumber = 0;
+			for (let i = 1; i < 13; i++) {
+				if (localStorage.getItem('sp' + i) !== null) {
+					cartItemNumber++;
+				}
 
+			}
+			if (cartItemNumber !== 0) {
+				document.getElementById('nothingInTheCart').style = "display:none"
+			}
+		}
+
+	</script>
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/app.js"></script>
@@ -342,7 +257,6 @@
 	<script src="js/login.js"></script>
 	<script src="js/template.js"></script>
 	<script src="js/cart.js" async></script>
-
 </body>
 
 </html>

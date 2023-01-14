@@ -1,3 +1,7 @@
+let pdc;
+async function getpdc() {
+  pdc = (await ((await fetch("/pdcnt")).json())).count;
+}
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
@@ -51,9 +55,9 @@ function updateCartTotal() {
   }
   let trips = "";
   while (total != 0) {
-      trips = ("00" + total % 1000).slice(-3) + "." + trips;
-      total -= total % 1000;
-      total /= 1000;
+    trips = ("00" + total % 1000).slice(-3) + "." + trips;
+    total -= total % 1000;
+    total /= 1000;
   }
   if (trips != "") {
     trips += "000";
@@ -74,15 +78,16 @@ function cartload() {
   updateCartTotal();
 }
 
-function checkfornopurchases() {
-  for (let i = 1; i <= 12; i++) {
+async function checkfornopurchases() {
+  if (pdc === undefined) await getpdc();
+  for (let i = 1; i <= pdc; i++) {
     if (localStorage.getItem(`sp${i}`) != null) return false;
   }
   return true;
 }
 
 async function purchase() {
-  if (checkfornopurchases()) {
+  if ((await checkfornopurchases())) {
     Swal.fire("Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán", "", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -108,7 +113,8 @@ async function purchase() {
         "Cảm ơn bạn đã mua hàng",
         "success"
       );
-      for (let i = 1; i <= 12; i++) {
+      if (pdc === undefined) await getpdc();
+      for (let i = 1; i <= pdc; i++) {
         localStorage.removeItem("sp" + i);
       }
     } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -118,7 +124,7 @@ async function purchase() {
   }
 }
 async function removeAll() {
-  if (checkfornopurchases()) {
+  if ((await checkfornopurchases())) {
     Swal.fire("Giỏ hàng hiện trống", "", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -144,7 +150,8 @@ async function removeAll() {
         "Đã xóa giỏ hàng",
         "success"
       );
-      for (let i = 1; i <= 12; i++) {
+      if (pdc === undefined) await getpdc();
+      for (let i = 1; i <= pdc; i++) {
         localStorage.removeItem("sp" + i);
       }
     } else if (result.dismiss === Swal.DismissReason.cancel) {
@@ -160,8 +167,8 @@ async function addsp(pic, name, price, id) {
   } else {
     var sp = `<div class = "cart-row" >
 <div class = "cart-item cart-column" >
-     <img class = "cart-item-image" src = "${pic}"
-     width = "100" height = "100" >
+      <img class = "cart-item-image" src = "${pic}"
+      width = "100" height = "100" >
       <span class = "cart-item-title " >${name}</span >
 </div>
 <span class = "cart-price cart-column" >${price}</span >

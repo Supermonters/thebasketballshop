@@ -13,35 +13,8 @@
     "Nov",
     "Dec",
   ];
-  let arr;
+  let arr = (await (await fetch("/news")).json()).news;
   let d = new Date();
-  d.setTime(Date.now());
-  if (
-    localStorage.getItem("news") === null ||
-    JSON.parse(localStorage.getItem("news")).date !==
-      `${d.getUTCDate().toString()}${d.getUTCMonth().toString()}${d
-        .getUTCFullYear()
-        .toString()}`
-  ) {
-    let a = await fetch(
-      "https://newsdata.io/api/1/news?apikey=pub_1550576968a334f90cbb606bd4690ca338b1e&q=nba&language=en&category=sports"
-    );
-    let data = await a.json();
-    arr = data.results.filter(
-      (el) => el.image_url !== null && el.description !== null
-    );
-    localStorage.setItem(
-      "news",
-      JSON.stringify({
-        date: `${d.getUTCDate().toString()}${d.getUTCMonth().toString()}${d
-          .getUTCFullYear()
-          .toString()}`,
-        arr: arr,
-      })
-    );
-  } else {
-    arr = JSON.parse(localStorage.getItem("news")).arr;
-  }
   for (let i = 0; i < arr.length; i++) {
     d.setTime(Date.parse(arr[i].pubDate));
     let html = `
@@ -58,8 +31,8 @@
         <a href="${arr[i].link}">${arr[i].title}</a>
     </h2>
     <h3 style="margin-top:0">${("0" + d.getHours()).slice(-2)}:${(
-      "0" + d.getMinutes()
-    ).slice(-2)}</h3>
+        "0" + d.getMinutes()
+      ).slice(-2)}</h3>
     <p>${arr[i].description}</p>
     <a href="${arr[i].link}">Đọc thêm</a>
     </div>`;
