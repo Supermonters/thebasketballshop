@@ -9,13 +9,13 @@ const db = new Low(new JSONFile("db/db.json"));
 const app = express();
 
 let transporter = nodemailer.createTransport({
-    host: "smtp.elasticemail.com",
-    port: 2525,
-    secure: false, // true for 465, false for other ports
-    auth: {
-        user: configs.MAILUSER, // generated ethereal user
-        pass: configs.MAILPASSWORD, // generated ethereal password
-    },
+  host: "smtp.elasticemail.com",
+  port: 2525,
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: configs.MAILUSER, // generated ethereal user
+    pass: configs.MAILPASSWORD, // generated ethereal password
+  },
 });
 await db.read();
 
@@ -76,15 +76,16 @@ app.get("/pdcnt", async (req, res) => {
 });
 
 app.get("/mail", async (req, res) => {
-    const address = req.query.mail;
-    await transporter.sendMail({
-        from: `"BasketballShop" <${configs.MAILUSER}>`, // sender address
-        to: address, // list of receivers
-        subject: "Newsletter", // Subject line
-        text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
-        html: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.", // html body
-    });
-})
+  const address = req.query.mail;
+  await transporter.sendMail({
+    from: `"BasketballShop" <${configs.MAILUSER}>`, // sender address
+    to: address, // list of receivers
+    subject: "Newsletter", // Subject line
+    text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
+    html: `Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.<img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="idk">
+        `, // html body
+  });
+});
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;
