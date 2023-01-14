@@ -23,3 +23,11 @@ function cartCounting() {
   }
   document.getElementById("countItem").innerHTML = "(" + cartItemNumber + ")";
 }
+function GuiEmail() {
+  Swal.fire({
+  icon: "success",
+  title: "Đã gửi Email",
+  showConfirmButton: false,
+  timer: 1500,
+});
+}
