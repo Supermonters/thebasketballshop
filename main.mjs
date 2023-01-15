@@ -3,6 +3,7 @@ import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import fetch from "node-fetch";
 import nodemailer from "nodemailer";
+import bodyParser from "body-parser";
 import configs from "./config.json" assert { type: "json" };
 
 const db = new Low(new JSONFile("db/db.json"));
@@ -38,6 +39,7 @@ db.data ||= {
 
 app.use("/", express.static("static"));
 app.use("/admin", express.static("admin"));
+app.use(bodyParser.json());
 
 app.get("/news", async (req, res) => {
   let arr;
@@ -109,23 +111,23 @@ app.get("/admin/checklogin", async (req, res) => {
     }
 })
 
-app.get("/admin/addproduct", async (req, res) => {
-    const username = req.query.username;
-    const password = req.query.password;
-    if (!checkifadminexists(username, password)) {
-        res.status(400).send("not authenticated");
+app.post("/admin/addproduct", async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const name = req.body.name;
+    const alt = req.body.alt;
+    const banner = req.body.banner;
+    const images = req.body.images;
+    const price = req.body.price;
+    const filter = req.body.filter;
+    const mouseover = req.body.mouseover;
+    const mouseout = req.body.mouseout;
+    const cartpic = req.body.cartpic;
+    const options = req.body.options;
+    if (!username || !password || !name || !alt || !banner || !images || !price || !filter || !mouseover || !mouseout || !cartpic || !options || !checkifadminexists(username, password)) {
+        res.status(400).send();
         return;
     }
-    const name = req.query.name;
-    const alt = req.query.alt;
-    const banner = req.query.banner;
-    const images = JSON.parse(req.query.images).images;
-    const price = req.query.price;
-    const filter = req.query.filter;
-    const mouseover = req.query.mouseover;
-    const mouseout = req.query.mouseout;
-    const cartpic = req.query.cartpic;
-    const options = JSON.parse(req.query.options).options;
     db.data.ids++;
     db.data.products.push({
         name: name,
@@ -141,7 +143,7 @@ app.get("/admin/addproduct", async (req, res) => {
         id: db.data.ids
     })
     await db.write();
-    res.status(200).send("added successfully");
+    res.status(200).send();
 })
 
 app.get("/store_item", async (req, res) => {
@@ -789,7 +791,7 @@ app.get("/store_item", async (req, res) => {
   html += `</div>
             </div>
         
-            <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="https://basketballshop.netlify.app/store_item/pg6ep" data-width=""
+            <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="https://6ac0-14-177-103-208.ap.ngrok.io/${item.alt}" data-width=""
                 data-numposts="5"></div>
             <div class="pc_toolbar_top active" bis_skin_checked="1">
                 <div class="container" style="padding-top: 1rem;" id="navbar" bis_skin_checked="1">

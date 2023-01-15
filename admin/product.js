@@ -23,11 +23,26 @@ subele.addEventListener("click", async () => {
     for (let i = 0; i < opsels.length; i++) {
         ops.push(opsels[i].value);
     }
-    let f = await fetch(`/admin/addproduct?username=${encodeURIComponent(creds.username)}&password=${encodeURIComponent(creds.password)}&name=${encodeURIComponent(proname)}&alt=${encodeURIComponent(alt)}&banner=${encodeURIComponent(banner)}&price=${encodeURIComponent(price)}&filter=${encodeURIComponent(filter)}&mouseover=${encodeURIComponent(mouseoverpic)}&mouseout=${encodeURIComponent(mouseoutpic)}&cartpic=${encodeURIComponent(cartpic)}&images=${encodeURIComponent(JSON.stringify({
-        images: pics
-    }))}&options=${encodeURIComponent(JSON.stringify({
-        options: ops
-    }))}`)
+    let f = await fetch("/admin/addproduct", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: creds.username,
+            password: creds.password,
+            name: proname,
+            alt: alt,
+            banner: banner,
+            price: price,
+            filter: filter,
+            mouseover: mouseoverpic,
+            mouseout: mouseoutpic,
+            cartpic: cartpic,
+            images: pics,
+            options: ops
+        })
+    })
     if (f.ok) {
         await Swal.fire({
             icon: "success",
