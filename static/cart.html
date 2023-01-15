@@ -201,7 +201,7 @@
 					</p>
 				</address>
 
-				<form action="javascript:void(0)" onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();;GuiEmail();" class="newsletter-form">
+				<form onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form">
 					<input type="email" id="mail" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA..." required>
 					<input type="submit" class="button cut-corner" value="Subscribe">
 				</form> <!-- .newsletter-form -->
