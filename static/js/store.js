@@ -9,7 +9,7 @@
                 <a href="/store_item?item=${encodeURIComponent(data[i].name)}">
                     <figure><img src="${data[i].mouseout}"
                             onmouseover="this.src='${data[i].mouseover}'"
-                            onmouseout="this.src='${data[i].mouseout}'" alt="KD14 EP">
+                            onmouseout="this.src='${data[i].mouseout}'" alt="${data[i].name}">
                     </figure>
                 </a>
             </button>

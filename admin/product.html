@@ -17,30 +17,30 @@
 <body style="background-color: #222D32;">
     <h1 style="font-family: 'Courier New', Courier, monospace;text-align: center;background-color: white;color: black;border-radius: 6px;">ADD PRODUCT</h1>
     <input type="text" class="question" id="proname" required autocomplete="off" />
-    <label><span>Product Name</span></label><br>
+    <label><span class='spn'>Product Name</span class='spn'></label><br>
     <input type="text" class="question" id="alt" required autocomplete="off" />
-    <label><span>Alt name</span></label><br>
+    <label><span class='spn'>Alt name</span class='spn'></label><br>
     <input type="text" class="question" id="banner" required autocomplete="off" />
-    <label><span>Banner Pic</span></label><br>
+    <label><span class='spn'>Banner Pic</span class='spn'></label><br>
 
     <div id="image">
-        <input type='text' class='question images' required autocomplete='off' /><label><span>Picture Link</span></label><br>
+        <input type='text' class='question images' required autocomplete='off' /><label><span class='spn'>Picture Link</span class='spn'></label><br>
     </div>
     <button class=" btn-purchase button-30"
-        onclick="document.getElementById('image').innerHTML += `<input type='text' class='question images'  required autocomplete='off' /><label><span>Picture Link</span></label><br>`;">Add More Picture</button><br>
+        onclick="document.getElementById('image').innerHTML += `<input type='text' class='question images'  required autocomplete='off' /><label><span class='spn'>Picture Link</span class='spn'></label><br>`;">Add More Picture</button><br>
         <input type="text" class="question" id="price" required autocomplete="off" />
-        <label><span>Price</span></label><br>
+        <label><span class='spn'>Price</span class='spn'></label><br>
         <input type="text" class="question" id="mouseoverpic" required autocomplete="off" />
-        <label><span>MouseOverPic</span></label><br>
+        <label><span class='spn'>MouseOverPic</span class='spn'></label><br>
         <input type="text" class="question" id="mouseoutpic" required autocomplete="off" />
-        <label><span>MouseOutPic</span></label><br>
+        <label><span class='spn'>MouseOutPic</span class='spn'></label><br>
         <input type="text" class="question" id="filter" required autocomplete="off" />
-        <label><span>Filter</span></label><br>
+        <label><span class='spn'>Filter</span class='spn'></label><br>
         <input type="text" class="question" id="cartpic" required autocomplete="off" />
-        <label><span>Cart Picture</span></label><br>
+        <label><span class='spn'>Cart Picture</span class='spn'></label><br>
     <div id="option">
     </div>
-    <button class=" btn-purchase button-30" onclick="document.getElementById('option').innerHTML += `<input type='text' class='question options' required autocomplete='off' /><label><span>Product Option</span></label><br>`;">Add More Option</button><br><br>
+    <button class=" btn-purchase button-30" onclick="document.getElementById('option').innerHTML += `<input type='text' class='question options' required autocomplete='off' /><label><span class='spn'>Product Option</span class='spn'></label><br>`;">Add More Option</button><br><br>
     <button class=" btn-purchase button-30" style="background-color: white;color: black;font-size: 3rem;height: auto;margin-bottom: 10vw;box-shadow: none;" id="submit">Add Product</button><br>
     <button style="background-color: red;box-shadow: rgb(186 41 41 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #e91858 0 -3px 0 inset;margin-bottom: 3em;" class=" btn-purchase button-30" id="signout">Sign out</button>    <script src="product.js"></script>
 </body>

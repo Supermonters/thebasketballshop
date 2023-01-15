@@ -20,7 +20,7 @@ html {
   }
   
   input,
-  span,
+  .spn,
   label,
   textarea {
     font-family: 'Ubuntu', sans-serif;
