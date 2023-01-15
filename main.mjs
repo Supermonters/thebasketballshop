@@ -3,13 +3,10 @@ import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import fetch from "node-fetch";
 import nodemailer from "nodemailer";
-import fileUpload from "express-fileupload";
 import configs from "./config.json" assert { type: "json" };
 
 const db = new Low(new JSONFile("db/db.json"));
 const app = express();
-app.use(fileUpload());
-
 let transporter = nodemailer.createTransport({
   host: "smtp.elasticemail.com",
   port: 2525,
@@ -81,7 +78,7 @@ app.get("/productlist", async (req, res) => {
 
 app.get("/pdcnt", async (req, res) => {
   res.status(200).json({
-    count: db.data.products.length,
+    count: db.data.ids,
   });
 });
 
@@ -95,13 +92,14 @@ app.get("/mail", async (req, res) => {
     html: `Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.<br><img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="idk" width=200 height=200>
         `, // html body
   });
+  res.status(200).send("successful");
 });
 
 app.get("/admin", (req, res) => {
     res.redirect("/admin/product.html");
 })
 
-app.get("/admin/checklogin", (req, res) => {
+app.get("/admin/checklogin", async (req, res) => {
     const username = req.query.username;
     const password = req.query.password;
     if (checkifadminexists(username, password)) {
@@ -111,8 +109,39 @@ app.get("/admin/checklogin", (req, res) => {
     }
 })
 
-app.get("/admin/addproduct", (req, res) => {
-
+app.get("/admin/addproduct", async (req, res) => {
+    const username = req.query.username;
+    const password = req.query.password;
+    if (!checkifadminexists(username, password)) {
+        res.status(400).send("not authenticated");
+        return;
+    }
+    const name = req.query.name;
+    const alt = req.query.alt;
+    const banner = req.query.banner;
+    const images = JSON.parse(req.query.images).images;
+    const price = req.query.price;
+    const filter = req.query.filter;
+    const mouseover = req.query.mouseover;
+    const mouseout = req.query.mouseout;
+    const cartpic = req.query.cartpic;
+    const options = JSON.parse(req.query.options).options;
+    db.data.ids++;
+    db.data.products.append({
+        name: name,
+        alt: alt,
+        banner: banner,
+        images: images,
+        price: price,
+        filter: filter,
+        mouseover: mouseover,
+        mouseout: mouseout,
+        cartpic: cartpic,
+        options: options,
+        id: db.data.ids
+    })
+    await db.write();
+    res.status(200).send("added successfully");
 })
 
 app.get("/store_item", async (req, res) => {
