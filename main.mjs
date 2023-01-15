@@ -3,10 +3,12 @@ import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import fetch from "node-fetch";
 import nodemailer from "nodemailer";
+import fileUpload from "express-fileupload";
 import configs from "./config.json" assert { type: "json" };
 
 const db = new Low(new JSONFile("db/db.json"));
 const app = express();
+app.use(fileUpload());
 
 let transporter = nodemailer.createTransport({
   host: "smtp.elasticemail.com",
@@ -26,11 +28,19 @@ function findbyproductname(products, name) {
   return {};
 }
 
+function checkifadminexists(username, password) {
+    for (let [key, value] of Object.entries(db.data.admins)) {
+        if (key === username && value === password) return true;
+    }
+    return false;
+}
+
 db.data ||= {
   products: [],
 };
 
 app.use("/", express.static("static"));
+app.use("/admin", express.static("admin"));
 
 app.get("/news", async (req, res) => {
   let arr;
@@ -86,6 +96,20 @@ app.get("/mail", async (req, res) => {
         `, // html body
   });
 });
+
+app.get("/admin/checklogin", (req, res) => {
+    const username = req.query.username;
+    const password = req.query.password;
+    if (checkifadminexists(username, password)) {
+        res.status(200).send("admin exists");
+    } else {
+        res.status(400).send("admin doesnt exist");
+    }
+})
+
+app.get("/admin/addproduct", (req, res) => {
+
+})
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;

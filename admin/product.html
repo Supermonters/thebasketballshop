@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="product.css">
+    <link href='https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <form id="prod" method="post">
+        <input type="text" name="name" class="question" id="name" required autocomplete="off" />
+        <label for="name"><span>Product Name</span></label><br>
+        <input type="text" name="alt" class="question" id="alt" required autocomplete="off" />
+        <label for="alt"><span>Alt name</span></label><br>
+        <input type="file" name="banner"  id="banner" required autocomplete="off" />
+        <label ><spann class="fileLabel">Banner Pic</span></label><br>
+    
+        <div id="image">
+        </div>
+        <button type="button"
+            onclick="document.getElementById('image').innerHTML += `<input type='file' name='banner' required autocomplete='off' />`;">more picture pls</button><br>
+        <input type="text" name="price" id="price" required autocomplete="off" />
+        <label for="price"><span>Price</span></label><br>
+        <input type="text" name="mouseoverpic" class="question" id="mouseoverpic" required autocomplete="off" />
+        <label for="mouseoverpic"><span>MouseOverPic</span></label><br>
+        <input type="text" name="mouseoutpic" class="question" id="mouseoutpic" required autocomplete="off" />
+        <label for="mouseoutpic"><span>MouseOutPic</span></label><br>
+        <input type="text" name="cartpic" class="question" class="cartpic" required autocomplete="off" />
+        <label for="cartpic"><span>cartPic</span></label><br>
+        <div id="option">
+        </div>
+        <button type="button" onclick="document.getElementById('option').innerHTML += `<input type='text' name='options' class='question' required autocomplete='off' /><label for='nme'><span>Product Option</span></label><br>`;">more option
+            pls</button><br><br>
+        <button type="submit">Add Product</button>
+    </form>
+    <script src="product.js"></script>
+</body>
+
+</html>
