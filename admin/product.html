@@ -8,35 +8,38 @@
     <title>Document</title>
     <link rel="stylesheet" href="product.css">
     <link href='https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../static/css/button.css">
+    <link rel="stylesheet" href="../static/css/cart.css">
+    
 </head>
 
-<body>
-    <form id="prod" method="post">
-        <input type="text" name="name" class="question" id="name" required autocomplete="off" />
-        <label for="name"><span>Product Name</span></label><br>
-        <input type="text" name="alt" class="question" id="alt" required autocomplete="off" />
-        <label for="alt"><span>Alt name</span></label><br>
-        <input type="file" name="banner"  id="banner" required autocomplete="off" />
-        <label ><spann class="fileLabel">Banner Pic</span></label><br>
-    
-        <div id="image">
-        </div>
-        <button type="button"
-            onclick="document.getElementById('image').innerHTML += `<input type='file' name='banner' required autocomplete='off' />`;">more picture pls</button><br>
-        <input type="text" name="price" id="price" required autocomplete="off" />
-        <label for="price"><span>Price</span></label><br>
-        <input type="text" name="mouseoverpic" class="question" id="mouseoverpic" required autocomplete="off" />
-        <label for="mouseoverpic"><span>MouseOverPic</span></label><br>
-        <input type="text" name="mouseoutpic" class="question" id="mouseoutpic" required autocomplete="off" />
-        <label for="mouseoutpic"><span>MouseOutPic</span></label><br>
-        <input type="text" name="cartpic" class="question" class="cartpic" required autocomplete="off" />
-        <label for="cartpic"><span>cartPic</span></label><br>
-        <div id="option">
-        </div>
-        <button type="button" onclick="document.getElementById('option').innerHTML += `<input type='text' name='options' class='question' required autocomplete='off' /><label for='nme'><span>Product Option</span></label><br>`;">more option
-            pls</button><br><br>
-        <button type="submit">Add Product</button>
-    </form>
+<body style="background-color: #222D32;">
+    <h1 style="font-family: 'Courier New', Courier, monospace;text-align: center;background-color: white;color: black;border-radius: 6px;">ADD PRODUCT</h1>
+    <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+    <label for="nme"><span>Product Name</span></label><br>
+    <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+    <label for="nme"><span>Alt name</span></label><br>
+    <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+    <label for="nme"><span>Banner Pic</span></label><br>
+
+    <div id="image">
+        <input type='text' name='name' class='question' id='nme' required autocomplete='off' /><label for='nme'><span>Picture Link</span></label><br>
+    </div>
+    <button class=" btn-purchase button-30"
+        onclick="document.getElementById('image').innerHTML += `<input type='text' name='name' class='question' id='nme' required autocomplete='off' /><label for='nme'><span>Picture Link</span></label><br>`;">Add More Picture</button><br>
+        <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+        <label for="nme"><span>Price</span></label><br>
+        <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+        <label for="nme"><span>MouseOverPic</span></label><br>
+        <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+        <label for="nme"><span>MouseOutPic</span></label><br>
+        <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+        <label for="nme"><span>Cart Picture</span></label><br>
+    <div id="option">
+    </div>
+    <button class=" btn-purchase button-30" onclick="document.getElementById('option').innerHTML += `<input type='text' name='name' class='question' id='nme' required autocomplete='off' /><label for='nme'><span>Product Option</span></label><br>`;">Add More Option</button><br><br>
+    <button class=" btn-purchase button-30" style="background-color: white;color: black;font-size: 3rem;height: auto;margin-bottom: 10vw;box-shadow: none;;" type="submit">Add Product</button><br>
+    <button style="background-color: red;box-shadow: rgb(186 41 41 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #e91858 0 -3px 0 inset;margin-bottom: 3em;" class=" btn-purchase button-30">Sign out</button>
     <script src="product.js"></script>
 </body>
 
