@@ -97,6 +97,10 @@ app.get("/mail", async (req, res) => {
   });
 });
 
+app.get("/admin", (req, res) => {
+    res.redirect("/admin/product.html");
+})
+
 app.get("/admin/checklogin", (req, res) => {
     const username = req.query.username;
     const password = req.query.password;
