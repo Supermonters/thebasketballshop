@@ -234,21 +234,6 @@
 		</footer> <!-- .site-footer -->
 
 	</div> <!-- #site-content -->
-	<script>
-		function nothing() {
-			var cartItemNumber = 0;
-			for (let i = 1; i < 13; i++) {
-				if (localStorage.getItem('sp' + i) !== null) {
-					cartItemNumber++;
-				}
-
-			}
-			if (cartItemNumber !== 0) {
-				document.getElementById('nothingInTheCart').style = "display:none"
-			}
-		}
-
-	</script>
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/app.js"></script>

@@ -1,7 +1,3 @@
-let pdc;
-async function getpdc() {
-  pdc = (await ((await fetch("/pdcnt")).json())).count;
-}
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
@@ -184,7 +180,12 @@ async function addsp(pic, name, option, price, id) {
   }
 }
 
-async function removeSp(id) {
+function removeSp(id) {
   localStorage.removeItem("sp" + id);
   location.reload();
+}
+
+async function nothing() {
+  if (!(await checkfornopurchases()))
+    document.getElementById('nothingInTheCart').style = "display:none"
 }

@@ -127,7 +127,7 @@ app.get("/admin/addproduct", async (req, res) => {
     const cartpic = req.query.cartpic;
     const options = JSON.parse(req.query.options).options;
     db.data.ids++;
-    db.data.products.append({
+    db.data.products.push({
         name: name,
         alt: alt,
         banner: banner,

@@ -10,9 +10,20 @@ loginele.addEventListener("submit", async (ev) => {
             username: username,
             password: password
         }))
+        await Swal.fire({
+            icon: "success",
+            title: `Welcome ${username} Boss`,
+            showConfirmButton: false,
+            timer: 1500,
+        });
         location.href = "/admin/product.html";
     } else {
         localStorage.removeItem("adminCreds");
-        // handle error
+        await Swal.fire({
+            icon: "error",
+            title: "go away touch some grass dude ur impersonating my Boss",
+            showConfirmButton: false,
+            timer: 1500,
+        });
     }
 })
