@@ -1,8 +1,8 @@
 # Trang web này bán giày bóng rổ
 
 ## Chuẩn bị:
-### Tải node.js
-### Tải ngrok
+* Tải node.js
+* Tải ngrok
 ## Để chạy:
 ### Bước 1: mở terminal và cd thư mục bạn đã giải nén ngrok
 ví dụ: 
