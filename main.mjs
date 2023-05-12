@@ -791,7 +791,7 @@ app.get("/store_item", async (req, res) => {
   html += `</div>
             </div>
         
-            <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="https://6ac0-14-177-103-208.ap.ngrok.io/${item.alt}" data-width=""
+            <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="${configs.ORIGIN}${item.alt}" data-width=""
                 data-numposts="5"></div>
             <div class="pc_toolbar_top active" bis_skin_checked="1">
                 <div class="container" style="padding-top: 1rem;" id="navbar" bis_skin_checked="1">
