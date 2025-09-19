@@ -2,6 +2,9 @@
 
 Welcome to the Basketballshop GitHub repository. This document provides instructions on how to set up and host the Basketballshop website professionally.
 
+## About the Project  
+The Basketballshop website is a **side project** developed to explore how an online store for basketball shoes could be designed and hosted. It demonstrates the basics of building an e-commerce style website, focusing on product presentation, smooth navigation, and professional deployment. While not a full-scale business platform, this project serves as a practical exercise in modern web development and hosting practices.
+
 ## Prerequisites
 Before you begin, ensure that you have the following prerequisites installed on your system:
 * [Node.js](https://nodejs.org/)
