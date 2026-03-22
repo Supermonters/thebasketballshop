@@ -1,0 +1,11 @@
+{
+  "PORT": 8080,
+  "ORIGIN": "http://localhost:8080",
+  "SMTP_HOST": "smtp.elasticemail.com",
+  "SMTP_PORT": 2525,
+  "MAILUSER": "your-mail-user",
+  "MAILPASSWORD": "your-mail-password",
+  "NEWSDATA_API_KEY": "your-newsdata-api-key",
+  "FIREBASE_WEB_API_KEY": "your-firebase-web-api-key",
+  "GOOGLE_TRANSLATE_API_KEY": "your-google-translate-api-key"
+}

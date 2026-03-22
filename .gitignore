@@ -1,2 +1,11 @@
 node_modules/
+client/node_modules/
+server/node_modules/
+client/dist/
+server/dist/
 .vscode/
+config.local.json
+config.json
+.env
+.env.*
+!.env.example

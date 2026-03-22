@@ -1,16 +1,20 @@
 import express from "express";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
-import fetch from "node-fetch";
 import nodemailer from "nodemailer";
-import bodyParser from "body-parser";
-import configs from "./config.json" assert { type: "json" };
+import { loadConfig } from "./backend/config.mjs";
+import {
+  ensureDbShape,
+  findByProductName,
+  registerApiRoutes,
+} from "./backend/apiRoutes.mjs";
 
+const configs = loadConfig();
 const db = new Low(new JSONFile("db/db.json"));
 const app = express();
 let transporter = nodemailer.createTransport({
-  host: "smtp.elasticemail.com",
-  port: 2525,
+  host: configs.SMTP_HOST,
+  port: configs.SMTP_PORT,
   secure: false, // true for 465, false for other ports
   auth: {
     user: configs.MAILUSER, // generated ethereal user
@@ -18,137 +22,21 @@ let transporter = nodemailer.createTransport({
   },
 });
 await db.read();
-
-function findbyproductname(products, name) {
-  for (let i = 0; i < products.length; i++) {
-    if (products[i].name === name) return products[i];
-  }
-  return {};
-}
-
-function checkifadminexists(username, password) {
-    for (let [key, value] of Object.entries(db.data.admins)) {
-        if (key === username && value === password) return true;
-    }
-    return false;
-}
-
-db.data ||= {
-  products: [],
-};
+ensureDbShape(db);
 
 app.use("/", express.static("static"));
 app.use("/admin", express.static("admin"));
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.get("/news", async (req, res) => {
-  let arr;
-  let d = new Date();
-  d.setTime(Date.now());
-  if (
-    db.data.news === undefined ||
-    db.data.news.date !==
-      `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d
-        .getUTCMonth()
-        .toString()}${d.getUTCFullYear().toString()}`
-  ) {
-    let a = await fetch(
-      "https://newsdata.io/api/1/news?apikey=pub_1550576968a334f90cbb606bd4690ca338b1e&q=nba&language=en&category=sports"
-    );
-    let data = await a.json();
-    arr = data.results.filter(
-      (el) => el.image_url !== null && el.description !== null
-    );
-    db.data.news = {
-      date: `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d
-        .getUTCMonth()
-        .toString()}${d.getUTCFullYear().toString()}`,
-      arr: arr,
-    };
-    await db.write();
-  } else {
-    arr = db.data.news.arr;
-  }
-  res.status(200).json({
-    news: arr,
-  });
-});
-
-app.get("/productlist", async (req, res) => {
-  res.status(200).json(db.data);
-});
-
-app.get("/pdcnt", async (req, res) => {
-  res.status(200).json({
-    count: db.data.ids,
-  });
-});
-
-app.get("/mail", async (req, res) => {
-  const address = req.query.mail;
-  await transporter.sendMail({
-    from: `"BasketballShop" <${configs.MAILUSER}>`, // sender address
-    to: address, // list of receivers
-    subject: "Newsletter", // Subject line
-    text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
-    html: `Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.<br><img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="idk" width=200 height=200>
-        `, // html body
-  });
-  res.status(200).send("successful");
-});
-
-app.get("/admin", (req, res) => {
-    res.redirect("/admin/product.html");
-})
-
-app.get("/admin/checklogin", async (req, res) => {
-    const username = req.query.username;
-    const password = req.query.password;
-    if (checkifadminexists(username, password)) {
-        res.status(200).send("admin exists");
-    } else {
-        res.status(400).send("admin doesnt exist");
-    }
-})
-
-app.post("/admin/addproduct", async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const name = req.body.name;
-    const alt = req.body.alt;
-    const banner = req.body.banner;
-    const images = req.body.images;
-    const price = req.body.price;
-    const filter = req.body.filter;
-    const mouseover = req.body.mouseover;
-    const mouseout = req.body.mouseout;
-    const cartpic = req.body.cartpic;
-    const options = req.body.options;
-    if (!username || !password || !name || !alt || !banner || !images || !price || !filter || !mouseover || !mouseout || !cartpic || !options || !checkifadminexists(username, password)) {
-        res.status(400).send();
-        return;
-    }
-    db.data.ids++;
-    db.data.products.push({
-        name: name,
-        alt: alt,
-        banner: banner,
-        images: images,
-        price: price,
-        filter: filter,
-        mouseover: mouseover,
-        mouseout: mouseout,
-        cartpic: cartpic,
-        options: options,
-        id: db.data.ids
-    })
-    await db.write();
-    res.status(200).send();
-})
+registerApiRoutes({ app, db, transporter, configs });
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;
-  const item = findbyproductname(db.data.products, itemName);
+  const item = findByProductName(db.data.products, itemName);
+  if (!item || !Array.isArray(item.images)) {
+    res.status(404).send("Product not found");
+    return;
+  }
   let html = `<!DOCTYPE html>
         <html lang="en">
         

@@ -1,0 +1,12 @@
+/*
+  Legacy style reference bundle (index only).
+  This file is for tracking and parity workflow.
+  Do not modify original files listed here.
+*/
+
+@import url("../static/style.css");
+@import url("../static/css/login.css");
+@import url("../static/css/button.css");
+@import url("../static/css/cart.css");
+@import url("../admin/style.css");
+@import url("../admin/product.css");

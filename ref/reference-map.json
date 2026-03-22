@@ -1,0 +1,36 @@
+{
+  "notes": "Reference-only map to legacy sources. Legacy files are not edited.",
+  "legacyStyleFiles": [
+    "static/style.css",
+    "static/css/login.css",
+    "static/css/button.css",
+    "static/css/cart.css",
+    "admin/style.css",
+    "admin/product.css"
+  ],
+  "legacyPages": {
+    "home": "static/index.html",
+    "store": "static/store.html",
+    "productDetail": "main.mjs:/store_item",
+    "cart": "static/cart.html",
+    "news": "static/news.html",
+    "about": "static/about.html",
+    "trends": "static/xuhuong.html",
+    "adminLogin": "admin/login.html",
+    "adminProduct": "admin/product.html"
+  },
+  "reactTargets": {
+    "layout": "client/src/components/Layout.tsx",
+    "authModal": "client/src/components/AuthModal.tsx",
+    "home": "client/src/pages/HomePage.tsx",
+    "store": "client/src/pages/StorePage.tsx",
+    "productDetail": "client/src/pages/ProductPage.tsx",
+    "cart": "client/src/pages/CartPage.tsx",
+    "news": "client/src/pages/NewsPage.tsx",
+    "about": "client/src/pages/AboutPage.tsx",
+    "trends": "client/src/pages/TrendsPage.tsx",
+    "adminLogin": "client/src/pages/AdminLoginPage.tsx",
+    "adminProduct": "client/src/pages/AdminProductPage.tsx",
+    "globalStyle": "client/src/index.css"
+  }
+}

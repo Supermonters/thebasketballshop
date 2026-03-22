@@ -1,6 +1,11 @@
 {
     "PORT": 8080,
+    "ORIGIN": "",
+    "SMTP_HOST": "smtp.elasticemail.com",
+    "SMTP_PORT": 2525,
     "MAILUSER": "thebasketballshopemail@gmail.com",
     "MAILPASSWORD": "64DE0842C2FB764381CE7E0C84530DD61A20",
-    "ORIGIN": ""
+    "NEWSDATA_API_KEY": "pub_1550576968a334f90cbb606bd4690ca338b1e",
+    "FIREBASE_WEB_API_KEY": "AIzaSyAVr8GCpsz2luRAwKKkit6b2ITxshCeVIg",
+    "GOOGLE_TRANSLATE_API_KEY": ""
 }

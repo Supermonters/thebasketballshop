@@ -432,11 +432,316 @@
         "45",
         "46"
       ]
+    },
+    {
+      "name": "goon",
+      "alt": "goon",
+      "banner": "https://i.ytimg.com/vi/H3ynKWEboA8/hqdefault.jpg",
+      "images": [
+        "https://i.ytimg.com/vi/H3ynKWEboA8/hqdefault.jpg"
+      ],
+      "price": "12.000.000",
+      "filter": "stuff",
+      "mouseover": "https://i.ytimg.com/vi/H3ynKWEboA8/hqdefault.jpg",
+      "mouseout": "https://i.ytimg.com/vi/H3ynKWEboA8/hqdefault.jpg",
+      "cartpic": "https://i.ytimg.com/vi/H3ynKWEboA8/hqdefault.jpg",
+      "options": [
+        "goons"
+      ],
+      "id": 14
     }
-    
   ],
   "admins": {
     "admin": "admin"
   },
-  "ids": 12
+  "ids": 14,
+  "news": {
+    "date": "182022026",
+    "arr": [
+      {
+        "article_id": "829f53eb6a1d6bd1d18d64cec1b722d8",
+        "link": "https://www.yardbarker.com/nba/articles/not_good_enough_james_harden_keeps_it_real_over_cavaliers_gutsy_win_over_struggling_bulls/s1_17667_43622199",
+        "title": "'Not Good Enough': James Harden Keeps It Real Over Cavaliers’ Gutsy Win Over Struggling Bulls",
+        "description": "The Cleveland Cavaliers got the job done against the Chicago Bulls on Thursday, but it wasn’t without a big scare. In a game that most expected them to breeze through, they began digging their own grave, allowing the Bulls to come close to spoiling their night.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "james harden",
+          "nba",
+          "sports",
+          "chicago bulls",
+          "donovan mitchell",
+          "los angeles clippers",
+          "cleveland cavaliers"
+        ],
+        "creator": [
+          "somin bhattacharjee"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-03-20 06:07:52",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 06:41:26",
+        "image_url": "http://www.yardbarker.com/media/8/e/8e26c6abaf0b17cfa875ea27fd9237b76e2bd17e/thumb_16x9/3aca4e05-invoice-generator-2026-03-20t090320.281.jpg",
+        "video_url": null,
+        "source_id": "yardbarker",
+        "source_name": "Yardbarker",
+        "source_priority": 92706,
+        "source_url": "https://www.yardbarker.com",
+        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
+      },
+      {
+        "article_id": "3c930957925438a445dbbc1a05618f75",
+        "link": "https://www.yardbarker.com/nba/articles/luka_doncic_scored_100_points_over_24_hours_and_got_goosebumps_hearing_mvp_chants_in_miami/s1_16751_43622204",
+        "title": "Luka Doncic Scored 100 Points Over 24 Hours And Got 'Goosebumps' Hearing MVP Chants In Miami",
+        "description": "Luka Doncic went off once again tonight and dropped 60 points on the Heat in the Lakers’ 134-126 win in Miami. His 40-point outburst against the Rockets last night gave him a combined 100 points scored within nearly 24 hours.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "miami heat",
+          "sports",
+          "los angeles lakers",
+          "nba",
+          "kobe bryant",
+          "luka doncic",
+          "bam adebayo"
+        ],
+        "creator": [
+          "chaitanya dadhwal"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-03-20 06:06:59",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 07:41:00",
+        "image_url": "http://www.yardbarker.com/media/a/b/abd235d39d519532063db06a8932e9af22bb5746/thumb_16x9/luka-doncic-lakers-nets-nba-scaled.jpg",
+        "video_url": null,
+        "source_id": "yardbarker",
+        "source_name": "Yardbarker",
+        "source_priority": 92706,
+        "source_url": "https://www.yardbarker.com",
+        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "310768f23d5aebf50af28aa9684e7749",
+        "link": "https://www.espn.com.au/nba/story/_/id/48256013/spurs-end-6-year-playoff-drought-wembanyama-game-winner",
+        "title": "Wemby's game winner puts Spurs back in playoffs",
+        "description": "Victor Wembanyama nailed a go-ahead 17-foot fadeaway with 1.1 seconds left Thursday night, and the Spurs clinched a postseason berth for the first time in six seasons.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": null,
+        "creator": [
+          "michael c. wright"
+        ],
+        "language": "english",
+        "country": [
+          "australia"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "multimedia",
+        "pubDate": "2026-03-20 06:06:17",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 06:06:17",
+        "image_url": "https://a.espncdn.com/photo/2026/0320/r1631075_1296x729_16-9.jpg",
+        "video_url": null,
+        "source_id": "espn_au",
+        "source_name": "Espn Australia",
+        "source_priority": 36109,
+        "source_url": "https://www.espn.com.au",
+        "source_icon": "https://n.bytvi.com/espn_au.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "73b0852c03e5ce27147790a829d6de2a",
+        "link": "https://basketball.realgm.com/wiretap/284563/Spurs-Clinch-First-Playoff-Berth-Since-2019-Following-Victor-Wembanyama-Game-Winner",
+        "title": "Spurs Clinch First Playoff Berth Since 2019 Following Victor Wembanyama Game Winner",
+        "description": "The San Antonio became the second team in the NBA to clinch a playoff berth following their 101-100 win over the Phoenix Suns on Thursday night. Victor Wembanyama hit a go-ahead jumper with 1.1 seconds left in the game to secure the victory. \"We know it's not going to be an open shot most of the time,\" Wembanyama said. \"In this situation, you want to wait. If you take a shot too early, whether you make or miss it, you're shooting yourself in the foot because the defense would probably get the rebound and have time or inbound and have time. So, you want to shoot it as close to one or two seconds [remaining]. This way, we have a chance to get an offensive rebound if we miss and if we make [it], they don't have time.\" It was Wembanyama's first go-ahead make in the final five seconds of a fourth quarter or overtime in five attempts, according to ESPN. Wembanyama finished the game with 34 points and 12 rebounds. The Spurs return to the playoffs for the first time since 2019, the longest drought in franchise history. They are 20-2 since February 1, the best record in the league over that span. The Thunder were the first team to clinch a playoff spot on Tuesday.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "spurs clinch first playoff berth since 2019 following victor wembanyama game winner",
+          "realgm wiretap"
+        ],
+        "creator": [
+          "michael c. wright/espn"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-03-20 06:04:46",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 06:31:52",
+        "image_url": "https://basketball.realgm.com/images/nba/4.2/wiretap/photos/2006/Wembanyama_Victor_sas_260226.jpg",
+        "video_url": null,
+        "source_id": "realgm",
+        "source_name": "Realgm",
+        "source_priority": 2122,
+        "source_url": "https://basketball.realgm.com",
+        "source_icon": "https://n.bytvi.com/realgm.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "e1d1ddc0c72d3290502123fa57f64cb1",
+        "link": "https://www.yardbarker.com/nba/articles/jj_redick_drops_wild_take_on_luka_doncics_mvp_case_thatll_raise_eyebrows/s1_17759_43622187",
+        "title": "JJ Redick Drops Wild Take on Luka Doncic’s MVP Case That’ll Raise Eyebrows",
+        "description": "This season’s NBA MVP race is only getting excited and some of the veterans have made their choice. More than ever before, Luka Doncic is doing everything an MVP candidate is supposed to do.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "luka doncic",
+          "victor wembanyama",
+          "los angeles lakers",
+          "denver nuggets",
+          "j.j. redick",
+          "miami heat",
+          "sports",
+          "nba",
+          "nikola jokic",
+          "san antonio spurs"
+        ],
+        "creator": [
+          "nitish kumar singh"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-03-20 06:04:45",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 06:41:35",
+        "image_url": "http://www.yardbarker.com/media/8/e/8e4e95a2417682db52dfbb32d3f8f6ee7c25bacb/thumb_16x9/Luka-Doncic-and-JJ-Redick-1-1024x563.jpg",
+        "video_url": null,
+        "source_id": "yardbarker",
+        "source_name": "Yardbarker",
+        "source_priority": 92706,
+        "source_url": "https://www.yardbarker.com",
+        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "5521b4b27ed535cea7d9f583ba1d04a5",
+        "link": "https://www.lakelandtoday.ca/basketball/washington-plays-oklahoma-city-on-7-game-home-slide-12032608",
+        "title": "Washington plays Oklahoma City on 7-game home slide",
+        "description": "Oklahoma City Thunder (55-15, first in the Western Conference) vs. Washington Wizards (16-53, 14th in the Eastern Conference) Washington; Saturday, 5 p.m.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": null,
+        "creator": [
+          "canadian press"
+        ],
+        "language": "english",
+        "country": [
+          "canada"
+        ],
+        "category": [
+          "sports",
+          "top"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-03-20 06:04:37",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 06:45:27",
+        "image_url": "https://www.vmcdn.ca/files/lakelandtoday/images/lakelandtoday/lakelandtoday_pos_rgb_outline.png",
+        "video_url": null,
+        "source_id": "lakelandtoday_ca",
+        "source_name": "Lakeland News",
+        "source_priority": 490277,
+        "source_url": "https://www.lakelandtoday.ca",
+        "source_icon": "https://n.bytvi.com/lakelandtoday_ca.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
+      },
+      {
+        "article_id": "defc9cc0cc3f13a06ea450ee1917a32b",
+        "link": "https://www.princegeorgecitizen.com/basketball/washington-plays-oklahoma-city-on-7-game-home-slide-12032608",
+        "title": "Washington plays Oklahoma City on 7-game home slide",
+        "description": "Oklahoma City Thunder (55-15, first in the Western Conference) vs. Washington Wizards (16-53, 14th in the Eastern Conference) Washington; Saturday, 5 p.m.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": null,
+        "creator": [
+          "canadian press"
+        ],
+        "language": "english",
+        "country": [
+          "canada"
+        ],
+        "category": [
+          "sports",
+          "top"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-03-20 06:04:37",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-03-20 06:41:59",
+        "image_url": "https://www.vmcdn.ca/files/princegeorgematters/pgc-images/princegeorgecitizen/pgcblue123-cropped.svg",
+        "video_url": null,
+        "source_id": "princegeorgecitizen",
+        "source_name": "Prince George Citizen",
+        "source_priority": 172137,
+        "source_url": "https://www.princegeorgecitizen.com",
+        "source_icon": "https://n.bytvi.com/princegeorgecitizen.jpg",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
+      }
+    ]
+  }
 }
