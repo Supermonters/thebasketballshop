@@ -16,7 +16,7 @@
   let arr = (await (await fetch("/news")).json()).news;
   let d = new Date();
   for (let i = 0; i < arr.length; i++) {
-    d.setTime(Date.parse(arr[i].pubDate));
+    d.setTime(Date.parse(arr[i].pubDate.replace(" ", "T") + "Z"));
     let html = `
     <div class="post">
     <div class="entry-date">

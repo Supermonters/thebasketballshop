@@ -1,20 +1,23 @@
+import "dotenv/config";
 import express from "express";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import fetch from "node-fetch";
 import nodemailer from "nodemailer";
 import bodyParser from "body-parser";
-import configs from "./config.json" assert { type: "json" };
+import session from "express-session";
+import bcrypt from "bcryptjs";
+import rateLimit from "express-rate-limit";
 
 const db = new Low(new JSONFile("db/db.json"));
 const app = express();
 let transporter = nodemailer.createTransport({
   host: "smtp.elasticemail.com",
   port: 2525,
-  secure: false, // true for 465, false for other ports
+  secure: false,
   auth: {
-    user: configs.MAILUSER, // generated ethereal user
-    pass: configs.MAILPASSWORD, // generated ethereal password
+    user: process.env.MAILUSER,
+    pass: process.env.MAILPASSWORD,
   },
 });
 await db.read();
@@ -26,20 +29,44 @@ function findbyproductname(products, name) {
   return {};
 }
 
-function checkifadminexists(username, password) {
-    for (let [key, value] of Object.entries(db.data.admins)) {
-        if (key === username && value === password) return true;
+// Migrate any plaintext admin passwords to bcrypt hashes on startup
+async function migrateAdminPasswords() {
+  let changed = false;
+  for (const [username, password] of Object.entries(db.data.admins)) {
+    if (!password.startsWith("$2b$")) {
+      db.data.admins[username] = await bcrypt.hash(password, 12);
+      changed = true;
     }
-    return false;
+  }
+  if (changed) await db.write();
 }
+await migrateAdminPasswords();
 
 db.data ||= {
   products: [],
 };
 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: true, sameSite: "strict", maxAge: 24 * 60 * 60 * 1000 },
+}));
+
 app.use("/", express.static("static"));
 app.use("/admin", express.static("admin"));
 app.use(bodyParser.json());
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: "Too many login attempts, please try again later.",
+});
+
+function requireAdmin(req, res, next) {
+  if (req.session && req.session.isAdmin) return next();
+  res.status(401).send("Unauthorized");
+}
 
 app.get("/news", async (req, res) => {
   let arr;
@@ -53,19 +80,23 @@ app.get("/news", async (req, res) => {
         .toString()}${d.getUTCFullYear().toString()}`
   ) {
     let a = await fetch(
-      "https://newsdata.io/api/1/news?apikey=pub_1550576968a334f90cbb606bd4690ca338b1e&q=nba&language=en&category=sports"
+      `https://newsdata.io/api/1/news?apikey=${process.env.NEWS_API_KEY}&q=nba&language=en&category=sports&country=us,gb,au,ca`
     );
     let data = await a.json();
-    arr = data.results.filter(
-      (el) => el.image_url !== null && el.description !== null
-    );
-    db.data.news = {
-      date: `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d
-        .getUTCMonth()
-        .toString()}${d.getUTCFullYear().toString()}`,
-      arr: arr,
-    };
-    await db.write();
+    if (!Array.isArray(data.results)) {
+      arr = db.data.news?.arr ?? [];
+    } else {
+      arr = data.results.filter(
+        (el) => el.image_url !== null && el.description !== null
+      );
+      db.data.news = {
+        date: `${d.getUTCHours().toString()}${d.getUTCDate().toString()}${d
+          .getUTCMonth()
+          .toString()}${d.getUTCFullYear().toString()}`,
+        arr: arr,
+      };
+      await db.write();
+    }
   } else {
     arr = db.data.news.arr;
   }
@@ -87,7 +118,7 @@ app.get("/pdcnt", async (req, res) => {
 app.get("/mail", async (req, res) => {
   const address = req.query.mail;
   await transporter.sendMail({
-    from: `"BasketballShop" <${configs.MAILUSER}>`, // sender address
+    from: `"BasketballShop" <${process.env.MAILUSER}>`,
     to: address, // list of receivers
     subject: "Newsletter", // Subject line
     text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
@@ -99,52 +130,40 @@ app.get("/mail", async (req, res) => {
 
 app.get("/admin", (req, res) => {
     res.redirect("/admin/product.html");
-})
+});
 
-app.get("/admin/checklogin", async (req, res) => {
-    const username = req.query.username;
-    const password = req.query.password;
-    if (checkifadminexists(username, password)) {
-        res.status(200).send("admin exists");
-    } else {
-        res.status(400).send("admin doesnt exist");
-    }
-})
+app.get("/admin/checkauth", (req, res) => {
+    if (req.session && req.session.isAdmin) return res.status(200).send();
+    res.status(401).send();
+});
 
-app.post("/admin/addproduct", async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const name = req.body.name;
-    const alt = req.body.alt;
-    const banner = req.body.banner;
-    const images = req.body.images;
-    const price = req.body.price;
-    const filter = req.body.filter;
-    const mouseover = req.body.mouseover;
-    const mouseout = req.body.mouseout;
-    const cartpic = req.body.cartpic;
-    const options = req.body.options;
-    if (!username || !password || !name || !alt || !banner || !images || !price || !filter || !mouseover || !mouseout || !cartpic || !options || !checkifadminexists(username, password)) {
-        res.status(400).send();
-        return;
+app.post("/admin/login", loginLimiter, async (req, res) => {
+    const { username, password } = req.body;
+    if (!username || !password) return res.status(400).send();
+    const stored = db.data.admins[username];
+    if (!stored) return res.status(401).send();
+    const valid = await bcrypt.compare(password, stored);
+    if (!valid) return res.status(401).send();
+    req.session.isAdmin = true;
+    req.session.username = username;
+    res.status(200).send();
+});
+
+app.post("/admin/logout", (req, res) => {
+    req.session.destroy();
+    res.status(200).send();
+});
+
+app.post("/admin/addproduct", requireAdmin, async (req, res) => {
+    const { name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options } = req.body;
+    if (!name || !alt || !banner || !images || !price || !filter || !mouseover || !mouseout || !cartpic || !options) {
+        return res.status(400).send();
     }
     db.data.ids++;
-    db.data.products.push({
-        name: name,
-        alt: alt,
-        banner: banner,
-        images: images,
-        price: price,
-        filter: filter,
-        mouseover: mouseover,
-        mouseout: mouseout,
-        cartpic: cartpic,
-        options: options,
-        id: db.data.ids
-    })
+    db.data.products.push({ name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id: db.data.ids });
     await db.write();
     res.status(200).send();
-})
+});
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;
@@ -791,7 +810,7 @@ app.get("/store_item", async (req, res) => {
   html += `</div>
             </div>
         
-            <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="${configs.ORIGIN}${item.alt}" data-width=""
+            <div style="display: flex;justify-content: center;margin-bottom: 12rem;"  class="fb-comments" data-href="${process.env.ORIGIN}${item.alt}" data-width=""
                 data-numposts="5"></div>
             <div class="pc_toolbar_top active" bis_skin_checked="1">
                 <div class="container" style="padding-top: 1rem;" id="navbar" bis_skin_checked="1">
@@ -878,6 +897,6 @@ app.get("/store_item", async (req, res) => {
   res.status(200).send(html);
 });
 
-app.listen(configs.PORT, () => {
-  console.log(`server started on port ${configs.PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`server started on port ${process.env.PORT}`);
 });

@@ -4,7 +4,7 @@
   "description": "THE basketball shop",
   "main": "main.js",
   "scripts": {
-    "test": "node main.mjs"
+    "start": "node main.mjs"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,12 @@
   },
   "homepage": "https://github.com/Supermonters/thebasketballshop#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^1.20.1",
+    "dotenv": "^17.4.2",
     "express": "^4.18.2",
+    "express-rate-limit": "^8.5.2",
+    "express-session": "^1.19.0",
     "lowdb": "^5.0.5",
     "node-fetch": "^3.3.0",
     "nodemailer": "^6.9.0"

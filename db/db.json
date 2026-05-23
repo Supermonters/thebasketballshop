@@ -433,10 +433,356 @@
         "46"
       ]
     }
-    
   ],
   "admins": {
-    "admin": "admin"
+    "admin": "$2b$12$qgIRcDXPe29MdhuJPyu7YeWYk5GL.0lPsTuh.B5jrV13ALsjb577K"
   },
-  "ids": 12
+  "ids": 12,
+  "news": {
+    "date": "232342026",
+    "arr": [
+      {
+        "article_id": "01ad020c4437c05c74c231b10f23d043",
+        "link": "https://www.espn.com/nba/story/_/id/48848352/down-0-2-donovan-mitchell-cleveland-cavaliers-here-before",
+        "title": "What the Cavaliers need to save their turbulent se...",
+        "description": "Through a roller-coaster season, the Cavaliers have turned to one man in times of trouble.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": null,
+        "creator": [
+          "jamal collier"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:21:30",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:31:39",
+        "image_url": "https://a.espncdn.com/photo/2026/0523/r1662251_1296x729_16-9.jpg",
+        "video_url": null,
+        "source_id": "espn",
+        "source_name": "Espn",
+        "source_priority": 341,
+        "source_url": "https://www.espn.com",
+        "source_icon": "https://n.bytvi.com/espn.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "d8a6535eafa78a5c5ff741c852f68640",
+        "link": "https://www.yardbarker.com/nba/articles/new_details_emerge_on_why_dallas_mavericks_shockingly_fired_jason_kidd/s1_17759_43874226",
+        "title": "New Details Emerge on Why Dallas Mavericks Shockingly Fired Jason Kidd",
+        "description": "The Dallas Mavericks seem to have a knack for getting blockbuster headlines. Just a year back, the team shocked everyone with their trade of Luka Doncic to the Los Angeles Lakers.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "cooper flagg",
+          "masai ujiri",
+          "los angeles lakers",
+          "sports",
+          "jason kidd",
+          "nba",
+          "charles barkley",
+          "kyrie irving",
+          "luka doncic",
+          "dallas mavericks"
+        ],
+        "creator": [
+          "debmallya chakraborty"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:15:14",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:39:50",
+        "image_url": "http://www.yardbarker.com/media/0/9/0937c1d9057399d081585e5925a00abf7c0a29c8/thumb_16x9/Jason-Kidd-1024x563.jpg",
+        "video_url": null,
+        "source_id": "yardbarker",
+        "source_name": "Yardbarker",
+        "source_priority": 92706,
+        "source_url": "https://www.yardbarker.com",
+        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "8535fe04dfdd0257c214d9fba5a7ed7e",
+        "link": "https://www.masslive.com/betting/2026/05/cj-cup-byron-nelson-odds-update-si-woo-kim-dominates-first-two-rounds-in-texas-scheffler-within-striking-distance.html",
+        "title": "CJ Cup Byron Nelson odds update: Si Woo Kim dominates first two rounds in Texas, Scheffler within striking distance",
+        "description": "Get CJ Cup Byron Nelson odds update, expert predictions, and Polymarket winner odds for the PGA Tour Tournament on Saturday, May 23, 2026.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "@exmeter",
+          "@exalert",
+          "section:/betting",
+          "@exclude"
+        ],
+        "creator": [
+          "drew norton | advance local"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:15:00",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:31:32",
+        "image_url": "https://www.masslive.com/resizer/v2/WUZMG646LFARDDANNI47GRZR44.jpg?auth=c5ed6c62df4cab99330692a9b8cffd838f7bd855a887f417684278c6d429d9f9&smart=true&height=1200",
+        "video_url": null,
+        "source_id": "masslive",
+        "source_name": "Masslive",
+        "source_priority": 2191,
+        "source_url": "https://www.masslive.com",
+        "source_icon": "https://n.bytvi.com/masslive.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "bd580931fe6e576ee18bcabac3944d6a",
+        "link": "https://newspub.live/south/oklahoma/nba-san-antonio-spurs-108-123-oklahoma-city-thunder/",
+        "title": "NBA: San Antonio Spurs 108-123 Oklahoma City Thunder –",
+        "description": "In the series opener Wembanyama became the youngest player in NBA history to score 40 points and make 20 rebounds in a play-off game as the Spurs won 122-115. He finished with 21 points and 17 rebounds in game two, which the Spurs lost 122-113. “My shooting splits aren’t terrible,” said 22-year-old Wembanyama. “I need [...] The post NBA: San Antonio Spurs 108-123 Oklahoma City Thunder – appeared first on News Pub . The post NBA: San Antonio Spurs 108-123 Oklahoma City Thunder – appeared first on News Pub .",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "featured"
+        ],
+        "creator": [
+          "press room"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:12:06",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:22:05",
+        "image_url": "https://i3.wp.com/ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/8c95/live/45c740f0-5673-11f1-9a6d-f3f34ca8e9c3.jpg?ssl=1",
+        "video_url": null,
+        "source_id": "newspub_live",
+        "source_name": "News Pub",
+        "source_priority": 3777689,
+        "source_url": "https://newspub.live",
+        "source_icon": "https://n.bytvi.com/newspub_live.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "aeeec537def2b75c6f6fd30fb5462321",
+        "link": "https://www.yardbarker.com/nba/articles/austin_reaves_wants_to_run_it_back_with_lakers_lebron_james/s1_127_43874198",
+        "title": "Austin Reaves wants to ‘run it back’ with Lakers, LeBron James",
+        "description": "Los Angeles Lakers guard Austin Reaves expressed a strong interest in returning to the team and continuing his partnership with LeBron James following the franchise’s playoff exit.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "luka doncic",
+          "lebron james",
+          "utah jazz",
+          "sports",
+          "atlanta hawks",
+          "los angeles lakers",
+          "austin reaves",
+          "nba",
+          "oklahoma city thunder"
+        ],
+        "creator": [
+          "dan benton"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:11:09",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 12:40:13",
+        "image_url": "https://us-west-2-gw-2.yardbarker.com/images/yb_white_on_black_medium.jpg",
+        "video_url": null,
+        "source_id": "yardbarker",
+        "source_name": "Yardbarker",
+        "source_priority": 92706,
+        "source_url": "https://www.yardbarker.com",
+        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "0b91120964ed7a2dde478118b0c90564",
+        "link": "https://us.headtopics.com/news/peter-s-points-nba-best-bets-today-predictions-prop-bets-83690052",
+        "title": "Peter’s Points: NBA Best Bets Today (Predictions, Prop Bets for Knicks vs. Cavs Game 3, Donovan Mitchell)",
+        "description": "Jalen Brunson and the New York Knicks are just two wins away from the NBA Finals heading into Game 3 on Saturday night against the Cleveland Cavaliers. The Cavs",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "united states news"
+        ],
+        "creator": [
+          "sinow"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:06:25",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:06:25",
+        "image_url": "https://i.headtopics.com/images/2026/5/23/sinow/peter-s-points-nba-best-bets-today-predictions-pro-peter-s-points-nba-best-bets-today-predictions-pro-863414F08E30354330C7021AF9D9A1AA.webp",
+        "video_url": null,
+        "source_id": "headtopics",
+        "source_name": "Headtopics",
+        "source_priority": 43039,
+        "source_url": "https://headtopics.com",
+        "source_icon": "https://n.bytvi.com/headtopics.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "c44311f7e96d35900a168c55ffa96e83",
+        "link": "https://www.yardbarker.com/nba/articles/lebron_james_seemingly_ends_stephen_curry_reunion_rumors_without_naming_warriors_says_bay_area_journalist/s1_17730_43874209",
+        "title": "LeBron James Seemingly Ends Stephen Curry Reunion Rumors Without Naming Warriors, Says Bay Area Journalist",
+        "description": "It was in 2024 when the Golden State Warriors personally called and enquired about LeBron James’ availability. Reports from Shams Charania even stated that multiple contenders are still interested in securing the signature of the 41-year-old.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "steph curry",
+          "al horford",
+          "mike dunleavy",
+          "giannis antetokounmpo",
+          "draymond green",
+          "golden state warriors",
+          "steve nash",
+          "los angeles lakers",
+          "cleveland cavaliers",
+          "lebron james",
+          "miami heat",
+          "shams charania",
+          "nba",
+          "sports",
+          "milwaukee bucks",
+          "jimmy butler",
+          "mike dunleavy jr."
+        ],
+        "creator": [
+          "pranav kotai"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:02:58",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:39:53",
+        "image_url": "https://us-west-2-gw-2.yardbarker.com/images/yb_white_on_black_medium.jpg",
+        "video_url": null,
+        "source_id": "yardbarker",
+        "source_name": "Yardbarker",
+        "source_priority": 92706,
+        "source_url": "https://www.yardbarker.com",
+        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      },
+      {
+        "article_id": "6a82264ba5413d464309693b482eda0e",
+        "link": "https://bleacherreport.com/articles/25429974-new-2026-nba-mock-draft-blockbuster-lamelo-ball-trade-idea",
+        "title": "New 2026 NBA Mock Draft with Blockbuster LaMelo Ball Trade Idea",
+        "description": "The Charlotte Hornets finally delivered their long awaited breakthrough.",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "nba"
+        ],
+        "creator": [
+          "zach buckley"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 11:00:49",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 11:31:58",
+        "image_url": "https://gsp-image-cdn.wmsports.io/cms/prod/bleacher-report/getty_images/2026-05/2271925328_0_large_cropped.jpg",
+        "video_url": null,
+        "source_id": "bleacherreport",
+        "source_name": "Bleacherreport",
+        "source_priority": 4240,
+        "source_url": "https://bleacherreport.com",
+        "source_icon": "https://n.bytvi.com/bleacherreport.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": false
+      }
+    ]
+  }
 }
