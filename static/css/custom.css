@@ -55,6 +55,19 @@ input[type="submit"] { font-weight: 700; letter-spacing: 0.1em; text-transform: 
 
 /* ============================================================ */
 
+/* === SweetAlert2 font override ============================ */
+.swal2-popup,
+.swal2-title,
+.swal2-html-container,
+.swal2-content,
+.swal2-confirm,
+.swal2-cancel,
+.swal2-deny {
+  font-family: 'Chakra Petch', sans-serif !important;
+}
+.swal2-title { font-weight: 700; letter-spacing: 0.03em; }
+.swal2-confirm, .swal2-cancel, .swal2-deny { font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
 /* === Custom Scrollbar ===================================== */
 body::-webkit-scrollbar { background-color: black; width: 16px; }
 body::-webkit-scrollbar-track { background-color: black; }
@@ -232,7 +245,8 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
 .discography-list .detail { padding-left: 20px; }
 .discography-list .detail h3 { margin: 0; font-weight: 400; }
 .discography-list .detail h3 a { color: #fd5927; text-decoration: none; }
-.discography-list .detail .year { color: white; display: block; }
+.discography-list .detail .year  { color: white; display: block; }
+.discography-list .detail .track { color: #848484; display: block; font-size: 0.85em; }
 
 /* === Entry title (general base) =========================== */
 .entry-title { color: white; font-weight: 600; margin-top: 0; margin-bottom: 15px; }
