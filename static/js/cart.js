@@ -42,26 +42,13 @@ function updateCartTotal() {
   for (var i = 0; i < cartRows.length; i++) {
     var cartRow = cartRows[i];
     var priceElement = cartRow.getElementsByClassName("cart-price")[0];
-    var quantityElement = cartRow.getElementsByClassName(
-      "cart-quantity-input"
-    )[0];
-    var price = parseFloat(priceElement.innerText.replace(".", ""));
+    var quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
+    var price = parseFloat(priceElement.innerText.replace(/[$,]/g, ""));
     var quantity = quantityElement.value;
-    total = total + price * quantity;
+    if (!isNaN(price)) total += price * quantity;
   }
-  let trips = "";
-  while (total != 0) {
-    trips = ("00" + total % 1000).slice(-3) + "." + trips;
-    total -= total % 1000;
-    total /= 1000;
-  }
-  if (trips != "") {
-    trips += "000";
-    while (trips.charAt(0) === '0') trips = trips.substring(1);
-  }
-  else trips = "0";
   document.getElementsByClassName("cart-total-price")[0].innerText =
-    trips + " VNĐ";
+    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(total);
 }
 function cartload() {
   for (var i = 0; i < localStorage.length; i++) {

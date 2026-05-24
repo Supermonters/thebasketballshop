@@ -24,6 +24,7 @@ const BRAND_COLORS = {
   "Li-Ning":       "#d4000f",
 };
 
+// Top scorers (live from API)
 (async () => {
   const container = document.getElementById("players-list");
   try {
@@ -58,31 +59,7 @@ const BRAND_COLORS = {
   }
 })();
 
-(async () => {
-  const grid = document.getElementById("sneakers-grid");
-  try {
-    const { sneakers } = await (await fetch("/trends/sneakers")).json();
-    if (!sneakers || sneakers.length === 0) {
-      grid.innerHTML = '<p style="color:#848484">No trending sneakers found.</p>';
-      return;
-    }
-    grid.innerHTML = sneakers.map(s => `
-      <a href="${s.url}" target="_blank" rel="noopener" class="sneaker-card">
-        <div class="sneaker-thumb" style="background-image:url('${s.thumbnail}')"></div>
-        <div class="sneaker-info">
-          <p class="sneaker-title">${s.title}</p>
-          <div class="sneaker-meta">
-            <span>&#9650; ${s.score.toLocaleString()}</span>
-            <span>&#128172; ${s.comments}</span>
-          </div>
-        </div>
-      </a>`).join("");
-  } catch (e) {
-    grid.innerHTML = '<p style="color:#848484">Could not load trending sneakers.</p>';
-  }
-})();
-
-// Hardcoded trending players ranking
+// Trending players (hardcoded)
 const trendingEl = document.getElementById("trending-players");
 if (trendingEl) {
   trendingEl.innerHTML = TRENDING_PLAYERS.map(p => {
