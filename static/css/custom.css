@@ -1,7 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 /* ============================================================
    custom.css — styles Tailwind can't replace
    Includes: plugin CSS, pseudo-elements, complex gradients
    ============================================================ */
+
+/* === Chakra Petch — Display & UI Typography =============== */
+h1, h2, h3, h4, h5, h6,
+.nav-link,
+.section-title,
+.entry-title,
+.feature-title,
+.story-title,
+.player-name,
+.player-team,
+.shoe-brand,
+.free-agent-tag,
+.gallery-badge,
+.gallery-caption,
+.gallery-expand-hint,
+.gm-shoe-name,
+.gm-name,
+.gm-rank-badge,
+.gm-counter,
+.gm-shoe-line,
+.cut-corner,
+.load-more-btn,
+.filter-links a,
+.mobile-filter,
+.entry-date .date,
+.entry-date .month,
+#branding small,
+.button-53,
+.button-54,
+input[type="submit"],
+.welcomeUser {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+h1, h2, h3 { font-weight: 700; letter-spacing: 0.02em; }
+h4, h5, h6 { font-weight: 600; }
+.nav-link   { font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.8rem; }
+.gm-name    { font-weight: 700; letter-spacing: 0.03em; }
+.gm-shoe-name { font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.gm-rank-badge { font-weight: 700; }
+.gallery-caption { font-weight: 600; letter-spacing: 0.04em; }
+.player-name { font-weight: 700; letter-spacing: 0.02em; }
+.player-team { font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.shoe-brand  { font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.free-agent-tag { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+#branding small { font-weight: 400; letter-spacing: 0.3em; }
+input[type="submit"] { font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.button-53, .button-54 { font-weight: 600; letter-spacing: 0.05em; }
+
+/* ============================================================ */
 
 /* === Custom Scrollbar ===================================== */
 body::-webkit-scrollbar { background-color: black; width: 16px; }
@@ -197,6 +249,18 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
 .event { padding: 0 15px; overflow: hidden; }
 .event .entry-title { font-size: 1.25em; overflow: hidden; }
 .event p { color: #848484; font-size: 0.875em; line-height: 1.8; clear: both; }
+
+.event-img-link { display: block; overflow: hidden; margin-bottom: 14px; }
+.event-img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+  background: #1a1a1a;
+  display: block;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.event-img-link:hover .event-img { transform: scale(1.05); opacity: 0.85; }
 
 /* === News article content (populated by news.js) ========== */
 .content .entry-title { margin-top: 0; margin-bottom: 30px; font-size: 2.25em; color: white; }
@@ -558,16 +622,18 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
   border: 1px solid #2a2a2a;
   border-radius: 14px;
   overflow: hidden;
-  transition: border-color 0.25s, transform 0.25s;
-  margin-bottom: 20px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  cursor: pointer;
 }
 .shoe-card:hover {
   border-color: #fd5927;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(253, 89, 39, 0.15);
 }
 .shoe-gallery {
   position: relative;
   background: #111;
+  overflow: hidden;
 }
 .gallery-badge {
   position: absolute;
@@ -583,6 +649,48 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
   padding: 3px 8px;
   border-radius: 4px;
 }
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 36px 14px 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.82));
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  pointer-events: none;
+  text-transform: uppercase;
+}
+.gallery-expand-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.55);
+  padding: 4px 9px;
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.shoe-card:hover .gallery-expand-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
 .gallery-main {
   width: 100%;
   height: 260px;
@@ -590,33 +698,7 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
   display: block;
   padding: 24px;
   background: #111;
-  transition: opacity 0.15s ease;
-}
-.gallery-thumbs {
-  display: flex;
-  gap: 6px;
-  padding: 8px 12px;
-  background: #141414;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.gallery-thumbs::-webkit-scrollbar { display: none; }
-.gallery-thumb {
-  width: 72px;
-  height: 52px;
-  object-fit: contain;
-  background: #1e1e1e;
-  border-radius: 6px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: border-color 0.2s, opacity 0.2s;
-  opacity: 0.55;
-}
-.gallery-thumb:hover,
-.gallery-thumb.active {
-  border-color: #fd5927;
-  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .shoe-card-info {
   display: flex;
@@ -677,6 +759,229 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
   border-radius: 3px;
   margin-right: 5px;
   vertical-align: middle;
+}
+
+/* === Gallery Modal =========================================== */
+#gm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+#gm-overlay.open {
+  pointer-events: all;
+  opacity: 1;
+}
+.gm-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.gm-panel {
+  position: relative;
+  z-index: 1;
+  background: #181818;
+  border: 1px solid #2e2e2e;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 820px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.95) translateY(12px);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+}
+#gm-overlay.open .gm-panel {
+  transform: scale(1) translateY(0);
+}
+.gm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #252525;
+  flex-shrink: 0;
+}
+.gm-player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+.gm-headshot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #2a2a2a;
+  flex-shrink: 0;
+}
+.gm-text { min-width: 0; }
+.gm-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gm-shoe-line {
+  color: #888;
+  font-size: 0.78rem;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gm-rank-badge {
+  background: #fd5927;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.gm-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #222;
+  color: #aaa;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.gm-close:hover {
+  background: #fd5927;
+  color: #fff;
+  border-color: #fd5927;
+}
+.gm-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.gm-main-img {
+  max-width: 100%;
+  max-height: 420px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  padding: 28px 70px;
+  display: block;
+  transition: opacity 0.13s ease, transform 0.13s ease;
+}
+.gm-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(20,20,20,0.85);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.15s, border-color 0.15s;
+}
+.gm-arrow:hover {
+  background: #fd5927;
+  border-color: #fd5927;
+}
+.gm-prev { left: 12px; }
+.gm-next { right: 12px; }
+.gm-shoe-name {
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 12px 20px 2px;
+  flex-shrink: 0;
+  background: #111;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gm-counter {
+  text-align: center;
+  color: #555;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 4px 0 2px;
+  flex-shrink: 0;
+  background: #111;
+}
+.gm-thumbs {
+  display: flex;
+  gap: 8px;
+  padding: 14px 20px;
+  background: #141414;
+  border-top: 1px solid #222;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  flex-shrink: 0;
+}
+.gm-thumbs::-webkit-scrollbar { display: none; }
+.gm-thumbs { scrollbar-width: none; }
+.gm-thumb {
+  width: 88px;
+  height: 62px;
+  object-fit: contain;
+  background: #1e1e1e;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  opacity: 0.45;
+  transition: border-color 0.18s, opacity 0.18s, transform 0.18s;
+}
+.gm-thumb:hover { opacity: 0.8; transform: scale(1.04); }
+.gm-thumb.active {
+  border-color: #fd5927;
+  opacity: 1;
+  transform: scale(1.04);
+}
+@media (max-width: 600px) {
+  .gm-panel { border-radius: 14px; }
+  .gm-main-img { padding: 20px 54px; max-height: 300px; }
+  .gm-thumb { width: 68px; height: 48px; }
 }
 
 /* === Trends page: Trending players 2-col grid ============= */
