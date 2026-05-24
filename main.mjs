@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import session from "express-session";
 import bcrypt from "bcryptjs";
 import rateLimit from "express-rate-limit";
+import fs from "fs/promises";
 
 const db = new Low(new JSONFile("db/db.json"));
 const app = express();
@@ -42,9 +43,11 @@ async function migrateAdminPasswords() {
 }
 await migrateAdminPasswords();
 
-db.data ||= {
-  products: [],
-};
+db.data ||= { products: [] };
+if (!Array.isArray(db.data.hiddenPlayers)) {
+  db.data.hiddenPlayers = [];
+  await db.write();
+}
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -67,6 +70,18 @@ function requireAdmin(req, res, next) {
   if (req.session && req.session.isAdmin) return next();
   res.status(401).send("Unauthorized");
 }
+
+app.get("/firebase-config", (req, res) => {
+  res.json({
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+  });
+});
 
 // In-memory news cache — avoids polluting db.json
 let newsCache = { hour: null, arr: [] };
@@ -153,6 +168,15 @@ let trendsCache = {
 };
 const TRENDS_TTL = 3600 * 1000; // 1 hour
 
+async function getTrendingShoeGallery() {
+  await db.read();
+  if (Array.isArray(db.data.trendingShoeGallery) && db.data.trendingShoeGallery.length) {
+    return db.data.trendingShoeGallery;
+  }
+  const seed = await fs.readFile("static/data/trending-shoes.json", "utf8");
+  return JSON.parse(seed);
+}
+
 const NBA_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
 app.get("/trends/players", async (req, res) => {
@@ -169,19 +193,23 @@ app.get("/trends/players", async (req, res) => {
     const headers = data.resultSet?.headers || [];
     const rows = data.resultSet?.rowSet || [];
     const idx = { id: headers.indexOf("PLAYER_ID"), name: headers.indexOf("PLAYER"), team: headers.indexOf("TEAM"), pts: headers.indexOf("PTS") };
-    const players = rows.slice(0, 10).map((row, i) => {
-      const name = row[idx.name] || "";
-      const info = PLAYER_SHOES[name] || {};
-      return {
-        rank:     i + 1,
-        name,
-        team:     row[idx.team] || "",
-        ppg:      Number(row[idx.pts]).toFixed(1),
-        headshot: `https://cdn.nba.com/headshots/nba/latest/260x190/${row[idx.id]}.png`,
-        shoe:     info.shoe || null,
-        brand:    info.brand || null,
-      };
-    });
+    const hidden = new Set(db.data.hiddenPlayers || []);
+    const players = rows
+      .map((row) => {
+        const name = row[idx.name] || "";
+        const info = PLAYER_SHOES[name] || {};
+        return {
+          name,
+          team:     row[idx.team] || "",
+          ppg:      Number(row[idx.pts]).toFixed(1),
+          headshot: `https://cdn.nba.com/headshots/nba/latest/260x190/${row[idx.id]}.png`,
+          shoe:     info.shoe || null,
+          brand:    info.brand || null,
+        };
+      })
+      .filter(p => !hidden.has(p.name))
+      .slice(0, 10)
+      .map((p, i) => ({ ...p, rank: i + 1 }));
     trendsCache.players = { ts: now, data: players };
     res.json({ players });
   } catch (e) {
@@ -218,7 +246,18 @@ app.get("/trends/sneakers", async (req, res) => {
   }
 });
 
+app.get("/trends/shoe-gallery", async (req, res) => {
+  try {
+    res.set("Cache-Control", "no-store");
+    res.json({ players: await getTrendingShoeGallery() });
+  } catch (e) {
+    res.status(500).json({ players: [] });
+  }
+});
+
 app.get("/productlist", async (req, res) => {
+  await db.read();
+  res.set("Cache-Control", "no-store");
   res.status(200).json(db.data);
 });
 
@@ -272,10 +311,113 @@ app.post("/admin/addproduct", requireAdmin, async (req, res) => {
     if (!name || !alt || !banner || !images || !price || !filter || !mouseover || !mouseout || !cartpic || !options) {
         return res.status(400).send();
     }
+    const now = new Date().toISOString();
     db.data.ids++;
-    db.data.products.push({ name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id: db.data.ids });
+    db.data.products.push({ name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id: db.data.ids, dateAdded: now, dateModified: now });
     await db.write();
     res.status(200).send();
+});
+
+app.get("/admin/products", requireAdmin, async (req, res) => {
+    await db.read();
+    res.set("Cache-Control", "no-store");
+    res.json({ products: db.data.products });
+});
+
+app.put("/admin/products/:id", requireAdmin, async (req, res) => {
+    await db.read();
+    const id = parseInt(req.params.id, 10);
+    const idx = db.data.products.findIndex(p => p.id === id);
+    if (idx === -1) return res.status(404).send();
+
+    const { name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options } = req.body;
+    if (!name || !alt || !banner || !Array.isArray(images) || !images.length || !price || !filter || !mouseover || !mouseout || !cartpic || !Array.isArray(options) || !options.length) {
+        return res.status(400).send();
+    }
+
+    db.data.products[idx] = { ...db.data.products[idx], name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id, dateModified: new Date().toISOString() };
+    await db.write();
+    res.status(200).json({ product: db.data.products[idx] });
+});
+
+app.delete("/admin/products/:id", requireAdmin, async (req, res) => {
+    await db.read();
+    const id = parseInt(req.params.id, 10);
+    const idx = db.data.products.findIndex(p => p.id === id);
+    if (idx === -1) return res.status(404).send();
+    db.data.products.splice(idx, 1);
+    await db.write();
+    res.status(200).send();
+});
+
+app.delete("/admin/products", requireAdmin, async (req, res) => {
+    await db.read();
+    const ids = req.body?.ids;
+    if (!Array.isArray(ids) || !ids.length) return res.status(400).send();
+    const idSet = new Set(ids.map(Number));
+    db.data.products = db.data.products.filter(p => !idSet.has(p.id));
+    await db.write();
+    res.status(200).send();
+});
+
+app.get("/admin/players/hidden", requireAdmin, (req, res) => {
+    res.json({ hidden: db.data.hiddenPlayers || [] });
+});
+
+app.post("/admin/players/hide", requireAdmin, async (req, res) => {
+    const { name } = req.body;
+    if (!name) return res.status(400).send();
+    if (!db.data.hiddenPlayers.includes(name)) {
+        db.data.hiddenPlayers.push(name);
+        await db.write();
+        trendsCache.players.ts = 0;
+    }
+    res.status(200).send();
+});
+
+app.delete("/admin/players/hide/:name", requireAdmin, async (req, res) => {
+    const name = decodeURIComponent(req.params.name);
+    db.data.hiddenPlayers = db.data.hiddenPlayers.filter(n => n !== name);
+    await db.write();
+    trendsCache.players.ts = 0;
+    res.status(200).send();
+});
+
+app.get("/admin/shoe-gallery", requireAdmin, async (req, res) => {
+    try {
+        res.set("Cache-Control", "no-store");
+        res.json({ players: await getTrendingShoeGallery() });
+    } catch (e) {
+        res.status(500).json({ players: [] });
+    }
+});
+
+app.put("/admin/shoe-gallery/:rank", requireAdmin, async (req, res) => {
+    await db.read();
+    const oldRank = parseInt(req.params.rank, 10);
+    const gallery = Array.isArray(db.data.trendingShoeGallery) && db.data.trendingShoeGallery.length
+        ? db.data.trendingShoeGallery
+        : await getTrendingShoeGallery();
+    const idx = gallery.findIndex(p => p.rank === oldRank);
+    if (idx === -1) return res.status(404).send();
+
+    const rank = parseInt(req.body.rank, 10);
+    const id = req.body.id ? parseInt(req.body.id, 10) : (gallery[idx].id || 0);
+    const { name, avatar, team, shoe, brand, freeAgent, shoeImgs } = req.body;
+    if (!rank || !name || !team || !shoe || !brand || !Array.isArray(shoeImgs) || !shoeImgs.length) {
+        return res.status(400).send();
+    }
+
+    // Normalize shoeImgs to {url, name} objects
+    const normalizedImgs = shoeImgs
+        .map(img => typeof img === "string" ? { url: img, name: "" } : { url: img.url || "", name: img.name || "" })
+        .filter(img => img.url);
+    if (!normalizedImgs.length) return res.status(400).send();
+
+    gallery[idx] = { rank, name, avatar: avatar || null, team, id, shoe, brand, freeAgent: Boolean(freeAgent), shoeImgs: normalizedImgs };
+    db.data.trendingShoeGallery = gallery.sort((a, b) => a.rank - b.rank);
+    await db.write();
+    res.status(200).json({ player: gallery[idx] });
 });
 
 const SHOE_SIZES = [

@@ -1,48 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <link rel="stylesheet" href="product.css">
-    <link href='https://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/button.css">
-    <link rel="stylesheet" href="/css/cart.css">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Basketball Shop</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="product.css">
 </head>
+<body>
+  <div class="shell">
 
-<body style="background-color: #222D32;">
-    <h1 style="font-family: 'Courier New', Courier, monospace;text-align: center;background-color: white;color: black;border-radius: 6px;">ADD PRODUCT</h1>
-    <input type="text" class="question" id="proname" required autocomplete="off" />
-    <label><span class='spn'>Product Name</span class='spn'></label><br>
-    <input type="text" class="question" id="alt" required autocomplete="off" />
-    <label><span class='spn'>Alt name</span class='spn'></label><br>
-    <input type="text" class="question" id="banner" required autocomplete="off" />
-    <label><span class='spn'>Banner Pic</span class='spn'></label><br>
+    <!-- ── Sidebar ─────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sb-brand">
+        <span class="sb-logo">B<em>S</em></span>
+        <span class="sb-label">Admin Panel</span>
+      </div>
 
-    <div id="image">
-        <input type='text' class='question images' required autocomplete='off' /><label><span class='spn'>Picture Link</span class='spn'></label><br>
+      <nav class="sb-nav">
+        <button type="button" class="sb-link active" data-tab="products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Products
+        </button>
+        <button type="button" class="sb-link" data-tab="players">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Trending Players
+        </button>
+      </nav>
+
+      <button type="button" class="sb-signout" id="signout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </aside>
+
+    <!-- ── Main content ────────────────────── -->
+    <main class="main">
+
+      <!-- Products tab -->
+      <section id="tab-products" class="tab active">
+        <div class="tab-head">
+          <div>
+            <h1>Products <span id="product-count" class="count-badge"></span></h1>
+            <p class="tab-sub">All items currently listed in the store.</p>
+          </div>
+          <div class="tab-head-actions">
+            <button type="button" class="btn-danger-outline hidden" id="delete-selected">Delete Selected <span id="delete-selected-count"></span></button>
+            <button type="button" class="btn-primary" id="open-add-product">+ Add Product</button>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <input type="text" class="field-input filter-search" id="product-search" placeholder="Search by name…" autocomplete="off">
+          <select class="field-input filter-select" id="filter-category" title="Filter by category">
+            <option value="">All categories</option>
+            <option value="concert">Nike / Jordan</option>
+            <option value="band">Shoes — Other</option>
+            <option value="stuff">Accessories</option>
+          </select>
+          <select class="field-input filter-select" id="filter-sort" title="Sort by">
+            <option value="date-added-desc">Date Added ↓ (Newest)</option>
+            <option value="date-added-asc">Date Added ↑ (Oldest)</option>
+            <option value="date-mod-desc">Date Modified ↓ (Newest)</option>
+            <option value="date-mod-asc">Date Modified ↑ (Oldest)</option>
+            <option value="name-asc">Name A–Z</option>
+            <option value="name-desc">Name Z–A</option>
+          </select>
+          <label class="select-all-label" title="Select / deselect all">
+            <input type="checkbox" id="select-all-checkbox">
+            <span>Select all</span>
+          </label>
+        </div>
+        <div id="products-grid" class="products-grid">
+          <div class="loading-state">Loading products…</div>
+        </div>
+      </section>
+
+      <!-- Trending Players tab -->
+      <section id="tab-players" class="tab">
+        <div class="tab-head">
+          <div>
+            <h1>Trending Players Gallery</h1>
+            <p class="tab-sub">Manage the player shoe gallery shown on the public Trends page.</p>
+          </div>
+        </div>
+        <div id="shoe-gallery-list" class="shoe-gallery-list">
+          <div class="loading-state">Loading shoe gallery…</div>
+        </div>
+        <form id="shoe-gallery-form" class="add-form shoe-gallery-form hidden" autocomplete="off">
+          <div class="form-grid">
+            <div class="form-col">
+              <div class="field">
+                <label class="field-label" for="shoe-rank">Rank <span class="req">*</span></label>
+                <input type="number" class="field-input" id="shoe-rank" min="1" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="shoe-player-name">Player Name <span class="req">*</span></label>
+                <input type="text" class="field-input" id="shoe-player-name" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="shoe-avatar">Player Avatar URL</label>
+                <input type="text" class="field-input" id="shoe-avatar" placeholder="https://cdn.nba.com/headshots/…">
+              </div>
+              <div class="field">
+                <label class="field-label" for="shoe-team">Team <span class="req">*</span></label>
+                <input type="text" class="field-input" id="shoe-team" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <div class="field">
+                <label class="field-label" for="shoe-name">Shoe Name <span class="req">*</span></label>
+                <input type="text" class="field-input" id="shoe-name" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="shoe-brand">Brand <span class="req">*</span></label>
+                <input type="text" class="field-input" id="shoe-brand" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="shoe-free-agent">Free Agent</label>
+                <select class="field-input" id="shoe-free-agent">
+                  <option value="false">No</option>
+                  <option value="true">Yes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="shoe-player-id">
+          <div class="field">
+            <label class="field-label">Gallery Images <span class="req">*</span> <span class="field-hint">— Colorway name + image URL per row</span></label>
+            <div id="shoe-images-list" class="multi-list"></div>
+            <button type="button" class="btn-add-row" id="add-shoe-img-row">+ Add Image</button>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">Save Gallery Item</button>
+            <button type="button" class="btn-ghost" id="cancel-shoe-edit">Cancel Edit</button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ── Add / Edit Product Drawer ─────────────── -->
+  <div id="product-drawer" class="product-drawer" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div>
+          <h2 id="form-title" class="drawer-title">Add Product</h2>
+          <p class="tab-sub" id="form-subtitle">Fill in all fields to add a new item to the store.</p>
+        </div>
+        <button type="button" class="drawer-close" id="drawer-close" aria-label="Close">&#215;</button>
+      </div>
+      <div class="drawer-body">
+        <form id="add-form" autocomplete="off">
+          <div class="field">
+            <label class="field-label" for="proname">Product Name <span class="req">*</span></label>
+            <input type="text" class="field-input" id="proname" placeholder="e.g. Nike LeBron 22" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="alt">Alt / SEO Name <span class="req">*</span></label>
+            <input type="text" class="field-input" id="alt" placeholder="Descriptive alt text" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="price">Price (VND) <span class="req">*</span></label>
+            <input type="text" class="field-input" id="price" placeholder="e.g. 2.089.000" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="filter">Category / Filter <span class="req">*</span></label>
+            <select class="field-input" id="filter" title="Select product category" aria-label="Category / Filter">
+              <option value="concert">Shoes — Nike / Jordan</option>
+              <option value="band">Shoes — Other brands</option>
+              <option value="stuff">Accessories</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="banner">Banner Image URL <span class="req">*</span></label>
+            <input type="text" class="field-input" id="banner" placeholder="/assets/banner_pic/..." required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="cartpic">Cart Thumbnail URL <span class="req">*</span></label>
+            <input type="text" class="field-input" id="cartpic" placeholder="/assets/cartPic/..." required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="mouseoverpic">Hover-over Image URL <span class="req">*</span></label>
+            <input type="text" class="field-input" id="mouseoverpic" placeholder="URL of hover image" required>
+          </div>
+          <div class="field">
+            <label class="field-label" for="mouseoutpic">Hover-out Image URL <span class="req">*</span></label>
+            <input type="text" class="field-input" id="mouseoutpic" placeholder="URL of default image" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Gallery Images <span class="req">*</span></label>
+            <div id="images-list" class="multi-list">
+              <div class="multi-row">
+                <input type="text" class="field-input images" placeholder="Image URL" aria-label="Gallery image URL">
+                <button type="button" class="btn-remove-row" onclick="removeRow(this)" aria-label="Remove">✕</button>
+              </div>
+            </div>
+            <button type="button" class="btn-add-row" onclick="addRow('images-list','images','Image URL')">+ Add Image</button>
+          </div>
+          <div class="field">
+            <label class="field-label">Options (sizes / colors) <span class="req">*</span></label>
+            <div id="options-list" class="multi-list">
+              <div class="multi-row">
+                <input type="text" class="field-input options" placeholder="e.g. Black or M 9 / W 10.5" aria-label="Product option">
+                <button type="button" class="btn-remove-row" onclick="removeRow(this)" aria-label="Remove">✕</button>
+              </div>
+            </div>
+            <button type="button" class="btn-add-row" onclick="addRow('options-list','options','e.g. Black or M 9 / W 10.5')">+ Add Option</button>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn-primary" id="submit-product">Add Product</button>
+            <button type="button" class="btn-ghost hidden" id="cancel-edit">Cancel Edit</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <button class=" btn-purchase button-30"
-        onclick="document.getElementById('image').innerHTML += `<input type='text' class='question images'  required autocomplete='off' /><label><span class='spn'>Picture Link</span class='spn'></label><br>`;">Add More Picture</button><br>
-        <input type="text" class="question" id="price" required autocomplete="off" />
-        <label><span class='spn'>Price</span class='spn'></label><br>
-        <input type="text" class="question" id="mouseoverpic" required autocomplete="off" />
-        <label><span class='spn'>MouseOverPic</span class='spn'></label><br>
-        <input type="text" class="question" id="mouseoutpic" required autocomplete="off" />
-        <label><span class='spn'>MouseOutPic</span class='spn'></label><br>
-        <input type="text" class="question" id="filter" required autocomplete="off" />
-        <label><span class='spn'>Filter</span class='spn'></label><br>
-        <input type="text" class="question" id="cartpic" required autocomplete="off" />
-        <label><span class='spn'>Cart Picture</span class='spn'></label><br>
-    <div id="option">
-    </div>
-    <button class=" btn-purchase button-30" onclick="document.getElementById('option').innerHTML += `<input type='text' class='question options' required autocomplete='off' /><label><span class='spn'>Product Option</span class='spn'></label><br>`;">Add More Option</button><br><br>
-    <button class=" btn-purchase button-30" style="background-color: white;color: black;font-size: 3rem;height: auto;margin-bottom: 10vw;box-shadow: none;" id="submit">Add Product</button><br>
-    <button style="background-color: red;box-shadow: rgb(186 41 41 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #e91858 0 -3px 0 inset;margin-bottom: 3em;" class=" btn-purchase button-30" id="signout">Sign out</button>    <script src="product.js"></script>
+  </div>
+
+  <script src="product.js"></script>
 </body>
-
 </html>

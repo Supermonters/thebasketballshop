@@ -1,6 +1,6 @@
 (async () => {
     const fits = document.getElementsByClassName("filterable-items")[0];
-    const f = await fetch("/productlist");
+    const f = await fetch("/productlist", { cache: "no-store" });
     const data = (await f.json()).products;
     for (let i = 0; i < data.length; i++) {
         fits.innerHTML +=

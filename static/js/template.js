@@ -1,15 +1,6 @@
-(function () {
-  const firebaseConfig = {
-    apiKey: "AIzaSyAVr8GCpsz2luRAwKKkit6b2ITxshCeVIg",
-    authDomain: "login-ffd4f.firebaseapp.com",
-    databaseURL: "https://login-ffd4f-default-rtdb.firebaseio.com",
-    projectId: "login-ffd4f",
-    storageBucket: "login-ffd4f.appspot.com",
-    messagingSenderId: "212347808876",
-    appId: "1:212347808876:web:b466c1b6d975542a673c49",
-  };
+(async function () {
+  const firebaseConfig = await (await fetch("/firebase-config")).json();
 
-  // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
   const auth = firebase.auth();
@@ -23,37 +14,28 @@
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential;
-
         database.ref("user/" + user.uid).set({
           username: username,
           email: email,
         });
         Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: `Account created successfully`,
-        })
-
-
-        // ...
+          icon: "success",
+          title: "Success",
+          text: "Account created successfully",
+        });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: `${errorMessage}`,
-        })
-
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
       });
   });
-  //hello
+
   SignIn.addEventListener("click", (e) => {
-    if (localStorage.getItem('TaiKhoanDangNhap')=== null) {
+    if (localStorage.getItem("TaiKhoanDangNhap") === null) {
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
       var username = document.getElementById("username").value;
@@ -61,53 +43,34 @@
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(async (userCredential) => {
-          // Signed in
           const user = userCredential;
-  
-          const dt = new Date();
-          database.ref("user/" + user.uid).update({
-            last_login: dt,
-          });
-          console.log(user);
+          database.ref("user/" + user.uid).update({ last_login: new Date() });
           localStorage.setItem("TaiKhoanDangNhap", username);
           await Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: `Logged in successfully`,
-          })
+            icon: "success",
+            title: "Success",
+            text: "Logged in successfully",
+          });
           window.location.reload();
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `${errorMessage}`,
-          })
-  
+            icon: "error",
+            title: "Oops...",
+            text: error.message,
+          });
         });
-    }else{
-       Swal.fire({
-        icon: 'error',
-        title: 'Failed',
-        text: `You are already logged in`,
-      })
-    }
-
-  });
-  const user = auth.currentUser;
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
     } else {
-      // User is signed out
-      // ...
+      Swal.fire({
+        icon: "error",
+        title: "Failed",
+        text: "You are already logged in",
+      });
     }
   });
+
+  firebase.auth().onAuthStateChanged((user) => {});
+
   SignOut.addEventListener("click", (e) => {
     firebase
       .auth()
@@ -115,26 +78,21 @@
       .then(() => {
         if (localStorage.getItem("TaiKhoanDangNhap") == null) {
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `You are not logged in`,
-          })
-
+            icon: "error",
+            title: "Oops...",
+            text: "You are not logged in",
+          });
         } else {
           localStorage.removeItem("TaiKhoanDangNhap");
           location.reload();
         }
       })
       .catch((error) => {
-        // An error happened.
-        const errorCode = error.code;
-        const errorMessage = error.message;
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: `${errorMessage}`,
-        })
-
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
       });
   });
 })();

@@ -131,13 +131,27 @@ const BRAND_COLORS = {
   "Li-Ning":       "#d4000f",
 };
 
+/* ── Normalize shoeImgs entries (string or {url,name}) ── */
+function imgUrl(img) { return typeof img === 'string' ? img : (img?.url || ''); }
+function imgName(img, fallback) {
+  if (typeof img !== 'string' && img?.name) return img.name;
+  const parsed = extractShoeName(imgUrl(img));
+  return parsed || fallback;
+}
+
 /* ── Parse shoe colorway name from StockX/image URL ── */
 function extractShoeName(url) {
+  if (!url) return null;
   const m360 = url.match(/\/360\/([^/]+)\//);
   if (m360) return m360[1].replace(/-/g, ' ');
   const mImg = url.match(/\/images\/([^/?]+)\.(jpg|jpeg|png|webp)/i);
   if (mImg) return mImg[1].replace(/-/g, ' ');
   return null;
+}
+
+/* ── Resolve player headshot (custom avatar or NBA CDN) ── */
+function playerHeadshot(p) {
+  return p.avatar || `https://cdn.nba.com/headshots/nba/latest/260x190/${p.id}.png`;
 }
 
 /* ── Gallery Modal ─────────────────────────────────── */
@@ -194,12 +208,12 @@ function openGallery(player) {
   gmShoeLine.innerHTML = player.freeAgent
     ? `<span class="free-agent-tag">SHOE FREE AGENT</span> ${player.shoe}`
     : `<span style="color:${brandColor};font-weight:700">${player.brand}</span>&nbsp;${player.shoe}`;
-  gmHeadshot.src = `https://cdn.nba.com/headshots/nba/latest/260x190/${player.id}.png`;
+  gmHeadshot.src = playerHeadshot(player);
   gmRankBadge.textContent = `#${player.rank} Trending`;
 
-  gmThumbs.innerHTML = player.shoeImgs.map((src, i) =>
-    `<img src="${src}" class="gm-thumb${i === 0 ? ' active' : ''}" data-idx="${i}"
-          alt="colorway ${i + 1}" onerror="this.style.display='none'">`
+  gmThumbs.innerHTML = player.shoeImgs.map((img, i) =>
+    `<img src="${imgUrl(img)}" class="gm-thumb${i === 0 ? ' active' : ''}" data-idx="${i}"
+          alt="${imgName(img, player.shoe)}" onerror="this.style.display='none'">`
   ).join('');
 
   setGMImg(0, true);
@@ -217,20 +231,21 @@ function setGMImg(idx, instant) {
   const len = gmCurrent.shoeImgs.length;
   gmIdx = ((idx % len) + len) % len;
 
+  const curImg = gmCurrent.shoeImgs[gmIdx];
   if (instant) {
-    gmMainImg.src = gmCurrent.shoeImgs[gmIdx];
+    gmMainImg.src = imgUrl(curImg);
   } else {
     gmMainImg.style.opacity = '0';
     gmMainImg.style.transform = 'scale(0.97)';
     setTimeout(() => {
-      gmMainImg.src = gmCurrent.shoeImgs[gmIdx];
+      gmMainImg.src = imgUrl(curImg);
       gmMainImg.style.opacity = '1';
       gmMainImg.style.transform = 'scale(1)';
     }, 130);
   }
 
   gmCounter.textContent = `${gmIdx + 1} / ${len}`;
-  gmShoeName.textContent = extractShoeName(gmCurrent.shoeImgs[gmIdx]) || gmCurrent.shoe;
+  gmShoeName.textContent = imgName(curImg, gmCurrent.shoe);
 
   gmThumbs.querySelectorAll('.gm-thumb').forEach((t, i) => {
     t.classList.toggle('active', i === gmIdx);
@@ -257,18 +272,31 @@ document.addEventListener('keydown', e => {
 /* ── Render Cards ──────────────────────────────────── */
 const trendingEl = document.getElementById('trending-players');
 if (trendingEl) {
-  trendingEl.innerHTML = TRENDING_PLAYERS.map(p => {
+  loadTrendingPlayers();
+}
+
+async function loadTrendingPlayers() {
+  let players = TRENDING_PLAYERS;
+  try {
+    const r = await fetch('/trends/shoe-gallery', { cache: 'no-store' });
+    const data = await r.json();
+    if (Array.isArray(data.players) && data.players.length) players = data.players;
+  } catch (e) {
+    players = TRENDING_PLAYERS;
+  }
+
+  trendingEl.innerHTML = players.map(p => {
     const brandColor = BRAND_COLORS[p.brand] || '#fd5927';
     return `
       <div class="shoe-card" data-rank="${p.rank}">
         <div class="shoe-gallery" id="gallery-${p.rank}">
           <div class="gallery-badge">#${p.rank} Trending</div>
           <div class="gallery-expand-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg> View Gallery</div>
-          <img class="gallery-main" src="${p.shoeImgs[0]}" alt="${p.shoe}" onerror="this.style.opacity='0.2'">
-          <div class="gallery-caption">${extractShoeName(p.shoeImgs[0]) || p.shoe}</div>
+          <img class="gallery-main" src="${imgUrl(p.shoeImgs[0])}" alt="${p.shoe}" onerror="this.style.opacity='0.2'">
+          <div class="gallery-caption">${imgName(p.shoeImgs[0], p.shoe)}</div>
         </div>
         <div class="shoe-card-info">
-          <img src="https://cdn.nba.com/headshots/nba/latest/260x190/${p.id}.png"
+          <img src="${playerHeadshot(p)}"
                alt="${p.name}" class="player-headshot" onerror="this.style.opacity='0'">
           <div class="player-info">
             <div class="player-name">${p.name}
@@ -284,7 +312,7 @@ if (trendingEl) {
   }).join('');
 
   /* Hover cycling + click to expand */
-  TRENDING_PLAYERS.forEach(p => {
+  players.forEach(p => {
     const card = trendingEl.querySelector(`[data-rank="${p.rank}"]`);
     if (!card) return;
 
@@ -301,8 +329,8 @@ if (trendingEl) {
         main.style.opacity = '0';
         main.style.transform = 'scale(0.94)';
         setTimeout(() => {
-          main.src = p.shoeImgs[hoverIdx];
-          if (caption) caption.textContent = extractShoeName(p.shoeImgs[hoverIdx]) || p.shoe;
+          main.src = imgUrl(p.shoeImgs[hoverIdx]);
+          if (caption) caption.textContent = imgName(p.shoeImgs[hoverIdx], p.shoe);
           main.style.opacity = '1';
           main.style.transform = 'scale(1)';
         }, 200);
@@ -317,8 +345,8 @@ if (trendingEl) {
       main.style.opacity = '0';
       main.style.transform = 'scale(0.94)';
       setTimeout(() => {
-        main.src = p.shoeImgs[0];
-        if (caption) caption.textContent = extractShoeName(p.shoeImgs[0]) || p.shoe;
+        main.src = imgUrl(p.shoeImgs[0]);
+        if (caption) caption.textContent = imgName(p.shoeImgs[0], p.shoe);
         main.style.opacity = '1';
         main.style.transform = 'scale(1)';
       }, 200);
