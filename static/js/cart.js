@@ -6,7 +6,7 @@ if (document.readyState == "loading") {
 async function themVaoGioThanhCong() {
   await Swal.fire({
     icon: "success",
-    title: "Đã thêm vào giỏ hàng",
+    title: "Added to cart",
     showConfirmButton: false,
     timer: 1500,
   });
@@ -14,7 +14,7 @@ async function themVaoGioThanhCong() {
 async function daCoTrongRo() {
   await Swal.fire({
     icon: "warning",
-    title: "Bạn đã chọn sản phẩm này rồi",
+    title: "This item is already in your cart",
     showConfirmButton: false,
     timer: 1500,
   });
@@ -84,7 +84,7 @@ async function checkfornopurchases() {
 
 async function purchase() {
   if ((await checkfornopurchases())) {
-    Swal.fire("Giỏ hàng hiện trống vui lòng thêm đồ để thanh toán", "", "warning");
+    Swal.fire("Your cart is empty. Please add items before checking out.", "", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -95,18 +95,18 @@ async function purchase() {
     });
 
     let result = await swalWithBootstrapButtons.fire({
-      title: "Bạn chắc chắn muốn mua hàng không?",
-      text: "Việc này sẽ không thể hoàn tác",
+      title: "Are you sure you want to purchase?",
+      text: "This action cannot be undone",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Xác nhận",
-      cancelButtonText: "Huỷ",
+      confirmButtonText: "Confirm",
+      cancelButtonText: "Cancel",
       reverseButtons: true,
     });
     if (result.isConfirmed) {
       await swalWithBootstrapButtons.fire(
-        "Xác nhận",
-        "Cảm ơn bạn đã mua hàng",
+        "Confirmed",
+        "Thank you for your purchase!",
         "success"
       );
       if (pdc === undefined) await getpdc();
@@ -114,14 +114,14 @@ async function purchase() {
         localStorage.removeItem("sp" + i);
       }
     } else if (result.dismiss === Swal.DismissReason.cancel) {
-      await swalWithBootstrapButtons.fire("Đã huỷ", "Huỷ thành công", "error");
+      await swalWithBootstrapButtons.fire("Cancelled", "Your purchase was cancelled.", "error");
     }
     location.reload();
   }
 }
 async function removeAll() {
   if ((await checkfornopurchases())) {
-    Swal.fire("Giỏ hàng hiện trống", "", "warning");
+    Swal.fire("Your cart is already empty", "", "warning");
   } else {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -132,18 +132,18 @@ async function removeAll() {
     });
 
     let result = await swalWithBootstrapButtons.fire({
-      title: "Bạn chắc chắn làm trống giỏ hàng không?",
-      text: "Việc này sẽ không thể hoàn tác",
+      title: "Are you sure you want to clear your cart?",
+      text: "This action cannot be undone",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Xác nhận",
-      cancelButtonText: "Huỷ",
+      confirmButtonText: "Confirm",
+      cancelButtonText: "Cancel",
       reverseButtons: true,
     });
     if (result.isConfirmed) {
       await swalWithBootstrapButtons.fire(
-        "Xác nhận",
-        "Đã xóa giỏ hàng",
+        "Confirmed",
+        "Your cart has been cleared",
         "success"
       );
       if (pdc === undefined) await getpdc();
@@ -151,7 +151,7 @@ async function removeAll() {
         localStorage.removeItem("sp" + i);
       }
     } else if (result.dismiss === Swal.DismissReason.cancel) {
-      await swalWithBootstrapButtons.fire("Đã huỷ", "Huỷ thành công", "error");
+      await swalWithBootstrapButtons.fire("Cancelled", "Your cart was not cleared.", "error");
     }
     location.reload();
   }

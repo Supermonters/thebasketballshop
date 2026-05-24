@@ -32,8 +32,8 @@
         });
         Swal.fire({
           icon: 'success',
-          title: 'Thành công',
-          text: `Tạo tài khoản thành công`,
+          title: 'Success',
+          text: `Account created successfully`,
         })
 
 
@@ -72,8 +72,8 @@
           localStorage.setItem("TaiKhoanDangNhap", username);
           await Swal.fire({
             icon: 'success',
-            title: 'Thành công',
-            text: `Đăng nhập thành công`,
+            title: 'Success',
+            text: `Logged in successfully`,
           })
           window.location.reload();
         })
@@ -90,8 +90,8 @@
     }else{
        Swal.fire({
         icon: 'error',
-        title: 'Thất bại',
-        text: `Bạn hiện đang đăng nhập`,
+        title: 'Failed',
+        text: `You are already logged in`,
       })
     }
 
@@ -117,7 +117,7 @@
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: `Bạn hiện đang không đăng nhập`,
+            text: `You are not logged in`,
           })
 
         } else {

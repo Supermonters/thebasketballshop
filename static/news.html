@@ -5,52 +5,50 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-
-	<title>Tin tức NBA</title>
+	<link rel="icon" type="image/x-icon" href="./images/favicon.png">
+	<title>NBA News</title>
 	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<!-- Loading third party fonts -->
+
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: { brand: '#fd5927' },
+					fontFamily: { sans: ['Source Sans Pro', 'sans-serif'] },
+				}
+			}
+		}
+	</script>
+
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link
-		href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
-		rel="stylesheet">
-	<!-- Loading main css file -->
-	<link rel="stylesheet" href="css/login.css">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="css/button.css">
-	<link rel="icon" type="image/x-icon" href="./images/favicon.png">
-	<!--[if lt IE 9]>
-		<script src="js/ie-support/html5.js"></script>
-		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
 
+	<!-- Custom & Plugin CSS -->
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body onload=" load();cartCounting();">
-	<!-- Messenger Plugin chat Code -->
+<body class="bg-[#141414] font-sans" onload="load();cartCounting();">
+
+	<!-- Facebook Messenger Plugin -->
 	<div id="fb-root"></div>
-
-	<!-- Your Plugin chat code -->
-	<div id="fb-customer-chat" class="fb-customerchat">
-	</div>
-
+	<div id="fb-customer-chat" class="fb-customerchat"></div>
 	<script>
 		var chatbox = document.getElementById('fb-customer-chat');
 		chatbox.setAttribute("page_id", "107593602092447");
 		chatbox.setAttribute("attribution", "biz_inbox");
 	</script>
-
-	<!-- Your SDK code -->
 	<script>
 		window.fbAsyncInit = function () {
-			FB.init({
-				xfbml: true,
-				version: 'v14.0'
-			});
+			FB.init({ xfbml: true, version: 'v14.0' });
 		};
-
 		(function (d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
@@ -59,62 +57,56 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+
 	<div id="site-content">
-		<header class="site-header">
-			<div class="container">
-				<a href="index.html" id="branding">
+
+		<!-- Header -->
+		<header class="site-header bg-[#222] border-b border-white/10">
+			<div class="mx-auto px-4 max-w-[1170px] overflow-hidden">
+				<a href="index.html" id="branding" class="float-left py-[30px] inline-block">
 					<img src="dummy/logo.png" alt="Site Title">
-					<small class="site-description">Only Basketball</small>
-				</a> <!-- #branding -->
-
-				<nav class="main-navigation">
-					<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
-					<ul class="menu">
-						<li class="menu-item"><a href="index.html">Trang chủ</a></li>
-
-						<li class="menu-item"><a href="store.html">Cửa hàng</a></li>
-						<li class="menu-item"><a href="xuhuong.html">Xu hướng</a></li>
-						<li class="menu-item current-menu-item"><a href="news.html">Tin tức</a></li>
-						<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
-						<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem">(0)</span></a></li>
-						<li class="menu-item"><a class="welcomeUser"
-								onclick="document.getElementById('id01').style.display='block'">Login</a></li>
-					</ul> <!-- .menu -->
-				</nav> <!-- .main-navigation -->
+					<small class="block text-[#848484] text-[0.625em] uppercase tracking-[0.3em] font-normal">Only Basketball</small>
+				</a>
+				<nav class="main-navigation float-right">
+					<button type="button" class="toggle-menu float-right mt-8 cursor-pointer text-white text-lg p-2 bg-transparent border border-white/20">
+						<i class="fa fa-bars"></i>
+					</button>
+					<ul class="menu m-0 p-0 list-none">
+						<li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
+						<li class="menu-item"><a href="store.html" class="nav-link">Store</a></li>
+						<li class="menu-item"><a href="xuhuong.html" class="nav-link">Trends</a></li>
+						<li class="menu-item current-menu-item"><a href="news.html" class="nav-link">News</a></li>
+						<li class="menu-item"><a href="about.html" class="nav-link">About Us</a></li>
+						<li class="menu-item"><a href="cart.html" class="nav-link">Cart<span id="countItem" class="text-brand">(0)</span></a></li>
+						<li class="menu-item"><a class="welcomeUser nav-link cursor-pointer" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+					</ul>
+				</nav>
 				<div class="mobile-menu"></div>
 			</div>
-		</header> <!-- .site-header -->
+		</header>
+
+		<!-- Login Modal -->
 		<div>
 			<div id="id01" class="modal">
-
 				<div class="modal-content animate">
 					<div class="imgcontainer">
-						<span onclick="document.getElementById('id01').style.display='none'" class="close"
-							title="Close Modal">&times;</span>
-						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg"
-							alt="Avatar" class="avatar">
+						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg" alt="Avatar" class="avatar">
 					</div>
-
 					<div class="homchua">
 						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}" title="Three letter country code" required>
 						<label for="uname"><b>Email</b></label><br>
-						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}" title="Three letter country code" required>
 						<label for="psw"><b>Password</b></label>
 						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
 						<label>
-
-							<input style="display: none;" type="password"
-								placeholder="Confirm Password(bấm Enter để xác nhận mật khẩu" id="cpassword" name="psw"
-								required>
+							<input style="display: none;" type="password" placeholder="Confirm Password (press Enter to confirm)" id="cpassword" name="psw" required>
 							<label>
 								<input type="checkbox" checked="checked" name="remember"> Remember me
 							</label>
 							<span class="psw"><a href="#">Forgot password?</a></span>
 							<div class="button-thing">
-
 								<div class="btn draw-border">
 									<button type="submit" class="bubbly-button button-53" id="SignUp">SignUp</button>
 								</div>
@@ -122,159 +114,85 @@
 									<button type="submit" class="bubbly-button button-53" id="SignIn">Login</button>
 								</div>
 							</div>
-
+						</label>
 					</div>
-
 					<div class="homchua" style="background-color:#f1f1f1">
-						<button type="button" onclick="document.getElementById('id01').style.display='none';"
-							class="cancelbtn button-54" id="SignOut">Sign out</button>
-
+						<button type="button" onclick="document.getElementById('id01').style.display='none';" class="cancelbtn button-54" id="SignOut">Sign out</button>
 					</div>
 				</div>
 			</div>
 			<script>
-				// Get the modal
 				var modal = document.getElementById('id01');
-
-				// When the user clicks anywhere outside of the modal, close it
 				window.onclick = function (event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
+					if (event.target == modal) { modal.style.display = "none"; }
 				}
 			</script>
 		</div>
+
+		<!-- Main Content -->
 		<main class="main-content">
-			<div class="fullwidth-block inner-content">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-7">
+			<div class="fullwidth-block inner-content bg-[#191919] py-16">
+				<div class="mx-auto px-4 max-w-[1170px]">
+					<div class="flex flex-wrap -mx-4">
+
+						<!-- News articles (populated by news.js) -->
+						<div class="w-full md:w-7/12 px-4">
 							<div class="content">
-								<h2 class="entry-title">Tin tức NBA 2023 cập nhật hàng giờ</h2>
-
-
+								<h2 class="entry-title">NBA News — Updated Hourly</h2>
 							</div>
 						</div>
-						<div class="col-md-4 col-md-push-1">
+
+						<!-- Sidebar -->
+						<div class="w-full md:w-5/12 px-4 md:pl-16">
 							<aside class="sidebar">
 								<div class="widget">
-									<h3 class="widget-title">Bảng tin NBA</h3>
-									<ul class="discography-list">
-										<li>
-											<figure class="cover"><img src="./images/heat.jpg" alt="thumbnail 2">
-											</figure>
-											<div class="detail">
-												<h3><a
-														href="http://ttvn.toquoc.vn/jimmy-butler-bung-no-voi-41-diem-miami-heat-thang-thuyet-phuc-boston-celtics-40202218512855973.htm">Jimmy
-														Butler "bùng nổ" với 41 điểm, Miami Heat thắng thuyết phục
-														Boston Celtics</a></h3>
-												<span class="year">18/05</span>
-												<span class="track">2022</span>
-
-											</div>
-										</li>
-										<li>
-											<figure class="cover"><img src="./images/77a4e9c7-untitled-design-22.jpg"
-													alt="thumbnail 1"></figure>
-											<div class="detail">
-												<h3><a
-														href="https://sport5.vn/giat-minh-voi-loi-tien-tri-ve-su-nghiep-cua-ben-simmons-nam-2016-qua-giong-voi-thuc-te-20220506183055147.htm">Giật
-														mình với lời "tiên tri" về sự nghiệp của Ben Simmons năm 2016:
-														Quá giống với thực tế</a></h3>
-												<span class="year">17/05</span>
-												<span class="track">2022</span>
-											</div>
-										</li>
-										<li>
-											<figure class="cover"><img src="./images/gary.jpg" alt="thumbnail 4">
-											</figure>
-											<div class="detail">
-												<h3><a
-														href="https://sport5.vn/gary-payton-ii-nghi-it-nhat-3-tuan-golden-state-warriors-gap-kho-trong-viec-kem-cap-ja-morant-20220505112107117.htm">Gary
-														Payton II nghỉ ít nhất 3 tuần, Golden State Warriors gặp khó
-														trong việc kèm cặp Ja Morant</a></h3>
-												<span class="year">05/05</span>
-												<span class="track">2022</span>
-
-											</div>
-										</li>
-										<li>
-											<figure class="cover"><img src="./images/tyler.jpg" alt="thumbnail 3">
-											</figure>
-											<div class="detail">
-												<h3><a
-														href="http://nhipsongviet.toquoc.vn/nhung-con-so-an-tuong-cua-tyler-herro-sau-danh-hieu-6th-man-of-the-year-40202245151854316.htm">Những
-														con số ấn tượng của Tyler Herro sau danh hiệu "6th Man of the
-														Year"</a></h3>
-												<span class="year">04/05</span>
-												<span class="track">2022</span>
-											</div>
-										</li>
-										<li>
-											<figure class="cover"><img src="./images/Ja.jpg" alt="thumbnail 5"></figure>
-											<div class="detail">
-												<h3><a
-														href="Quái kiệt Ja Morant bùng nổ đưa Memphis Grizzlies trở về từ cõi chết">Quái
-														kiệt Ja Morant bùng nổ đưa Memphis Grizzlies trở về từ cõi
-														chết</a></h3>
-												<span class="year">04/05</span>
-												<span class="track">2022</span>
-											</div>
-										</li>
-									</ul>
+									<h3 class="text-white text-3xl font-bold mt-0 mb-6">NBA Headlines</h3>
+									<div id="story-grid" class="story-grid">
+										<!-- populated by news.js -->
+									</div>
 								</div>
 							</aside>
 						</div>
+
 					</div>
 				</div>
-			</div> <!-- .testimonial-section -->
+			</div>
+		</main>
 
-
-		</main> <!-- .main-content -->
-
-		<footer class="site-footer">
-			<div class="container">
-				<img src="dummy/logo-footer.png" alt="Site Name">
-
-				<address>
-					<p>10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br><a href="tel:9488487853">+91 94884 87853</a> <br>
-						<a href="">sieunhanham007@gmail.com</a>
+		<!-- Footer -->
+		<footer class="site-footer bg-[#222] border-t border-white/10 pt-12 pb-8 text-center">
+			<div class="mx-auto px-4 max-w-[1170px]">
+				<img src="dummy/logo-footer.png" alt="Site Name" class="mx-auto mb-8">
+				<address class="not-italic mb-8">
+					<p class="text-[#848484] text-sm leading-relaxed">
+						10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br>
+						<a href="tel:9488487853" class="text-[#848484] hover:text-brand transition-colors">+91 94884 87853</a><br>
+						<a href="" class="text-[#848484] hover:text-brand transition-colors">sieunhanham007@gmail.com</a>
 					</p>
 				</address>
-
-				<form action="javascript:void(0)" onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form">
-					<input type="email" id="mail" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA..." required>
-					<input type="submit" class="button cut-corner" value="Subscribe">
-				</form> <!-- .newsletter-form -->
-
-				<div class="social-links">
-					<a href="https://www.facebook.com/BasketballShop-107593602092447"><i
-							class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-google-plus"></i></a>
-					<a href="#"><i class="fa fa-pinterest"></i></a>
-				</div> <!-- .social-links -->
-
-				<p class="copy">BasketballShop @ Copyright 2023. All right reserved. Designed by <a href="">Giri Designs
-						and Chí Dũng and pleasenoban</a></p>
+				<form action="javascript:void(0)" onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form mb-8 flex justify-center">
+					<input type="email" id="mail" placeholder="Enter your email to receive the latest NBA updates..." required
+						class="px-4 py-3 bg-[#252525] border border-[#353535] text-[#848484] text-sm w-full max-w-md outline-none focus:border-brand transition-colors">
+					<input type="submit" class="button cut-corner px-6 py-3 text-white text-sm uppercase font-semibold tracking-widest cursor-pointer border-0" value="Subscribe">
+				</form>
+				<div class="social-links mb-8">
+					<a href="https://www.facebook.com/BasketballShop-107593602092447" class="social-link"><i class="fa fa-facebook-square"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-google-plus"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-pinterest"></i></a>
+				</div>
+				<p class="copy text-[#848484] text-xs">BasketballShop @ Copyright 2023. All right reserved. Designed by <a href="" class="text-[#848484] hover:text-brand transition-colors">Giri Designs and Chí Dũng and pleasenoban</a></p>
 			</div>
-			<div id="google_translate_element"></div>
-
+		<div id="google_translate_element"></div>
 			<script type="text/javascript">
 				function googleTranslateElementInit() {
-					new google.translate.TranslateElement(
-						{ pageLanguage: 'vn' },
-						'google_translate_element'
-					);
+					new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
 				}
 			</script>
+			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		</footer>
 
-			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
-		cb=googleTranslateElementInit">
-		</script>
-		</footer> <!-- .site-footer -->
-
-	</div> <!-- #site-content -->
+	</div>
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>

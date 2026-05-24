@@ -5,53 +5,48 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+	<link rel="icon" type="image/x-icon" href="./images/favicon.png">
+	<title>Trends</title>
 
-	<title>Xu hướng</title>
-	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<!-- Loading third party fonts -->
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: { brand: '#fd5927' },
+					fontFamily: { sans: ['Source Sans Pro', 'sans-serif'] },
+				}
+			}
+		}
+	</script>
+
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<!-- Loading main css file -->
+
+	<!-- Custom & Plugin CSS -->
 	<link rel="stylesheet" href="css/login.css">
-	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="css/button.css">
-	<link rel="icon" type="image/x-icon" href="./images/favicon.png">
-
-	<!--[if lt IE 9]>
-		<script src="js/ie-support/html5.js"></script>
-		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
-
+	<link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body onload=" load();cartCounting();">
-	<!-- Messenger Plugin chat Code -->
+<body class="bg-[#141414] font-sans" onload="load();cartCounting();">
+
+	<!-- Facebook Messenger Plugin -->
 	<div id="fb-root"></div>
-
-	<!-- Your Plugin chat code -->
-	<div id="fb-customer-chat" class="fb-customerchat">
-	</div>
-
+	<div id="fb-customer-chat" class="fb-customerchat"></div>
 	<script>
 		var chatbox = document.getElementById('fb-customer-chat');
 		chatbox.setAttribute("page_id", "107593602092447");
 		chatbox.setAttribute("attribution", "biz_inbox");
 	</script>
-
-	<!-- Your SDK code -->
 	<script>
 		window.fbAsyncInit = function () {
-			FB.init({
-				xfbml: true,
-				version: 'v14.0'
-			});
+			FB.init({ xfbml: true, version: 'v14.0' });
 		};
-
 		(function (d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
@@ -60,64 +55,56 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+
 	<div id="site-content">
-		<header class="site-header">
-			<div class="container">
-				<a href="index.html" id="branding">
+
+		<!-- Header -->
+		<header class="site-header bg-[#222] border-b border-white/10">
+			<div class="mx-auto px-4 max-w-[1170px] overflow-hidden">
+				<a href="index.html" id="branding" class="float-left py-[30px] inline-block">
 					<img src="dummy/logo.png" alt="Site Title">
-					<small class="site-description">Only Basketball</small>
-				</a> <!-- #branding -->
-
-				<nav class="main-navigation">
-					<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
-					<ul class="menu">
-						<li class="menu-item"><a href="index.html">Trang chủ</a></li>
-
-						<li class="menu-item"><a href="store.html">Cửa hàng</a></li>
-						<li class="menu-item current-menu-item"><a href="xuhuong.html">Xu hướng</a></li>
-						<li class="menu-item"><a href="news.html">Tin tức</a></li>
-						<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
-						<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem">(0)</span></a></li>
-						<li class="menu-item"><a class="welcomeUser"
-								onclick="document.getElementById('id01').style.display='block'">Login</a></li>
-
-
-					</ul> <!-- .menu -->
-				</nav> <!-- .main-navigation -->
+					<small class="block text-[#848484] text-[0.625em] uppercase tracking-[0.3em] font-normal">Only Basketball</small>
+				</a>
+				<nav class="main-navigation float-right">
+					<button type="button" class="toggle-menu float-right mt-8 cursor-pointer text-white text-lg p-2 bg-transparent border border-white/20">
+						<i class="fa fa-bars"></i>
+					</button>
+					<ul class="menu m-0 p-0 list-none">
+						<li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
+						<li class="menu-item"><a href="store.html" class="nav-link">Store</a></li>
+						<li class="menu-item current-menu-item"><a href="xuhuong.html" class="nav-link">Trends</a></li>
+						<li class="menu-item"><a href="news.html" class="nav-link">News</a></li>
+						<li class="menu-item"><a href="about.html" class="nav-link">About Us</a></li>
+						<li class="menu-item"><a href="cart.html" class="nav-link">Cart<span id="countItem" class="text-brand">(0)</span></a></li>
+						<li class="menu-item"><a class="welcomeUser nav-link cursor-pointer" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+					</ul>
+				</nav>
 				<div class="mobile-menu"></div>
 			</div>
-		</header> <!-- .site-header -->
+		</header>
+
+		<!-- Login Modal -->
 		<div>
 			<div id="id01" class="modal">
-
 				<div class="modal-content animate">
 					<div class="imgcontainer">
-						<span onclick="document.getElementById('id01').style.display='none'" class="close"
-							title="Close Modal">&times;</span>
-						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg"
-							alt="Avatar" class="avatar">
+						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg" alt="Avatar" class="avatar">
 					</div>
-
 					<div class="homchua">
 						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}" title="Three letter country code" required>
 						<label for="uname"><b>Email</b></label><br>
-						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}" title="Three letter country code" required>
 						<label for="psw"><b>Password</b></label>
 						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
 						<label>
-
-							<input style="display: none;" type="password"
-								placeholder="Confirm Password(bấm Enter để xác nhận mật khẩu" id="cpassword" name="psw"
-								required>
+							<input style="display: none;" type="password" placeholder="Confirm Password (press Enter to confirm)" id="cpassword" name="psw" required>
 							<label>
 								<input type="checkbox" checked="checked" name="remember"> Remember me
 							</label>
 							<span class="psw"><a href="#">Forgot password?</a></span>
 							<div class="button-thing">
-
 								<div class="btn draw-border">
 									<button type="submit" class="bubbly-button button-53" id="SignUp">SignUp</button>
 								</div>
@@ -125,232 +112,242 @@
 									<button type="submit" class="bubbly-button button-53" id="SignIn">Login</button>
 								</div>
 							</div>
-
+						</label>
 					</div>
-
 					<div class="homchua" style="background-color:#f1f1f1">
-						<button type="button" onclick="document.getElementById('id01').style.display='none';"
-							class="cancelbtn button-54" id="SignOut">Sign out</button>
-
+						<button type="button" onclick="document.getElementById('id01').style.display='none';" class="cancelbtn button-54" id="SignOut">Sign out</button>
 					</div>
 				</div>
 			</div>
 			<script>
-				// Get the modal
 				var modal = document.getElementById('id01');
-
-				// When the user clicks anywhere outside of the modal, close it
 				window.onclick = function (event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
+					if (event.target == modal) { modal.style.display = "none"; }
 				}
 			</script>
 		</div>
+
+		<!-- Main Content -->
 		<main class="main-content">
-			<div class="fullwidth-block download">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-5">
-							<h2 class="page-title">Top Nike 2022</h2>
+			<div class="fullwidth-block download bg-[#191919] py-16">
+				<div class="mx-auto px-4 max-w-[1170px]">
+					<div class="flex flex-wrap justify-between gap-y-12">
 
-							<div class="item">
+						<!-- Top Nike Shoes -->
+						<div class="w-full md:w-5/12">
+							<h2 class="text-white text-3xl font-bold mt-0 mb-8 pb-4 border-b border-white/10">Top Nike Shoes 2022</h2>
+
+							<div class="mb-8 pb-8 border-b border-white/10">
 								<a style="text-decoration: none;" href="/store_item?item=Air%20Jordan%20XXXVI%20PF">
-									<h3 class="item-title" style="color:pink ;text-emphasis: bold;"><span
-											class="th">1.</span>Air Jordan XXXVI PF</h3>
+									<h3 class="text-xl font-semibold mb-1" style="color: pink;">
+										<span class="text-brand mr-1">1.</span>Air Jordan XXXVI PF
+									</h3>
 								</a>
-								<span class="year">Ra mắt:14/2/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">541</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 14/2/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">541</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 
-							<div class="item">
+							<div class="mb-8 pb-8 border-b border-white/10">
 								<a style="text-decoration: none;" href="/store_item?item=PG6%20EP">
-									<h3 class="item-title" style="color:#fcccb8 ;text-emphasis: bold;"><span
-											class="th">2.</span>PG 6 EP</h3>
+									<h3 class="text-xl font-semibold mb-1" style="color: #fcccb8;">
+										<span class="text-brand mr-1">2.</span>PG 6 EP
+									</h3>
 								</a>
-								<span class="year">Ra mắt:20/6/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">416</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 20/6/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">416</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 
-							<div class="item">
+							<div class="mb-8 pb-8 border-b border-white/10">
 								<a style="text-decoration: none;" href="/store_item?item=LeBron%2019%20Low">
-									<h3 class="item-title"><span class="th">3.</span>Lebron 19 Low</h3>
+									<h3 class="text-xl font-semibold mb-1 text-white">
+										<span class="text-brand mr-1">3.</span>Lebron 19 Low
+									</h3>
 								</a>
-								<span class="year">Ra mắt:12/1/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">382</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 12/1/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">382</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 
-							<div class="item">
+							<div class="mb-8">
 								<a style="text-decoration: none;" href="/store_item?item=KD%2014%20EP">
-									<h3 class="item-title" style="color: royalblue;"><span class="th">4.</span> KD 14 EP
-										'Multi-Color' </h3>
+									<h3 class="text-xl font-semibold mb-1" style="color: royalblue;">
+										<span class="text-brand mr-1">4.</span>KD 14 EP 'Multi-Color'
+									</h3>
 								</a>
-								<span class="year">Ra mắt:24/8/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">198</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 24/8/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">198</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-5 col-md-push-2">
-							<h2 class="page-title">Top giày bóng rổ</h2>
 
-							<div class="item">
+						<!-- Top Basketball Shoes -->
+						<div class="w-full md:w-5/12">
+							<h2 class="text-white text-3xl font-bold mt-0 mb-8 pb-4 border-b border-white/10">Top Basketball Shoes</h2>
+
+							<div class="mb-8 pb-8 border-b border-white/10">
 								<a style="text-decoration: none;" href="/store_item?item=Harden%20Stepback%202">
-									<h3 class="item-title" style="color: gold;"><span class="th">1.</span>Harden
-										Stepback 2 Core Black</h3>
+									<h3 class="text-xl font-semibold mb-1" style="color: gold;">
+										<span class="text-brand mr-1">1.</span>Harden Stepback 2 Core Black
+									</h3>
 								</a>
-								<span class="year">Ra mắt:12/3/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">128</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 12/3/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">128</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 
-							<div class="item">
-								<a style="text-decoration: none;"
-									href="/store_item?item=Way%20Of%20Wade%209%20Infinity">
-									<h3 class="item-title" style="color: white;"><span class="th">2.</span>Li Ning Way
-										Of Wade 9 Infinity</h3>
+							<div class="mb-8 pb-8 border-b border-white/10">
+								<a style="text-decoration: none;" href="/store_item?item=Way%20Of%20Wade%209%20Infinity">
+									<h3 class="text-xl font-semibold mb-1 text-white">
+										<span class="text-brand mr-1">2.</span>Li Ning Way Of Wade 9 Infinity
+									</h3>
 								</a>
-								<span class="year">Ra mắt:25/9/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">76</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 25/9/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">76</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 
-							<div class="item">
+							<div class="mb-8 pb-8 border-b border-white/10">
 								<a style="text-decoration: none;" href='/store_item?item=KT5%20"Veteran"'>
-									<h3 class="item-title" style="color: #b0accb;"><span class="th">3.</span>KT5
-										"Veteran"</h3>
+									<h3 class="text-xl font-semibold mb-1" style="color: #b0accb;">
+										<span class="text-brand mr-1">3.</span>KT5 "Veteran"
+									</h3>
 								</a>
-								<span class="year">Ra mắt:31/5/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">52</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 31/5/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">52</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 
-							<div class="item">
-								<a style="text-decoration: none;"
-									href="/store_item?item=Under%20Armour%20HOVR%20Havoc%204%20Clone">
-									<h3 class="item-title" style="color: silver;"><span class="th">4.</span>Under Amour
-										Havoc 4 Clone</h3>
+							<div class="mb-8">
+								<a style="text-decoration: none;" href="/store_item?item=Under%20Armour%20HOVR%20Havoc%204%20Clone">
+									<h3 class="text-xl font-semibold mb-1" style="color: silver;">
+										<span class="text-brand mr-1">4.</span>Under Armour Havoc 4 Clone
+									</h3>
 								</a>
-								<span class="year">Ra mắt:20/10/2021</span>
-								<a href="#" class="button small primary">Lượt bán:</a>
-								<a href="#" class="button small secondary">20</a>
-								<div class="social-share">
+								<span class="block text-[#848484] text-sm mb-3">Released: 20/10/2021</span>
+								<div class="flex items-center gap-2 mb-3">
+									<span class="inline-block px-3 py-1 text-xs uppercase tracking-wider bg-[#252525] text-[#848484] border border-[#353535]">Units sold:</span>
+									<span class="inline-block px-3 py-1 text-xs font-bold bg-brand text-white">20</span>
+								</div>
+								<div class="flex items-center gap-3 text-[#848484] text-sm">
 									<span>Share:</span>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-google-plus"></i></a>
+									<a href="#" class="hover:text-brand transition-colors"><i class="fa fa-pinterest"></i></a>
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
-			</div> <!-- .testimonial-section -->
+			</div>
+		</main>
 
-
-		</main> <!-- .main-content -->
-
-		<footer class="site-footer">
-			<div class="container">
-				<img src="dummy/logo-footer.png" alt="Site Name">
-
-				<address>
-					<p>10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br><a href="tel:9488487853">+91 94884 87853</a> <br>
-						<a href="">sieunhanham007@gmail.com</a>
+		<!-- Footer -->
+		<footer class="site-footer bg-[#222] border-t border-white/10 pt-12 pb-8 text-center">
+			<div class="mx-auto px-4 max-w-[1170px]">
+				<img src="dummy/logo-footer.png" alt="Site Name" class="mx-auto mb-8">
+				<address class="not-italic mb-8">
+					<p class="text-[#848484] text-sm leading-relaxed">
+						10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br>
+						<a href="tel:9488487853" class="text-[#848484] hover:text-brand transition-colors">+91 94884 87853</a><br>
+						<a href="" class="text-[#848484] hover:text-brand transition-colors">sieunhanham007@gmail.com</a>
 					</p>
 				</address>
-
-				<form action="javascript:void(0)" onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form">
-					<input type="email" id="mail" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA..." required>
-					<input type="submit" class="button cut-corner" value="Subscribe">
-				</form> <!-- .newsletter-form -->
-
-				<div class="social-links">
-					<a href="https://www.facebook.com/BasketballShop-107593602092447"><i
-							class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-google-plus"></i></a>
-					<a href="#"><i class="fa fa-pinterest"></i></a>
-				</div> <!-- .social-links -->
-
-				<p class="copy">BasketballShop @ Copyright 2023. All right reserved. Designed by <a href="">Giri Designs
-						and Chí Dũng and pleasenoban</a></p>
+				<form action="javascript:void(0)" onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form mb-8 flex justify-center">
+					<input type="email" id="mail" placeholder="Enter your email to receive the latest NBA updates..." required
+						class="px-4 py-3 bg-[#252525] border border-[#353535] text-[#848484] text-sm w-full max-w-md outline-none focus:border-brand transition-colors">
+					<input type="submit" class="button cut-corner px-6 py-3 text-white text-sm uppercase font-semibold tracking-widest cursor-pointer border-0" value="Subscribe">
+				</form>
+				<div class="social-links mb-8">
+					<a href="https://www.facebook.com/BasketballShop-107593602092447" class="social-link"><i class="fa fa-facebook-square"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-google-plus"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-pinterest"></i></a>
+				</div>
+				<p class="copy text-[#848484] text-xs">BasketballShop @ Copyright 2023. All right reserved. Designed by <a href="" class="text-[#848484] hover:text-brand transition-colors">Giri Designs and Chí Dũng and pleasenoban</a></p>
 			</div>
-			<div id="google_translate_element"></div>
-
+		<div id="google_translate_element"></div>
 			<script type="text/javascript">
 				function googleTranslateElementInit() {
-					new google.translate.TranslateElement(
-						{ pageLanguage: 'vn' },
-						'google_translate_element'
-					);
+					new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
 				}
 			</script>
+			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		</footer>
 
-			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
-		cb=googleTranslateElementInit">
-		</script>
-		</footer> <!-- .site-footer -->
-
-	</div> <!-- #site-content -->
+	</div>
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/button.js"></script>
 	<script src="js/login.js"></script>
-	<script src="../js/cart.js" async></script>
 	<script src="js/template.js"></script>
 	<script src="js/mail.js"></script>
 </body>

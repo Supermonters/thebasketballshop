@@ -9,54 +9,52 @@
 	<title>BasketballShop</title>
 	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<!-- Loading third party fonts -->
+
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: { brand: '#fd5927' },
+					fontFamily: { sans: ['Source Sans Pro', 'sans-serif'] },
+				}
+			}
+		}
+	</script>
+
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<!-- Loading main css file -->
-	<link rel="stylesheet" href="css/login.css">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="css/button.css">
 
-	<!--[if lt IE 9]>
-		<script src="js/ie-support/html5.js"></script>
-		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
+	<!-- Custom & Plugin CSS -->
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="css/custom.css">
+
 	<style>
 		@media only screen and (max-width: 600px) {
-			blockquote {
-				font-size: 3.5vw;
-			}
+			blockquote { font-size: 3.5vw; }
 		}
 	</style>
 </head>
 
-<body class="header-collapse" onload=" load();cartCounting();">
-	<!-- Messenger Plugin chat Code -->
+<body class="bg-black font-sans header-collapse" onload="load();cartCounting();">
+
+	<!-- Facebook Messenger Plugin -->
 	<div id="fb-root"></div>
-
-	<!-- Your Plugin chat code  -->
-	<div id="fb-customer-chat" class="fb-customerchat">
-	</div>
-
+	<div id="fb-customer-chat" class="fb-customerchat"></div>
 	<script>
 		var chatbox = document.getElementById('fb-customer-chat');
 		chatbox.setAttribute("page_id", "107593602092447");
 		chatbox.setAttribute("attribution", "biz_inbox");
 	</script>
-
-	<!-- Your SDK code  -->
 	<script>
 		window.fbAsyncInit = function () {
-			FB.init({
-				xfbml: true,
-				version: 'v14.0'
-			});
+			FB.init({ xfbml: true, version: 'v14.0' });
 		};
-
 		(function (d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
@@ -64,66 +62,57 @@
 			js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-
 	</script>
 
 	<div id="site-content">
-		<header class="site-header">
-			<div class="container">
-				<a href="index.html" id="branding">
+
+		<!-- Header -->
+		<header class="site-header bg-[#222] border-b border-white/10">
+			<div class="mx-auto px-4 max-w-[1170px] overflow-hidden">
+				<a href="index.html" id="branding" class="float-left py-[30px] inline-block">
 					<img src="dummy/logo.png" alt="Site Title">
-					<small class="site-description">Only Basketball</small>
+					<small class="block text-[#848484] text-[0.625em] uppercase tracking-[0.3em] font-normal">Only Basketball</small>
 				</a>
-
-				<nav class="main-navigation">
-					<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
-					<ul class="menu">
-
-						<li class="menu-item current-menu-item"><a href="index.html">Trang chủ</a></li>
-						<li class="menu-item"><a href="store.html">Cửa hàng</a></li>
-						<li class="menu-item"><a href="xuhuong.html">Xu hướng</a></li>
-						<li class="menu-item"><a href="news.html">Tin tức</a></li>
-						<li class="menu-item"><a href="about.html">Về chúng tôi</a></li>
-						<li class="menu-item"><a href="cart.html">Giỏ Hàng<span id="countItem">(0)</span></a></li>
-						<li class="menu-item"><a class="welcomeUser"
-								onclick="document.getElementById('id01').style.display='block'">Login</a></li>
-
+				<nav class="main-navigation float-right">
+					<button type="button" class="toggle-menu float-right mt-8 cursor-pointer text-white text-lg p-2 bg-transparent border border-white/20">
+						<i class="fa fa-bars"></i>
+					</button>
+					<ul class="menu m-0 p-0 list-none">
+						<li class="menu-item current-menu-item"><a href="index.html" class="nav-link">Home</a></li>
+						<li class="menu-item"><a href="store.html" class="nav-link">Store</a></li>
+						<li class="menu-item"><a href="xuhuong.html" class="nav-link">Trends</a></li>
+						<li class="menu-item"><a href="news.html" class="nav-link">News</a></li>
+						<li class="menu-item"><a href="about.html" class="nav-link">About Us</a></li>
+						<li class="menu-item"><a href="cart.html" class="nav-link">Cart<span id="countItem" class="text-brand">(0)</span></a></li>
+						<li class="menu-item"><a class="welcomeUser nav-link cursor-pointer" onclick="document.getElementById('id01').style.display='block'">Login</a></li>
 					</ul>
-				</nav> <!-- .main-navigation -->
+				</nav>
 				<div class="mobile-menu"></div>
 			</div>
-		</header> <!-- .site-header -->
+		</header>
+
+		<!-- Login Modal -->
 		<div>
 			<div id="id01" class="modal">
-
 				<div class="modal-content animate">
 					<div class="imgcontainer">
-						<span onclick="document.getElementById('id01').style.display='none'" class="close"
-							title="Close Modal">&times;</span>
-						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg"
-							alt="Avatar" class="avatar">
+						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+						<img src="https://cdn.vox-cdn.com/thumbor/NPS8CcrYyJrfAkCKRXRCx7YSsGU=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15970326/devine_lebron_washed_getty_ringer.jpg" alt="Avatar" class="avatar">
 					</div>
-
 					<div class="homchua">
 						<label for="uname"><b>Username</b></label>
-						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter Username" name="uname" id="username" pattern="[A-Za-z]{3}" title="Three letter country code" required>
 						<label for="uname"><b>Email</b></label><br>
-						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}"
-							title="Three letter country code" required>
+						<input type="text" placeholder="Enter email" name="email" id="email" pattern="[A-Za-z]{3}" title="Three letter country code" required>
 						<label for="psw"><b>Password</b></label>
 						<input type="password" placeholder="Enter Password" id="password" name="psw" required>
 						<label>
-
-							<input style="display: none;" type="password"
-								placeholder="Confirm Password(bấm Enter để xác nhận mật khẩu" id="cpassword" name="psw"
-								required>
+							<input style="display: none;" type="password" placeholder="Confirm Password (press Enter to confirm)" id="cpassword" name="psw" required>
 							<label>
 								<input type="checkbox" checked="checked" name="remember"> Remember me
 							</label>
 							<span class="psw"><a href="#">Forgot password?</a></span>
 							<div class="button-thing">
-
 								<div class="btn draw-border">
 									<button type="submit" class="bubbly-button button-53" id="SignUp">SignUp</button>
 								</div>
@@ -131,40 +120,30 @@
 									<button type="submit" class="bubbly-button button-53" id="SignIn">Login</button>
 								</div>
 							</div>
-
+						</label>
 					</div>
-
 					<div class="homchua" style="background-color:#f1f1f1">
-						<button type="button" onclick="document.getElementById('id01').style.display='none';"
-							class="cancelbtn button-54" id="SignOut">Sign out</button>
-
+						<button type="button" onclick="document.getElementById('id01').style.display='none';" class="cancelbtn button-54" id="SignOut">Sign out</button>
 					</div>
 				</div>
 			</div>
 			<script>
-				// Get the modal
 				var modal = document.getElementById('id01');
-
-				// When the user clicks anywhere outside of the modal, close it
 				window.onclick = function (event) {
-					if (event.target == modal) {
-						modal.style.display = "none";
-					}
+					if (event.target == modal) { modal.style.display = "none"; }
 				}
 			</script>
 		</div>
 
+		<!-- Hero Slider -->
 		<div class="hero">
 			<div class="slider">
 				<ul class="slides">
-					<li class="lazy-bg" style="background-image: url(./dummy/slide-1.jpg);">
-					</li>
-					<li class="lazy-bg" style="background-image: url(./dummy/slide-2.jpg);">
-					</li>
-					<li class="lazy-bg" style="background-image: url(./dummy/slide-3.jpg);">
-					</li>
+					<li class="lazy-bg" style="background-image: url(./dummy/slide-1.jpg);"></li>
+					<li class="lazy-bg" style="background-image: url(./dummy/slide-2.jpg);"></li>
+					<li class="lazy-bg" style="background-image: url(./dummy/slide-3.jpg);"></li>
 				</ul>
-				<div class="container">
+				<div class="mx-auto px-4 max-w-[1170px]">
 					<h2 class="slide-title"></h2>
 					<h3 class="slide-subtitle"></h3>
 					<p class="slide-desc"></p>
@@ -173,210 +152,197 @@
 		</div>
 
 		<main class="main-content">
-			<div class="fullwidth-block testimonial-section">
-				<div class="container" style="background-color: black;">
+
+			<!-- Testimonials / Quote Slider -->
+			<div class="fullwidth-block testimonial-section bg-black">
+				<div class="mx-auto px-4 max-w-[1170px]">
 					<div class="quote-slider">
 						<ul class="slides">
 							<li>
 								<blockquote>
-									<p>"Bền bỉ và mạnh mẽ"<br>
-										Đó là tất cả những gì mà tôi muốn nói về những đôi giày có chất lượng cao ở
-										BasketballShop. Nó giúp tôi có những trận đấu đỉnh cao và giúp tôi yên tâm hơn
-										trong những pha bóng.
+									<p>"Tough and powerful" —
+										that's everything I want to say about the high-quality shoes at BasketballShop.
+										They help me perform at my peak and give me confidence in every play.
 									</p>
 									<cite>Stephen Curry</cite>
-									<span>Vận động viên chuyên nghiệp NBA</span>
+									<span class="text-[#848484] text-sm block mt-1">NBA Professional Athlete</span>
 								</blockquote>
 							</li>
 							<li>
 								<blockquote>
-									<p>Những đôi giày được mua ở BasketballShop rất tuyệt. Vừa đẹp vừa bền,cháu đã mua
-										rất nhiều giày ở đây nhưng vẫn chưa có đôi nào có hiện tượng bung đế hay sờn màu
-										sau 1 thời
-										gian sử dụng. Cảm ơn BasketballShop đã giúp cháu ươm mầm giấc mơ để trở thành 1
-										cầu thủ bóng rổ chuyên nghiệp.</p>
+									<p>The shoes from BasketballShop are amazing — stylish and durable. I've bought
+										many pairs here and not a single one has had a sole separation or color fading
+										after extended use. Thank you BasketballShop for helping me nurture my dream of
+										becoming a professional basketball player.</p>
 									<cite>Nguyễn Chí Dũng</cite>
-									<span>U15 Việt Nam</span>
+									<span class="text-[#848484] text-sm block mt-1">Vietnam U15</span>
 								</blockquote>
 							</li>
 							<li>
 								<blockquote>
-									<p>Thật khó để chuẩn bị cho con của bạn những đôi giày bóng rổ vừa sành điệu vừa
-										chất lượng khi có quá nhiều mặt hàng trôi nổi trên thị trường.Tuy vậy những khi
-										đến với BasketballShop,mọi đôi giày đều có tem kiểm định và nhân viên luôn hỗ
-										trợ tôi nhiệt tình để chọn giày cho con.</p>
+									<p>It's hard to find basketball shoes that are both stylish and high quality for
+										your child when there are so many unverified products on the market. But every
+										time I visit BasketballShop, every pair comes with an authenticity seal and the
+										staff always helps me enthusiastically choose the right shoes for my son.</p>
 									<cite>Mai Văn Ánh</cite>
-									<span>Phụ huynh</span>
+									<span class="text-[#848484] text-sm block mt-1">Parent</span>
 								</blockquote>
 							</li>
 						</ul>
 					</div>
 				</div>
-			</div> <!-- .testimonial-section -->
+			</div>
 
-			<div class="fullwidth-block upcoming-event-section" data-bg-color="#191919">
-				<div class="container">
+			<!-- Upcoming Shoe Releases (Owl Carousel) -->
+			<div class="fullwidth-block upcoming-event-section bg-black py-16" data-bg-color="#000000">
+				<div class="mx-auto px-4 max-w-[1170px]">
 					<header class="section-header">
-						<h2 class="section-title">Những đôi giày sắp được ra mắt trong 2023</h2>
-
+						<h2 class="section-title">Upcoming Shoe Releases in 2026</h2>
 						<div class="event-nav">
 							<a class="prev" id="event-prev" href="#"><i class="fa fa-caret-left"></i></a>
 							<a class="next" id="event-next" href="#"><i class="fa fa-caret-right"></i></a>
-						</div> <!-- .event-nav -->
+						</div>
+					</header>
 
-					</header> <!-- .section-header -->
 					<div class="event-carousel">
 
 						<div class="event">
 							<div class="entry-date">
-								<div class="date">23</div>
-								<span class="month">may</span>
+								<div class="date">1</div>
+								<span class="month">May</span>
 							</div>
-							<h2 class="entry-title"><a href="#">Nike KD 14</a></h2>
-							<p>Nike KD 14 cung cấp lực kéo tuyệt vời, đệm tuyệt vời, vật liệu tốt, vừa vặn chắc chắn và
-								hỗ trợ tốt. Đó là một đôi giày thể thao toàn diện,, hoàn hảo cho bất kỳ loại người chơi
-								nào và là một trong những đôi giày bóng rổ tốt nhất hiện có.</p>
-						</div> <!-- .event -->
-
+							<h2 class="entry-title"><a href="#">Nike Kobe 3 Low Protro "Mambacita"</a></h2>
+							<p>A low-cut Protro silhouette in White/Black-Metallic Gold, honoring Kobe Bryant's legacy.
+								Features responsive Zoom Air cushioning and a sleek streamlined design. Retailing at $200.</p>
+						</div>
 
 						<div class="event">
 							<div class="entry-date">
-								<div class="date">14</div>
+								<div class="date">1</div>
+								<span class="month">May</span>
+							</div>
+							<h2 class="entry-title"><a href="#">Adidas Harden Vol. 10 x Jalen Williams</a></h2>
+							<p>A collaboration with NBA star Jalen Williams featuring BOOST + Lightstrike Pro cushioning,
+								a textile upper with molded support, and bold concentric ripple overlays. $160.</p>
+						</div>
+
+						<div class="event">
+							<div class="entry-date">
+								<div class="date">8</div>
+								<span class="month">May</span>
+							</div>
+							<h2 class="entry-title"><a href="#">Nike LeBron 23 "Old Glory"</a></h2>
+							<p>Released as part of the WNBA 30th Anniversary celebration, the LeBron 23 packs LeBron's
+								signature cushioning tech into a premium court-ready package. $210.</p>
+						</div>
+
+						<div class="event">
+							<div class="entry-date">
+								<div class="date">1</div>
 								<span class="month">June</span>
 							</div>
-							<h2 class="entry-title"><a href="#">Nike Kyrie 8 (Infinity)</a></h2>
-							<p>Nike Kyrie 8 thật tuyệt vời và là đôi giày tốt nhất trong dòng đặc trưng của Kyrie, cùng
-								với Kyrie 6. Đôi giày này mang đến sự kết hợp hoàn hảo giữa đệm và hiệu suất.</p>
-						</div> <!-- .event -->
-
+							<h2 class="entry-title"><a href="#">Nike Kobe 9 EM Low Protro "Draft Day"</a></h2>
+							<p>An engineered mesh low-top Protro paying tribute to a pivotal moment in Kobe's career.
+								Lightweight construction with responsive Zoom Air cushioning. $190.</p>
+						</div>
 
 						<div class="event">
 							<div class="entry-date">
-								<div class="date">26</div>
-								<span class="month">July</span>
+								<div class="date">20</div>
+								<span class="month">June</span>
 							</div>
-							<h2 class="entry-title"><a href="#">Jordan 36</a></h2>
-							<p>Jordan 36 là ngôi sao của Celtics, mẫu giày yêu thích của Jayson Tatum. Jordan 36 có
-								nhiều tính năng hiệu suất có thể kể đến bao gồm: đệm Zoom Air có chiều dài đầy đủ, phần
-								midsole bằng Phylon, tấm Eclipse và phần upper dệt Leno Jacquard chắc chắn.</p>
-						</div> <!-- .event -->
-
-
-						<div class="event">
-							<div class="entry-date">
-								<div class="date">30</div>
-								<span class="month">August</span>
-							</div>
-							<h2 class="entry-title"><a href="#">Under Armour Curry 9</a></h2>
-							<p>Under Armour Curry 9 là phiên bản cải tiến của một đôi giày vốn đã rất tuyệt - Curry 8
-								(cũng nằm trong danh sách này). Dòng giày đặc trưng của Steph Curry là một trong những
-								dòng giày tuyệt vời nhất trên thị trường và Curry 9 là một viên ngọc quý khác.</p>
-						</div> <!-- .event -->
-
-
-						<div class="event">
-							<div class="entry-date">
-								<div class="date">10</div>
-								<span class="month">October </span>
-							</div>
-							<h2 class="entry-title"><a href="#">Nike Air Zoom GT Jump</a></h2>
-							<p>Nike GT Jump tự hào là một trong những đôi giày có thiết lập đệm tốt nhất mọi thời đại.
-								Trên thực tế, những đôi giày này xứng đáng nằm trong danh sách này, nhưng chúng cũng là
-								một đôi giày biểu diễn toàn diện rất tốt. </p>
-						</div> <!-- .event -->
-
-					</div> <!-- .event-carousel -->
-				</div> <!-- .container -->
-			</div> <!-- .upcoming-event-section -->
-
-			<div class="fullwidth-block why-chooseus-section">
-				<div class="container">
-					<h2 class="section-title">Tại sao bạn cần một đôi giày bóng rổ chất lượng?</h2>
-
-					<div class="row">
-						<div class="col-md-4">
-							<div class="feature">
-								<figure class="cut-corner">
-									<img src="./images/tranhchanthuong.png" alt="" height="230">
-								</figure>
-								<h3 class="feature-title">Tránh chấn thương</h3>
-								<p>Những động tác khi chơi bóng rổ bao gồm: Chạy, dừng lại đột ngột, bật nhảy, tạt
-									ngang, và thay đổi hướng bất thình lình có thể dẫn đến chấn thương cổ chân và mắt cá
-									chân từ nhẹ cho đến nghiêm trọng đến mức không thể đi được nữa.</p>
-							</div> <!-- .feature -->
+							<h2 class="entry-title"><a href="#">Air Jordan 5 "Black/University Blue"</a></h2>
+							<p>The iconic AJ5 silhouette returns in a clean Black/University Blue colorway with
+								signature Air cushioning and the Jumpman branding. A must-have retro drop. $220.</p>
 						</div>
-						<div class="col-md-4">
-							<div class="feature">
-								<figure class="cut-corner">
-									<img src="https://media.istockphoto.com/photos/old-wornout-trainers-picture-id182689474?k=20&m=182689474&s=612x612&w=0&h=lBI-XqDjc6mDZS1WXqJVmR9K8Vk5uV-W4W9DamE5-nI="
-										alt="">
-								</figure>
-								<h3 class="feature-title">Độ bền cao, sử dụng lâu dài</h3>
-								<p>Giày bóng rổ chưa bao giờ được thiết kế để tồn tại cả một đời người, nhưng một đôi có
-									chất lượng tốt, tuy giá thành cao một chút nhưng bù lại chất liệu gia công sẽ cao
-									cấp hơn, dày hơn và từ đó độ bền sẽ cao hơn khi so với những đôi giày bình thường.
-								</p>
-							</div> <!-- .feature -->
-						</div>
-						<div class="col-md-4">
-							<div class="feature">
-								<figure class="cut-corner">
-									<img src="images/skill.jpg" alt="">
-								</figure>
-								<h3 class="feature-title">Nâng cao trình độ</h3>
-								<p>Vì giày bóng rổ thường nặng hơn giày thông thường nên sẽ buộc các mô cơ chân và hệ
-									thống hô hấp của bạn hoạt động tích cực hơn nữa. Từ đó, thể lực cũng như sức mạnh
-									của bạn sẽ được cải thiện đáng kể.</p>
-							</div> <!-- .feature -->
-						</div>
+
 					</div>
-				</div> <!-- .container -->
-			</div> <!-- .why-chooseus-section -->
-		</main> <!-- .main-content -->
+				</div>
+			</div>
 
-		<footer class="site-footer">
-			<div class="container">
-				<img src="dummy/logo-footer.png" alt="Site Name">
+			<!-- Why Quality Basketball Shoes -->
+			<div class="fullwidth-block why-chooseus-section bg-black py-16">
+				<div class="mx-auto px-4 max-w-[1170px]">
+					<h2 class="section-title text-center">Why Do You Need Quality Basketball Shoes?</h2>
 
-				<address>
-					<p>10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br><a href="tel:9488487853">+91 94884 87853</a> <br>
-						<a href="">sieunhanham007@gmail.com</a>
+					<div class="flex flex-wrap -mx-4">
+
+						<div class="w-full md:w-1/3 px-4 mb-8">
+							<div class="feature">
+								<figure class="cut-corner-img mb-4">
+									<img src="./images/tranhchanthuong.png" alt="" height="230" class="w-full">
+								</figure>
+								<h3 class="feature-title">Injury Prevention</h3>
+								<p>Basketball movements — sprinting, sudden stops, jumping, lateral cuts, and quick
+									direction changes — can cause ankle and foot injuries ranging from minor sprains
+									to severe damage that leaves you unable to walk.</p>
+							</div>
+						</div>
+
+						<div class="w-full md:w-1/3 px-4 mb-8">
+							<div class="feature">
+								<figure class="cut-corner-img mb-4">
+									<img src="https://media.istockphoto.com/photos/old-wornout-trainers-picture-id182689474?k=20&m=182689474&s=612x612&w=0&h=lBI-XqDjc6mDZS1WXqJVmR9K8Vk5uV-W4W9DamE5-nI=" alt="" class="w-full">
+								</figure>
+								<h3 class="feature-title">High Durability &amp; Long-Lasting Wear</h3>
+								<p>Basketball shoes aren't built to last a lifetime, but a high-quality pair — while
+									slightly more expensive — uses superior, thicker materials that make them
+									significantly more durable than ordinary shoes.</p>
+							</div>
+						</div>
+
+						<div class="w-full md:w-1/3 px-4 mb-8">
+							<div class="feature">
+								<figure class="cut-corner-img mb-4">
+									<img src="images/skill.jpg" alt="" class="w-full">
+								</figure>
+								<h3 class="feature-title">Elevate Your Game</h3>
+								<p>Because basketball shoes are heavier than regular footwear, they challenge your
+									leg muscles and cardiovascular system to work harder. Over time, this significantly
+									improves both your stamina and overall strength.</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+		<!-- Footer -->
+		<footer class="site-footer bg-[#222] border-t border-white/10 pt-12 pb-8 text-center">
+			<div class="mx-auto px-4 max-w-[1170px]">
+				<img src="dummy/logo-footer.png" alt="Site Name" class="mx-auto mb-8">
+				<address class="not-italic mb-8">
+					<p class="text-[#848484] text-sm leading-relaxed">
+						10 Đ. Thụy Khuê, Thuỵ Khuê, Tây Hồ, Hà Nội<br>
+						<a href="tel:9488487853" class="text-[#848484] hover:text-brand transition-colors">+91 94884 87853</a><br>
+						<a href="" class="text-[#848484] hover:text-brand transition-colors">sieunhanham007@gmail.com</a>
 					</p>
 				</address>
-
-				<form onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form">
-					<input type="email" id="mail" placeholder="Điền email của bạn để nhận những thông báo mới nhất về NBA..." required>
-					<input type="submit" class="button cut-corner" value="Subscribe">
-				</form> <!-- .newsletter-form -->
-
-				<div class="social-links">
-					<a href="https://www.facebook.com/BasketballShop-107593602092447"><i
-							class="fa fa-facebook-square"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-google-plus"></i></a>
-					<a href="#"><i class="fa fa-pinterest"></i></a>
-				</div> <!-- .social-links -->
-
-				<p class="copy">BasketballShop @ Copyright 2023. All right reserved. Designed by <a href="">Giri Designs
-						and Chí Dũng and pleasenoban</a></p>
+				<form onsubmit="sendemail(document.getElementById('mail').value);GuiEmail();return false;" class="newsletter-form mb-8 flex justify-center">
+					<input type="email" id="mail" placeholder="Enter your email to receive the latest NBA updates..." required
+						class="px-4 py-3 bg-[#111111] border border-[#333] text-[#aaa] text-sm w-full max-w-md outline-none focus:border-brand transition-colors">
+					<input type="submit" class="button cut-corner px-6 py-3 text-white text-sm uppercase font-semibold tracking-widest cursor-pointer border-0" value="Subscribe">
+				</form>
+				<div class="social-links mb-8">
+					<a href="https://www.facebook.com/BasketballShop-107593602092447" class="social-link"><i class="fa fa-facebook-square"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-google-plus"></i></a>
+					<a href="#" class="social-link"><i class="fa fa-pinterest"></i></a>
+				</div>
+				<p class="copy text-[#848484] text-xs">BasketballShop @ Copyright 2023. All right reserved. Designed by <a href="" class="text-[#848484] hover:text-brand transition-colors">Giri Designs and Chí Dũng and pleasenoban</a></p>
 			</div>
 			<div id="google_translate_element"></div>
-
 			<script type="text/javascript">
 				function googleTranslateElementInit() {
-					new google.translate.TranslateElement(
-						{ pageLanguage: 'vn' },
-						'google_translate_element'
-					);
+					new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
 				}
 			</script>
+			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		</footer>
 
-			<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
-		cb=googleTranslateElementInit">
-		</script>
-		</footer> <!-- .site-footer -->
-
-	</div> <!-- #site-content -->
+	</div>
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>

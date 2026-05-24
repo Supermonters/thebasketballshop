@@ -105,6 +105,26 @@ app.get("/news", async (req, res) => {
   });
 });
 
+app.get("/nba-stories", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://api.usestoryteller.com/api/app/story/stories/default?categories=top-stories&ClientPlatform=Web&ClientVersion=10.9.0&userAttributes[location]=US&x-storyteller-api-key=c0432170-1011-4a36-b0f9-595c62c2243f"
+    );
+    const data = await response.json();
+    const stories = (data.stories || []).slice(0, 8).map(s => ({
+      id: s.id,
+      title: s.titles.longDisplay || s.titles.shortDisplay || s.title,
+      thumbnail: s.thumbnails?.medium || s.thumbnails?.large || s.thumbnailUrl,
+      timestamp: s.timestamp,
+      url: s.webStoryUrl,
+      isLive: s.isLive,
+    }));
+    res.json({ stories });
+  } catch (e) {
+    res.status(500).json({ stories: [] });
+  }
+});
+
 app.get("/productlist", async (req, res) => {
   res.status(200).json(db.data);
 });
@@ -121,8 +141,8 @@ app.get("/mail", async (req, res) => {
     from: `"BasketballShop" <${process.env.MAILUSER}>`,
     to: address, // list of receivers
     subject: "Newsletter", // Subject line
-    text: "Cảm ơn bạn đã đăng kí newsletter của BasketballShop.\nChúng tôi sẽ gửi cho bạn các thông tin về NBA.", // plain text body
-    html: `Cảm ơn bạn đã đăng kí newsletter của BasketballShop.<br>Chúng tôi sẽ gửi cho bạn các thông tin về NBA.<br>Đây là tin nhắn tự động, xin đừng trả lời tin nhắn này.<br><img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="idk" width=200 height=200>
+    text: "Thank you for subscribing to the BasketballShop newsletter.\nWe'll send you the latest NBA updates.", // plain text body
+    html: `Thank you for subscribing to the BasketballShop newsletter.<br>We'll send you the latest NBA updates.<br>This is an automated message, please do not reply.<br><img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="BasketballShop" width=200 height=200>
         `, // html body
   });
   res.status(200).send("successful");
@@ -823,7 +843,7 @@ app.get("/store_item", async (req, res) => {
   }
   html += `</select></div>
                         <div class="addcart-price" bis_skin_checked="1">
-                            <div class="price" bis_skin_checked="1" style=" margin-right: 1rem;">Tổng chi phí<div
+                            <div class="price" bis_skin_checked="1" style=" margin-right: 1rem;">Total Cost<div
                                     bis_skin_checked="1"
                                     style="font-weight: 700;font-size: 20px;line-height: 30px;color: #f9495f;white-space: nowrap;font-family: Chakra Petch;">
                                     ${item.price}</div>
@@ -834,17 +854,17 @@ app.get("/store_item", async (req, res) => {
                                     ${item.price}</div>
                             <div style="text-align: center;" class="add-cart-buttons" bis_skin_checked="1">
                                 <button onclick='addsp("${item.cartpic}", "${item.name}", document.getElementById("optionThing").value, "${item.price}", ${item.id})' type="button"
-                                    data-loading-text="Đang tải..." class="btn-add-cart btn-add-cart-2">
+                                    data-loading-text="Loading..." class="btn-add-cart btn-add-cart-2">
                                     <svg style="vertical-align: text-bottom;padding-right: 5px;" width="17" height="18"
                                         viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M15.9187 9.83092L15.9187 8.16922L9.33085 8.16922L9.33085 1.58134H7.66915L7.66915 8.16922L1.08127 8.16922L1.08127 9.83092L7.66915 9.83092L7.66915 16.4188H9.33085L9.33085 9.83092L15.9187 9.83092Z"
                                             fill="white"></path>
                                     </svg>
-                                    Mua Hàng
+                                    Add to Cart
                                 </button>
                                 <a style="text-decoration: none;" href="/cart.html"> <button type="button"
-                                        data-loading-text="Đang tải..." class="btn-add-cart btn- "
+                                        data-loading-text="Loading..." class="btn-add-cart btn- "
                                         style="margin-right: 0.5rem;background: #fff!important;border: 1px solid #005ec4!important;color: #005ec4!important;">
                                         <svg style="vertical-align: text-bottom;padding-right: 5px;" width="21" height="20"
                                             viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -861,12 +881,12 @@ app.get("/store_item", async (req, res) => {
                                                 stroke="#005EC4" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round"></path>
                                         </svg>
-                                        Giỏ hàng</button></a>
+                                        View Cart</button></a>
                             </div>
                         </div>
                     </div>
                     <span><a style="color: #005ec4;font-family: Chakra Petch; font-size: 1.5rem; display: flex;justify-content: flex-end;padding: 0.2rem 1rem 0 1rem;"
-                            href="/store.html"> &larr;Trở về</a></span>
+                            href="/store.html"> &larr; Back to Store</a></span>
         
                 </div>
             </div>
