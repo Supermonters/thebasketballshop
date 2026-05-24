@@ -343,6 +343,34 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
 .post a { color: #fd5927; text-decoration: none; }
 .post a:hover { color: white; }
 .post h3 { color: white; font-weight: 400; margin-top: 0; }
+.post .entry-title a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* === Load More button ===================================== */
+.load-more-btn {
+  display: block;
+  margin: 8px auto 40px;
+  padding: 12px 36px;
+  background: transparent;
+  color: #fd5927;
+  border: 2px solid #fd5927;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.load-more-btn:hover {
+  background: #fd5927;
+  color: #fff;
+}
 
 /* === NBA Story cards (vertical portrait grid) ============= */
 .story-grid {
@@ -446,3 +474,124 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
 .event-nav a:hover { background-color: #fd5927; }
 .event-carousel { margin-bottom: 70px; }
 .section-header { overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.15); margin-bottom: 70px; padding-top: 40px; }
+
+/* === Trends page: Player rows ============================= */
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #2c2c2c;
+}
+.player-rank {
+  width: 24px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fd5927;
+  flex-shrink: 0;
+}
+.player-headshot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #2a2a2a;
+  flex-shrink: 0;
+}
+.player-info { flex: 1; min-width: 0; }
+.player-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.player-team {
+  color: #666;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.player-shoe {
+  font-size: 0.72rem;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #aaa;
+}
+.shoe-brand {
+  font-weight: 700;
+  margin-right: 4px;
+}
+.player-ppg {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fd5927;
+  text-align: right;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.ppg-label {
+  display: block;
+  font-size: 0.55rem;
+  color: #666;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* === Trends page: Trending players 2-col grid ============= */
+.trending-players-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 48px;
+}
+@media (max-width: 768px) {
+  .trending-players-grid { grid-template-columns: 1fr; }
+}
+
+/* === Trends page: Sneaker cards =========================== */
+.sneakers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.sneaker-card {
+  display: block;
+  text-decoration: none;
+  background: #1e1e1e;
+  border: 1px solid #2c2c2c;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.sneaker-card:hover { border-color: #fd5927; }
+.sneaker-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  background-color: #252525;
+}
+.sneaker-info { padding: 8px 10px; }
+.sneaker-title {
+  color: #ccc;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  margin: 0 0 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.sneaker-meta {
+  display: flex;
+  gap: 10px;
+  color: #555;
+  font-size: 0.65rem;
+}

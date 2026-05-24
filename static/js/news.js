@@ -1,30 +1,65 @@
 const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const PAGE_SIZE = 10;
+let allArticles = [];
+let shown = 0;
+
+function articleHTML(item) {
+  const d = new Date();
+  d.setTime(Date.parse(item.pubDate.replace(" ", "T") + "Z"));
+  return `
+  <div class="post">
+    <div class="entry-date">
+      <div class="date">${d.getDate()}</div>
+      <span class="month">${months[d.getMonth()]}</span>
+    </div>
+    <div class="featured-image">
+      <img src="${item.image_url}" alt="${item.title}">
+    </div>
+    <h2 class="entry-title" style="margin-bottom:0">
+      <a href="${item.link}">${item.title}</a>
+    </h2>
+    <h3 style="margin-top:0">${("0"+d.getHours()).slice(-2)}:${("0"+d.getMinutes()).slice(-2)}</h3>
+    <p>${item.description ? (item.description.length > 160 ? item.description.slice(0, 160) + '…' : item.description) : ''}</p>
+    <a href="${item.link}">Read more</a>
+  </div>`;
+}
+
+function renderBatch() {
+  const content = document.body.getElementsByClassName("content")[0];
+  const btn = document.getElementById("load-more-btn");
+  const batch = allArticles.slice(shown, shown + PAGE_SIZE);
+
+  // Insert articles before the button
+  batch.forEach(item => {
+    if (btn) {
+      btn.insertAdjacentHTML("beforebegin", articleHTML(item));
+    } else {
+      content.innerHTML += articleHTML(item);
+    }
+  });
+
+  shown += batch.length;
+
+  // Hide button when all articles shown
+  if (btn) {
+    btn.style.display = shown >= allArticles.length ? "none" : "block";
+  }
+}
 
 // ── News articles (left column) ──────────────────────────────
 (async () => {
   try {
-    const arr = (await (await fetch("/news")).json()).news;
+    allArticles = (await (await fetch("/news")).json()).news;
     const content = document.body.getElementsByClassName("content")[0];
-    const d = new Date();
-    for (const item of arr) {
-      d.setTime(Date.parse(item.pubDate.replace(" ", "T") + "Z"));
-      content.innerHTML += `
-      <div class="post">
-        <div class="entry-date">
-          <div class="date">${d.getDate()}</div>
-          <span class="month">${months[d.getMonth()]}</span>
-        </div>
-        <div class="featured-image">
-          <img src="${item.image_url}" alt="${item.title}">
-        </div>
-        <h2 class="entry-title" style="margin-bottom:0">
-          <a href="${item.link}">${item.title}</a>
-        </h2>
-        <h3 style="margin-top:0">${("0"+d.getHours()).slice(-2)}:${("0"+d.getMinutes()).slice(-2)}</h3>
-        <p>${item.description}</p>
-        <a href="${item.link}">Read more</a>
-      </div>`;
-    }
+
+    // Append the load-more button placeholder into the content div
+    content.insertAdjacentHTML("beforeend", `
+      <button id="load-more-btn" class="load-more-btn">Load more</button>
+    `);
+
+    renderBatch();
+
+    document.getElementById("load-more-btn").addEventListener("click", renderBatch);
   } catch (e) {
     console.error("Failed to load news articles", e);
   }
