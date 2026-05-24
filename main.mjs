@@ -80,7 +80,7 @@ app.get("/news", async (req, res) => {
         .toString()}${d.getUTCFullYear().toString()}`
   ) {
     let a = await fetch(
-      `https://newsdata.io/api/1/news?apikey=${process.env.NEWS_API_KEY}&q=nba&language=en&category=sports&country=us,gb,au,ca`
+      `https://newsdata.io/api/1/news?apikey=${process.env.NEWS_API_KEY}&q=nba&language=en&category=sports`
     );
     let data = await a.json();
     if (!Array.isArray(data.results)) {

@@ -439,65 +439,19 @@
   },
   "ids": 12,
   "news": {
-    "date": "232342026",
+    "date": "12442026",
     "arr": [
       {
-        "article_id": "01ad020c4437c05c74c231b10f23d043",
-        "link": "https://www.espn.com/nba/story/_/id/48848352/down-0-2-donovan-mitchell-cleveland-cavaliers-here-before",
-        "title": "What the Cavaliers need to save their turbulent se...",
-        "description": "Through a roller-coaster season, the Cavaliers have turned to one man in times of trouble.",
-        "content": "ONLY AVAILABLE IN PAID PLANS",
-        "keywords": null,
-        "creator": [
-          "jamal collier"
-        ],
-        "language": "english",
-        "country": [
-          "united states of america"
-        ],
-        "category": [
-          "top",
-          "sports"
-        ],
-        "datatype": "news",
-        "pubDate": "2026-05-23 11:21:30",
-        "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:31:39",
-        "image_url": "https://a.espncdn.com/photo/2026/0523/r1662251_1296x729_16-9.jpg",
-        "video_url": null,
-        "source_id": "espn",
-        "source_name": "Espn",
-        "source_priority": 341,
-        "source_url": "https://www.espn.com",
-        "source_icon": "https://n.bytvi.com/espn.png",
-        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
-        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
-        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
-        "duplicate": false
-      },
-      {
-        "article_id": "d8a6535eafa78a5c5ff741c852f68640",
-        "link": "https://www.yardbarker.com/nba/articles/new_details_emerge_on_why_dallas_mavericks_shockingly_fired_jason_kidd/s1_17759_43874226",
-        "title": "New Details Emerge on Why Dallas Mavericks Shockingly Fired Jason Kidd",
-        "description": "The Dallas Mavericks seem to have a knack for getting blockbuster headlines. Just a year back, the team shocked everyone with their trade of Luka Doncic to the Los Angeles Lakers.",
+        "article_id": "ad95b4cec77d438d37ecc0acbbbb4c4b",
+        "link": "https://www.postingandtoasting.com/knicks-game-previews/83001/ecf-game-preview-knicks-at-cavaliers-game-3-may-23-2026",
+        "title": "ECF Game Preview: Knicks at Cavaliers, Game 3, May 23, 2026",
+        "description": "The first two games of the series have had a little bit of everything so far for the Knicks. The Cavaliers jumped out to a 22-point lead in Game 1 thanks to a strong game from Donovan Mitchell, only for the Knicks to mount a historic comeback where Jalen Brunson put on a shot-making clinic. [...]",
         "content": "ONLY AVAILABLE IN PAID PLANS",
         "keywords": [
-          "cooper flagg",
-          "masai ujiri",
-          "los angeles lakers",
-          "sports",
-          "jason kidd",
-          "nba",
-          "charles barkley",
-          "kyrie irving",
-          "luka doncic",
-          "dallas mavericks"
+          "knicks game previews"
         ],
         "creator": [
-          "debmallya chakraborty"
+          "kento kato"
         ],
         "language": "english",
         "country": [
@@ -507,16 +461,16 @@
           "sports"
         ],
         "datatype": "news",
-        "pubDate": "2026-05-23 11:15:14",
+        "pubDate": "2026-05-23 13:09:19",
         "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:39:50",
-        "image_url": "http://www.yardbarker.com/media/0/9/0937c1d9057399d081585e5925a00abf7c0a29c8/thumb_16x9/Jason-Kidd-1024x563.jpg",
+        "fetched_at": "2026-05-23 13:18:25",
+        "image_url": "https://platform.postingandtoasting.com/wp-content/uploads/sites/125/2026/05/gettyimages-2277199752.jpg?quality=90&strip=all&crop=0,10.732984293194,100,78.534031413613",
         "video_url": null,
-        "source_id": "yardbarker",
-        "source_name": "Yardbarker",
-        "source_priority": 92706,
-        "source_url": "https://www.yardbarker.com",
-        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "source_id": "postingandtoasting",
+        "source_name": "Posting And Toasting",
+        "source_priority": 969351,
+        "source_url": "https://www.postingandtoasting.com",
+        "source_icon": null,
         "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
@@ -526,105 +480,19 @@
         "duplicate": false
       },
       {
-        "article_id": "8535fe04dfdd0257c214d9fba5a7ed7e",
-        "link": "https://www.masslive.com/betting/2026/05/cj-cup-byron-nelson-odds-update-si-woo-kim-dominates-first-two-rounds-in-texas-scheffler-within-striking-distance.html",
-        "title": "CJ Cup Byron Nelson odds update: Si Woo Kim dominates first two rounds in Texas, Scheffler within striking distance",
-        "description": "Get CJ Cup Byron Nelson odds update, expert predictions, and Polymarket winner odds for the PGA Tour Tournament on Saturday, May 23, 2026.",
+        "article_id": "dec653342b7a11ccf26b46fd7b56c29b",
+        "link": "https://www.si.com/mlb/rays/onsi/rays-get-rained-out-against-yankees-on-saturday-doubleheader-set-for-september",
+        "title": "May 22, 2026; Bronx, New York, USA; Tampa Bay Rays first baseman Jonathan Aranda (8) watches his RBI double against the New York Yankees during the eighth inning at Yankee Stadium.",
+        "description": "The Tampa Bay Rays won't be in action on Saturday afternoon.",
         "content": "ONLY AVAILABLE IN PAID PLANS",
         "keywords": [
-          "@exmeter",
-          "@exalert",
-          "section:/betting",
-          "@exclude"
+          "mlb",
+          "tampa bay rays",
+          "shane mcclanahan",
+          "drew rasmussen"
         ],
         "creator": [
-          "drew norton | advance local"
-        ],
-        "language": "english",
-        "country": [
-          "united states of america"
-        ],
-        "category": [
-          "top",
-          "sports"
-        ],
-        "datatype": "news",
-        "pubDate": "2026-05-23 11:15:00",
-        "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:31:32",
-        "image_url": "https://www.masslive.com/resizer/v2/WUZMG646LFARDDANNI47GRZR44.jpg?auth=c5ed6c62df4cab99330692a9b8cffd838f7bd855a887f417684278c6d429d9f9&smart=true&height=1200",
-        "video_url": null,
-        "source_id": "masslive",
-        "source_name": "Masslive",
-        "source_priority": 2191,
-        "source_url": "https://www.masslive.com",
-        "source_icon": "https://n.bytvi.com/masslive.png",
-        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
-        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
-        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
-        "duplicate": false
-      },
-      {
-        "article_id": "bd580931fe6e576ee18bcabac3944d6a",
-        "link": "https://newspub.live/south/oklahoma/nba-san-antonio-spurs-108-123-oklahoma-city-thunder/",
-        "title": "NBA: San Antonio Spurs 108-123 Oklahoma City Thunder –",
-        "description": "In the series opener Wembanyama became the youngest player in NBA history to score 40 points and make 20 rebounds in a play-off game as the Spurs won 122-115. He finished with 21 points and 17 rebounds in game two, which the Spurs lost 122-113. “My shooting splits aren’t terrible,” said 22-year-old Wembanyama. “I need [...] The post NBA: San Antonio Spurs 108-123 Oklahoma City Thunder – appeared first on News Pub . The post NBA: San Antonio Spurs 108-123 Oklahoma City Thunder – appeared first on News Pub .",
-        "content": "ONLY AVAILABLE IN PAID PLANS",
-        "keywords": [
-          "featured"
-        ],
-        "creator": [
-          "press room"
-        ],
-        "language": "english",
-        "country": [
-          "united states of america"
-        ],
-        "category": [
-          "top",
-          "sports"
-        ],
-        "datatype": "news",
-        "pubDate": "2026-05-23 11:12:06",
-        "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:22:05",
-        "image_url": "https://i3.wp.com/ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/8c95/live/45c740f0-5673-11f1-9a6d-f3f34ca8e9c3.jpg?ssl=1",
-        "video_url": null,
-        "source_id": "newspub_live",
-        "source_name": "News Pub",
-        "source_priority": 3777689,
-        "source_url": "https://newspub.live",
-        "source_icon": "https://n.bytvi.com/newspub_live.png",
-        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
-        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
-        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
-        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
-        "duplicate": false
-      },
-      {
-        "article_id": "aeeec537def2b75c6f6fd30fb5462321",
-        "link": "https://www.yardbarker.com/nba/articles/austin_reaves_wants_to_run_it_back_with_lakers_lebron_james/s1_127_43874198",
-        "title": "Austin Reaves wants to ‘run it back’ with Lakers, LeBron James",
-        "description": "Los Angeles Lakers guard Austin Reaves expressed a strong interest in returning to the team and continuing his partnership with LeBron James following the franchise’s playoff exit.",
-        "content": "ONLY AVAILABLE IN PAID PLANS",
-        "keywords": [
-          "luka doncic",
-          "lebron james",
-          "utah jazz",
-          "sports",
-          "atlanta hawks",
-          "los angeles lakers",
-          "austin reaves",
-          "nba",
-          "oklahoma city thunder"
-        ],
-        "creator": [
-          "dan benton"
+          "nick ziegler"
         ],
         "language": "english",
         "country": [
@@ -634,16 +502,16 @@
           "sports"
         ],
         "datatype": "news",
-        "pubDate": "2026-05-23 11:11:09",
+        "pubDate": "2026-05-23 13:09:10",
         "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 12:40:13",
-        "image_url": "https://us-west-2-gw-2.yardbarker.com/images/yb_white_on_black_medium.jpg",
+        "fetched_at": "2026-05-23 13:31:40",
+        "image_url": "https://images2.minutemediacdn.com/image/upload/c_crop,w_5361,h_3015,x_0,y_143/c_fill,w_2880,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/inside_the_rays/01ksaf4nkszh8h2hmc91.jpg",
         "video_url": null,
-        "source_id": "yardbarker",
-        "source_name": "Yardbarker",
-        "source_priority": 92706,
-        "source_url": "https://www.yardbarker.com",
-        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "source_id": "si",
+        "source_name": "Si",
+        "source_priority": 2050,
+        "source_url": "https://www.si.com",
+        "source_icon": "https://n.bytvi.com/si.png",
         "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
@@ -653,10 +521,10 @@
         "duplicate": false
       },
       {
-        "article_id": "0b91120964ed7a2dde478118b0c90564",
-        "link": "https://us.headtopics.com/news/peter-s-points-nba-best-bets-today-predictions-prop-bets-83690052",
-        "title": "Peter’s Points: NBA Best Bets Today (Predictions, Prop Bets for Knicks vs. Cavs Game 3, Donovan Mitchell)",
-        "description": "Jalen Brunson and the New York Knicks are just two wins away from the NBA Finals heading into Game 3 on Saturday night against the Cleveland Cavaliers. The Cavs",
+        "article_id": "725854fb7f32e798efe0bee020a889ee",
+        "link": "https://us.headtopics.com/news/best-nba-prop-bets-today-predictions-for-james-harden-83692855",
+        "title": "Best NBA Prop Bets Today (Predictions for James Harden, Mikal Bridges and OG Anunoby in Game 3)",
+        "description": "Game 3 of the Eastern Conference Finals is a must-win for the Cleveland Cavaliers if they want to avoid a 3-0 series deficit, but that doesn’t mean that we have",
         "content": "ONLY AVAILABLE IN PAID PLANS",
         "keywords": [
           "united states news"
@@ -673,10 +541,10 @@
           "sports"
         ],
         "datatype": "news",
-        "pubDate": "2026-05-23 11:06:25",
+        "pubDate": "2026-05-23 13:06:45",
         "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:06:25",
-        "image_url": "https://i.headtopics.com/images/2026/5/23/sinow/peter-s-points-nba-best-bets-today-predictions-pro-peter-s-points-nba-best-bets-today-predictions-pro-863414F08E30354330C7021AF9D9A1AA.webp",
+        "fetched_at": "2026-05-23 13:06:45",
+        "image_url": "https://i.headtopics.com/images/2026/5/23/sinow/best-nba-prop-bets-today-predictions-for-james-har-best-nba-prop-bets-today-predictions-for-james-har-FDF5BC68AFDBFE558E2E89463C07BFBA.webp",
         "video_url": null,
         "source_id": "headtopics",
         "source_name": "Headtopics",
@@ -692,51 +560,103 @@
         "duplicate": false
       },
       {
-        "article_id": "c44311f7e96d35900a168c55ffa96e83",
-        "link": "https://www.yardbarker.com/nba/articles/lebron_james_seemingly_ends_stephen_curry_reunion_rumors_without_naming_warriors_says_bay_area_journalist/s1_17730_43874209",
-        "title": "LeBron James Seemingly Ends Stephen Curry Reunion Rumors Without Naming Warriors, Says Bay Area Journalist",
-        "description": "It was in 2024 when the Golden State Warriors personally called and enquired about LeBron James’ availability. Reports from Shams Charania even stated that multiple contenders are still interested in securing the signature of the 41-year-old.",
+        "article_id": "d7db8fcc8d72ce22ecb6631de1c9ba27",
+        "link": "https://us.headtopics.com/news/betmgm-bonus-code-nypnewsget-get-up-to-1k-in-no-sweat-83692988",
+        "title": "BetMGM bonus code NYPNEWSGET: Get up to $1K in no-sweat tokens for Yankees vs. Rays",
+        "description": "The BetMGM bonus code NYPNEWSGET unlocks a bountiful offer for Saturday’s MLB showdown between the Yankees and Rays.",
         "content": "ONLY AVAILABLE IN PAID PLANS",
         "keywords": [
-          "steph curry",
-          "al horford",
-          "mike dunleavy",
-          "giannis antetokounmpo",
-          "draymond green",
-          "golden state warriors",
-          "steve nash",
-          "los angeles lakers",
-          "cleveland cavaliers",
-          "lebron james",
-          "miami heat",
-          "shams charania",
-          "nba",
+          "betting",
+          "mlb betting",
+          "tampa bay rays",
+          "new york yankees",
           "sports",
-          "milwaukee bucks",
-          "jimmy butler",
-          "mike dunleavy jr."
+          "betting promos",
+          "sports betting",
+          "mlb"
         ],
         "creator": [
-          "pranav kotai"
+          "nypost"
         ],
         "language": "english",
         "country": [
           "united states of america"
         ],
         "category": [
-          "sports"
+          "top",
+          "sports",
+          "business"
         ],
         "datatype": "news",
-        "pubDate": "2026-05-23 11:02:58",
+        "pubDate": "2026-05-23 13:06:45",
         "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:39:53",
-        "image_url": "https://us-west-2-gw-2.yardbarker.com/images/yb_white_on_black_medium.jpg",
+        "fetched_at": "2026-05-23 13:06:45",
+        "image_url": "https://i.headtopics.com/images/2026/5/23/nypost/betmgm-bonus-code-nypnewsget-get-up-to-1k-in-no-sw-betmgm-bonus-code-nypnewsget-get-up-to-1k-in-no-sw-E548F75CEF1B5D36EBB60A3A933651BB.webp",
         "video_url": null,
-        "source_id": "yardbarker",
-        "source_name": "Yardbarker",
-        "source_priority": 92706,
-        "source_url": "https://www.yardbarker.com",
-        "source_icon": "https://n.bytvi.com/yardbarker.png",
+        "source_id": "headtopics",
+        "source_name": "Headtopics",
+        "source_priority": 43039,
+        "source_url": "https://headtopics.com",
+        "source_icon": "https://n.bytvi.com/headtopics.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
+      },
+      {
+        "article_id": "83348296d14c3ede28b1eb3653198f03",
+        "link": "https://sports.yahoo.com/articles/ira-winderman-ware-heat-sticking-130400354.html",
+        "title": "Ira Winderman: Ware as Heat sticking point? Not if it’s for Giannis",
+        "description": "MIAMI — By now, the rumors have become a way of life for many on the Miami Heat roster, no player more so than Tyler “We’ll Only Trade You for a Hall of Famer” Herro. But now, firmly in second place in that race has become Kel’el Ware, having already been a talking point just over a year ago for Kevin Durant and now a name that could push a potential Heat trade for Giannis Antetokounmpo across ...",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "jaylen brown",
+          "sacramento",
+          "los angeles lakers",
+          "juwan howard",
+          "denver nuggets",
+          "kel’el ware",
+          "brook lopez",
+          "jarrett allen",
+          "celtics",
+          "miami heat",
+          "dallas",
+          "herro",
+          "kristaps porzingis",
+          "pistons",
+          "paolo banchero",
+          "wayne ellington",
+          "caron butler",
+          "giannis antetokounmpo",
+          "cleveland cavaliers",
+          "myles turner"
+        ],
+        "creator": [
+          "ira winderman",
+          "south florida sun-sentinel"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "sports",
+          "breaking"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 13:04:00",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 13:33:56",
+        "image_url": "https://s.yimg.com/cv/apiv2/sports/share/PD_010626-Social_Share_GENRIC_YAHOO_SPORTS-1200x630.jpg",
+        "video_url": null,
+        "source_id": "yahoo",
+        "source_name": "Yahoo! News",
+        "source_priority": 17,
+        "source_url": "https://news.yahoo.com",
+        "source_icon": "https://n.bytvi.com/yahoo.png",
         "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
@@ -746,42 +666,215 @@
         "duplicate": false
       },
       {
-        "article_id": "6a82264ba5413d464309693b482eda0e",
-        "link": "https://bleacherreport.com/articles/25429974-new-2026-nba-mock-draft-blockbuster-lamelo-ball-trade-idea",
-        "title": "New 2026 NBA Mock Draft with Blockbuster LaMelo Ball Trade Idea",
-        "description": "The Charlotte Hornets finally delivered their long awaited breakthrough.",
+        "article_id": "b5b84ebf59379e6a3412df1e14493a3d",
+        "link": "https://wtop.com/lifestyle/2026/05/from-nba-all-star-game-super-bowl-and-now-world-cup-in-a-16-month-span-the-bay-area-loves-to-host/",
+        "title": "From NBA All-Star Game, Super Bowl and now World Cup in a 16-month span, the Bay Area loves to host",
+        "description": "SAN FRANCISCO (AP) — The Bay Area loves its big sporting events. With the NBA All-Star Game, Super Bowl and...",
         "content": "ONLY AVAILABLE IN PAID PLANS",
-        "keywords": [
-          "nba"
-        ],
+        "keywords": null,
         "creator": [
-          "zach buckley"
+          "the associated press"
         ],
         "language": "english",
         "country": [
           "united states of america"
         ],
         "category": [
+          "top",
           "sports"
         ],
         "datatype": "news",
-        "pubDate": "2026-05-23 11:00:49",
+        "pubDate": "2026-05-23 13:03:34",
         "pubDateTZ": "UTC",
-        "fetched_at": "2026-05-23 11:31:58",
-        "image_url": "https://gsp-image-cdn.wmsports.io/cms/prod/bleacher-report/getty_images/2026-05/2271925328_0_large_cropped.jpg",
+        "fetched_at": "2026-05-23 13:34:52",
+        "image_url": "https://wtop.com/wp-content/uploads/2026/05/WCup_Bay_Area_Things_to_Know_8_845-1024x683.jpg",
         "video_url": null,
-        "source_id": "bleacherreport",
-        "source_name": "Bleacherreport",
-        "source_priority": 4240,
-        "source_url": "https://bleacherreport.com",
-        "source_icon": "https://n.bytvi.com/bleacherreport.png",
+        "source_id": "wtop",
+        "source_name": "Wtop News",
+        "source_priority": 17587,
+        "source_url": "https://wtop.com",
+        "source_icon": "https://n.bytvi.com/wtop.png",
         "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
         "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
         "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
         "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
-        "duplicate": false
+        "duplicate": true
+      },
+      {
+        "article_id": "58e1aa30e15391a4364ac0f53bf7b5ab",
+        "link": "https://www.beaumontenterprise.com/sports/article/from-nba-all-star-game-super-bowl-and-now-world-22273516.php",
+        "title": "From NBA All-Star Game, Super Bowl and now World Cup in a 16-month span, the Bay Area loves to host",
+        "description": "The Bay Area loves its big sporting events. From the NBA All-Star Game, Super Bowl and now World Cup all in a 16-month span, Northern California has been a non-stop host. And never before has the same...",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "half moon bay",
+          "mc complete - state & national",
+          "qatar",
+          "valley transportation authority",
+          "world cup text",
+          "s wire",
+          "china basin",
+          "mustards grill",
+          "tony's pizza napoletana",
+          "zaileen janmohamed",
+          "world cup",
+          "nba all-star game",
+          "capitol corridor",
+          "https://apnews.com/hub/soccer",
+          "santa clara",
+          "sam",
+          "caltrain",
+          "sonoma",
+          "alcatraz",
+          "bay area host committee"
+        ],
+        "creator": [
+          "janie mccauley"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 13:02:00",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 14:31:36",
+        "image_url": "https://s.hdnux.com/photos/01/66/27/21/31028330/3/square_large.jpg",
+        "video_url": null,
+        "source_id": "beaumontenterprise",
+        "source_name": "Beaumont Enterprise",
+        "source_priority": 2577,
+        "source_url": "https://www.beaumontenterprise.com",
+        "source_icon": "https://n.bytvi.com/beaumontenterprise.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
+      },
+      {
+        "article_id": "c4d3ec95d13ce8e0b830c6ca227dd245",
+        "link": "https://www.houstonchronicle.com/sports/article/from-nba-all-star-game-super-bowl-and-now-world-22273516.php",
+        "title": "From NBA All-Star Game, Super Bowl and now World Cup in a 16-month span, the Bay Area loves to host",
+        "description": "The Bay Area loves its big sporting events. From the NBA All-Star Game, Super Bowl and now World Cup all in a 16-month span, Northern California has been a non-stop host. And never before has the same...",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "bay area",
+          "sam",
+          "northern california",
+          "valkyries' thrive city",
+          "capitol corridor",
+          "chase center",
+          "san francisco 49ers",
+          "golden state warriors",
+          "member choice sports option",
+          "https://apnews.com/hub/soccer",
+          "world cup",
+          "mc complete - state & national",
+          "stadium tips traffic",
+          "super bowl",
+          "levi's stadium",
+          "nba all-star game",
+          "a wire",
+          "santa cruz beach boardwalk",
+          "half moon bay",
+          "sonoma"
+        ],
+        "creator": [
+          "janie mccauley"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 13:02:00",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 23:02:53",
+        "image_url": "https://s.hdnux.com/photos/01/66/27/21/31028330/3/square_large.jpg",
+        "video_url": null,
+        "source_id": "houstonchronicle",
+        "source_name": "Houston Chronicle",
+        "source_priority": 11209,
+        "source_url": "https://www.houstonchronicle.com",
+        "source_icon": "https://n.bytvi.com/houstonchronicle.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
+      },
+      {
+        "article_id": "c1265a450251781671ca059613287a60",
+        "link": "https://www.ctinsider.com/sports/article/from-nba-all-star-game-super-bowl-and-now-world-22273516.php",
+        "title": "From NBA All-Star Game, Super Bowl and now World Cup in a 16-month span, the Bay Area loves to host",
+        "description": "The Bay Area loves its big sporting events. From the NBA All-Star Game, Super Bowl and now World Cup all in a 16-month span, Northern California has been a non-stop host. And never before has the same...",
+        "content": "ONLY AVAILABLE IN PAID PLANS",
+        "keywords": [
+          "mustards grill",
+          "ap sports news",
+          "san francisco giants",
+          "bay area host committee",
+          "north beach",
+          "qatar",
+          "santa clara",
+          "san francisco 49ers",
+          "raimondi park",
+          "mission district",
+          "stadium tips traffic",
+          "nba all-star game",
+          "china basin",
+          "mc complete - state & national",
+          "levi's stadium",
+          "sam",
+          "oakland ballers",
+          "https://apnews.com/hub/soccer",
+          "world cup text",
+          "world cup"
+        ],
+        "creator": [
+          "janie mccauley"
+        ],
+        "language": "english",
+        "country": [
+          "united states of america"
+        ],
+        "category": [
+          "top",
+          "sports"
+        ],
+        "datatype": "news",
+        "pubDate": "2026-05-23 13:02:00",
+        "pubDateTZ": "UTC",
+        "fetched_at": "2026-05-23 15:05:06",
+        "image_url": "https://s.hdnux.com/photos/01/66/27/21/31028330/3/square_large.jpg",
+        "video_url": null,
+        "source_id": "ctinsider",
+        "source_name": "Ct Insider",
+        "source_priority": 27433,
+        "source_url": "https://www.ctinsider.com",
+        "source_icon": "https://n.bytvi.com/ctinsider.png",
+        "sentiment": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "sentiment_stats": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_tag": "ONLY AVAILABLE IN PROFESSIONAL AND CORPORATE PLANS",
+        "ai_region": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_org": "ONLY AVAILABLE IN CORPORATE PLANS",
+        "ai_summary": "ONLY AVAILABLE IN PAID PLANS",
+        "duplicate": true
       }
     ]
   }
