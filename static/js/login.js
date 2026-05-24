@@ -10,8 +10,25 @@ function load() {
     var a = localStorage.getItem("TaiKhoanDangNhap");
     b[0].textContent = `Welcome, ${a}`;
     b[1].textContent = `Welcome, ${a}`;
+    b[0].style.width = "auto";
     b[1].style.width = "auto";
 
+    // Disable the login modal trigger on the nav link when logged in
+    b[0].onclick = (e) => e.preventDefault();
+
+    // Inject dropdown into parent menu-item (once only)
+    const menuItem = b[0].closest ? b[0].closest('.menu-item') : b[0].parentElement;
+    if (menuItem && !menuItem.querySelector('.user-dropdown')) {
+      menuItem.classList.add('has-dropdown');
+      const dropdown = document.createElement('ul');
+      dropdown.className = 'user-dropdown';
+      dropdown.innerHTML = `<li><a href="#" class="dropdown-logout">Log Out</a></li>`;
+      menuItem.appendChild(dropdown);
+      dropdown.querySelector('.dropdown-logout').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('SignOut').click();
+      });
+    }
   }
 }
 let pdc;

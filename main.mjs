@@ -278,6 +278,22 @@ app.post("/admin/addproduct", requireAdmin, async (req, res) => {
     res.status(200).send();
 });
 
+const SHOE_SIZES = [
+  'M 3.5 / W 5',  'M 4 / W 5.5',  'M 4.5 / W 6',  'M 5 / W 6.5',
+  'M 5.5 / W 7',  'M 6 / W 7.5',  'M 6.5 / W 8',  'M 7 / W 8.5',
+  'M 7.5 / W 9',  'M 8 / W 9.5',  'M 8.5 / W 10', 'M 9 / W 10.5',
+  'M 9.5 / W 11', 'M 10 / W 11.5','M 10.5 / W 12','M 11 / W 12.5',
+  'M 11.5 / W 13','M 12 / W 13.5','M 12.5 / W 14','M 13 / W 14.5',
+  'M 13.5 / W 15','M 14 / W 15.5','M 15 / W 16.5','M 16 / W 17.5',
+  'M 17 / W 18.5','M 18 / W 19.5',
+];
+
+// Deterministic per-product seeded RNG (LCG) so OOS is stable across page loads
+function seededRng(seed) {
+  let s = seed >>> 0;
+  return () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 0x100000000; };
+}
+
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;
   const item = findbyproductname(db.data.products, itemName);
@@ -288,9 +304,25 @@ app.get("/store_item", async (req, res) => {
   const imagesHtml = item.images.map(img =>
     `<div class="gallery-slide"><img src="${img}" alt="${item.alt}" onerror="this.parentElement.remove()"></div>`
   ).join('');
-  const chipsHtml = item.options.map(o =>
-    `<button class="chip" data-value="${o}">${o}</button>`
-  ).join('');
+
+  const isShoe = item.filter === 'concert' || item.filter === 'band';
+  let optionsHtml;
+  if (isShoe) {
+    const rng = seededRng(item.id * 2654435761);
+    // Pick 3–5 OOS sizes from the popular middle range (indices 7–15, M 7 to M 11.5)
+    const pool = [7,8,9,10,11,12,13,14,15].sort(() => rng() - 0.5);
+    const oosSet = new Set(pool.slice(0, 3 + Math.floor(rng() * 3)));
+    optionsHtml = SHOE_SIZES.map((s, i) => {
+      const oos = oosSet.has(i);
+      return `<option value="${s}"${oos ? ' disabled data-oos="true"' : ''}>${s}${oos ? ' — Out of Stock' : ''}</option>`;
+    }).join('');
+  } else {
+    optionsHtml = item.options.map(o => `<option value="${o}">${o}</option>`).join('');
+  }
+  const selectLabel = isShoe ? 'Select Size' : (
+    item.options.some(o => /^\d+(\.\d+)?$|^(XS|S|M|L|XL|2XL|XXL|3XL|XXXL|US\s*\d)/i.test(o.trim()))
+      ? 'Select Size' : 'Select Color'
+  );
   // Safe JSON for inline JS — avoids quote-escaping issues
   const productJson = JSON.stringify({ cartpic: item.cartpic, name: item.name, price: usdPrice, id: item.id });
   const html = `<!DOCTYPE html>
@@ -352,123 +384,163 @@ app.get("/store_item", async (req, res) => {
       display: block;
     }
 
-    /* Sticky bar — hidden off-screen until scroll */
+    /* ── Sticky bar ───────────────────────────────────── */
     .sticky-bar {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: #fff;
-      border-top: 1px solid #e0e0e0;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+      border-top: 1px solid #e8e8e8;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.1);
       z-index: 100;
       transform: translateY(100%);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .sticky-bar.visible { transform: translateY(0); }
 
-    /* Bar top row: name + price + buttons */
-    .bar-top {
+    .bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 62px;
+      padding: 0 28px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 16px 8px;
-      border-bottom: 1px solid #f0f0f0;
+      gap: 14px;
     }
+
     .bar-name {
       font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #1a1a1a;
-      flex: 1;
-      min-width: 0;
+      letter-spacing: 0.02em;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
     }
+
+    .size-select {
+      flex-shrink: 0;
+      height: 36px;
+      padding: 0 10px;
+      background: #fff;
+      border: 1px solid #d0d0d0;
+      color: #333;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .size-select:focus { border-color: #005ec4; }
+
     .bar-price {
       font-family: 'Chakra Petch', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       color: #f9495f;
       white-space: nowrap;
+      flex-shrink: 0;
     }
-    .btn {
+
+    .btn-add {
+      flex-shrink: 0;
       height: 40px;
-      padding: 0 16px;
+      padding: 0 26px;
+      background: #005ec4;
+      color: #fff;
       font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
       cursor: pointer;
       border: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      text-decoration: none;
       white-space: nowrap;
+      transition: background 0.2s, transform 0.1s;
     }
-    .btn-add  { background: #005ec4; color: #fff; }
     .btn-add:hover { background: #0051a8; }
-    .btn-view { background: #fff; color: #005ec4; border: 1px solid #005ec4; }
-    .btn-view:hover { color: #fa9f2c; border-color: #fa9f2c; }
+    .btn-add:active { transform: scale(0.97); }
 
-    /* Bar bottom row: size chips */
-    .bar-sizes { padding: 8px 16px 12px; }
-    .size-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 7px;
-    }
-    .size-header span {
+    .btn-view {
+      flex-shrink: 0;
+      height: 40px;
+      padding: 0 18px;
+      background: #fff;
+      color: #005ec4;
       font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #1a1a1a;
-    }
-    .size-header a {
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.72rem;
-      color: #888;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .chips-row {
+      letter-spacing: 0.1em;
+      border: 1px solid #005ec4;
+      text-decoration: none;
       display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 2px;
-    }
-    .chips-row::-webkit-scrollbar { display: none; }
-    .chip {
-      flex-shrink: 0;
-      height: 34px;
-      padding: 0 11px;
-      border: 1.5px solid #d0d0d0;
-      background: #fff;
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.76rem;
-      color: #1a1a1a;
-      cursor: pointer;
+      align-items: center;
       white-space: nowrap;
-      transition: border-color 0.12s, background 0.12s, color 0.12s;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .chip:hover { border-color: #1a1a1a; }
-    .chip.selected { border-color: #1a1a1a; background: #1a1a1a; color: #fff; }
+    .btn-view:hover { color: #fa9f2c; border-color: #fa9f2c; }
 
     @media (max-width: 600px) {
-      .bar-top { flex-wrap: wrap; }
-      .bar-name { flex-basis: 100%; }
+      .bar-inner { gap: 10px; padding: 0 14px; }
+      .btn-view { display: none; }
     }
+
+    /* Floating back button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px 9px 13px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 100px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #1a1a1a;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .back-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .back-btn.visible:hover {
+      transform: translateX(-3px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      background: rgba(255,255,255,0.97);
+    }
+    .back-btn-arrow {
+      font-size: 1rem;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+    .back-btn.visible:hover .back-btn-arrow { transform: translateX(-2px); }
   </style>
 </head>
 <body>
+
+  <a href="/store.html" class="back-btn">
+    <span class="back-btn-arrow">&#8592;</span>Store
+  </a>
 
   <div class="hero">
     <img id="heroImg" src="${item.banner}" alt="${item.name}">
@@ -479,44 +551,39 @@ app.get("/store_item", async (req, res) => {
   </div>
 
   <div class="sticky-bar" id="stickyBar">
-    <div class="bar-top">
+    <div class="bar-inner">
       <span class="bar-name">${item.name}</span>
+      <select class="size-select" id="sizeSelect">
+        <option value="" disabled selected>${selectLabel}</option>
+        ${optionsHtml}
+      </select>
       <span class="bar-price">${usdPrice}</span>
-      <button class="btn btn-add" id="addCartBtn">+ Add to Cart</button>
-      <a href="/cart.html" class="btn btn-view">View Cart</a>
-    </div>
-    <div class="bar-sizes">
-      <div class="size-header">
-        <span>Select Size</span>
-        <a href="https://www.nike.com/size-fit/unisex-footwear-mens-based" target="_blank" rel="noopener">Size Guide</a>
-      </div>
-      <div class="chips-row">${chipsHtml}</div>
+      <button class="btn-add" id="addCartBtn">Add to Cart</button>
+      <a href="/cart.html" class="btn-view">Cart</a>
     </div>
   </div>
 
   <script>
     const product = ${productJson};
-    let selectedSize = null;
 
-    // Show bar only after scrolling 60% past the hero
     const bar = document.getElementById('stickyBar');
+    const backBtn = document.querySelector('.back-btn');
     window.addEventListener('scroll', () => {
-      bar.classList.toggle('visible', window.scrollY >3);
+      const past = window.scrollY > 3;
+      bar.classList.toggle('visible', past);
+      backBtn.classList.toggle('visible', past);
     }, { passive: true });
 
-    // Size chip selection
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-        chip.classList.add('selected');
-        selectedSize = chip.dataset.value;
-      });
-    });
-
-    // Add to cart — require size first
     document.getElementById('addCartBtn').addEventListener('click', () => {
+      const sel = document.getElementById('sizeSelect');
+      const selectedSize = sel.value;
       if (!selectedSize) {
-        Swal.fire({ icon: 'info', title: 'Select a size', confirmButtonColor: '#005ec4' });
+        Swal.fire({ icon: 'info', title: '${selectLabel}', confirmButtonColor: '#005ec4' });
+        return;
+      }
+      const opt = sel.options[sel.selectedIndex];
+      if (opt && opt.dataset.oos === 'true') {
+        Swal.fire({ icon: 'error', title: 'Out of Stock', text: 'This size is sold out. Please choose another.', confirmButtonColor: '#005ec4' });
         return;
       }
       addsp(product.cartpic, product.name, selectedSize, product.price, product.id);

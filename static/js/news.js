@@ -13,14 +13,16 @@ function articleHTML(item) {
       <span class="month">${months[d.getMonth()]}</span>
     </div>
     <div class="featured-image">
-      <img src="${item.image_url}" alt="${item.title}">
+      <a href="${item.link}" target="_blank" rel="noopener">
+        <img src="${item.image_url}" alt="${item.title}">
+      </a>
     </div>
     <h2 class="entry-title" style="margin-bottom:0">
-      <a href="${item.link}">${item.title}</a>
+      <a href="${item.link}" target="_blank" rel="noopener">${item.title}</a>
     </h2>
     <h3 style="margin-top:0">${("0"+d.getHours()).slice(-2)}:${("0"+d.getMinutes()).slice(-2)}</h3>
     <p>${item.description ? (item.description.length > 160 ? item.description.slice(0, 160) + '…' : item.description) : ''}</p>
-    <a href="${item.link}">Read more</a>
+    <a href="${item.link}" target="_blank" rel="noopener">Read more</a>
   </div>`;
 }
 

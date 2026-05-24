@@ -1,147 +1,177 @@
-/* Full-width input fields */
-input[type=text],
-input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+/* ── Auth Modal ─────────────────────────────────────────── */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  overflow: auto;
+  padding-top: 0;
 }
 
-
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
+.auth-card {
+  background: #141414;
+  border: 1px solid #222;
+  border-top: 3px solid #fd5927;
+  width: 420px;
+  max-width: 94vw;
+  margin: 6vh auto 60px;
   position: relative;
 }
 
-img.avatar {
-  width: 20%;
-  border-radius: 50%;
-
-}
-
-.homchua {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-
-}
-
-/* The Modal (background) */
-.modal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 100;
-  /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto;
-  /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%;
-  /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
+/* Close */
+.auth-close {
   position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
+  top: 14px; right: 16px;
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
+  padding: 4px 6px;
+  transition: color 0.2s;
+  z-index: 10;
 }
+.auth-close:hover { color: #fd5927; }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
+/* Hero */
+.auth-hero {
+  background: #0a0a0a;
+  text-align: center;
+  padding: 32px 20px 22px;
+  border-bottom: 1px solid #1e1e1e;
 }
-
-@-webkit-keyframes animatezoom {
-  from {
-    transform: scale(0)
-  }
-
-  to {
-    transform: scale(1)
-  }
+.auth-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #fd5927;
+  display: inline-block;
 }
-
-@keyframes animatezoom {
-  from {
-    transform: scale(0)
-  }
-
-  to {
-    transform: scale(1)
-  }
+.auth-brand-name {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #e8e8e8;
+  margin-top: 12px;
 }
+.auth-brand-name span { color: #fd5927; }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-
-  .cancelbtn {
-    width: 100%;
-  }
+/* Tabs */
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid #1e1e1e;
 }
-
-
-@media screen and (min-width: 615px) {
-
-  .button-thing {
-    display: flex;
-    justify-content: space-between;
-
-  }
-
-  .thing-button {
-    display: inline-block;
-  }
-
+.auth-tab {
+  flex: 1;
+  padding: 14px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
 }
+.auth-tab:hover { color: #aaa; }
+.auth-tab.active { color: #fd5927; border-bottom-color: #fd5927; }
 
-@media screen and (max-width: 615px) {
-  .button-thing {
-    margin-top: 1em;
-  }
+/* Body */
+.auth-body { padding: 26px 28px 30px; }
+
+.auth-field { margin-bottom: 16px; }
+.auth-label {
+  display: block;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #555;
+  margin-bottom: 6px;
 }
+.auth-input {
+  width: 100%;
+  padding: 11px 14px;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  color: #f0f0f0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.82rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  margin: 0;
+}
+.auth-input:focus { border-color: #fd5927; }
+.auth-input::placeholder { color: #383838; }
+
+/* Forgot */
+.auth-forgot-row {
+  text-align: right;
+  margin-bottom: 18px;
+  margin-top: -4px;
+}
+.auth-forgot {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.67rem;
+  color: #484848;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.auth-forgot:hover { color: #888; }
+
+/* Submit */
+.auth-submit {
+  width: 100%;
+  padding: 13px;
+  background: #fd5927;
+  border: none;
+  color: #fff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-bottom: 18px;
+  display: block;
+  box-sizing: border-box;
+}
+.auth-submit:hover { background: #e8481e; }
+.auth-submit:active { transform: scale(0.99); }
+
+/* Switch line */
+.auth-switch-text {
+  text-align: center;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.7rem;
+  color: #484848;
+  margin: 0;
+}
+.auth-switch-link { color: #fd5927; text-decoration: none; }
+.auth-switch-link:hover { text-decoration: underline; }
+
+/* Hidden signout */
+#SignOut { display: none !important; }
+
+/* Animation */
+@keyframes authIn {
+  from { opacity: 0; transform: scale(0.94) translateY(-12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate { animation: authIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
