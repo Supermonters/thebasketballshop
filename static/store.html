@@ -83,6 +83,7 @@
 						<li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
 						<li class="menu-item current-menu-item"><a href="store.html" class="nav-link">Store</a></li>
 						<li class="menu-item"><a href="trend.html" class="nav-link">Trends</a></li>
+						<li class="menu-item"><a href="upcoming.html" class="nav-link">Upcoming</a></li>
 						<li class="menu-item"><a href="news.html" class="nav-link">News</a></li>
 						<li class="menu-item"><a href="about.html" class="nav-link">About Us</a></li>
 						<li class="menu-item"><a href="cart.html" class="nav-link">Cart<span id="countItem" class="text-brand">(0)</span></a></li>
@@ -152,19 +153,25 @@
 				<div class="mx-auto px-4 max-w-[1170px]">
 					<div class="content fullwidth">
 						<h2 class="entry-title">Store</h2>
-						<div class="filter-links filterable-nav">
-							<select class="mobile-filter">
-								<option value="*">Filter</option>
-								<option value=".concert">Nike</option>
-								<option value=".band">Other Brands</option>
-								<option value=".stuff">Accessories</option>
+						<div class="store-filter-bar">
+							<input type="text" id="store-search" class="store-filter-input" placeholder="Search by name…" autocomplete="off">
+							<select id="store-category" class="store-filter-select" title="Filter by category">
+								<option value="">All categories</option>
+								<option value="concert">Nike / Jordan</option>
+								<option value="band">Other Brands</option>
+								<option value="stuff">Accessories</option>
 							</select>
-							<a href="#" class="current" data-filter="*">All</a>
-							<a href="#" data-filter=".concert">Nike</a>
-							<a href="#" data-filter=".band">Other Brands</a>
-							<a href="#" data-filter=".stuff">Accessories</a>
+							<select id="store-sort" class="store-filter-select" title="Sort by">
+								<option value="default">Sort: Default</option>
+								<option value="name-asc">Name A–Z</option>
+								<option value="name-desc">Name Z–A</option>
+								<option value="price-asc">Price: Low to High</option>
+								<option value="price-desc">Price: High to Low</option>
+								<option value="newest">Newest First</option>
+								<option value="oldest">Oldest First</option>
+							</select>
 						</div>
-						<div class="filterable-items"></div>
+						<div id="store-grid" class="store-grid"></div>
 					</div>
 				</div>
 			</div>

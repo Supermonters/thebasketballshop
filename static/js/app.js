@@ -28,24 +28,6 @@
       nextText: "<i class='fa fa-caret-right'></i>",
     });
 
-    var eventCarousel = $(".event-carousel");
-    eventCarousel.owlCarousel({
-      autoPlay: 3000, //Set AutoPlay to 3 seconds
-      rewindNav: false,
-      items: 4,
-      itemsDesktop: [1199, 3],
-      itemsDesktopSmall: [979, 3],
-    });
-    // Custom Navigation Events
-    $("#event-next").click(function (e) {
-      e.preventDefault();
-      eventCarousel.trigger("owl.next");
-    });
-    $("#event-prev").click(function (e) {
-      e.preventDefault();
-      eventCarousel.trigger("owl.prev");
-    });
-
     var $container = $(".filterable-items");
 
     $container.imagesLoaded(function () {

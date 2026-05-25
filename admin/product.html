@@ -29,6 +29,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           Trending Players
         </button>
+        <button type="button" class="sb-link" data-tab="upcoming">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Upcoming Releases
+        </button>
       </nav>
 
       <button type="button" class="sb-signout" id="signout">
@@ -140,6 +144,53 @@
         </form>
       </section>
 
+      <!-- Upcoming Releases tab -->
+      <section id="tab-upcoming" class="tab">
+        <div class="tab-head">
+          <div>
+            <h1>Upcoming Releases <span id="upcoming-count" class="count-badge"></span></h1>
+            <p class="tab-sub">Manage the upcoming shoe releases shown on the homepage.</p>
+          </div>
+          <button type="button" class="btn-primary" id="open-add-upcoming">+ Add Release</button>
+        </div>
+        <div id="upcoming-list" class="shoe-gallery-list">
+          <div class="loading-state">Loading releases…</div>
+        </div>
+        <form id="upcoming-form" class="add-form shoe-gallery-form hidden" autocomplete="off">
+          <div class="form-grid">
+            <div class="form-col">
+              <div class="field">
+                <label class="field-label" for="up-name">Shoe Name <span class="req">*</span></label>
+                <input type="text" class="field-input" id="up-name" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="up-date">Release Date <span class="req">*</span></label>
+                <input type="date" class="field-input" id="up-date" required>
+              </div>
+              <div class="field">
+                <label class="field-label" for="up-link">Source URL <span class="field-hint">— e.g. SneakerNews article</span></label>
+                <input type="url" class="field-input" id="up-link" placeholder="https://sneakernews.com/…">
+              </div>
+            </div>
+            <div class="form-col">
+              <div class="field">
+                <label class="field-label" for="up-image">Image URL <span class="req">*</span></label>
+                <input type="url" class="field-input" id="up-image" required placeholder="https://…">
+              </div>
+              <div class="field">
+                <label class="field-label" for="up-desc">Description</label>
+                <textarea class="field-input" id="up-desc" rows="5" placeholder="Short description of the release…"></textarea>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="up-id">
+          <div class="form-footer">
+            <button type="submit" class="btn-primary" id="up-submit">Save Release</button>
+            <button type="button" class="btn-ghost" id="up-cancel">Cancel</button>
+          </div>
+        </form>
+      </section>
+
     </main>
   </div>
 
@@ -165,8 +216,8 @@
             <input type="text" class="field-input" id="alt" placeholder="Descriptive alt text" required>
           </div>
           <div class="field">
-            <label class="field-label" for="price">Price (VND) <span class="req">*</span></label>
-            <input type="text" class="field-input" id="price" placeholder="e.g. 2.089.000" required>
+            <label class="field-label" for="price">Price (USD) <span class="req">*</span></label>
+            <input type="text" class="field-input" id="price" placeholder="e.g.  $100" required>
           </div>
           <div class="field">
             <label class="field-label" for="filter">Category / Filter <span class="req">*</span></label>
@@ -204,13 +255,11 @@
           </div>
           <div class="field">
             <label class="field-label">Options (sizes / colors) <span class="req">*</span></label>
-            <div id="options-list" class="multi-list">
-              <div class="multi-row">
-                <input type="text" class="field-input options" placeholder="e.g. Black or M 9 / W 10.5" aria-label="Product option">
-                <button type="button" class="btn-remove-row" onclick="removeRow(this)" aria-label="Remove">✕</button>
-              </div>
+            <div id="options-list" class="multi-list"></div>
+            <div class="options-btns">
+              <button type="button" class="btn-add-row" id="add-option-row">+ Add Option</button>
+              <button type="button" class="btn-fill-sizes" id="fill-shoe-sizes" title="Pre-fill with standard M/W shoe sizes (M 7 – M 15)">Fill Shoe Sizes</button>
             </div>
-            <button type="button" class="btn-add-row" onclick="addRow('options-list','options','e.g. Black or M 9 / W 10.5')">+ Add Option</button>
           </div>
           <div class="form-footer">
             <button type="submit" class="btn-primary" id="submit-product">Add Product</button>

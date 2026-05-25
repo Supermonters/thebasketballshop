@@ -420,21 +420,55 @@ app.put("/admin/shoe-gallery/:rank", requireAdmin, async (req, res) => {
     res.status(200).json({ player: gallery[idx] });
 });
 
-const SHOE_SIZES = [
-  'M 3.5 / W 5',  'M 4 / W 5.5',  'M 4.5 / W 6',  'M 5 / W 6.5',
-  'M 5.5 / W 7',  'M 6 / W 7.5',  'M 6.5 / W 8',  'M 7 / W 8.5',
-  'M 7.5 / W 9',  'M 8 / W 9.5',  'M 8.5 / W 10', 'M 9 / W 10.5',
-  'M 9.5 / W 11', 'M 10 / W 11.5','M 10.5 / W 12','M 11 / W 12.5',
-  'M 11.5 / W 13','M 12 / W 13.5','M 12.5 / W 14','M 13 / W 14.5',
-  'M 13.5 / W 15','M 14 / W 15.5','M 15 / W 16.5','M 16 / W 17.5',
-  'M 17 / W 18.5','M 18 / W 19.5',
-];
 
-// Deterministic per-product seeded RNG (LCG) so OOS is stable across page loads
-function seededRng(seed) {
-  let s = seed >>> 0;
-  return () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 0x100000000; };
-}
+// ── Upcoming Releases ──────────────────────────────────────────
+app.get("/upcoming-releases", async (req, res) => {
+  await db.read();
+  res.set("Cache-Control", "no-store");
+  res.json({ releases: (db.data.upcomingReleases || []).sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate)) });
+});
+
+app.get("/admin/upcoming-releases", requireAdmin, async (req, res) => {
+  await db.read();
+  res.set("Cache-Control", "no-store");
+  res.json({ releases: (db.data.upcomingReleases || []).sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate)) });
+});
+
+app.post("/admin/upcoming-releases", requireAdmin, async (req, res) => {
+  const { name, imageUrl, linkUrl, releaseDate, description } = req.body;
+  if (!name || !imageUrl || !releaseDate) return res.status(400).send();
+  await db.read();
+  if (!Array.isArray(db.data.upcomingReleases)) db.data.upcomingReleases = [];
+  const id = db.data.upcomingReleases.reduce((max, r) => Math.max(max, r.id || 0), 0) + 1;
+  const item = { id, name, imageUrl, linkUrl: linkUrl || "", releaseDate, description: description || "" };
+  db.data.upcomingReleases.push(item);
+  db.data.upcomingReleases.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
+  await db.write();
+  res.status(200).json({ release: item });
+});
+
+app.put("/admin/upcoming-releases/:id", requireAdmin, async (req, res) => {
+  await db.read();
+  const id = parseInt(req.params.id, 10);
+  const idx = (db.data.upcomingReleases || []).findIndex(r => r.id === id);
+  if (idx === -1) return res.status(404).send();
+  const { name, imageUrl, linkUrl, releaseDate, description } = req.body;
+  if (!name || !imageUrl || !releaseDate) return res.status(400).send();
+  db.data.upcomingReleases[idx] = { id, name, imageUrl, linkUrl: linkUrl || "", releaseDate, description: description || "" };
+  db.data.upcomingReleases.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
+  await db.write();
+  res.status(200).json({ release: db.data.upcomingReleases.find(r => r.id === id) });
+});
+
+app.delete("/admin/upcoming-releases/:id", requireAdmin, async (req, res) => {
+  await db.read();
+  const id = parseInt(req.params.id, 10);
+  const idx = (db.data.upcomingReleases || []).findIndex(r => r.id === id);
+  if (idx === -1) return res.status(404).send();
+  db.data.upcomingReleases.splice(idx, 1);
+  await db.write();
+  res.status(200).send();
+});
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;
@@ -448,22 +482,14 @@ app.get("/store_item", async (req, res) => {
   ).join('');
 
   const isShoe = item.filter === 'concert' || item.filter === 'band';
-  let optionsHtml;
-  if (isShoe) {
-    const rng = seededRng(item.id * 2654435761);
-    // Pick 3–5 OOS sizes from the popular middle range (indices 7–15, M 7 to M 11.5)
-    const pool = [7,8,9,10,11,12,13,14,15].sort(() => rng() - 0.5);
-    const oosSet = new Set(pool.slice(0, 3 + Math.floor(rng() * 3)));
-    optionsHtml = SHOE_SIZES.map((s, i) => {
-      const oos = oosSet.has(i);
-      return `<option value="${s}"${oos ? ' disabled data-oos="true"' : ''}>${s}${oos ? ' — Out of Stock' : ''}</option>`;
-    }).join('');
-  } else {
-    optionsHtml = item.options.map(o => `<option value="${o}">${o}</option>`).join('');
-  }
+  // Normalize options: accept both legacy string[] and new {size,oos}[] format
+  const opts = (item.options || []).map(o => typeof o === 'string' ? { size: o, oos: false } : o);
+  const optionsHtml = opts.map(o =>
+    `<option value="${o.size}"${o.oos ? ' disabled data-oos="true"' : ''}>${o.size}${o.oos ? ' — Out of Stock' : ''}</option>`
+  ).join('');
   const selectLabel = isShoe ? 'Select Size' : (
-    item.options.some(o => /^\d+(\.\d+)?$|^(XS|S|M|L|XL|2XL|XXL|3XL|XXXL|US\s*\d)/i.test(o.trim()))
-      ? 'Select Size' : 'Select Color'
+    opts.some(o => /^\d+(\.\d+)?$|^(XS|S|M|L|XL|2XL|XXL|3XL|XXXL|US\s*\d)/i.test((o.size || '').trim()))
+      ? 'Select Size' : 'Select Option'
   );
   // Safe JSON for inline JS — avoids quote-escaping issues
   const productJson = JSON.stringify({ cartpic: item.cartpic, name: item.name, price: usdPrice, id: item.id });

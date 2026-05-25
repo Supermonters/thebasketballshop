@@ -395,6 +395,90 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
 #imagelightbox-close::before, #imagelightbox-close::after { width: 2px; background-color: #fff; content: ""; position: absolute; top: 20%; bottom: 20%; left: 50%; margin-left: -1px; }
 #imagelightbox-close::before { transform: rotate(45deg); }
 #imagelightbox-close::after { transform: rotate(-45deg); }
+
+/* === Store filter bar & product grid ====================== */
+.store-filter-bar {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 28px;
+	flex-wrap: wrap;
+}
+.store-filter-input,
+.store-filter-select {
+	padding: 10px 14px;
+	background: #1a1a1a;
+	border: 1px solid #2a2a2a;
+	border-radius: 5px;
+	color: #e8e8e8;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 0.85rem;
+	outline: none;
+	transition: border-color 0.2s;
+}
+.store-filter-input:focus,
+.store-filter-select:focus { border-color: #fd5927; }
+.store-filter-input { flex: 1; min-width: 180px; }
+.store-filter-select { cursor: pointer; -webkit-appearance: none; appearance: none; padding-right: 28px; }
+.store-filter-input::placeholder { color: #444; }
+
+.store-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	gap: 20px;
+}
+.store-card {
+	background: #1a1a1a;
+	border: 1px solid #222;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: border-color 0.2s;
+}
+.store-card:hover { border-color: #fd5927; }
+.store-card-link { display: block; text-decoration: none; color: inherit; }
+.store-card-fig {
+	margin: 0;
+	background: #111;
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.store-card-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+	padding: 12px;
+	transition: transform 0.3s ease;
+}
+.store-card:hover .store-card-img { transform: scale(1.04); }
+.store-card-info {
+	padding: 12px 16px 14px;
+	border-top: 1px solid #222;
+}
+.store-card-name {
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: #e8e8e8;
+	margin: 0 0 4px;
+	line-height: 1.35;
+	letter-spacing: 0.02em;
+}
+.store-card-price {
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: #fd5927;
+	margin: 0;
+}
+.store-empty {
+	color: #555;
+	font-size: 0.9rem;
+	padding: 48px 0;
+	text-align: center;
+	grid-column: 1 / -1;
+}
 #imagelightbox-caption { text-align: center; color: #fff; background-color: #666; position: fixed; z-index: 10001; left: 0; right: 0; bottom: 0; padding: .625em; }
 #imagelightbox-nav { background-color: rgba(0,0,0,.5); border-radius: 20px; position: fixed; z-index: 10001; left: 50%; bottom: 3.75em; padding: .313em; transform: translateX(-50%); }
 #imagelightbox-nav button { width: 1em; height: 1em; background-color: transparent; border: 1px solid #fff; border-radius: 50%; display: inline-block; margin: 0 .313em; }

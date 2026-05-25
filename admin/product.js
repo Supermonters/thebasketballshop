@@ -6,7 +6,8 @@
   document.querySelectorAll(".sb-link").forEach(btn => {
     btn.addEventListener("click", () => {
       switchTab(btn.dataset.tab);
-      if (btn.dataset.tab === "players") loadShoeGallery();
+      if (btn.dataset.tab === "players")  loadShoeGallery();
+      if (btn.dataset.tab === "upcoming") loadUpcomingReleases();
     });
   });
 
@@ -253,7 +254,7 @@
     document.getElementById("mouseoverpic").value = product.mouseover || "";
     document.getElementById("mouseoutpic").value = product.mouseout || "";
     setRows("images-list", "images", "Image URL", product.images);
-    setRows("options-list", "options", "e.g. Black or M 9 / W 10.5", product.options);
+    setOptionRows(product.options);
     openDrawer();
     drawer.querySelector(".drawer-body").scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -444,7 +445,10 @@
       mouseout:  document.getElementById("mouseoutpic").value,
       cartpic:   document.getElementById("cartpic").value,
       images: [...document.getElementsByClassName("images")].map(el => el.value).filter(Boolean),
-      options: [...document.getElementsByClassName("options")].map(el => el.value).filter(Boolean),
+      options: [...document.querySelectorAll("#options-list .option-row")].map(row => ({
+        size: row.querySelector(".option-size").value.trim(),
+        oos:  row.querySelector(".option-oos").checked,
+      })).filter(o => o.size),
     };
   }
 
@@ -456,8 +460,65 @@
     document.getElementById("cancel-edit").classList.add("hidden");
     document.getElementById("add-form").reset();
     setRows("images-list", "images", "Image URL", [""]);
-    setRows("options-list", "options", "e.g. Black or M 9 / W 10.5", [""]);
+    setOptionRows([]);
   }
+
+  // ── Option rows (size + OOS toggle) ───────────────────────
+  const SHOE_SIZES = [
+    'M 3.5 / W 5',  'M 4 / W 5.5',  'M 4.5 / W 6',  'M 5 / W 6.5',
+    'M 5.5 / W 7',  'M 6 / W 7.5',  'M 6.5 / W 8',  'M 7 / W 8.5',
+    'M 7.5 / W 9',  'M 8 / W 9.5',  'M 8.5 / W 10', 'M 9 / W 10.5',
+    'M 9.5 / W 11', 'M 10 / W 11.5','M 10.5 / W 12','M 11 / W 12.5',
+    'M 11.5 / W 13','M 12 / W 13.5','M 12.5 / W 14','M 13 / W 14.5',
+    'M 13.5 / W 15','M 14 / W 15.5','M 15 / W 16.5','M 16 / W 17.5',
+    'M 17 / W 18.5','M 18 / W 19.5',
+  ];
+
+  window.addOptionRow = (size = "", oos = false) => {
+    const row = document.createElement("div");
+    row.className = "multi-row option-row";
+    row.innerHTML = `
+      <input type="text" class="field-input option-size" placeholder="M 9 / W 10.5 or Black" aria-label="Option" value="${escapeAttr(size)}">
+      <label class="oos-toggle" title="Toggle Out of Stock">
+        <input type="checkbox" class="option-oos"${oos ? " checked" : ""}>
+        <span class="oos-pill">OOS</span>
+      </label>
+      <button type="button" class="btn-remove-row" onclick="removeRow(this)" aria-label="Remove">✕</button>`;
+    document.getElementById("options-list").appendChild(row);
+  };
+
+  function setOptionRows(values) {
+    document.getElementById("options-list").innerHTML = "";
+    const rows = Array.isArray(values) && values.length ? values : [{ size: "", oos: false }];
+    rows.forEach(v => {
+      const size = typeof v === "string" ? v : (v.size || "");
+      const oos  = typeof v === "string" ? false : (v.oos || false);
+      addOptionRow(size, oos);
+    });
+  }
+
+  document.getElementById("add-option-row").addEventListener("click", () => addOptionRow());
+
+  document.getElementById("fill-shoe-sizes").addEventListener("click", async () => {
+    const existing = [...document.querySelectorAll("#options-list .option-row")];
+    const hasData = existing.some(r => r.querySelector(".option-size").value.trim());
+    if (hasData) {
+      const { isConfirmed } = await Swal.fire({
+        title: "Replace current options?",
+        text: "This will overwrite all existing options with the standard M/W shoe size chart.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Replace",
+        confirmButtonColor: "#fd5927",
+        cancelButtonColor: "#333",
+        background: "#141414",
+        color: "#e8e8e8",
+      });
+      if (!isConfirmed) return;
+    }
+    document.getElementById("options-list").innerHTML = "";
+    SHOE_SIZES.forEach(s => addOptionRow(s, false));
+  });
 
   // ── Multi-row helpers (global so onclick= works) ───────────
   window.addRow = (listId, cls, placeholder) => {
@@ -490,6 +551,149 @@
     const list = btn.closest(".multi-list");
     if (list.querySelectorAll(".multi-row").length > 1) btn.closest(".multi-row").remove();
   };
+
+  // ── Upcoming Releases ──────────────────────────────────────
+  let upcomingCache = [];
+  let editingUpcomingId = null;
+
+  function fmtRelDate(iso) {
+    if (!iso) return { day: "—", month: "—" };
+    const d = new Date(iso + "T00:00:00Z");
+    return {
+      day:   d.getUTCDate(),
+      month: d.toLocaleString("en-US", { month: "short", timeZone: "UTC" }),
+      year:  d.getUTCFullYear(),
+    };
+  }
+
+  async function loadUpcomingReleases() {
+    const list = document.getElementById("upcoming-list");
+    list.innerHTML = '<div class="loading-state">Loading releases…</div>';
+    let releases;
+    try {
+      const res = await fetch("/admin/upcoming-releases", { cache: "no-store" });
+      if (!res.ok) throw new Error(res.status);
+      ({ releases } = await res.json());
+    } catch (err) {
+      list.innerHTML = '<div class="loading-state">Failed to load — check the server is running.</div>';
+      return;
+    }
+    upcomingCache = releases;
+    document.getElementById("upcoming-count").textContent = releases.length;
+
+    if (!releases.length) {
+      list.innerHTML = '<div class="loading-state">No releases yet — add one above.</div>';
+      return;
+    }
+
+    list.innerHTML = releases.map(r => {
+      const { day, month, year } = fmtRelDate(r.releaseDate);
+      return `
+        <div class="shoe-gallery-row" data-id="${r.id}">
+          <div class="upcoming-date-badge">
+            <span class="up-day">${day}</span>
+            <span class="up-month">${month} ${year}</span>
+          </div>
+          <img class="upcoming-thumb" src="${r.imageUrl}" alt="${r.name}" onerror="this.style.opacity='0.2'">
+          <div>
+            <div class="shoe-gallery-name">${r.name}</div>
+            <div class="shoe-gallery-detail">${r.description ? r.description.slice(0, 80) + (r.description.length > 80 ? "…" : "") : "No description"}</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button type="button" class="btn-edit" data-id="${r.id}">Edit</button>
+            <button type="button" class="btn-delete up-delete" data-id="${r.id}">Delete</button>
+          </div>
+        </div>`;
+    }).join("");
+
+    list.querySelectorAll(".btn-edit").forEach(btn =>
+      btn.addEventListener("click", () => editUpcoming(parseInt(btn.dataset.id, 10)))
+    );
+    list.querySelectorAll(".up-delete").forEach(btn =>
+      btn.addEventListener("click", () => deleteUpcoming(parseInt(btn.dataset.id, 10)))
+    );
+  }
+
+  function openUpcomingForm() {
+    document.getElementById("upcoming-form").classList.remove("hidden");
+    document.getElementById("upcoming-form").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function resetUpcomingForm() {
+    editingUpcomingId = null;
+    document.getElementById("upcoming-form").reset();
+    document.getElementById("up-id").value = "";
+    document.getElementById("up-submit").textContent = "Save Release";
+    document.getElementById("upcoming-form").classList.add("hidden");
+  }
+
+  function editUpcoming(id) {
+    const item = upcomingCache.find(r => r.id === id);
+    if (!item) return;
+    editingUpcomingId = id;
+    document.getElementById("up-id").value = id;
+    document.getElementById("up-name").value = item.name || "";
+    document.getElementById("up-date").value = item.releaseDate || "";
+    document.getElementById("up-link").value = item.linkUrl || "";
+    document.getElementById("up-image").value = item.imageUrl || "";
+    document.getElementById("up-desc").value = item.description || "";
+    document.getElementById("up-submit").textContent = "Save Changes";
+    openUpcomingForm();
+  }
+
+  async function deleteUpcoming(id) {
+    const item = upcomingCache.find(r => r.id === id);
+    const { isConfirmed } = await Swal.fire({
+      title: "Delete release?",
+      text: item?.name || "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      confirmButtonColor: "#e53935",
+      cancelButtonColor: "#333",
+      background: "#141414",
+      color: "#e8e8e8",
+    });
+    if (!isConfirmed) return;
+    const r = await fetch(`/admin/upcoming-releases/${id}`, { method: "DELETE" });
+    if (r.ok) {
+      loadUpcomingReleases();
+    } else {
+      Swal.fire({ icon: "error", title: "Failed to delete", background: "#141414", color: "#e8e8e8" });
+    }
+  }
+
+  document.getElementById("open-add-upcoming").addEventListener("click", () => {
+    resetUpcomingForm();
+    openUpcomingForm();
+  });
+
+  document.getElementById("up-cancel").addEventListener("click", resetUpcomingForm);
+
+  document.getElementById("upcoming-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const body = {
+      name:        document.getElementById("up-name").value.trim(),
+      releaseDate: document.getElementById("up-date").value,
+      linkUrl:     document.getElementById("up-link").value.trim(),
+      imageUrl:    document.getElementById("up-image").value.trim(),
+      description: document.getElementById("up-desc").value.trim(),
+    };
+    const isEditing = editingUpcomingId !== null;
+    const url = isEditing ? `/admin/upcoming-releases/${editingUpcomingId}` : "/admin/upcoming-releases";
+    const r = await fetch(url, {
+      method: isEditing ? "PUT" : "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (r.ok) {
+      await Swal.fire({ icon: "success", title: isEditing ? "Release updated!" : "Release added!", showConfirmButton: false, timer: 1400, background: "#141414", color: "#e8e8e8" });
+      resetUpcomingForm();
+      loadUpcomingReleases();
+    } else {
+      Swal.fire({ icon: "error", title: isEditing ? "Failed to update" : "Failed to add", background: "#141414", color: "#e8e8e8" });
+    }
+  });
 
   // ── Boot ───────────────────────────────────────────────────
   loadProducts();
