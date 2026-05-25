@@ -6,28 +6,34 @@ A review of the full codebase — `main.mjs`, admin panel, frontend JS, and the 
 
 ## 1. Critical Security Issues (fix these first)
 
-### Credentials stored in `config.json` and `db.json`
+### ~~Credentials stored in `config.json` and `db.json`~~
+- **Fixed:** Mail/news/Firebase/session values now come from environment variables, `config.json` and `db/db.json` are ignored, and admin passwords are migrated to bcrypt hashes on startup.
 - `config.json` contains plaintext email credentials and is committed to the repo.
 - `db.json` contains `"admins": { "admin": "admin" }` — the admin password is `admin`.
 - **Fix:** Use a `.env` file + `dotenv` package for secrets, add `.env` and `config.json` to `.gitignore`. Hash admin passwords with `bcrypt`.
 
-### Admin password sent over GET request
+### ~~Admin password sent over GET request~~
+- **Fixed:** `admin/login.js` now posts credentials to `/admin/login` with a JSON body.
 - `/admin/checklogin?username=…&password=…` sends credentials as URL query params — they appear in server logs, browser history, and referrer headers.
 - **Fix:** Change to a POST request with a JSON body.
 
-### Admin credentials stored in `localStorage`
+### ~~Admin credentials stored in `localStorage`~~
+- **Fixed:** Admin login now uses an `express-session` cookie and `/admin/checkauth`; credentials are not stored in browser `localStorage`.
 - `admin/login.js` stores `{ username, password }` in `localStorage` in plaintext. Any JavaScript on the page (including third-party scripts like Facebook SDK) can read it.
 - **Fix:** Use a signed session cookie (via `express-session`) instead, so credentials never touch the browser.
 
-### No rate limiting on auth endpoint
+### ~~No rate limiting on auth endpoint~~
+- **Fixed:** `/admin/login` is protected by `express-rate-limit`.
 - The `/admin/checklogin` endpoint can be brute-forced with no friction.
 - **Fix:** Add `express-rate-limit` to the auth route.
 
-### API key exposed in source code
+### ~~API key exposed in source code~~
+- **Fixed:** The NewsData key is read from `process.env.NEWS_API_KEY`.
 - `main.mjs` line 56 has a hardcoded `newsdata.io` API key in the source.
 - **Fix:** Move it to `.env`.
 
-### Firebase config keys exposed in `template.js`
+### ~~Firebase config keys exposed in `template.js`~~
+- **Fixed:** `template.js` now fetches Firebase config from `/firebase-config`, which is backed by environment variables. Still restrict Firebase keys to your real domains in the Firebase console.
 - The Firebase `apiKey`, `appId`, etc. are hardcoded in a public JS file.
 - **Fix:** These should be restricted to your domain in the Firebase console. Also move them to environment config loaded at build time, not embedded in static files.
 
@@ -69,7 +75,7 @@ A review of the full codebase — `main.mjs`, admin panel, frontend JS, and the 
 
 | Feature | Current state | Suggestion |
 |---|---|---|
-| Product editing/deletion | Admin can only add products | Add edit and delete endpoints with confirmation |
+| ~~Product editing/deletion~~ | ~~Admin can only add products~~ | ~~Add edit and delete endpoints with confirmation~~ Fixed: admin edit/delete endpoints and UI are present. |
 | Stock / inventory | Not tracked | Add a `stock` field per product |
 | Order history | Not tracked | Persist orders to the database on purchase |
 | User accounts & orders | Firebase auth exists but not connected to purchases | Link Firebase UID to orders on the server |
@@ -85,7 +91,8 @@ A review of the full codebase — `main.mjs`, admin panel, frontend JS, and the 
 - `GET /mail?mail=<address>` lets anyone send a newsletter email to any address from your server — this is an open email relay.
 - **Fix:** Require the user to be logged in, or add a CSRF token / rate limit.
 
-### `login.js` stores username from a text input as the display name
+### ~~`login.js` stores username from a text input as the display name~~
+- **Fixed:** Sign-in now uses the Firebase Auth user profile/email fallback, updates the welcome UI immediately, and database reads/writes are optional.
 - Sign-in stores whatever the user typed in the username field as `TaiKhoanDangNhap`, not the value from Firebase. If the user types the wrong name, the welcome message is wrong.
 - **Fix:** Store `user.displayName` from Firebase or fetch the username from the database using `user.uid`.
 
@@ -93,7 +100,8 @@ A review of the full codebase — `main.mjs`, admin panel, frontend JS, and the 
 - `static/js/ie-support/html5.js` and `respond.js` add weight for a browser with 0% market share.
 - **Fix:** Delete these files and the conditional comment that loads them.
 
-### Firebase SDK version 3.2.1 (from 2016)
+### ~~Firebase SDK version 3.2.1 (from 2016)~~
+- **Fixed:** Pages now load Firebase `10.12.0` compat SDKs. A future cleanup could still migrate from compat APIs to the modular v10 API.
 - `index.html` loads `firebasejs/3.2.1`. The current version is v10+. The old SDK is no longer receiving security patches.
 - **Fix:** Upgrade to the modular Firebase v10 SDK.
 
@@ -105,11 +113,13 @@ A review of the full codebase — `main.mjs`, admin panel, frontend JS, and the 
 
 ## 5. Developer Experience
 
-### `package.json` `test` script runs the app
+### ~~`package.json` `test` script runs the app~~
+- **Fixed:** `package.json` now has a proper `"start": "node main.mjs"` script and no fake `test` script.
 - `"test": "node main.mjs"` is not a test — it starts the server.
 - **Fix:** Add a proper `"start": "node main.mjs"` script, and either add tests or remove the `test` key.
 
-### No `.gitignore` for `node_modules` or secrets
+### ~~No `.gitignore` for `node_modules` or secrets~~
+- **Fixed:** `.gitignore` now includes `node_modules/`, `.env`, `config.json`, and `db/db.json`.
 - The repo appears to lack a `.gitignore`. `node_modules/` and `config.json` should both be ignored.
 - **Fix:** Add a `.gitignore` containing at minimum:
   ```
