@@ -67,6 +67,7 @@ input[type="submit"] { font-weight: 700; letter-spacing: 0.1em; text-transform: 
 }
 .swal2-title { font-weight: 700; letter-spacing: 0.03em; }
 .swal2-confirm, .swal2-cancel, .swal2-deny { font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.swal2-container { z-index: 99999 !important; }
 
 /* === Custom Scrollbar ===================================== */
 body::-webkit-scrollbar { background-color: black; width: 16px; }
