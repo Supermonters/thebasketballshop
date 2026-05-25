@@ -166,6 +166,52 @@
 .auth-switch-link { color: #fd5927; text-decoration: none; }
 .auth-switch-link:hover { text-decoration: underline; }
 
+/* Google sign-in button */
+.auth-google-btn {
+  width: 100%;
+  padding: 11px 14px;
+  background: #fff;
+  border: 1px solid #dadce0;
+  color: #3c4043;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.auth-google-btn:hover { background: #f7f8f8; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+.auth-google-btn:active { background: #eee; }
+.auth-google-btn .g-icon { flex-shrink: 0; }
+
+/* Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+  gap: 12px;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #2a2a2a;
+}
+.auth-divider span {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #444;
+}
+
 /* Hidden signout */
 #SignOut { display: none !important; }
 
