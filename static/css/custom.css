@@ -1173,3 +1173,61 @@ div#id01::-webkit-scrollbar-thumb { background-color: #babac0; border-radius: 16
   color: #555;
   font-size: 0.65rem;
 }
+
+/* ============================================================
+   RESPONSIVE: mobile / tablet overrides
+   Breakpoints: 768px (tablet), 480px (phone), 360px (small phone)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Hero slider */
+  .slider .slides li { min-height: 340px; }
+  .slider .slides .slide-title { font-size: 3em; }
+  .slider .slides .slide-subtitle { font-size: 1.8em; }
+  .slider .slides .slide-desc { font-size: 1.2em; }
+  .lazy-bg { height: 55vh; }
+
+  /* Section headings */
+  .section-title { font-size: 1.6em; margin-bottom: 24px; }
+}
+
+@media (max-width: 480px) {
+  /* Hero slider */
+  .slider .slides li { min-height: 240px; }
+  .slider .slides .slide-title { font-size: 2em; }
+  .slider .slides .slide-subtitle { font-size: 1.3em; }
+  .slider .slides .slide-desc { font-size: 1em; }
+  .lazy-bg { height: 42vh; }
+
+  /* Section headings */
+  .section-title { font-size: 1.35em; }
+
+  /* Store: tighter grid + stacked filter bar */
+  .store-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .store-card-name { font-size: 0.78rem; }
+  .store-filter-bar { flex-direction: column; align-items: stretch; }
+  .store-filter-input,
+  .store-filter-select { width: 100%; min-width: 0; }
+
+  /* Trends: keep player rows on one line at phone widths */
+  .shoe-img { width: 80px; height: 54px; }
+  .player-headshot { width: 40px; height: 40px; }
+  .player-ppg { font-size: 1.1rem; }
+  .player-row { gap: 10px; }
+
+  /* Shoe gallery cards */
+  .gallery-main { height: 200px; }
+
+  /* Gallery modal */
+  .gm-main-img { padding: 16px 44px; max-height: 240px; }
+  .gm-name { font-size: 0.9rem; }
+  .gm-arrow { width: 36px; height: 36px; font-size: 1.4rem; }
+  .gm-thumb { width: 56px; height: 40px; }
+
+  /* Nav login/welcome text inside the cloned mobile menu */
+  .welcomeUser { width: auto; max-width: 100%; }
+}
+
+@media (max-width: 360px) {
+  /* Drop the shoe thumbnail so player name + ppg always fit */
+  .shoe-img { display: none; }
+}

@@ -809,3 +809,42 @@ textarea.field-input { resize: vertical; min-height: 80px; line-height: 1.5; }
 .swal2-html-container,
 .swal2-confirm,
 .swal2-cancel { font-family: var(--font) !important; }
+
+/* ============================================================
+   RESPONSIVE: admin dashboard (tablet / phone)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Collapse the fixed left sidebar into a stacked top bar — pure CSS, no JS toggle. */
+  .shell { flex-direction: column; }
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .sb-brand { border-bottom: none; padding: 14px 16px; flex: 1 1 auto; }
+  .sb-nav { flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; padding: 8px 12px; gap: 6px; }
+  .sb-link { width: auto; flex: 0 0 auto; }
+  .sb-signout { margin: 8px 12px; width: auto; }
+  .main { margin-left: 0; padding: 24px 16px; }
+}
+
+@media (max-width: 600px) {
+  /* Single-column fields in the add/edit drawer */
+  .form-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .drawer-head { padding: 18px 16px 14px; }
+  .drawer-body { padding: 18px 16px 30px; }
+
+  /* Tighten data list rows so they fit narrow screens */
+  .shoe-gallery-row { grid-template-columns: 34px 50px minmax(0, 1fr) auto; gap: 10px; padding: 10px 12px; }
+  .upcoming-row { grid-template-columns: 56px 72px minmax(0, 1fr); gap: 12px; }
+  .upcoming-thumb { width: 72px; height: 52px; }
+}
