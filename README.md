@@ -19,7 +19,7 @@ The project has grown from a competition demo into a more complete full-stack le
 - Upcoming releases section for new basketball shoes
 - Newsletter subscription flow
 - Express server with session-based admin authentication
-- LowDB JSON storage for project data
+- Firebase Realtime Database for all project data (products, admins, hidden players, trending shoe gallery, upcoming releases, player-to-shoe mapping)
 - Environment variable configuration for secrets and API keys
 
 ## Project Background
@@ -32,9 +32,8 @@ Reaching the Top 24 finals in 2023 was a big milestone for us. More importantly,
 
 - Node.js
 - Express
-- LowDB
+- Firebase Realtime Database (server-side via firebase-admin, client-side for user metadata)
 - Firebase Auth
-- Firebase Realtime Database client, optional for user metadata
 - HTML, CSS, JavaScript
 - Tailwind CDN styles on static pages
 - SweetAlert2
@@ -58,6 +57,7 @@ MAILUSER=your-mail-user
 MAILPASSWORD=your-mail-password
 NEWS_API_KEY=your-news-api-key
 
+# Firebase web config (used by the browser for Auth)
 FIREBASE_API_KEY=your-firebase-api-key
 FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
 FIREBASE_DATABASE_URL=your-firebase-database-url
@@ -65,6 +65,18 @@ FIREBASE_PROJECT_ID=your-firebase-project-id
 FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket
 FIREBASE_MESSAGING_SENDER_ID=your-firebase-messaging-sender-id
 FIREBASE_APP_ID=your-firebase-app-id
+
+# Firebase Admin SDK credential (used by the server to read/write the Realtime Database).
+# Generate a service account JSON from Firebase Console → Project Settings → Service accounts → Generate new private key,
+# then base64-encode the file and paste the result here:
+#   base64 -i path/to/serviceAccount.json | tr -d '\n'
+FIREBASE_SERVICE_ACCOUNT_B64=your-base64-encoded-service-account-json
+```
+
+(Optional) If this is a fresh Firebase project with no data yet, seed it from the legacy `db/db.json` and hard-coded constants:
+
+```bash
+node scripts/migrate-to-firebase.mjs
 ```
 
 Run the app:
@@ -81,6 +93,6 @@ http://localhost:8080
 
 ## Notes
 
-This is a personal and educational project, not a production store. Some parts still use simple local JSON storage and browser-side cart state because the goal was to learn by building a complete working prototype.
+This is a personal and educational project, not a production store. The cart still lives in browser state, and most of the codebase reflects choices made while learning — the goal was to build a complete working prototype end-to-end, not a polished commercial product.
 
 The project continues to improve over time as I revisit old competition code, fix issues, and turn it into a cleaner full-stack portfolio project.
