@@ -337,3 +337,32 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
+
+/* === Responsive: cart (tablet / phone) ==================== */
+@media (max-width: 768px) {
+    .section-header { font-size: 2rem; }
+
+    /* Hide the ITEM / PRICE / QUANTITY label row; the stacked cards are self-explanatory.
+       The header row is the direct child of .content-section; data rows live inside .cart-items. */
+    .content-section > .cart-row { display: none; }
+
+    /* Stack each cart row into a vertical card */
+    .cart-items .cart-row { flex-direction: column; align-items: stretch; }
+    .cart-items .cart-item,
+    .cart-items .cart-price,
+    .cart-items .cart-quantity { width: 100%; }
+    .cart-column { margin-right: 0; }
+
+    .cart-item-image { width: 90px; }
+    .cart-quantity { gap: 14px; }
+
+    .btn-purchase { font-size: 1.25em; }
+    .btn-header { margin: .5em 0 2em; padding-left: 1em; padding-right: 1em; }
+}
+
+@media (max-width: 480px) {
+    .section-header { font-size: 1.6rem; }
+    .cart-item-image { width: 70px; }
+    .cart-item-title { font-size: 1em; }
+    .btn-play { width: 70px; height: 70px; font-size: 2.5em; }
+}
