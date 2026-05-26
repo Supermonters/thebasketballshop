@@ -1,5 +1,7 @@
 # BasketballShop
 
+Live website: https://thebasketballshop.onrender.com
+
 BasketballShop is a basketball-focused e-commerce website built as a personal project with my high school friends. We originally created it for a MindX developer competition, where the project reached the Top 24 finals in 2023.
 
 The reason this project exists is simple: we wanted to build something that felt close to a real online basketball store, while learning how frontend pages, server routes, product data, user login, cart behavior, and admin tools work together in one complete website.
