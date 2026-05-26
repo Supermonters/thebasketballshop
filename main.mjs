@@ -1,12 +1,19 @@
 import "dotenv/config";
 import express from "express";
 import fetch from "node-fetch";
-import nodemailer from "nodemailer";
 import bodyParser from "body-parser";
 import session from "express-session";
 import bcrypt from "bcryptjs";
 import rateLimit from "express-rate-limit";
 import { shopRef } from "./server/firebase.mjs";
+
+// Last-resort safety net: a single rejected promise in any route should not crash the server.
+process.on("unhandledRejection", (err) => {
+  console.error("unhandledRejection:", err);
+});
+process.on("uncaughtException", (err) => {
+  console.error("uncaughtException:", err);
+});
 
 const app = express();
 
@@ -19,16 +26,6 @@ async function readList(path) {
   if (!val) return [];
   return Array.isArray(val) ? val.filter(Boolean) : Object.values(val);
 }
-let transporter = nodemailer.createTransport({
-  host: "smtp.elasticemail.com",
-  port: 2525,
-  secure: false,
-  auth: {
-    user: process.env.MAILUSER,
-    pass: process.env.MAILPASSWORD,
-  },
-});
-
 function findbyproductname(products, name) {
   for (let i = 0; i < products.length; i++) {
     if (products[i].name === name) return products[i];
@@ -237,19 +234,6 @@ app.get("/productlist", async (req, res) => {
 app.get("/pdcnt", async (req, res) => {
   const ids = await readVal("ids", 0);
   res.status(200).json({ count: ids });
-});
-
-app.get("/mail", async (req, res) => {
-  const address = req.query.mail;
-  await transporter.sendMail({
-    from: `"BasketballShop" <${process.env.MAILUSER}>`,
-    to: address,
-    subject: "Newsletter",
-    text: "Thank you for subscribing to the BasketballShop newsletter.\nWe'll send you the latest NBA updates.",
-    html: `Thank you for subscribing to the BasketballShop newsletter.<br>We'll send you the latest NBA updates.<br>This is an automated message, please do not reply.<br><img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/304881059_107600002091807_5624213785648279587_n.png?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=g35yFBvN5ZwAX8ufcDE&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBC--swpZWsUuHSWclaxQ99wqqSeY0Dp2M6uL4JXXIXrA&oe=63C701EF" alt="BasketballShop" width=200 height=200>
-        `,
-  });
-  res.status(200).send("successful");
 });
 
 app.get("/admin", (req, res) => {
