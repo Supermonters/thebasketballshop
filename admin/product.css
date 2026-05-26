@@ -694,6 +694,23 @@ textarea.field-input { resize: vertical; min-height: 80px; line-height: 1.5; }
   flex-shrink: 0;
 }
 
+.upcoming-row {
+  grid-template-columns: 82px 128px minmax(240px, 1fr) auto;
+  gap: 20px;
+  min-height: 92px;
+}
+
+.upcoming-info {
+  min-width: 0;
+  padding-right: 20px;
+}
+
+.upcoming-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
 .upcoming-date-badge {
   display: flex;
   flex-direction: column;
@@ -714,6 +731,17 @@ textarea.field-input { resize: vertical; min-height: 80px; line-height: 1.5; }
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .upcoming-row {
+    grid-template-columns: 70px 112px minmax(0, 1fr);
+  }
+
+  .upcoming-actions {
+    grid-column: 2 / -1;
+    justify-content: flex-start;
+  }
 }
 
 /* ── OOS toggle (hidden checkbox + pill) ─────────── */

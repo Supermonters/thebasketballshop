@@ -940,6 +940,38 @@
     },
     {
       "rank": 2,
+      "name": "Jalen Brunson",
+      "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1628973.png",
+      "team": "NYK",
+      "id": 1628973,
+      "shoe": "Nike Kobe 6 Protro",
+      "brand": "Nike",
+      "freeAgent": false,
+      "shoeImgs": [
+        {
+          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Jalen-Brunson-Statue-of-Liberty/Images/Nike-Kobe-6-Protro-Jalen-Brunson-Statue-of-Liberty/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Statue of Liberty"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Grinch/Images/Nike-Kobe-6-Protro-Grinch/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Grinch"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Reverse-Grinch/Images/Nike-Kobe-6-Protro-Reverse-Grinch/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Reverse Grinch"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Sail/Images/Nike-Kobe-6-Protro-Sail/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Sail"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Mamba-Forever/Images/Nike-Kobe-6-Protro-Mamba-Forever/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Mamba Forever"
+        }
+      ]
+    },
+    {
+      "rank": 3,
       "name": "Shai Gilgeous-Alexander",
       "team": "OKC",
       "id": 1628983,
@@ -969,37 +1001,7 @@
       ]
     },
     {
-      "rank": 3,
-      "name": "LeBron James",
-      "team": "LAL",
-      "id": 2544,
-      "shoe": "Nike LeBron XXIII",
-      "brand": "Nike",
-      "shoeImgs": [
-        {
-          "name": "Miami Twice",
-          "url": "https://images.stockx.com/360/Nike-LeBron-23-Miami-Twice/Images/Nike-LeBron-23-Miami-Twice/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Best in Class",
-          "url": "https://images.stockx.com/360/Nike-LeBron-23-Best-in-Class/Images/Nike-LeBron-23-Best-in-Class/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Grand Opening",
-          "url": "https://images.stockx.com/360/Nike-LeBron-23-Grand-Opening/Images/Nike-LeBron-23-Grand-Opening/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "The Chosen One",
-          "url": "https://images.stockx.com/360/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Images/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "40K Gold",
-          "url": "https://images.stockx.com/360/Nike-LeBron-23-40K-Gold/Images/Nike-LeBron-23-40K-Gold/Lv2/img01.jpg?w=700&q=90&h=500"
-        }
-      ]
-    },
-    {
-      "rank": 3,
+      "rank": 4,
       "name": "Chet Holmgren",
       "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1631096.png",
       "team": "OKC",
@@ -1028,6 +1030,38 @@
     },
     {
       "rank": 5,
+      "name": "LeBron James",
+      "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
+      "team": "LAL",
+      "id": 2544,
+      "shoe": "Nike LeBron XXIII",
+      "brand": "Nike",
+      "freeAgent": false,
+      "shoeImgs": [
+        {
+          "url": "https://images.stockx.com/360/Nike-LeBron-23-Miami-Twice/Images/Nike-LeBron-23-Miami-Twice/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Miami Twice"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-LeBron-23-Best-in-Class/Images/Nike-LeBron-23-Best-in-Class/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Best in Class"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-LeBron-23-Grand-Opening/Images/Nike-LeBron-23-Grand-Opening/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Grand Opening"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Images/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "The Chosen One"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-LeBron-23-40K-Gold/Images/Nike-LeBron-23-40K-Gold/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "40K Gold"
+        }
+      ]
+    },
+    {
+      "rank": 6,
       "name": "Stephen Curry",
       "team": "GSW",
       "id": 201939,
@@ -1063,6 +1097,34 @@
     },
     {
       "rank": 7,
+      "name": "Karl-Anthony Towns",
+      "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1626157.png",
+      "team": "NYK",
+      "id": 1626157,
+      "shoe": "Nike GT Jump 2",
+      "brand": "Nike",
+      "freeAgent": false,
+      "shoeImgs": [
+        {
+          "url": "https://images.stockx.com/360/Nike-GT-Jump-2-Modern-365/Images/Nike-GT-Jump-2-Modern-365/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Modern 365"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-Air-Zoom-GT-Jump-2-USA/Images/Nike-Air-Zoom-GT-Jump-2-USA/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "USA"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-GT-Jump-2-Shaedon-Sharpe-PE-Canadian-Roots/Images/Nike-GT-Jump-2-Shaedon-Sharpe-PE-Canadian-Roots/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Canadian Roots"
+        },
+        {
+          "url": "https://images.stockx.com/360/Nike-Air-Zoom-GT-Jump-2-Christmas/Images/Nike-Air-Zoom-GT-Jump-2-Christmas/Lv2/img01.jpg?w=700&q=90&h=500",
+          "name": "Christmas"
+        }
+      ]
+    },
+    {
+      "rank": 8,
       "name": "Kevin Durant",
       "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/201142.png",
       "team": "HOU",
@@ -1090,62 +1152,6 @@
         {
           "url": "https://images.stockx.com/360/Nike-KD-18-LX-All-Star-Warning-Label/Images/Nike-KD-18-LX-All-Star-Warning-Label/Lv2/img01.jpg?w=700&q=90&h=500",
           "name": "All Star Warning Label"
-        }
-      ]
-    },
-    {
-      "rank": 7,
-      "name": "Jalen Brunson",
-      "team": "NYK",
-      "id": 1628973,
-      "shoe": "Nike Kobe 6 Protro",
-      "brand": "Nike",
-      "shoeImgs": [
-        {
-          "name": "Statue of Liberty",
-          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Jalen-Brunson-Statue-of-Liberty/Images/Nike-Kobe-6-Protro-Jalen-Brunson-Statue-of-Liberty/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Grinch",
-          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Grinch/Images/Nike-Kobe-6-Protro-Grinch/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Reverse Grinch",
-          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Reverse-Grinch/Images/Nike-Kobe-6-Protro-Reverse-Grinch/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Sail",
-          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Sail/Images/Nike-Kobe-6-Protro-Sail/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Mamba Forever",
-          "url": "https://images.stockx.com/360/Nike-Kobe-6-Protro-Mamba-Forever/Images/Nike-Kobe-6-Protro-Mamba-Forever/Lv2/img01.jpg?w=700&q=90&h=500"
-        }
-      ]
-    },
-    {
-      "rank": 8,
-      "name": "Karl-Anthony Towns",
-      "team": "NYK",
-      "id": 1626157,
-      "shoe": "Nike GT Jump 2",
-      "brand": "Nike",
-      "shoeImgs": [
-        {
-          "name": "Modern 365",
-          "url": "https://images.stockx.com/360/Nike-GT-Jump-2-Modern-365/Images/Nike-GT-Jump-2-Modern-365/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "USA",
-          "url": "https://images.stockx.com/360/Nike-Air-Zoom-GT-Jump-2-USA/Images/Nike-Air-Zoom-GT-Jump-2-USA/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Canadian Roots",
-          "url": "https://images.stockx.com/360/Nike-GT-Jump-2-Shaedon-Sharpe-PE-Canadian-Roots/Images/Nike-GT-Jump-2-Shaedon-Sharpe-PE-Canadian-Roots/Lv2/img01.jpg?w=700&q=90&h=500"
-        },
-        {
-          "name": "Christmas",
-          "url": "https://images.stockx.com/360/Nike-Air-Zoom-GT-Jump-2-Christmas/Images/Nike-Air-Zoom-GT-Jump-2-Christmas/Lv2/img01.jpg?w=700&q=90&h=500"
         }
       ]
     },

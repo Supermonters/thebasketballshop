@@ -395,14 +395,22 @@ app.get("/admin/shoe-gallery", requireAdmin, async (req, res) => {
 app.put("/admin/shoe-gallery/:rank", requireAdmin, async (req, res) => {
     await db.read();
     const oldRank = parseInt(req.params.rank, 10);
-    const gallery = Array.isArray(db.data.trendingShoeGallery) && db.data.trendingShoeGallery.length
+    let gallery = Array.isArray(db.data.trendingShoeGallery) && db.data.trendingShoeGallery.length
         ? db.data.trendingShoeGallery
         : await getTrendingShoeGallery();
-    const idx = gallery.findIndex(p => p.rank === oldRank);
+
+    // Normalize first: sort by current rank, then renumber 1..N to clear any duplicate/gap state.
+    gallery = gallery.slice().sort((a, b) => a.rank - b.rank);
+    gallery.forEach((p, i) => { p.rank = i + 1; });
+
+    const bodyId = req.body.id ? parseInt(req.body.id, 10) : null;
+    // Prefer matching by unique player id; fall back to rank if no id provided.
+    let idx = bodyId ? gallery.findIndex(p => parseInt(p.id, 10) === bodyId) : -1;
+    if (idx === -1) idx = gallery.findIndex(p => p.rank === oldRank);
     if (idx === -1) return res.status(404).send();
 
     const rank = parseInt(req.body.rank, 10);
-    const id = req.body.id ? parseInt(req.body.id, 10) : (gallery[idx].id || 0);
+    const id = bodyId || gallery[idx].id || 0;
     const { name, avatar, team, shoe, brand, freeAgent, shoeImgs } = req.body;
     if (!rank || !name || !team || !shoe || !brand || !Array.isArray(shoeImgs) || !shoeImgs.length) {
         return res.status(400).send();
@@ -414,10 +422,17 @@ app.put("/admin/shoe-gallery/:rank", requireAdmin, async (req, res) => {
         .filter(img => img.url);
     if (!normalizedImgs.length) return res.status(400).send();
 
-    gallery[idx] = { rank, name, avatar: avatar || null, team, id, shoe, brand, freeAgent: Boolean(freeAgent), shoeImgs: normalizedImgs };
-    db.data.trendingShoeGallery = gallery.sort((a, b) => a.rank - b.rank);
+    const updated = { rank, name, avatar: avatar || null, team, id, shoe, brand, freeAgent: Boolean(freeAgent), shoeImgs: normalizedImgs };
+
+    // Reorder: remove the edited entry, insert at the target rank, then renumber 1..N
+    const others = gallery.filter((_, i) => i !== idx);
+    const targetIndex = Math.max(0, Math.min(others.length, rank - 1));
+    others.splice(targetIndex, 0, updated);
+    others.forEach((p, i) => { p.rank = i + 1; });
+
+    db.data.trendingShoeGallery = others;
     await db.write();
-    res.status(200).json({ player: gallery[idx] });
+    res.status(200).json({ player: others[targetIndex] });
 });
 
 

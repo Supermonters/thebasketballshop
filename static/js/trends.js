@@ -24,11 +24,11 @@ const TRENDING_PLAYERS = [
     rank: 3, name: "LeBron James", team: "LAL", id: 2544,
     shoe: "Nike LeBron XXIII", brand: "Nike",
     shoeImgs: [
-      "https://images.stockx.com/360/Nike-LeBron-23-Miami-Twice/Images/Nike-LeBron-23-Miami-Twice/Lv2/img01.jpg?w=700&q=90&h=500",
+      "https://images.stockx.com/360/Nike-LeBron-23-Masked-Menace/Images/Nike-LeBron-23-Masked-Menace/Lv2/img01.jpg?w=700&q=90&h=500",
+      "https://images.stockx.com/360/Nike-LeBron-23-All-Star-Warning-Label/Images/Nike-LeBron-23-All-Star-Warning-Label/Lv2/img01.jpg?w=700&q=90&h=500",
       "https://images.stockx.com/360/Nike-LeBron-23-Best-in-Class/Images/Nike-LeBron-23-Best-in-Class/Lv2/img01.jpg?w=700&q=90&h=500",
-      "https://images.stockx.com/360/Nike-LeBron-23-Grand-Opening/Images/Nike-LeBron-23-Grand-Opening/Lv2/img01.jpg?w=700&q=90&h=500",
-      "https://images.stockx.com/360/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Images/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Lv2/img01.jpg?w=700&q=90&h=500",
-      "https://images.stockx.com/360/Nike-LeBron-23-40K-Gold/Images/Nike-LeBron-23-40K-Gold/Lv2/img01.jpg?w=700&q=90&h=500",
+      "https://images.stockx.com/360/Nike-LeBron-23-Out-for-Redemption/Images/Nike-LeBron-23-Out-for-Redemption/Lv2/img01.jpg?w=700&q=90&h=500",
+      "https://images.stockx.com/360/Nike-LeBron-23-Honor-Society/Images/Nike-LeBron-23-Honor-Society/Lv2/img01.jpg?w=700&q=90&h=500",
     ]
   },
   {

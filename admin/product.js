@@ -372,8 +372,13 @@
       Swal.fire({ icon: "error", title: "Add at least one image", background: "#141414", color: "#e8e8e8" });
       return;
     }
+    const newRank = parseInt(document.getElementById("shoe-rank").value, 10);
+    if (!Number.isInteger(newRank) || newRank < 1) {
+      Swal.fire({ icon: "error", title: "Invalid rank", text: "Rank must be a positive integer.", background: "#141414", color: "#e8e8e8" });
+      return;
+    }
     const body = {
-      rank:      parseInt(document.getElementById("shoe-rank").value, 10),
+      rank:      newRank,
       name:      document.getElementById("shoe-player-name").value,
       avatar:    document.getElementById("shoe-avatar").value.trim(),
       team:      document.getElementById("shoe-team").value,
@@ -589,17 +594,17 @@
     list.innerHTML = releases.map(r => {
       const { day, month, year } = fmtRelDate(r.releaseDate);
       return `
-        <div class="shoe-gallery-row" data-id="${r.id}">
+        <div class="shoe-gallery-row upcoming-row" data-id="${r.id}">
           <div class="upcoming-date-badge">
             <span class="up-day">${day}</span>
             <span class="up-month">${month} ${year}</span>
           </div>
           <img class="upcoming-thumb" src="${r.imageUrl}" alt="${r.name}" onerror="this.style.opacity='0.2'">
-          <div>
+          <div class="upcoming-info">
             <div class="shoe-gallery-name">${r.name}</div>
             <div class="shoe-gallery-detail">${r.description ? r.description.slice(0, 80) + (r.description.length > 80 ? "…" : "") : "No description"}</div>
           </div>
-          <div style="display:flex;gap:8px">
+          <div class="upcoming-actions">
             <button type="button" class="btn-edit" data-id="${r.id}">Edit</button>
             <button type="button" class="btn-delete up-delete" data-id="${r.id}">Delete</button>
           </div>

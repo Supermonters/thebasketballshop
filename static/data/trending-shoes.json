@@ -36,11 +36,11 @@
     "shoe": "Nike LeBron XXIII",
     "brand": "Nike",
     "shoeImgs": [
-      { "name": "Miami Twice", "url": "https://images.stockx.com/360/Nike-LeBron-23-Miami-Twice/Images/Nike-LeBron-23-Miami-Twice/Lv2/img01.jpg?w=700&q=90&h=500" },
-      { "name": "Best in Class", "url": "https://images.stockx.com/360/Nike-LeBron-23-Best-in-Class/Images/Nike-LeBron-23-Best-in-Class/Lv2/img01.jpg?w=700&q=90&h=500" },
-      { "name": "Grand Opening", "url": "https://images.stockx.com/360/Nike-LeBron-23-Grand-Opening/Images/Nike-LeBron-23-Grand-Opening/Lv2/img01.jpg?w=700&q=90&h=500" },
-      { "name": "The Chosen One", "url": "https://images.stockx.com/360/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Images/Nike-LeBron-23-The-Chosen-One-and-The-One-Who-Chose/Lv2/img01.jpg?w=700&q=90&h=500" },
-      { "name": "40K Gold", "url": "https://images.stockx.com/360/Nike-LeBron-23-40K-Gold/Images/Nike-LeBron-23-40K-Gold/Lv2/img01.jpg?w=700&q=90&h=500" }
+      { "name": "Masked Menace", "url": "https://images.stockx.com/360/Nike-LeBron-23-Masked-Menace/Images/Nike-LeBron-23-Masked-Menace/Lv2/img01.jpg?w=700&q=90&h=500" },
+      { "name": "All-Star Warning Label", "url": "https://images.stockx.com/360/Nike-LeBron-23-All-Star-Warning-Label/Images/Nike-LeBron-23-All-Star-Warning-Label/Lv2/img01.jpg?w=700&q=90&h=500" },
+      { "name": "Best In Class", "url": "https://images.stockx.com/360/Nike-LeBron-23-Best-in-Class/Images/Nike-LeBron-23-Best-in-Class/Lv2/img01.jpg?w=700&q=90&h=500" },
+      { "name": "Out for Redemption", "url": "https://images.stockx.com/360/Nike-LeBron-23-Out-for-Redemption/Images/Nike-LeBron-23-Out-for-Redemption/Lv2/img01.jpg?w=700&q=90&h=500" },
+      { "name": "Honor Society", "url": "https://images.stockx.com/360/Nike-LeBron-23-Honor-Society/Images/Nike-LeBron-23-Honor-Society/Lv2/img01.jpg?w=700&q=90&h=500" }
     ]
   },
   {
