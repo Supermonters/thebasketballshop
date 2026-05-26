@@ -1,50 +1,86 @@
-# Basketballshop Website
+# BasketballShop
 
-Welcome to the Basketballshop GitHub repository. This document provides instructions on how to set up and host the Basketballshop website professionally.
+BasketballShop is a basketball-focused e-commerce website built as a personal project with my high school friends. We originally created it for a MindX developer competition, where the project reached the Top 24 finals in 2023.
 
-## About the Project  
-The Basketballshop website is a **side project** developed to explore how an online store for basketball shoes could be designed and hosted. It demonstrates the basics of building an e-commerce style website, focusing on product presentation, smooth navigation, and professional deployment. While not a full-scale business platform, this project serves as a practical exercise in modern web development and hosting practices.
+The reason this project exists is simple: we wanted to build something that felt close to a real online basketball store, while learning how frontend pages, server routes, product data, user login, cart behavior, and admin tools work together in one complete website.
 
-## Prerequisites
-Before you begin, ensure that you have the following prerequisites installed on your system:
-* [Node.js](https://nodejs.org/)
-* [ngrok](https://ngrok.com/)
+## About The Website
 
-## Hosting Instructions
-Follow these steps to host the Basketballshop website:
+BasketballShop presents basketball shoes, gear, NBA content, and upcoming releases in one place. It is not a real commercial shop, but it was designed to feel like one: users can browse products, view product pages, add items to a cart, sign in, subscribe to news, and explore basketball trends.
 
-### Step 1: Configuring ngrok
-1. Open your terminal and navigate to the folder where you extracted the ngrok executable. For example:
-   ```bash
-   cd C:\Users\YourUsername\Downloads\ngrok-v3-stable-windows-amd64
-   ```
-2. Add your ngrok authtoken by running the following command. Replace `::_INSERT KEY_` with your actual ngrok authtoken, which you can obtain by creating an ngrok account and locating it in the "Connect to your account" section.
-   ```bash
-   .\ngrok authtoken ::_INSERT KEY_
-   ```
-3. Next, set up port forwarding to expose your local web server on port 8080 using the following command:
-   ```bash
-   .\ngrok http 8080
-   ```
+The project has grown from a competition demo into a more complete full-stack learning project. It now includes an admin panel, Firebase authentication, environment-based configuration, product management, upcoming release management, and API-powered basketball content.
 
-### Step 2: Setting up the Basketballshop Website
-1. Open Visual Studio Code (VSCode) and go to the terminal.
-2. Install the necessary Node.js packages by running the following command:
-   ```bash
-   npm install
-   ```
-3. After the installation is complete, run the website by executing the following command:
-   ```bash
-   npm start
-   ```
+## Highlights
 
-### Access the Website
-Once you've completed the above steps, you will see a forwarding link similar to the example below in your terminal:
+- Product store with product cards, categories, product detail pages, and cart support
+- Firebase Auth login, signup, Google sign-in, email verification, and password reset
+- Admin dashboard for managing products and upcoming shoe releases
+- NBA news and trend pages powered by server-side API routes
+- Upcoming releases section for new basketball shoes
+- Newsletter subscription flow
+- Express server with session-based admin authentication
+- LowDB JSON storage for project data
+- Environment variable configuration for secrets and API keys
 
+## Project Background
+
+This website started as a high school team project. My friends and I built it for a MindX developer competition because we wanted to challenge ourselves with a project that looked and behaved like a real product, not just a static page.
+
+Reaching the Top 24 finals in 2023 was a big milestone for us. More importantly, the project became a place to practice real development skills: debugging login issues, improving security, cleaning up old code, building admin workflows, and learning how to make a website easier to maintain over time.
+
+## Tech Stack
+
+- Node.js
+- Express
+- LowDB
+- Firebase Auth
+- Firebase Realtime Database client, optional for user metadata
+- HTML, CSS, JavaScript
+- Tailwind CDN styles on static pages
+- SweetAlert2
+- Nodemailer
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
 ```
-Forwarding https://your-unique-subdomain.ngrok.io -> http://localhost:8080
+
+Create a `.env` file with the required environment variables:
+
+```env
+PORT=8080
+SESSION_SECRET=your-session-secret
+
+MAILUSER=your-mail-user
+MAILPASSWORD=your-mail-password
+NEWS_API_KEY=your-news-api-key
+
+FIREBASE_API_KEY=your-firebase-api-key
+FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
+FIREBASE_DATABASE_URL=your-firebase-database-url
+FIREBASE_PROJECT_ID=your-firebase-project-id
+FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket
+FIREBASE_MESSAGING_SENDER_ID=your-firebase-messaging-sender-id
+FIREBASE_APP_ID=your-firebase-app-id
 ```
 
-To access the Basketballshop website, follow the provided hyperlink that concludes with "ngrok.io."
+Run the app:
 
-Your Basketballshop website is now professionally hosted and accessible through the provided link. Enjoy exploring the basketball-related content!
+```bash
+npm start
+```
+
+Then open:
+
+```text
+http://localhost:8080
+```
+
+## Notes
+
+This is a personal and educational project, not a production store. Some parts still use simple local JSON storage and browser-side cart state because the goal was to learn by building a complete working prototype.
+
+The project continues to improve over time as I revisit old competition code, fix issues, and turn it into a cleaner full-stack portfolio project.
