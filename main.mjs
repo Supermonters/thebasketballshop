@@ -1,17 +1,24 @@
 import "dotenv/config";
 import express from "express";
-import { Low } from "lowdb";
-import { JSONFile } from "lowdb/node";
 import fetch from "node-fetch";
 import nodemailer from "nodemailer";
 import bodyParser from "body-parser";
 import session from "express-session";
 import bcrypt from "bcryptjs";
 import rateLimit from "express-rate-limit";
-import fs from "fs/promises";
+import { shopRef } from "./server/firebase.mjs";
 
-const db = new Low(new JSONFile("db/db.json"));
 const app = express();
+
+async function readVal(path, fallback) {
+  const snap = await shopRef(path).get();
+  return snap.exists() ? snap.val() : fallback;
+}
+async function readList(path) {
+  const val = await readVal(path, null);
+  if (!val) return [];
+  return Array.isArray(val) ? val.filter(Boolean) : Object.values(val);
+}
 let transporter = nodemailer.createTransport({
   host: "smtp.elasticemail.com",
   port: 2525,
@@ -21,7 +28,6 @@ let transporter = nodemailer.createTransport({
     pass: process.env.MAILPASSWORD,
   },
 });
-await db.read();
 
 function findbyproductname(products, name) {
   for (let i = 0; i < products.length; i++) {
@@ -32,22 +38,15 @@ function findbyproductname(products, name) {
 
 // Migrate any plaintext admin passwords to bcrypt hashes on startup
 async function migrateAdminPasswords() {
-  let changed = false;
-  for (const [username, password] of Object.entries(db.data.admins)) {
-    if (!password.startsWith("$2b$")) {
-      db.data.admins[username] = await bcrypt.hash(password, 12);
-      changed = true;
+  const admins = await readVal("admins", {});
+  for (const [username, password] of Object.entries(admins)) {
+    if (typeof password === "string" && !password.startsWith("$2b$")) {
+      const hash = await bcrypt.hash(password, 12);
+      await shopRef(`admins/${username}`).set(hash);
     }
   }
-  if (changed) await db.write();
 }
 await migrateAdminPasswords();
-
-db.data ||= { products: [] };
-if (!Array.isArray(db.data.hiddenPlayers)) {
-  db.data.hiddenPlayers = [];
-  await db.write();
-}
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -83,7 +82,7 @@ app.get("/firebase-config", (req, res) => {
   });
 });
 
-// In-memory news cache — avoids polluting db.json
+// In-memory news cache — refreshed once an hour from newsdata.io
 let newsCache = { hour: null, arr: [] };
 
 app.get("/news", async (req, res) => {
@@ -128,40 +127,6 @@ app.get("/nba-stories", async (req, res) => {
   }
 });
 
-// Player → current shoe mapping (2025-26 season, verified)
-const PLAYER_SHOES = {
-  // Top 10 scorers — corrected
-  "Luka Doncic":             { shoe: "Jordan Luka 5",           brand: "Jordan" },
-  "Luka Dončić":             { shoe: "Jordan Luka 5",           brand: "Jordan" },
-  "Shai Gilgeous-Alexander": { shoe: "Converse SHAI 001",       brand: "Converse" },
-  "Anthony Edwards":         { shoe: "Adidas AE 2",             brand: "Adidas" },
-  "Jaylen Brown":            { shoe: "741 Performance Rover",   brand: "741" },
-  "Tyrese Maxey":            { shoe: "New Balance Maxey v1",    brand: "New Balance" },
-  "Kawhi Leonard":           { shoe: "New Balance KAWHI V",     brand: "New Balance" },
-  "Donovan Mitchell":        { shoe: "Adidas DON Issue 7",      brand: "Adidas" },
-  "Nikola Jokic":            { shoe: "361° Joker 2",            brand: "361°" },
-  "Nikola Jokić":            { shoe: "361° Joker 2",            brand: "361°" },
-  "Devin Booker":            { shoe: "Nike Book 2",             brand: "Nike" },
-  "Jalen Brunson":           { shoe: "Nike Kobe 4 Protro",      brand: "Nike" },
-  // Other notable players
-  "LeBron James":            { shoe: "Nike LeBron 22",          brand: "Nike" },
-  "Kevin Durant":            { shoe: "Nike KD 17",              brand: "Nike" },
-  "Giannis Antetokounmpo":   { shoe: "Nike Zoom Freak 6",       brand: "Nike" },
-  "Stephen Curry":           { shoe: "Under Armour Curry 12",   brand: "Under Armour" },
-  "Jayson Tatum":            { shoe: "Jordan Tatum 3",          brand: "Jordan" },
-  "Joel Embiid":             { shoe: "Under Armour Embiid 2",   brand: "Under Armour" },
-  "Damian Lillard":          { shoe: "Adidas Dame 9",           brand: "Adidas" },
-  "Ja Morant":               { shoe: "Nike Ja 2",               brand: "Nike" },
-  "Trae Young":              { shoe: "Adidas Trae Young 3",     brand: "Adidas" },
-  "Zion Williamson":         { shoe: "Jordan Zion 4",           brand: "Jordan" },
-  "Anthony Davis":           { shoe: "Nike AD",                 brand: "Nike" },
-  "Karl-Anthony Towns":      { shoe: "Nike Air Zoom GT Jump 2", brand: "Nike" },
-  "Paolo Banchero":          { shoe: "Nike GT Cut 3",           brand: "Nike" },
-  "Tyrese Haliburton":       { shoe: "Nike KD 17",              brand: "Nike" },
-  "Cade Cunningham":         { shoe: "Nike Kobe 8 Protro",      brand: "Nike" },
-  "Bam Adebayo":             { shoe: "Nike Air Zoom GT Cut 3",  brand: "Nike" },
-};
-
 let trendsCache = {
   players:  { ts: 0, data: [] },
   sneakers: { ts: 0, data: [] },
@@ -169,12 +134,17 @@ let trendsCache = {
 const TRENDS_TTL = 3600 * 1000; // 1 hour
 
 async function getTrendingShoeGallery() {
-  await db.read();
-  if (Array.isArray(db.data.trendingShoeGallery) && db.data.trendingShoeGallery.length) {
-    return db.data.trendingShoeGallery;
+  const list = await readList("trendingShoeGallery");
+  return list.sort((a, b) => (a.rank || 0) - (b.rank || 0));
+}
+
+async function getPlayerShoeMap() {
+  const all = await readVal("playerShoes", {});
+  const out = {};
+  for (const entry of Object.values(all)) {
+    if (entry && entry.name) out[entry.name] = { shoe: entry.shoe, brand: entry.brand };
   }
-  const seed = await fs.readFile("static/data/trending-shoes.json", "utf8");
-  return JSON.parse(seed);
+  return out;
 }
 
 const NBA_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
@@ -193,11 +163,13 @@ app.get("/trends/players", async (req, res) => {
     const headers = data.resultSet?.headers || [];
     const rows = data.resultSet?.rowSet || [];
     const idx = { id: headers.indexOf("PLAYER_ID"), name: headers.indexOf("PLAYER"), team: headers.indexOf("TEAM"), pts: headers.indexOf("PTS") };
-    const hidden = new Set(db.data.hiddenPlayers || []);
+    const hiddenObj = await readVal("hiddenPlayers", {});
+    const hidden = new Set(Object.values(hiddenObj));
+    const playerShoes = await getPlayerShoeMap();
     const players = rows
       .map((row) => {
         const name = row[idx.name] || "";
-        const info = PLAYER_SHOES[name] || {};
+        const info = playerShoes[name] || {};
         return {
           name,
           team:     row[idx.team] || "",
@@ -256,15 +228,15 @@ app.get("/trends/shoe-gallery", async (req, res) => {
 });
 
 app.get("/productlist", async (req, res) => {
-  await db.read();
   res.set("Cache-Control", "no-store");
-  res.status(200).json(db.data);
+  const products = await readList("products");
+  const ids = await readVal("ids", 0);
+  res.status(200).json({ products, ids });
 });
 
 app.get("/pdcnt", async (req, res) => {
-  res.status(200).json({
-    count: db.data.ids,
-  });
+  const ids = await readVal("ids", 0);
+  res.status(200).json({ count: ids });
 });
 
 app.get("/mail", async (req, res) => {
@@ -292,7 +264,7 @@ app.get("/admin/checkauth", (req, res) => {
 app.post("/admin/login", loginLimiter, async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) return res.status(400).send();
-    const stored = db.data.admins[username];
+    const stored = await readVal(`admins/${username}`, null);
     if (!stored) return res.status(401).send();
     const valid = await bcrypt.compare(password, stored);
     if (!valid) return res.status(401).send();
@@ -312,73 +284,70 @@ app.post("/admin/addproduct", requireAdmin, async (req, res) => {
         return res.status(400).send();
     }
     const now = new Date().toISOString();
-    db.data.ids++;
-    db.data.products.push({ name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id: db.data.ids, dateAdded: now, dateModified: now });
-    await db.write();
+    const nextId = (await readVal("ids", 0)) + 1;
+    await shopRef(`products/${nextId}`).set({ name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id: nextId, dateAdded: now, dateModified: now });
+    await shopRef("ids").set(nextId);
     res.status(200).send();
 });
 
 app.get("/admin/products", requireAdmin, async (req, res) => {
-    await db.read();
     res.set("Cache-Control", "no-store");
-    res.json({ products: db.data.products });
+    const products = await readList("products");
+    res.json({ products });
 });
 
 app.put("/admin/products/:id", requireAdmin, async (req, res) => {
-    await db.read();
     const id = parseInt(req.params.id, 10);
-    const idx = db.data.products.findIndex(p => p.id === id);
-    if (idx === -1) return res.status(404).send();
+    const existing = await readVal(`products/${id}`, null);
+    if (!existing) return res.status(404).send();
 
     const { name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options } = req.body;
     if (!name || !alt || !banner || !Array.isArray(images) || !images.length || !price || !filter || !mouseover || !mouseout || !cartpic || !Array.isArray(options) || !options.length) {
         return res.status(400).send();
     }
 
-    db.data.products[idx] = { ...db.data.products[idx], name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id, dateModified: new Date().toISOString() };
-    await db.write();
-    res.status(200).json({ product: db.data.products[idx] });
+    const updated = { ...existing, name, alt, banner, images, price, filter, mouseover, mouseout, cartpic, options, id, dateModified: new Date().toISOString() };
+    await shopRef(`products/${id}`).set(updated);
+    res.status(200).json({ product: updated });
 });
 
 app.delete("/admin/products/:id", requireAdmin, async (req, res) => {
-    await db.read();
     const id = parseInt(req.params.id, 10);
-    const idx = db.data.products.findIndex(p => p.id === id);
-    if (idx === -1) return res.status(404).send();
-    db.data.products.splice(idx, 1);
-    await db.write();
+    const existing = await readVal(`products/${id}`, null);
+    if (!existing) return res.status(404).send();
+    await shopRef(`products/${id}`).remove();
     res.status(200).send();
 });
 
 app.delete("/admin/products", requireAdmin, async (req, res) => {
-    await db.read();
     const ids = req.body?.ids;
     if (!Array.isArray(ids) || !ids.length) return res.status(400).send();
-    const idSet = new Set(ids.map(Number));
-    db.data.products = db.data.products.filter(p => !idSet.has(p.id));
-    await db.write();
+    const updates = {};
+    for (const id of ids.map(Number)) updates[`products/${id}`] = null;
+    await shopRef().update(updates);
     res.status(200).send();
 });
 
-app.get("/admin/players/hidden", requireAdmin, (req, res) => {
-    res.json({ hidden: db.data.hiddenPlayers || [] });
+function hiddenPlayerKey(name) {
+    return (name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "unknown";
+}
+
+app.get("/admin/players/hidden", requireAdmin, async (req, res) => {
+    const hidden = await readVal("hiddenPlayers", {});
+    res.json({ hidden: Object.values(hidden) });
 });
 
 app.post("/admin/players/hide", requireAdmin, async (req, res) => {
     const { name } = req.body;
     if (!name) return res.status(400).send();
-    if (!db.data.hiddenPlayers.includes(name)) {
-        db.data.hiddenPlayers.push(name);
-        await db.write();
-        trendsCache.players.ts = 0;
-    }
+    await shopRef(`hiddenPlayers/${hiddenPlayerKey(name)}`).set(name);
+    trendsCache.players.ts = 0;
     res.status(200).send();
 });
 
 app.delete("/admin/players/hide/:name", requireAdmin, async (req, res) => {
     const name = decodeURIComponent(req.params.name);
-    db.data.hiddenPlayers = db.data.hiddenPlayers.filter(n => n !== name);
-    await db.write();
+    await shopRef(`hiddenPlayers/${hiddenPlayerKey(name)}`).remove();
     trendsCache.players.ts = 0;
     res.status(200).send();
 });
@@ -393,11 +362,8 @@ app.get("/admin/shoe-gallery", requireAdmin, async (req, res) => {
 });
 
 app.put("/admin/shoe-gallery/:rank", requireAdmin, async (req, res) => {
-    await db.read();
     const oldRank = parseInt(req.params.rank, 10);
-    let gallery = Array.isArray(db.data.trendingShoeGallery) && db.data.trendingShoeGallery.length
-        ? db.data.trendingShoeGallery
-        : await getTrendingShoeGallery();
+    let gallery = await getTrendingShoeGallery();
 
     // Normalize first: sort by current rank, then renumber 1..N to clear any duplicate/gap state.
     gallery = gallery.slice().sort((a, b) => a.rank - b.rank);
@@ -430,64 +396,63 @@ app.put("/admin/shoe-gallery/:rank", requireAdmin, async (req, res) => {
     others.splice(targetIndex, 0, updated);
     others.forEach((p, i) => { p.rank = i + 1; });
 
-    db.data.trendingShoeGallery = others;
-    await db.write();
+    // Rewrite the whole gallery node so removed/renumbered entries are reflected.
+    const galleryMap = {};
+    for (const p of others) galleryMap[p.id] = p;
+    await shopRef("trendingShoeGallery").set(galleryMap);
     res.status(200).json({ player: others[targetIndex] });
 });
 
 
 // ── Upcoming Releases ──────────────────────────────────────────
+async function readUpcomingSorted() {
+  const list = await readList("upcomingReleases");
+  return list.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
+}
+
 app.get("/upcoming-releases", async (req, res) => {
-  await db.read();
   res.set("Cache-Control", "no-store");
-  res.json({ releases: (db.data.upcomingReleases || []).sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate)) });
+  res.json({ releases: await readUpcomingSorted() });
 });
 
 app.get("/admin/upcoming-releases", requireAdmin, async (req, res) => {
-  await db.read();
   res.set("Cache-Control", "no-store");
-  res.json({ releases: (db.data.upcomingReleases || []).sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate)) });
+  res.json({ releases: await readUpcomingSorted() });
 });
 
 app.post("/admin/upcoming-releases", requireAdmin, async (req, res) => {
   const { name, imageUrl, linkUrl, releaseDate, description } = req.body;
   if (!name || !imageUrl || !releaseDate) return res.status(400).send();
-  await db.read();
-  if (!Array.isArray(db.data.upcomingReleases)) db.data.upcomingReleases = [];
-  const id = db.data.upcomingReleases.reduce((max, r) => Math.max(max, r.id || 0), 0) + 1;
+  const existing = await readList("upcomingReleases");
+  const id = existing.reduce((max, r) => Math.max(max, r.id || 0), 0) + 1;
   const item = { id, name, imageUrl, linkUrl: linkUrl || "", releaseDate, description: description || "" };
-  db.data.upcomingReleases.push(item);
-  db.data.upcomingReleases.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
-  await db.write();
+  await shopRef(`upcomingReleases/${id}`).set(item);
   res.status(200).json({ release: item });
 });
 
 app.put("/admin/upcoming-releases/:id", requireAdmin, async (req, res) => {
-  await db.read();
   const id = parseInt(req.params.id, 10);
-  const idx = (db.data.upcomingReleases || []).findIndex(r => r.id === id);
-  if (idx === -1) return res.status(404).send();
+  const existing = await readVal(`upcomingReleases/${id}`, null);
+  if (!existing) return res.status(404).send();
   const { name, imageUrl, linkUrl, releaseDate, description } = req.body;
   if (!name || !imageUrl || !releaseDate) return res.status(400).send();
-  db.data.upcomingReleases[idx] = { id, name, imageUrl, linkUrl: linkUrl || "", releaseDate, description: description || "" };
-  db.data.upcomingReleases.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
-  await db.write();
-  res.status(200).json({ release: db.data.upcomingReleases.find(r => r.id === id) });
+  const updated = { id, name, imageUrl, linkUrl: linkUrl || "", releaseDate, description: description || "" };
+  await shopRef(`upcomingReleases/${id}`).set(updated);
+  res.status(200).json({ release: updated });
 });
 
 app.delete("/admin/upcoming-releases/:id", requireAdmin, async (req, res) => {
-  await db.read();
   const id = parseInt(req.params.id, 10);
-  const idx = (db.data.upcomingReleases || []).findIndex(r => r.id === id);
-  if (idx === -1) return res.status(404).send();
-  db.data.upcomingReleases.splice(idx, 1);
-  await db.write();
+  const existing = await readVal(`upcomingReleases/${id}`, null);
+  if (!existing) return res.status(404).send();
+  await shopRef(`upcomingReleases/${id}`).remove();
   res.status(200).send();
 });
 
 app.get("/store_item", async (req, res) => {
   const itemName = req.query.item;
-  const item = findbyproductname(db.data.products, itemName);
+  const products = await readList("products");
+  const item = findbyproductname(products, itemName);
   const vnd = parseInt(String(item.price).replace(/\./g, ''), 10);
   const usdRaw = vnd / 25000;
   const usdMarketing = Math.ceil(usdRaw / 5) * 5 - 0.01;
