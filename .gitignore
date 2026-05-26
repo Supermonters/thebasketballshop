@@ -1,6 +1,7 @@
 node_modules/
 .vscode/
 .env
+.DS_Store
 config.json
 .claude
-./SUGGESTIONS.md
+SUGGESTIONS.md
